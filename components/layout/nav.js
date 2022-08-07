@@ -19,13 +19,12 @@ const Nav = () => {
                         </div>
                     </div>
                     <div className={css.logo}>
-                        <Link href={"http://localhost:3000/learn"}><a><Image src={'https://www.for9a.com/images/logo.svg'} width={50} height={50} alt='logo' /></a></Link>
+                        <Link href={`${process.env.NEXT_PUBLIC_VERCEL_URL}/learn`}><a><Image src={'https://www.for9a.com/images/logo.svg'} width={50} height={50} alt='logo' /></a></Link>
+                    {/* {console.log(process.env.HOST)} */}
                     </div>
                     <div className={css.nightmode}>
                         <NightMode/>
                     </div>
-
-
                 </div>
             
         </header >
