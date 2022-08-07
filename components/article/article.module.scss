@@ -1,0 +1,325 @@
+.progressBarContainer {
+    top: 0px;
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    height: 5px;
+
+    .progressBar {
+        background: linear-gradient(to right, #eb751d, rgb(238, 207, 130));
+        transform-origin: top right;
+        transform: scale(0, 0);
+        // opacity: .1;
+        height: 5px;
+        transition: .1s ease-in-out;
+    }
+}
+
+.sharing {
+    display: none;
+}
+
+.mobileSharing {
+    .shareButton {
+        background-color: transparent;
+        border: 0;
+        cursor: pointer;
+    }
+}
+
+.top {
+
+    margin-top: 50px;
+
+    h1 {
+        line-height: 3rem;
+        font-size: 2rem;
+        margin-bottom: 25px;
+        color: #eb751d;
+    }
+
+    .ads {
+        text-align: center;
+        background-color: rgb(230, 219, 219);
+        width: 100%;
+
+        .adpic {
+            margin-top: 5px !important;
+        }
+
+    }
+
+    .move {
+        border-radius: 0;
+
+    }
+
+
+
+    .breadcrumb {
+        display: flex;
+        margin-bottom: 1rem;
+
+        a {
+            text-decoration: none;
+            color: #454F54;
+
+            &:hover {
+                color: #337ab7;
+            }
+        }
+
+        h5 {
+            margin-left: 10px;
+            margin-bottom: 0px;
+        }
+    }
+
+    .carosel {
+        margin: auto;
+        margin-bottom: 20px;
+        padding: 0 15px
+    }
+
+    .Section {
+        height: 90px;
+        border-top: 1px solid #e2e2e2;
+        border-bottom: 1px solid #e2e2e2;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-bottom: 10px;
+
+        h6 {
+            font-size: 12px;
+        }
+
+        .publish {
+            h6 {
+                margin: 0;
+                display: flex;
+            }
+        }
+
+        .author {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 50px;
+
+            h6 {
+                margin: 0;
+            }
+
+            .pic {
+                border-radius: 50%;
+            }
+
+            .authPub {
+                display: flex;
+                align-items: center;
+
+                h6 {
+                    margin: 0px;
+                    margin-right: 5px;
+                }
+
+            }
+        }
+
+        .time {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            h6 {
+                margin: 0;
+
+
+                .icon {
+                    margin-left: 5px;
+                    margin-bottom: -4px;
+                }
+
+                span {
+                    margin-left: 3px;
+                }
+            }
+
+            .img {
+                border-radius: 50%;
+                margin: 5px;
+            }
+
+        }
+
+        .rate {
+            h6 {
+                margin: 0;
+
+                span {
+                    margin-left: 4px;
+                }
+            }
+        }
+    }
+
+    .all {
+
+
+        .article {
+
+            font-size: 1rem;
+            line-height: 2rem;
+
+            .content {
+                blockquote {
+
+                    text-align: center;
+                    box-shadow: 0 1px 4px rgb(0 0 0 / 16%);
+                    padding: 10px;
+                    border-radius: 5px;
+                    margin: 50px 0;
+
+
+                    strong {
+
+                        color: #454F54;
+                    }
+
+                }
+
+                blockquote::before {
+
+                    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='50px' height='50px'%3E%3Cpath fill='%23eb751d' d='M11 18V10H9.12L11.12 6H5.38L3 10.76V18M9 16H5V11.24L6.62 8H7.88L5.88 12H9M21 18V10H19.12L21.12 6H15.38L13 10.76V18M19 16H15V11.24L16.62 8H17.88L15.88 12H19Z' /%3E%3C/svg%3E");
+                    display: flex;
+                    position: relative;
+                    top: -30px;
+
+                }
+
+
+
+                h2 {
+                    line-height: 3rem;
+                    color: #eb751d;
+                }
+
+
+                a {
+                    color: #337ab7;
+                    text-decoration: none;
+                }
+
+                img {
+
+                    margin-bottom: 20px;
+                    margin-top: 20px;
+                    border-radius: 5px;
+                }
+            }
+
+           
+
+        }
+    }
+}
+
+.dark {
+    .article {
+        blockquote {
+            background-color: #474B4D;
+
+            strong {
+                color: white
+            }
+        }
+    }
+}
+
+
+
+
+
+@media screen and (min-width: 800px) {
+
+
+    .top {
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .image {
+            width: 70%;
+            margin-top: 10px;
+
+            .move {
+                border-radius: 5px;
+
+            }
+        }
+
+        .all {
+            width: 70%;
+            display: flex;
+            position: relative;
+
+            .sharing {
+
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                position: sticky;
+                height: 100%;
+                top: 70px;
+                margin-top: 15px;
+                margin-bottom: 50px;
+
+                a {
+                    padding-top: 5px;
+                    margin-right: 1.5rem;
+                }
+
+                .interactions {
+                    margin: .5rem 0;
+                    border: gray 1px solid;
+                    padding: 5px;
+                    border-radius: 5px;
+
+                    h5 {
+                        margin: 0;
+                    }
+                }
+
+                .shareButton {
+                    background-color: transparent;
+                    border: 0;
+                    cursor: pointer;
+                    margin-right: 1.3rem;
+                }
+            }
+        }
+
+        .article {
+
+
+            .mobileSharing {
+                display: none;
+            }
+        }
+
+        .carosel {
+            width: 70%;
+            .related {
+                margin: 10px 0;
+
+                h4 {
+                    font-size: 1.5rem;
+                }
+            }
+        }
+    }
+
+}

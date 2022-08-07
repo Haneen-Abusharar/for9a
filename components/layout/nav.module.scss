@@ -1,0 +1,101 @@
+
+ .dark  {    
+    background-color: #474B4D !important;
+}
+
+.navbar {
+    height: 50px;
+    align-items: center !important;
+    text-decoration: none;
+    font-size: 17px;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0 5px 20px 0 rgb(0 0 0 / 8%);
+    background-color: white;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    width: 100%;
+
+    .logo {
+        cursor: pointer;
+        text-align: center;
+        vertical-align: middle;
+        width: 200px;
+        z-index: 102;
+    }
+
+    .menu {
+        overflow: visible;
+        cursor: pointer;
+
+        text-align: center;
+        padding: 10px;
+        z-index: 102;
+        width: 100px;
+
+
+
+        .dropdown {
+
+            display: none;
+            position: relative;
+            right: 0px;
+            bottom: 0;
+            top: 40px;
+            cursor: pointer;
+            //text-align: right;
+            padding: 10px;
+            // margin-right: 10px;
+            background-color: #f1f1f1;
+            min-width: 100px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 103;
+        }
+
+        &:hover {
+            .dropdown {
+                display: block;
+
+            }
+        }
+
+        a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            background-color: #f1f1f1;
+
+            &:hover {
+                background-color: #ddd;
+            }
+        }
+    }
+
+    .nightmode {
+
+        top: -20px;
+        z-index: 102;
+        width: 80px;
+        overflow: visible;
+        padding: 10px;
+
+    }
+
+}
+
+
+@media screen and (min-width: 800px) {
+    .navbar {
+        justify-content: space-around;
+
+        .menu {
+            .dropdown {
+                min-width: 200px;
+
+            }
+        }
+    }
+}
