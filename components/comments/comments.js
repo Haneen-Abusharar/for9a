@@ -83,7 +83,7 @@ const Comments = () => {
     return (
         <div className={`${darkMode ? css.dark : ''} ${css.comments}`} >
 
-            <div className={css.commentsTop}>
+            <div className={ css.commentsTop}>
 
 
                 <div className={css.commentsNum} >
