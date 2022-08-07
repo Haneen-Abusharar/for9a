@@ -63,19 +63,15 @@ const Comments = () => {
 
     const show = (i) => {
 
-        // console.log(i)
         let s = showButtons;
         s[i] = 1;
-        // console.log(s)
         setShowButtons([...showButtons, s])
-        debugger
+        
     }
 
     const hide = (i) => {
-        // console.log(i)
         let s = showButtons;
         s[i] = 0;
-        //console.log(s)
         setShowButtons([...showButtons, s])
     }
 
@@ -103,7 +99,7 @@ const Comments = () => {
             </div>
             <div className={css.mainComments}>
                 <div className={css.pic}>
-                    <Image src="/h.jpg" height={50} width={50} />
+                    <Image src="/h.jpg" height={50} width={50} alt="profilepic" />
                 </div>
                 <div className={css.input}>
                     <input
@@ -126,7 +122,7 @@ const Comments = () => {
                 <div className={css.pastComments} key={i}>
 
                     <div className={css.pic}>
-                        <Image src={item.user.image} height={50} width={50} />
+                        <Image src={item.user.image} height={50} width={50} alt="profilepic"/>
                     </div>
 
                     <div className={css.past}>
@@ -138,7 +134,7 @@ const Comments = () => {
                             <div className={css.past} key={x}>
                                 <div className={css.leftreply}>
                                     <div className={css.pic}>
-                                        <Image src={reply.user.image} height={45} width={45} />
+                                        <Image src={reply.user.image} height={45} width={45} alt="profilepic" />
 
                                     </div>
                                     <div className={css.left}>
