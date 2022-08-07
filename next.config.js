@@ -14,7 +14,7 @@ module.exports = {
   env: {
 
     HOST:"http://localhost:3000",
-    NEXT_PUBLIC_VERCEL_URL:"https://for9a-git-main-haneen-abusharar.vercel.app/"
+    NEXT_PUBLIC_VERCEL_URL:"https://for9a-git-main-haneen-abusharar.vercel.app"
     
   },
   webpack(config) {
