@@ -50,15 +50,14 @@ const ArticleItem = ({ item, showDesc }) => {
                         alt={item.title} loading='lazy' placeholder='blurDataURL' layout='responsive' /></a></Link>}
 
             <div className={css.categories}>
-            {item.categories.map((l, i) => (<div className={css.category} key={i}>
-                <Link
-                    href={`${l.url?.replace("https://www.for9a.com/", "http://localhost:3000/")}`}><a><h4>{l.title}</h4></a>
-                </Link>
-            </div>))}
+                {item.categories.map((l, i) => (
+                    <div className={css.category} key={i}>
+                        <Link
+                            href={`${l.url?.replace("https://www.for9a.com/", "http://localhost:3000/")}`}><a><h4>{l.title}</h4></a>
+                        </Link>
+                    </div>
+                ))}
             </div>
-
-            {/* <Link
-                href={`${item.category.url?.replace("https://www.for9a.com/", "http://localhost:3000/")}`}><a><h4>{item.category.title}</h4></a></Link> */}
             <Link
                 href={`${item.url?.replace("https://www.for9a.com/", "http://localhost:3000/")}`}>
                 <a>
@@ -72,7 +71,7 @@ const ArticleItem = ({ item, showDesc }) => {
                 </a>
             </Link>
             <div className={css.cardFooter}>
-                <div className={css.imageFooter}><Image src={`/h.jpg`} width={60} height={60}  /></div>
+                <div className={css.imageFooter}><Image src={`/h.jpg`} width={60} height={60} /></div>
                 <div className={css.Author}>
                     <h5>الكاتب</h5>
                     <h6>{date.toLocaleDateString("en-US")}</h6>
