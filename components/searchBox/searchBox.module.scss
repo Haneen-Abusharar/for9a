@@ -1,6 +1,7 @@
 .searchAndrec {
 	display: flex;
 	flex-direction: column;
+
 	.search {
 
 		width: auto;
@@ -32,15 +33,10 @@
 	}
 
 	.show {
-
-		//width: 93%;
-		//top: 665px;
-		//position: absolute;
 		display: flex;
 		flex-direction: column;
 		align-items: stretch;
 		background-color: #fff;
-		border: 1px solid rgb(242, 242, 242);
 		z-index: 700;
 		border-radius: 4px;
 		box-shadow: rgb(0 0 0 / 15%) 0px 2px 10px 0px;
@@ -55,6 +51,11 @@
 			margin: 5px 0;
 			padding: 5px 5px;
 			border-bottom: #9da3a6 solid 1px;
+
+			&:hover {
+				background-color: #cbd2d5;
+				transition: .3s ease-in-out;
+			}
 		}
 	}
 }
@@ -66,15 +67,34 @@
 
 	}
 
+	.show {
+
+		background-color: #959595;
+
+
+		.searchRes {
+			a {
+				color: #fff;
+			}
+
+			border-bottom: #d4dade solid 1px;
+
+			&:hover {
+				background-color: #bec5c8;
+
+			}
+		}
+	}
+
 }
 
 @media screen and (min-width:800px) {
 	.searchAndrec {
 		.show {
 
-			 position: absolute;
-			 margin-top: 40px;
-			
+			position: absolute;
+			margin-top: 40px;
+
 		}
 	}
 

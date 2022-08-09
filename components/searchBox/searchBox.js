@@ -42,8 +42,8 @@ const SearchBox = ({ }) => {
         push(`/learn/s/${e.target[0].value}`);
     }
 
-    return (<div className={css.searchAndrec}>
-        <form onSubmit={submit} onChange={handleChange} className={`${darkMode ? css.dark : ''} ${css.search}`} autoComplete="off" >
+    return (<div className={`${darkMode ? css.dark : ''} ${css.searchAndrec} `}>
+        <form onSubmit={submit} onChange={handleChange} className={` ${css.search}`} autoComplete="off" >
             <input type="text" placeholder="ابحث.." name="term"
                 value={value || ''}
                 onChange={(e) => { handleChange(e), autoComplete(e) }}
