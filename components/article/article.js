@@ -8,7 +8,7 @@ import css from './article.module.scss';
 import CaroselArticles from '../CaroselArticles/CaroselArticles';
 import StarRating from '../Rating/rating';
 import Comments from '../comments/comments';
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
+
 const Article = ({ item, filter }) => {
 
     const [scroll, setScroll] = useState(0);

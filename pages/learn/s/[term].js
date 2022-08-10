@@ -29,7 +29,7 @@ const SearchPage = () => {
 
             <div className={`container ${css.load}`} >
             
-                <h1>نتائج البحث عن : {query.term} </h1>
+                <h2>نتائج البحث عن : {query.term} </h2>
                 <div className={css.articles}>
 
                     {

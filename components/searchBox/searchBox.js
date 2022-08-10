@@ -24,14 +24,22 @@ const SearchBox = ({ }) => {
     }
     const autoComplete = async (event) => {
         // event.preventDefault();
-        const auto = await axios.get(`https://api.for9a.com/learn/all?term=${event.target.value}`).then(
+
+
+        if (!event?.target?.value || event.target.value.length < 3 || event.target.value.trim() == ''){
+            setData();
+            return;
+        }
+
+        const auto = await axios.get(`https://api.for9a.com/learn/all?term=${event?.target?.value}`).then(
             res => {
                 {
-                    console.log(event.target.value.length)
                     if (event.target.value.length === 0) {
+                        
                         setData();
                     }
                     else { setData(res.data.result.items) }
+
                 }
 
             })
@@ -54,9 +62,8 @@ const SearchBox = ({ }) => {
 
         <div className={css.show} >
             {data && data.map((item, index) => {
-                // console.log(item)
                 return (<div className={css.searchRes} key={index}>
-                    <Link  href={`${item.url?.replace("https://www.for9a.com/", "http://localhost:3000/")}`}><a> {item.title}</a></Link>
+                    <Link href={`${item.url?.replace("https://www.for9a.com/", "http://localhost:3000/")}`}><a> {item.title}</a></Link>
                 </div>)
             })}
         </div>

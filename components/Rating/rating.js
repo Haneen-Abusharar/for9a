@@ -30,31 +30,22 @@ const StarRating = ({ id }) => {
                 <div className={css.rating}>
                     {
                         [1, 2, 3, 4, 5].map((e, i) => (
-                            <div key={i}>
-                                {active === i ?
-                                    <div className={css.emoji2}  >
-                                        <button onClick={() => {
-                                            handleClick();
-                                            setActive(false);
-                                        }} > <Image priority={true} className={css.emo} src={`/emojis/${i + 1}.svg`} height={30} width={30} /></button>
-                                    </div>
-                                    :
-                                    <>
 
-                                        <button onClick={() => {
-                                            handleClick(i + 1)
-                                            setActive(i);
-
-                                        }}
-                                            className={css.emoji} >
-                                            <Image className={css.emo} src={`/emojis/${i + 1}.svg`} height={30} width={30} />
-
-                                        </button>
-
-                                    </>
-                                }
-
+                            <div key={i} className={css.emojis} 
+                            //style={{ position: 'relative', width: '45px' }}
+                            >
+                                <div className={active !== i ? css.none : css.emo1 } 
+                                //style={{ position: 'absolute', width: '45px', top: 0, left: 0 }}
+                                >
+                                    <Image src={`/emojis/${e + "_active"}.svg`} height={50} width={50} />
+                                </div>
+                                <button className={active === i ? css.none : css.emo1} onClick={() => { handleClick(i+1), setActive(i); }}
+                                // style={{ position: 'absolute', width: '45px', top: 0, left: 0, padding: '0'}}
+                                >
+                                    <Image src={`/emojis/${e}.svg`} height={50} width={50} />
+                                </button>
                             </div>
+
                         ))
                     }
 

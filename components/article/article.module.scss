@@ -54,8 +54,6 @@
 
     }
 
-
-
     .breadcrumb {
         display: flex;
         margin-bottom: 1rem;
@@ -195,6 +193,7 @@
                     display: flex;
                     position: relative;
                     top: -30px;
+                    height: 1rem;
 
                 }
 
@@ -274,7 +273,7 @@
                 position: sticky;
                 height: 100%;
                 top: 70px;
-                margin-top: 15px;
+                margin-top: 25px;
                 margin-bottom: 50px;
 
                 a {

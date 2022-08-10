@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useRef, useCallback , useContext} from 'react';
+import React, { useState, useEffect, useRef, useCallback, useContext } from 'react';
 import axios from 'axios';
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 
 import ArticleItem from '../article/articleItem';
 import css from "./categoryName.module.scss";
+import LearnFilter from '../filters/learn/learnFilter';
 const CategoryName = ({ catogeries, filter }) => {
 
     const observer = useRef();
@@ -66,22 +67,23 @@ const CategoryName = ({ catogeries, filter }) => {
 
     return (
         <>
+            <div className={css.learnsearch}><LearnFilter /></div>
             <div className={`container ${css.name_description}`}>
                 <h1>{catogeries.title} </h1>
                 <p>{catogeries.description
                     .replace(/[<-\w*|"|=|;|:|&|/>]/g, "")}
                 </p>
+            </div>
+            <div className={`container ${css.load}`}   >
+                <div className={css.articles}>
+                    {data && data.map((item, index) => {
+                        return <ArticleItem item={item} showDesc={true} key={index} />
+                    })}
                 </div>
-                <div className={`container ${css.load}`}   >
-                    <div className={css.articles}>
-                        {data && data.map((item, index) => {
-                            return <ArticleItem item={item} showDesc={true} key={index} />
-                        })}
-                    </div>
-                    <div ref={lastItem} />
+                <div ref={lastItem} />
 
-                </div>
-            
+            </div>
+
         </>
     )
 }
