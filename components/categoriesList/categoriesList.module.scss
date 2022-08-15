@@ -1,8 +1,8 @@
-
 .div {
   margin-top: 23px;
   position: relative;
   z-index: 1;
+  width: 98%;
 
   .swiper {
     box-sizing: border-box;
@@ -30,13 +30,13 @@
       border: 1px solid rgb(149, 149, 149);
       padding: 5px;
       border-radius: 6px;
-      display:block;
+      display: block;
       margin: 0 5px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-     
-  
+
+
 
       &:hover {
         background: rgba(160, 153, 153, 0.5);
@@ -51,9 +51,10 @@
 
   }
 }
-.dark{
-  .swiper{
-    .link{
+
+.dark {
+  .swiper {
+    .link {
       background-color: rgb(149, 149, 149);
       color: #f9f9f9;
     }

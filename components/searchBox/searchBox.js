@@ -25,7 +25,6 @@ const SearchBox = ({ }) => {
     const autoComplete = async (event) => {
         // event.preventDefault();
 
-
         if (!event?.target?.value || event.target.value.length < 3 || event.target.value.trim() == ''){
             setData();
             return;

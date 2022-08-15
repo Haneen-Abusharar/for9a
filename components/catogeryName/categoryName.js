@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef, useCallback, useContext } from 'rea
 import axios from 'axios';
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
-
 import ArticleItem from '../article/articleItem';
 import css from "./categoryName.module.scss";
 import LearnFilter from '../filters/learn/learnFilter';
@@ -14,8 +13,6 @@ const CategoryName = ({ catogeries, filter }) => {
     const [page, setPage] = useState(1);
     const [data, setData] = useState(null);
 
-
-
     const InlineWrapperWithMargin = ({ children }) => {
         return <div style={{ margin: '50px', marginTop: "70px" }}>{children}</div>
     }
@@ -23,7 +20,11 @@ const CategoryName = ({ catogeries, filter }) => {
     useEffect(() => {
         setLoading(true);
         async function fetchData() {
-            const result = await axios.get(`https://api.for9a.com/learn/all?type=${filter.type}&page=${page}&count=12`)
+            const result = await axios.get(`https://api.for9a.com/learn/all?type=${filter.type}&page=${page}&count=12`, {
+                headers: {
+                     'authentication': 'i0qvLgN2AfwTgajvdOcB7m1IHEoKu7ou' 
+                }
+            })
             if (!data)
                 setData(result.data.result.items)
             else
@@ -54,8 +55,6 @@ const CategoryName = ({ catogeries, filter }) => {
             observer.current.observe(node)
         }
     }, [loading, hasMore]);
-
-
 
     if (!data) return (<Skeleton
         count={5}

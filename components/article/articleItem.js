@@ -1,13 +1,14 @@
 import React, { useContext, useState } from 'react'
 import Image from 'next/image'
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
+import axios from 'axios';
+import Skeleton from 'react-loading-skeleton'
 import { ThemeContext } from '../../DarkModeContext';
 import 'react-loading-skeleton/dist/skeleton.css'
 import css from './articleImage.module.scss'
 import Link from 'next/link'
-import axios from 'axios';
 
-const ArticleItem = ({ item, showDesc, value }) => {
+
+const ArticleItem = ({ item, showDesc }) => {
     const { darkMode } = useContext(ThemeContext);
     const [active, setActive] = useState(true);
     const unixTime = item.published_at;
@@ -32,13 +33,12 @@ const ArticleItem = ({ item, showDesc, value }) => {
                     console.error("Something went wrong", error);
                 });
 
-                
+
         }
     };
     const addFavorite = () => {
-        setActive(false); 
-
-         axios.put(`https://api.for9a.com/learn/favorite/${item.id}`, null,
+        setActive(false);
+        axios.put(`https://api.for9a.com/learn/favorite/${item.id}`, null,
             {
                 headers:
                     { 'authentication': 'i0qvLgN2AfwTgajvdOcB7m1IHEoKu7ou' }
@@ -46,8 +46,8 @@ const ArticleItem = ({ item, showDesc, value }) => {
         );
     }
     const deleteFavorite = () => {
-        setActive(true); 
-        const deleted = axios.delete(`https://api.for9a.com/learn/favorite/${item.id}`,
+        setActive(true);
+        axios.delete(`https://api.for9a.com/learn/favorite/${item.id}`,
             {
                 headers:
                     { 'authentication': 'i0qvLgN2AfwTgajvdOcB7m1IHEoKu7ou' }
@@ -56,6 +56,29 @@ const ArticleItem = ({ item, showDesc, value }) => {
             console.error('There was an error!', error);
         })
     }
+    const addFavorite2 = () => {
+        setActive(true);
+        axios.put(`https://api.for9a.com/learn/favorite/${item.id}`, null,
+            {
+                headers:
+                    { 'authentication': 'i0qvLgN2AfwTgajvdOcB7m1IHEoKu7ou' }
+            }
+        ).catch(error => {
+            console.error('There was an error!', error);
+        });
+    }
+    const deleteFavorite2 = () => {
+        setActive(false);
+        axios.delete(`https://api.for9a.com/learn/favorite/${item.id}`,
+            {
+                headers:
+                    { 'authentication': 'i0qvLgN2AfwTgajvdOcB7m1IHEoKu7ou' }
+            }
+        ).catch(error => {
+            console.error('There was an error!', error);
+        })
+    }
+
 
     if (!item) return (<Skeleton
         count={5}
@@ -73,16 +96,16 @@ const ArticleItem = ({ item, showDesc, value }) => {
                     <a> <Image className={css.move} src={item.images.md}
                         width="100px" height="50px"
                         alt={item.title} loading='lazy' placeholder='blurDataURL' layout='responsive' /></a></Link>}
-
-            <div className={css.categories}>
-                {item.categories.map((l, i) => (
-                    <div className={css.category} key={i}>
-                        <Link
-                            href={`${l.url?.replace("https://www.for9a.com/", "http://localhost:3000/")}`}><a><h4>{l.title}</h4></a>
-                        </Link>
-                    </div>
-                ))}
-            </div>
+            <div className={css.block}>
+                <div className={css.categories}>
+                    {item.categories.map((l, i) => (
+                        <div className={css.category} key={i}>
+                            <Link
+                                href={`${l.url?.replace("https://www.for9a.com/", "http://localhost:3000/")}`}><a><h4>{l.title}</h4></a>
+                            </Link>
+                        </div>
+                    ))}
+                </div></div>
             <Link
                 href={`${item.url?.replace("https://www.for9a.com/", "http://localhost:3000/")}`}>
                 <a>
@@ -102,10 +125,9 @@ const ArticleItem = ({ item, showDesc, value }) => {
                     <h6>{date.toLocaleDateString("en-US")}</h6>
                 </div>
                 <div className={css.button}>
+                    {item.is_pinned === 0 ?
 
-
-                    {active === true ?
-
+                     active === true ?
                         <button className={css.heart} onClick={addFavorite}>
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 24 24" width={30} hight={30}>
@@ -127,7 +149,32 @@ const ArticleItem = ({ item, showDesc, value }) => {
                             </svg>
                         </button>
 
-                    }
+                      :
+                      active === true ?
+                      <button className={css.heart} onClick={deleteFavorite2}>
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                              <path fill="#000000" d="M12,21.35L10.55,20.03C5.4,15.36
+                           2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,
+                           5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22
+                           ,12.27 18.6,15.36 13.45,20.03L12,21.35Z" />
+                          </svg>
+                      </button>
+                      :
+                      <button className={css.heart} onClick={addFavorite2}>
+                          <svg xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 24 24" width={30} hight={30}>
+                              <path fill="gray" d="M12.1 18.55L12 18.65L11.89 18.55C7.14 14.24 4
+                       11.39 4 8.5C4 6.5 5.5 5 7.5 5C9.04 5 10.54 6 11.07 7.36H12.93C13.46
+                        6 14.96 5 16.5 5C18.5 5 20 6.5 20 8.5C20 11.39 16.86 14.24 12.1 
+                        18.55M16.5 3C14.76 3 13.09 3.81 12 5.08C10.91 3.81 9.24 3 7.5 
+                        3C4.42 3 2 5.41 2 8.5C2 12.27 5.4 15.36 10.55 20.03L12 21.35L13.45
+                         20.03C18.6 15.36 22 12.27 22 8.5C22 5.41 19.58 3 16.5 3Z" />
+                          </svg>
+
+                      </button>
+                        }
+
+                        
                     <button id='btn' onClick={handleClick} className={css.shareButton}> <svg xmlns="http://www.w3.org/2000/svg"
                         width={20} height={20} viewBox="1 0 24 24">
                         <path fill="gray" d="M18,16.08C17.24,16.08 16.56,16.38 

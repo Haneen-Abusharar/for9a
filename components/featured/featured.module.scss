@@ -1,8 +1,7 @@
 .featured {
     display: flex;
     flex-direction: column;
-    margin-bottom: 50px;
-
+   
     .list {
         display: flex;
         flex-direction: column;
@@ -13,9 +12,6 @@
         align-items: stretch;
         margin-top: 15px;
         padding: 5px;
-        padding-left: 8px;
-        padding-right: 2px;
-
     }
 
     .article {

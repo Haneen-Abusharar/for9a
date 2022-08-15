@@ -2,9 +2,7 @@
     box-shadow: 0 1px 4px rgb(0 0 0 / 16%);
     padding: 7px;
     border-radius: 5px;
-    margin-left: 10px;
-    margin-right: 1px;
-    margin-top: 5px;
+    margin: 5px;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -16,25 +14,28 @@
 
     }
 
+
+
     .categories {
         display: flex;
         margin-top: 5px;
-
+        overflow: hidden;
         .category {
 
             a {
                 margin: 0;
+
             }
 
             h4 {
                 white-space: nowrap;
                 background-color: #f9f9f9;
-                font-size: .6rem;
-                display: inline;
+                font-size: .5rem;
+                //display: inline;
                 border: 1px solid rgb(149, 149, 149);
                 border-radius: 15px;
                 padding: 5px;
-                margin: 10px 2px;
+                margin: 0px 2px;
 
                 &:hover {
                     background: rgba(160, 153, 153, 0.5);
@@ -123,7 +124,7 @@
             .filledheart {
                 svg {
                     path {
-                        fill:#000
+                        fill: #000
                     }
                 }
             }
@@ -196,6 +197,14 @@
         a {
             h3 {
                 font-size: 1rem;
+            }
+        }
+
+        .categories {
+            .category {
+                h4 {
+                font-size: .7rem;
+                }
             }
         }
 

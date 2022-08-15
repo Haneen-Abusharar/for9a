@@ -9,7 +9,6 @@ import 'swiper/scss';
 import 'swiper/scss/navigation';
 import 'swiper/scss/pagination';
 import Layout from '../components/layout/main';
-
 import { ThemeProvider } from "../DarkModeContext";
 
 config.autoAddCss = false;
@@ -32,12 +31,20 @@ const MyApp = ({ Component, pageProps }) => {
   const client = new ApolloClient({
     uri: 'https://lara.for9a.com/graphql',
     link: authLink.concat(httpLink),
-    cache: new InMemoryCache(),
-  });
-
-  client
-    
-  
+    cache: new InMemoryCache(
+      {
+      typePolicies: {
+        Publication: {
+          merge: true,
+        },
+        Post: {
+          merge: true,
+        },
+      },
+    } 
+    )                                                         
+   })
+      
   return (
     <ApolloProvider client={client}>
       <Head>

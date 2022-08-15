@@ -34,7 +34,7 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps = async (context) => {
-    // const slug = context.params.CategoryName;
+  
     const res = await fetch(`https://api.for9a.com/blog/category`)
     const data = await res.json();
 

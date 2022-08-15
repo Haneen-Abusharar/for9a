@@ -4,16 +4,18 @@ import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper";
+import fetcher from '../../fetcher/fetcher';
 import ArticleItem from './../article/articleItem'
 import css from "../category/category.module.scss";
 
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
-
-const CaroselArticles = ({ filter}) => {
-
+const CaroselArticles = ({ filter }) => {
+ 
 
   const { data, loading, error } =
-    useSWR(`https://api.for9a.com/learn/all?type=${filter.type}`, fetcher);
+    useSWR(`https://api.for9a.com/learn/all?type=${filter.type}`,
+      fetcher);
+
+
 
   const InlineWrapperWithMargin = ({ children }) => {
     return <span style={{ margin: '1rem' }}>{children}</span>
@@ -54,20 +56,22 @@ const CaroselArticles = ({ filter}) => {
             slidesPerView: 3,
           },
         }}
-       
+
         loop={true}
         loopFillGroupWithBlank={true}
         navigation={false}
         modules={[Pagination, Navigation]}
         className={css.swiper2}
-      
+
       >
+
         {
-          data?.result?.items.map((article, index) => (
-            <SwiperSlide key={article.url} >
-              <ArticleItem item={article} />
-            </SwiperSlide>
-          ))
+          data?.result?.items
+            .map((article, index) => (
+              <SwiperSlide key={article.url} >
+                <ArticleItem item={article} />
+              </SwiperSlide>
+            ))
         }
       </Swiper>
     </>

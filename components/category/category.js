@@ -6,8 +6,7 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import { ThemeContext } from '../../DarkModeContext';
 import CaroselArticles from '../CaroselArticles/CaroselArticles';
 import css from './category.module.scss';
-
-const fetcher = (...args) => fetch(...args).then((res) => res.json())
+import fetcher from '../../fetcher/fetcher';
 
 const Category = ({ input }) => {
     const { darkMode } = useContext(ThemeContext);

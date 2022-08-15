@@ -3,6 +3,7 @@
   border-radius: 5px;
   margin-bottom: 20px;
 
+
   .image {
     border-radius: 5px;
     box-shadow: 0 1px 4px rgb(0 0 0 / 16%);
@@ -36,6 +37,34 @@
       }
     }
   }
+  .button {
+    display: flex;
+
+    .filledheart {
+        svg {
+            path {
+                fill: #000
+            }
+        }
+    }
+
+    svg {
+        width: 30px;
+        height: 30px;
+    }
+
+    .heart {
+        background-color: transparent;
+        border: 0;
+        cursor: pointer;
+    }
+
+    .shareButton {
+        background-color: transparent;
+        border: 0;
+        cursor: pointer;
+    }
+}
 
 }
 

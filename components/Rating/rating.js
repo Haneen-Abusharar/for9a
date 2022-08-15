@@ -35,12 +35,12 @@ const StarRating = ({ id }) => {
                             //style={{ position: 'relative', width: '45px' }}
                             >
                                 <div className={active !== i ? css.none : css.emo1 } 
-                                //style={{ position: 'absolute', width: '45px', top: 0, left: 0 }}
+                              //  style={{ position: 'absolute', width: '45px', top: 0, left: 0 }}
                                 >
                                     <Image src={`/emojis/${e + "_active"}.svg`} height={50} width={50} />
                                 </div>
                                 <button className={active === i ? css.none : css.emo1} onClick={() => { handleClick(i+1), setActive(i); }}
-                                // style={{ position: 'absolute', width: '45px', top: 0, left: 0, padding: '0'}}
+                               //  style={{ position: 'absolute', width: '45px', top: 0, left: 0, padding: '0'}}
                                 >
                                     <Image src={`/emojis/${e}.svg`} height={50} width={50} />
                                 </button>

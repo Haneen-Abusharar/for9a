@@ -4,7 +4,24 @@
     h1 {
         color: #eb751d;
     }
+    .breadcrumb {
+        display: flex;
+        margin-bottom: 1rem;
 
+        a {
+            text-decoration: none;
+            color: #454F54;
+
+            &:hover {
+                color: #337ab7;
+            }
+        }
+
+        h5 {
+            margin-left: 10px;
+            margin-bottom: 0px;
+        }
+    }
     .articles {
 
         a {

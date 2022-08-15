@@ -38,7 +38,8 @@ const FavoriteItem = ({ item }) => {
         }
     };
     const addFavorite = () => {
-        const faved = axios.put(`https://api.for9a.com/learn/favorite/${item.id}`, null,
+        setActive(true);
+        axios.put(`https://api.for9a.com/learn/favorite/${item.id}`, null,
             {
                 headers:
                     { 'authentication': 'i0qvLgN2AfwTgajvdOcB7m1IHEoKu7ou' }
@@ -48,7 +49,8 @@ const FavoriteItem = ({ item }) => {
         });
     }
     const deleteFavorite = () => {
-        const deleted = axios.delete(`https://api.for9a.com/learn/favorite/${item.id}`,
+        setActive(false);
+        axios.delete(`https://api.for9a.com/learn/favorite/${item.id}`,
             {
                 headers:
                     { 'authentication': 'i0qvLgN2AfwTgajvdOcB7m1IHEoKu7ou' }
@@ -79,8 +81,10 @@ const FavoriteItem = ({ item }) => {
                 {item.categories.map((l, i) => (
                     <div className={css.category} key={i}>
                         <Link
-                            href={`${l.url?.replace("https://www.for9a.com/", "http://localhost:3000/")}`}><a><h4>{l.titleLocale}
-                           </h4></a>
+                            href={`${item.categories.map((e)=>(
+                                e.slug
+                              ))}`}><a><h4>{l.titleLocale}
+                            </h4></a>
                         </Link>
                     </div>
                 ))}
@@ -103,7 +107,7 @@ const FavoriteItem = ({ item }) => {
 
                     {active === true ?
 
-                        <button className={css.heart} onClick={() => { deleteFavorite(), setActive(false) }}>
+                        <button className={css.heart} onClick={deleteFavorite}>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                 <path fill="#000000" d="M12,21.35L10.55,20.03C5.4,15.36
                              2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,
@@ -112,7 +116,7 @@ const FavoriteItem = ({ item }) => {
                             </svg>
                         </button>
                         :
-                        <button className={css.heart} onClick={() => { addFavorite(), setActive(true); }}>
+                        <button className={css.heart} onClick={addFavorite}>
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 24 24" width={30} hight={30}>
                                 <path fill="gray" d="M12.1 18.55L12 18.65L11.89 18.55C7.14 14.24 4

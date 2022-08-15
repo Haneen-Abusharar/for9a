@@ -1,19 +1,22 @@
 .learnsearch {
     margin-top: 50px;
     padding-top: 20px;
-
+margin-bottom: 10px;
 }
+
 .name_description {
 
     line-height: 2rem;
+    
 
     h1 {
-
+        margin: 15px 5px;
         color: #eb751d;
         font-weight: 600;
     }
 
     p {
+        margin: 10px 5px;
         text-align: justify;
     }
 }
