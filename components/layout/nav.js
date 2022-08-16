@@ -13,8 +13,8 @@ const Nav = () => {
             <div className={`${darkMode ? css.dark : ''} container ${css.navbar}`} > 
                     <div className={css.menu}><h4>خيارات</h4>
                         <div className={css.dropdown}  >
-                        <Link href={`${env.process.domain}/learn`}><a>الرئيسية</a></Link>
-                        <Link href={`${env.process.domain}/learn/favorite`}><a>مفضلاتي</a></Link>
+                        <Link href={`${process.env.domain}/learn`}><a>الرئيسية</a></Link>
+                        <Link href={`${process.env.domain}/learn/favorite`}><a>مفضلاتي</a></Link>
                         
                         </div>
                     </div>
