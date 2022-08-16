@@ -1,14 +1,14 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import Link from 'next/link';
 import useSWR from 'swr';
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import { Swiper, SwiperSlide } from "swiper/react";
-import {  Navigation} from "swiper";
+import { Navigation } from "swiper";
 import { ThemeContext } from '../../DarkModeContext';
 import css from './categoriesList.module.scss'
-
-const fetcher = (...args) => fetch(...args).then((res) => res.json())
+import fetcher from '../../fetcher/fetcher';
+// const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
 const CatogriesList = ({ }) => {
     const { darkMode } = useContext(ThemeContext);
@@ -17,7 +17,6 @@ const CatogriesList = ({ }) => {
     const InlineWrapperWithMargin = ({ children }) => {
         return <span style={{ margin: '1rem' }}>{children}</span>
     }
-
     if (error) return <div>failed to load</div>
     if (loading) return (<Skeleton
         count={5}
@@ -31,7 +30,6 @@ const CatogriesList = ({ }) => {
         inline
         width={200}
     />
-
     )
 
     return (
@@ -65,9 +63,7 @@ const CatogriesList = ({ }) => {
                 pagination={{ clickable: true }}
                 modules={[Navigation]}
                 className={css.swiper}
-
             >
-
                 {
                     data.result.map((category) => (
                         <div key={category.id} >
@@ -82,11 +78,8 @@ const CatogriesList = ({ }) => {
                         </div>
                     ))
                 }
-
-
             </Swiper >
         </div >
-
     )
 }
 

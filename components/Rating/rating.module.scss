@@ -13,7 +13,7 @@
             display: flex;
             flex-direction: row-reverse;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
 
             .emojis {
                 position: relative;
@@ -26,7 +26,14 @@
                     top: 0;
                     left: 0
                 }
-
+                .value{
+                    position: absolute;
+                     top: 0px;
+                     left: 0;
+                     transition: .2s ease-in-out;
+                     z-index: 5;
+                    
+                }
 
                 button {
 
@@ -37,19 +44,23 @@
 
                     .emo1 {
                         position: absolute;
-                        // width: 45px;
+                        width: 45px;
                         top: 0;
                         left: 0;
                         transition: .2s ease-in-out;
                     }
-
-
+                    .value{
+                        position: absolute;
+                         top: 0px;
+                         left: 0;
+                      
+                         transition: .2s ease-in-out;
+                        
+                    }
+                   
                 }
 
             }
-
-
-
         }
     }
 }

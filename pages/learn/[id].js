@@ -18,15 +18,15 @@ const ArticleP = ({ articles }) => {
                 type: articles[0].category.id
             }} />
 
-
-
         </>
     )
 }
 
 export const getServerSideProps = async (ctx) => {
-    
-    var uri = `https://api.for9a.com/learn/all?slug=${(ctx.query.id)}&full=1`;
+    // console.log(process.env.api)
+    // {console.log(process.env.x)}
+    // {console.log(process.env.y)}
+    var uri = `${process.env.api}/learn/all?slug=${(ctx.query.id)}&full=1`;
     var res = encodeURI(uri);
     const articles = await axios.get(res, {
         headers: {

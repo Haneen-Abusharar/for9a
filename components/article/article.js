@@ -18,7 +18,7 @@ const Article = ({ item, filter }) => {
     const elementRef = useRef(null);
     const date = new Date(item.published_at * 1000);
 
-
+   
     useEffect(() => {
         const articleHeight = elementRef.current.clientHeight - 1500;
         let progressBarHandler = () => {
@@ -56,7 +56,7 @@ const Article = ({ item, filter }) => {
                     { 'authentication': 'i0qvLgN2AfwTgajvdOcB7m1IHEoKu7ou' }
             }
         );
-        {console.log(item.is_pinned)}
+        { console.log(item.is_pinned) }
     }
     const deleteFavorite = () => {
         setActive(true);
@@ -144,7 +144,6 @@ const Article = ({ item, filter }) => {
                     <Link href={""}><a><Image src="https://www.ida2at.com/wp-content/themes/ida2at/assets/images/icons/twitter.svg" width={30} height={30} /></a></Link>
                     <Link href={""}><a><Image src="https://www.ida2at.com/wp-content/themes/ida2at/assets/images/icons/facebook.svg" width={30} height={30} /> </a></Link>
                     <div className={css.button}>
-                        {console.log(item.is_pinned)}
                         {item.is_pinned === 0 ?
                             active === true ?
                                 <button className={css.heart} onClick={addFavorite}>
@@ -258,7 +257,7 @@ const Article = ({ item, filter }) => {
 
                     <div className={css.content} dangerouslySetInnerHTML={{ __html: item.body || <Skeleton count={100} /> }} />
 
-                    <StarRating id={item.id} />
+                    <StarRating item={item} id={item.id}/>
 
 
                 </div>

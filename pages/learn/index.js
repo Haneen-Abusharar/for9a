@@ -9,22 +9,11 @@ import Featured from "../../components/featured";
 
 export const ThemeContext = createContext(null);
 
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
-
-
 const Learn = ({ }) => {
     const [theme, setTheme] = useState("dark");
-    const [inputText, setInputText] = useState("");
-    const { data, loading, error } = useSWR(`https://api.for9a.com/learn/all?term=${inputText}`, fetcher);
-
     const toggleTheme = () => {
         setTheme((curr) => (curr === "light" ? "dark" : "light"));
     }
-
-    if (!data) return <div>no data</div>
-    if (error) return <div>failed to load</div>
-    if (loading) return <div>loading...</div>
-
 
     return (
         <>

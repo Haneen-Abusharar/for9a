@@ -13,14 +13,14 @@ const Nav = () => {
             <div className={`${darkMode ? css.dark : ''} container ${css.navbar}`} > 
                     <div className={css.menu}><h4>خيارات</h4>
                         <div className={css.dropdown}  >
-                        <Link href={"http://localhost:3000/learn"}><a>الرئيسية</a></Link>
-                        <Link href={"http://localhost:3000/learn/favorite"}><a>مفضلاتي</a></Link>
+                        <Link href={`${env.process.domain}/learn`}><a>الرئيسية</a></Link>
+                        <Link href={`${env.process.domain}/learn/favorite`}><a>مفضلاتي</a></Link>
                         
                         </div>
                     </div>
                     <div className={css.logo}>
-                        <Link href={`http://localhost:3000/learn`}><a><Image src={'https://www.for9a.com/images/logo.svg'} width={50} height={50} alt='logo' /></a></Link>
-                    {/* {console.log(process.env.NEXT_PUBLIC_VERCEL_URL)} */}
+                        <Link href={`${env.process.domain}/learn`}><a><Image src={'https://www.for9a.com/images/logo.svg'} width={50} height={50} alt='logo' /></a></Link>
+                    
                     </div>
                     <div className={css.nightmode}>
                         <NightMode/>

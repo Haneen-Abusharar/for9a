@@ -35,9 +35,6 @@ const CategoryName = ({ catogeries, filter }) => {
         fetchData();
     }, [page]);
 
-
-
-
     const lastItem = useCallback(async node => {
 
         if (loading) return
@@ -55,6 +52,8 @@ const CategoryName = ({ catogeries, filter }) => {
             observer.current.observe(node)
         }
     }, [loading, hasMore]);
+
+
 
     if (!data) return (<Skeleton
         count={5}
@@ -76,7 +75,7 @@ const CategoryName = ({ catogeries, filter }) => {
             <div className={`container ${css.load}`}   >
                 <div className={css.articles}>
                     {data && data.map((item, index) => {
-                        return <ArticleItem item={item} showDesc={true} key={index} />
+                        return<ArticleItem item={item} showDesc={true} key={index} />
                     })}
                 </div>
                 <div ref={lastItem} />

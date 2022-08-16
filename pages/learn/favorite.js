@@ -7,8 +7,8 @@ import FavoriteItem from '../../components/favorite/favoriteItem';
 import css from "./favorite.module.scss"
 const Favorite = () => {
   const observer = useRef();
-  const [loading2, setLoading] = useState(true);
-  const [hasMore, setHasMore] = useState(false);
+  const [loading2, setLoading] = useState(false);
+  const [hasMore, setHasMore] = useState(true);
   const [pagee, setPage] = useState(1);
 
   const query =
@@ -40,48 +40,60 @@ const Favorite = () => {
       }
     `;
 
-  const { data, error, fetchMore, updateQuery, loading } = useQuery(query, {
+  const { data, error, fetchMore, loading } = useQuery(query, {
     variables: {
       first: 12,
       page: 1
     }
   });
-  console.log(data?.savedLearn.paginatorInfo.hasMorePages)
+
   useEffect(() => {
+    console.log("log")
     setLoading(true);
-      fetchMore({
-        variables: {
-          first: 12,
-          page: pagee,
-        },
-        updateQuery: (pv, { fetchMoreResult }) => {
-          if (!fetchMoreResult) {
-            return pv
-          }
+    console.log(pagee)
+    fetchMore({
+      variables: {
+        first: 12,
+        page: pagee,
+      },
+      updateQuery: (pv, { fetchMoreResult }) => {
+        setHasMore(fetchMoreResult.savedLearn.paginatorInfo.hasMorePages);
+        setLoading(false)
+        if (!fetchMoreResult) {
+          return pv
+        }
+        if (pagee == 1) {
           return {
             savedLearn: {
               __typename: 'BlogPaginator',
-              data: [...pv.savedLearn.data,
-              ...fetchMoreResult.savedLearn.data],
+              data: [...fetchMoreResult.savedLearn.data],
               paginatorInfo: fetchMoreResult.savedLearn.paginatorInfo
 
             }
           }
         }
-      });
-      
-    console.log(data?.savedLearn.paginatorInfo.hasMorePages)
-    setHasMore(data?.savedLearn.paginatorInfo.hasMorePages);
-    setLoading(false)
+        else {
+          return {
+            savedLearn: {
+              __typename: 'BlogPaginator',
+              data: [...pv.savedLearn.data, ...fetchMoreResult.savedLearn.data],
+              paginatorInfo: fetchMoreResult.savedLearn.paginatorInfo
 
+            }
+          }
+        }
+      }
+    });
+    
   }, [pagee]);
 
-  const lastItem = useCallback(async node => {
 
+  const lastItem = useCallback(async node => {
+    console.log("lastitem")
     if (loading2) return
     if (observer.current) observer.current.disconnect();
     observer.current = new IntersectionObserver(entries => {
-      // console.log(hasMore)
+      console.log("observer");
       if (hasMore) {
         setPage(pagee++);
       }
@@ -93,6 +105,7 @@ const Favorite = () => {
     if (node) {
       observer.current.observe(node)
     }
+
   }, [loading2, hasMore]);
 
   if (loading) return <>loading</>
@@ -119,8 +132,9 @@ const Favorite = () => {
               <FavoriteItem item={item} key={i} />
             ))}
         </div>
-        <div ref={lastItem} />
+        {/* {hasMore && <button onClick={loadMore}>load more</button>} */}
       </div>
+      <div ref={lastItem} />
     </>
   )
 }

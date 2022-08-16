@@ -2,7 +2,7 @@
 import Head from "next/head";
 import * as ReactDOM from 'react-dom/client';
 import { config } from "@fortawesome/fontawesome-svg-core";
-import { ApolloClient, InMemoryCache, ApolloProvider, gql, createHttpLink } from '@apollo/client';
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import '../styles/globals.scss'
 import 'swiper/scss';
@@ -25,6 +25,7 @@ const MyApp = ({ Component, pageProps }) => {
       }
     }
   });
+  
   const httpLink = createHttpLink({
     uri: 'https://lara.for9a.com/graphql',
   });
@@ -32,16 +33,32 @@ const MyApp = ({ Component, pageProps }) => {
     uri: 'https://lara.for9a.com/graphql',
     link: authLink.concat(httpLink),
     cache: new InMemoryCache(
-      {
-      typePolicies: {
-        Publication: {
-          merge: true,
-        },
-        Post: {
-          merge: true,
-        },
-      },
-    } 
+      {typePolicies: {
+        Query: {
+          savedLearn: {
+            savedLearn: {
+              read(existing, { args: { first=12, page=1 }}) {
+                // A read function should always return undefined if existing is
+                // undefined. Returning undefined signals that the field is
+                // missing from the cache, which instructs Apollo Client to
+                // fetch its value from your GraphQL server.
+                return existing && existing.slice(first, first + page);
+              },
+    
+              // The keyArgs list and merge function are the same as above.
+              keyArgs: [],
+              merge(existing, incoming, { args: { first =12 }}) {
+                const merged = existing ? existing.slice(0) : [];
+                for (let i = 0; i < incoming.length; ++i) {
+                  merged[first + i] = incoming[i];
+                }
+              },
+            }
+          }
+        }
+      }
+    }
+    
     )                                                         
    })
       

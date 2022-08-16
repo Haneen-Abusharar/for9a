@@ -19,19 +19,25 @@
     .categories {
         display: flex;
         margin-top: 5px;
-        overflow: hidden;
+        // overflow: hidden;
+
         .category {
+
+            overflow: hidden;
+           // text-overflow: ellipsis;
 
             a {
                 margin: 0;
 
+
             }
 
             h4 {
+                overflow: hidden;
+                text-overflow: ellipsis;
                 white-space: nowrap;
                 background-color: #f9f9f9;
                 font-size: .5rem;
-                //display: inline;
                 border: 1px solid rgb(149, 149, 149);
                 border-radius: 15px;
                 padding: 5px;
@@ -54,6 +60,7 @@
         text-decoration: none;
         color: rgba(46, 41, 41, 0.945);
         font-size: 10px;
+
     }
 
     a {
@@ -203,7 +210,7 @@
         .categories {
             .category {
                 h4 {
-                font-size: .7rem;
+                    font-size: .7rem;
                 }
             }
         }

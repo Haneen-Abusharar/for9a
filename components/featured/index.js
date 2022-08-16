@@ -13,7 +13,7 @@ import css from './featured.module.scss'
 const Featured = () => {
     
     const { darkMode } = useContext(ThemeContext);  
-    const { data, loading, error } = useSWR("https://api.for9a.com/learn/all", fetcher);
+    const { data, loading, error } = useSWR(`${process.env.api}/learn/all`, fetcher);
     
     const InlineWrapperWithMargin = ({ children }) => {
         return <span style={{ margin: '1rem' }}>{children}</span>

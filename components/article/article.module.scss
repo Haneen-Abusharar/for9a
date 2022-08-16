@@ -171,6 +171,17 @@
             line-height: 2rem;
 
             .content {
+
+                .class-to-action {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                    border: 2px solid #f6a828;
+                    border-radius: 1rem;
+                    padding: 20px;
+                }
                 blockquote {
 
                     text-align: center;
@@ -197,6 +208,10 @@
 
                 }
 
+
+              
+                   
+                
 
 
                 h2 {
@@ -298,18 +313,19 @@
                     cursor: pointer;
                     margin-right: 1.3rem;
                 }
-                
+
                 .button {
                     display: flex;
-                   
+
                     margin-right: .8rem;
                     padding: 5px;
+
                     .filledheart {
                         svg {
                             path {
                                 fill: #000
                             }
-                            
+
                         }
                     }
 
@@ -324,29 +340,29 @@
                         cursor: pointer;
                     }
                 }
-            
+
 
             }
         }
 
         .article {
-            
-                .mobileSharing {
-                    display: none;
-                }
-            }
 
-            .carosel {
-                width: 70%;
-
-                .related {
-                    margin: 10px 0;
-
-                    h4 {
-                        font-size: 1.5rem;
-                    }
-                }
+            .mobileSharing {
+                display: none;
             }
         }
 
+        .carosel {
+            width: 70%;
+
+            .related {
+                margin: 10px 0;
+
+                h4 {
+                    font-size: 1.5rem;
+                }
+            }
+        }
     }
+
+}
