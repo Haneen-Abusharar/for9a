@@ -19,7 +19,7 @@ const Nav = () => {
                         </div>
                     </div>
                     <div className={css.logo}>
-                        <Link href={`${env.process.domain}/learn`}><a><Image src={'https://www.for9a.com/images/logo.svg'} width={50} height={50} alt='logo' /></a></Link>
+                        <Link href={`${process.env.domain}/learn`}><a><Image src={'https://www.for9a.com/images/logo.svg'} width={50} height={50} alt='logo' /></a></Link>
                     
                     </div>
                     <div className={css.nightmode}>
