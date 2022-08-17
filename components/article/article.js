@@ -17,7 +17,6 @@ const Article = ({ item, filter }) => {
     const { darkMode } = useContext(ThemeContext);
     const elementRef = useRef(null);
     const date = new Date(item.published_at * 1000);
-
    
     useEffect(() => {
         const articleHeight = elementRef.current.clientHeight - 1500;
@@ -38,7 +37,7 @@ const Article = ({ item, filter }) => {
                 .share({
                     title: item.title,
                     text: "Hello, please come visit my website",
-                    url: `${item.url?.replace("https://www.for9a.com/", "http://localhost:3000/")}`,
+                    url: `${item.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`,
                 })
                 .then(() => {
                     console.log("Successfully shared");
@@ -50,7 +49,7 @@ const Article = ({ item, filter }) => {
     };
     const addFavorite = () => {
         setActive(false);
-        axios.put(`https://api.for9a.com/learn/favorite/${item.id}`, null,
+        axios.put(`${process.env.api}/learn/favorite/${item.id}`, null,
             {
                 headers:
                     { 'authentication': 'i0qvLgN2AfwTgajvdOcB7m1IHEoKu7ou' }
@@ -60,7 +59,7 @@ const Article = ({ item, filter }) => {
     }
     const deleteFavorite = () => {
         setActive(true);
-        axios.delete(`https://api.for9a.com/learn/favorite/${item.id}`,
+        axios.delete(`${process.env.api}/learn/favorite/${item.id}`,
             {
                 headers:
                     { 'authentication': 'i0qvLgN2AfwTgajvdOcB7m1IHEoKu7ou' }
@@ -71,7 +70,7 @@ const Article = ({ item, filter }) => {
     }
     const addFavorite2 = () => {
         setActive(true);
-        axios.put(`https://api.for9a.com/learn/favorite/${item.id}`, null,
+        axios.put(`${process.env.api}/learn/favorite/${item.id}`, null,
             {
                 headers:
                     { 'authentication': 'i0qvLgN2AfwTgajvdOcB7m1IHEoKu7ou' }
@@ -83,7 +82,7 @@ const Article = ({ item, filter }) => {
     }
     const deleteFavorite2 = () => {
         setActive(false);
-        axios.delete(`https://api.for9a.com/learn/favorite/${item.id}`,
+        axios.delete(`${process.env.api}/learn/favorite/${item.id}`,
             {
                 headers:
                     { 'authentication': 'i0qvLgN2AfwTgajvdOcB7m1IHEoKu7ou' }
@@ -114,8 +113,8 @@ const Article = ({ item, filter }) => {
                 <div className={css.breadcrumb}>
                     <Link href={"/learn"}><a><h5> تعلم / </h5></a></Link>
                     <Link
-                        href={`${item.category.url?.replace("https://www.for9a.com/", "http://localhost:3000/")}`}>
-                        <a href={`${item.category.url?.replace("https://www.for9a.com/", "http://localhost:3000/")}`}><h5>{item.category.title}</h5></a>
+                        href={`${item.category.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
+                        <a href={`${item.category.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}><h5>{item.category.title}</h5></a>
                     </Link>
 
                 </div>
@@ -226,7 +225,9 @@ const Article = ({ item, filter }) => {
                             <h6>تاريخ النشر</h6>
                             <h6>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={20} >
-                                    <path fill="gray" d="M9,10H7V12H9V10M13,10H11V12H13V10M17,10H15V12H17V10M19,3H18V1H16V3H8V1H6V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M19,19H5V8H19V19Z" />
+                                    <path fill="gray" d="M9,10H7V12H9V10M13,10H11V12H13V10M17,10H15V12H17V10M19,
+                                    3H18V1H16V3H8V1H6V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,
+                                    2 0 0,0 19,3M19,19H5V8H19V19Z" />
                                 </svg>
                                 {date.toLocaleDateString("en-US")}
 
@@ -257,7 +258,7 @@ const Article = ({ item, filter }) => {
 
                     <div className={css.content} dangerouslySetInnerHTML={{ __html: item.body || <Skeleton count={100} /> }} />
 
-                    <StarRating item={item} id={item.id}/>
+                    <StarRating item={item} id={item.id} />
 
 
                 </div>

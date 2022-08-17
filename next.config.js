@@ -1,22 +1,23 @@
+const { faProcedures } = require('@fortawesome/free-solid-svg-icons');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  
+
   // images: {
   //   domains: ['d3vt78ic2w6yaz.cloudfront.net'],
   // },
 }
 
 module.exports = {
- 
+
   images: {
-    domains: ['d3vt78ic2w6yaz.cloudfront.net', 'www.for9a.com',"images.unsplash.com" ,"www.ida2at.com" ],
+    domains: ['d3vt78ic2w6yaz.cloudfront.net', 'www.for9a.com', "images.unsplash.com", "www.ida2at.com"],
   },
   env: {
-    api:process.env.api,
-    // NEXT_PUBLIC_API:"config",
-    HOST:"http://localhost:3000",
-    NEXT_PUBLIC_VERCEL_URL:"https://for9a-git-main-haneen-abusharar.vercel.app"
-    
+    api: process.env.api,
+    domain: process.env.domain,
+    NEXT_PUBLIC_VERCEL_URL: "https://for9a-git-main-haneen-abusharar.vercel.app"
+
   },
   webpack(config) {
     config.module.rules.push({

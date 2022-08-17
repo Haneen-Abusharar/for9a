@@ -30,7 +30,7 @@ const SearchBox = ({ }) => {
             return;
         }
 
-        const auto = await axios.get(`https://api.for9a.com/learn/all?term=${event?.target?.value}`).then(
+        await axios.get(`${process.env.api}/learn/all?term=${event?.target?.value}`).then(
             res => {
                 {
                     if (event.target.value.length === 0) {
@@ -62,7 +62,7 @@ const SearchBox = ({ }) => {
         <div className={css.show} >
             {data && data.map((item, index) => {
                 return (<div className={css.searchRes} key={index}>
-                    <Link href={`${item.url?.replace("https://www.for9a.com/", "http://localhost:3000/")}`}><a> {item.title}</a></Link>
+                    <Link href={`${item.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}><a> {item.title}</a></Link>
                 </div>)
             })}
         </div>

@@ -13,7 +13,7 @@ const ArticleItem = ({ item, showDesc }) => {
     const [active, setActive] = useState(true);
     const unixTime = item.published_at;
     const date = new Date(unixTime * 1000);
-
+    
     const InlineWrapperWithMargin = ({ children }) => {
         return <span style={{ margin: '1rem' }}>{children}</span>
     }
@@ -24,7 +24,7 @@ const ArticleItem = ({ item, showDesc }) => {
                 .share({
                     title: item.title,
                     text: "Hello, please come visit my website",
-                    url: `${item.url?.replace("https://www.for9a.com/", "http://localhost:3000/")}`,
+                    url: `${item.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`,
                 })
                 .then(() => {
                     console.log("Successfully shared");
@@ -38,7 +38,7 @@ const ArticleItem = ({ item, showDesc }) => {
     };
     const addFavorite = () => {
         setActive(false);
-        axios.put(`https://api.for9a.com/learn/favorite/${item.id}`, null,
+        axios.put(`${process.env.api}/learn/favorite/${item.id}`, null,
             {
                 headers:
                     { 'authentication': 'i0qvLgN2AfwTgajvdOcB7m1IHEoKu7ou' }
@@ -47,7 +47,7 @@ const ArticleItem = ({ item, showDesc }) => {
     }
     const deleteFavorite = () => {
         setActive(true);
-        axios.delete(`https://api.for9a.com/learn/favorite/${item.id}`,
+        axios.delete(`${process.env.api}/learn/favorite/${item.id}`,
             {
                 headers:
                     { 'authentication': 'i0qvLgN2AfwTgajvdOcB7m1IHEoKu7ou' }
@@ -58,7 +58,7 @@ const ArticleItem = ({ item, showDesc }) => {
     }
     const addFavorite2 = () => {
         setActive(true);
-        axios.put(`https://api.for9a.com/learn/favorite/${item.id}`, null,
+        axios.put(`${process.env.api}/learn/favorite/${item.id}`, null,
             {
                 headers:
                     { 'authentication': 'i0qvLgN2AfwTgajvdOcB7m1IHEoKu7ou' }
@@ -69,7 +69,7 @@ const ArticleItem = ({ item, showDesc }) => {
     }
     const deleteFavorite2 = () => {
         setActive(false);
-        axios.delete(`https://api.for9a.com/learn/favorite/${item.id}`,
+        axios.delete(`${process.env.api}/learn/favorite/${item.id}`,
             {
                 headers:
                     { 'authentication': 'i0qvLgN2AfwTgajvdOcB7m1IHEoKu7ou' }
@@ -92,7 +92,7 @@ const ArticleItem = ({ item, showDesc }) => {
         <div className={`${darkMode ? css.dark : ''} ${css.articleCard}`}>
             {item.images?.md &&
                 <Link
-                    href={`${item.url?.replace("https://www.for9a.com/", "http://localhost:3000/")}`}>
+                    href={`${item.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
                     <a> <Image className={css.move} src={item.images.md}
                         width="100px" height="50px"
                         alt={item.title} loading='lazy' placeholder='blurDataURL' layout='responsive' /></a></Link>}
@@ -101,19 +101,19 @@ const ArticleItem = ({ item, showDesc }) => {
                     {item.categories.map((l, i) => (
                         <div className={css.category} key={i}>
                             <Link
-                                href={`${l.url?.replace("https://www.for9a.com/", "http://localhost:3000/")}`}><a><h4>{l.title}</h4></a>
+                                href={`${l.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}><a><h4>{l.title}</h4></a>
                             </Link>
                         </div>
                     ))}
                 </div></div>
             <Link
-                href={`${item.url?.replace("https://www.for9a.com/", "http://localhost:3000/")}`}>
+                href={`${item.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
                 <a>
                     <h3>{item.title}</h3>
                 </a>
             </Link>
             <Link
-                href={`${item.url?.replace("https://www.for9a.com/", "http://localhost:3000/")}`}>
+                href={`${item.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
                 <a>
                     {showDesc && <p>{item.short_description}</p>}
                 </a>
