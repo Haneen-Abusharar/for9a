@@ -3,6 +3,8 @@ import Head from "next/head";
 import * as ReactDOM from 'react-dom/client';
 import { config } from "@fortawesome/fontawesome-svg-core";
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
+import { useApollo } from "../utilities/client";
+import { initializeApollo } from "../utilities/client";
 import { setContext } from '@apollo/client/link/context';
 import '../styles/globals.scss'
 import 'swiper/scss';
@@ -15,55 +17,10 @@ config.autoAddCss = false;
 
 const MyApp = ({ Component, pageProps }) => {
 
-  const authLink = setContext((_, { headers }) => {
-
-    return {
-      headers: {
-        ...headers,
-        'authentication': 'i0qvLgN2AfwTgajvdOcB7m1IHEoKu7ou'
-
-      }
-    }
-  });
-  
-  const httpLink = createHttpLink({
-    uri: 'https://lara.for9a.com/graphql',
-  });
-  const client = new ApolloClient({
-    uri: 'https://lara.for9a.com/graphql',
-    link: authLink.concat(httpLink),
-    cache: new InMemoryCache(
-      {typePolicies: {
-        Query: {
-          savedLearn: {
-            savedLearn: {
-              read(existing, { args: { first=12, page=1 }}) {
-                // A read function should always return undefined if existing is
-                // undefined. Returning undefined signals that the field is
-                // missing from the cache, which instructs Apollo Client to
-                // fetch its value from your GraphQL server.
-                return existing && existing.slice(first, first + page);
-              },
+  const apolloClient = useApollo(pageProps.initialApolloState);
     
-              // The keyArgs list and merge function are the same as above.
-              keyArgs: [],
-              merge(existing, incoming, { args: { first =12 }}) {
-                const merged = existing ? existing.slice(0) : [];
-                for (let i = 0; i < incoming.length; ++i) {
-                  merged[first + i] = incoming[i];
-                }
-              },
-            }
-          }
-        }
-      }
-    }
-    
-    )                                                         
-   })
-      
   return (
-    <ApolloProvider client={client}>
+    <ApolloProvider client={apolloClient}>
       <Head>
         <title>Learn</title>
         <meta name="description"

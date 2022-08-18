@@ -4,7 +4,7 @@ import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper";
-import fetcher from '../../fetcher/fetcher';
+import fetcher from '../../utilities/fetcher';
 import ArticleItem from './../article/articleItem'
 import css from "../category/category.module.scss";
 

@@ -7,7 +7,7 @@ import ArticleItem from "../../../components/article/articleItem";
 import css from "../../../components/catogeryName/categoryName.module.scss"
 import LearnFilter from "../../../components/filters/learn/learnFilter";
 import c from './search.module.scss'
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
+import fetcher from "../../../utilities/fetcher";
 
 const SearchPage = () => {
 

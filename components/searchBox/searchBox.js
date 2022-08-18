@@ -5,11 +5,10 @@ import axios from 'axios';
 import 'react-loading-skeleton/dist/skeleton.css'
 import { ThemeContext } from '../../DarkModeContext';
 import css from './searchBox.module.scss';
+import fetcher from '../../utilities/fetcher';
 
 
 
-
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
 const SearchBox = ({ }) => {
     const { darkMode } = useContext(ThemeContext);
     const { query } = useRouter();
@@ -23,8 +22,7 @@ const SearchBox = ({ }) => {
 
     }
     const autoComplete = async (event) => {
-        // event.preventDefault();
-
+      
         if (!event?.target?.value || event.target.value.length < 3 || event.target.value.trim() == ''){
             setData();
             return;

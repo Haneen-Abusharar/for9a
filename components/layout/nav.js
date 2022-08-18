@@ -10,23 +10,21 @@ const Nav = () => {
     const { darkMode } = useContext(ThemeContext);
     return (
         <header>
-            <div className={`${darkMode ? css.dark : ''} container ${css.navbar}`} > 
-                    <div className={css.menu}><h4>خيارات</h4>
-                        <div className={css.dropdown}  >
+            <div className={`${darkMode ? css.dark : ''}  ${css.navbar}`} >
+                <div className={css.menu}><h4>خيارات</h4>
+                    <div className={css.dropdown}  >
                         <Link href={`${process.env.domain}/learn`}><a>الرئيسية</a></Link>
                         <Link href={`${process.env.domain}/learn/favorite`}><a>مفضلاتي</a></Link>
-                        
-                        </div>
-                    </div>
-                    <div className={css.logo}>
-                        <Link href={`${process.env.domain}/learn`}><a><Image src={'https://www.for9a.com/images/logo.svg'} width={50} height={50} alt='logo' /></a></Link>
-                    
-                    </div>
-                    <div className={css.nightmode}>
-                        <NightMode/>
                     </div>
                 </div>
-            
+                <div className={css.logo}>
+                    <Link href={`${process.env.domain}/learn`}><a><Image src={'https://www.for9a.com/images/logo.svg'} width={50} height={50} alt='logo' /></a></Link>
+
+                </div>
+                <div className={css.nightmode}>
+                    <NightMode />
+                </div>
+            </div>
         </header >
     )
 }

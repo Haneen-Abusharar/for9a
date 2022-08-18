@@ -1,30 +1,30 @@
 .list {
 
-  border-radius: 5px;
-  margin-bottom: 20px;
+//   border-radius: 5px;
+//   margin-bottom: 20px;
 
 
   .image {
-    border-radius: 5px;
-    box-shadow: 0 1px 4px rgb(0 0 0 / 16%);
-    transition: all 0.2s ease-in-out;
-    display: flex;
-    align-items: center;
-    padding: 8px;
-    padding-bottom: 2px;
-    margin-left: 2px;
+    // border-radius: 5px;
+    // box-shadow: 0 1px 4px rgb(0 0 0 / 16%);
+    // transition: all 0.2s ease-in-out;
+    // display: flex;
+    // align-items: center;
+    // padding: 8px;
+    // padding-bottom: 2px;
+    // margin-left: 2px;
 
-    &:hover {
-      box-shadow: 0 8px 16px 0 rgba(120, 118, 118, 0.2);
-    }
+    // &:hover {
+    //   box-shadow: 0 8px 16px 0 rgba(120, 118, 118, 0.2);
+    // }
 
-    a {
+    // a {
 
-      img {
-        border-radius: 5px;
+    //   img {
+    //     border-radius: 5px;
 
-      }
-    }
+    //   }
+    // }
 
     a {
       text-decoration: none;
@@ -48,21 +48,26 @@
         }
     }
 
-    svg {
-        width: 30px;
-        height: 30px;
-    }
-
+    
     .heart {
         background-color: transparent;
         border: 0;
         cursor: pointer;
+        svg {
+            width: 20px;
+            height: 20px;
+        }
+    
     }
 
     .shareButton {
         background-color: transparent;
         border: 0;
         cursor: pointer;
+        svg {
+            width: 18px;
+            height: 17px;
+        }
     }
 }
 

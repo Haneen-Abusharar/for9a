@@ -1,3 +1,7 @@
+@import "~tailwindcss/base";
+@import "~tailwindcss/components";
+@import "~tailwindcss/utilities";
+
 $background-color: white;
 $dark-background-color: #2c3235;
 $dark-text-color: white;
@@ -33,7 +37,7 @@ body {
   background-color: $dark-background-color;
 
   .container {
-    background-color: $dark-background-color;
+  //  background-color: $dark-background-color;
 
   }
 

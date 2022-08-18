@@ -8,7 +8,6 @@
     box-sizing: border-box;
     height: 100%;
     text-align: center;
-    font-size: 18px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: -webkit-flex;
@@ -26,7 +25,8 @@
     .link {
       background-color: #f9f9f9;
       text-decoration: none;
-      color: black;
+      color: #454F54;
+      font-size: 1rem;
       border: 1px solid rgb(149, 149, 149);
       padding: 5px;
       border-radius: 6px;
@@ -36,17 +36,13 @@
       overflow: hidden;
       text-overflow: ellipsis;
 
-
-
       &:hover {
         background: rgba(160, 153, 153, 0.5);
         cursor: pointer;
         transition: ease-in-out .3s;
       }
 
-
-
-
+      
     }
 
   }
@@ -69,17 +65,5 @@
         font-size: 15px;
       }
     }
-  }
-}
-
-
-
-@media screen and (min-width: 1400px) {
-  .div {
-
-    a {
-      font-size: 20px;
-    }
-
   }
 }

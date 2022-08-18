@@ -25,7 +25,7 @@ const FavoriteItem = ({ item }) => {
                 .share({
                     title: item.name,
                     text: "Hello, please come visit my website",
-                    url: `${item.url?.replace("https://www.for9a.com/", "http://localhost:3000/")}`,
+                    url: `${item.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`,
                 })
                 .then(() => {
                     console.log("Successfully shared");
@@ -39,7 +39,7 @@ const FavoriteItem = ({ item }) => {
     };
     const addFavorite = () => {
         setActive(true);
-        axios.put(`https://api.for9a.com/learn/favorite/${item.id}`, null,
+        axios.put(`${process.env.api}/learn/favorite/${item.id}`, null,
             {
                 headers:
                     { 'authentication': 'i0qvLgN2AfwTgajvdOcB7m1IHEoKu7ou' }
@@ -50,7 +50,7 @@ const FavoriteItem = ({ item }) => {
     }
     const deleteFavorite = () => {
         setActive(false);
-        axios.delete(`https://api.for9a.com/learn/favorite/${item.id}`,
+        axios.delete(`${process.env.api}/learn/favorite/${item.id}`,
             {
                 headers:
                     { 'authentication': 'i0qvLgN2AfwTgajvdOcB7m1IHEoKu7ou' }
@@ -72,7 +72,10 @@ const FavoriteItem = ({ item }) => {
         <div className={`${darkMode ? css.dark : ''} ${css.articleCard}`}>
             {item.image?.medium &&
                 <Link
-                    href={`${item.url?.replace("https://www.for9a.com/", "http://localhost:3000/")}`}>
+                    href={`${item.url
+                    ?.replace("https://www.for9a.com/",`${process.env.domain}/`)
+                }
+                    `}>
                     <a> <Image className={css.move} src={item.image.medium}
                         width="100px" height="50px"
                         alt={item.name} loading='lazy' placeholder='blurDataURL' layout='responsive' /></a></Link>}
@@ -81,7 +84,8 @@ const FavoriteItem = ({ item }) => {
                 {item.categories.map((l, i) => (
                     <div className={css.category} key={i}>
                         <Link
-                            href={`${item.categories.map((e)=>(
+                            href={`category${item.categories.map((e)=>(
+                                
                                 e.slug
                               ))}`}><a><h4>{l.titleLocale}
                             </h4></a>
@@ -90,7 +94,7 @@ const FavoriteItem = ({ item }) => {
                 ))}
             </div>
             <Link
-                href={`${item.url?.replace("https://www.for9a.com/", "http://localhost:3000/")}`}>
+                href={`${item.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
                 <a>
                     <h3>{item.name}</h3>
                 </a>

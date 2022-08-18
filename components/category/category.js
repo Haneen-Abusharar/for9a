@@ -6,11 +6,11 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import { ThemeContext } from '../../DarkModeContext';
 import CaroselArticles from '../CaroselArticles/CaroselArticles';
 import css from './category.module.scss';
-import fetcher from '../../fetcher/fetcher';
+import fetcher from '../../utilities/fetcher';
 
 const Category = ({ input }) => {
     const { darkMode } = useContext(ThemeContext);
-    const { data, loading, error } = useSWR("https://api.for9a.com/blog/category", fetcher);
+    const { data, loading, error } = useSWR(`${process.env.api}/blog/category`, fetcher);
 
     const InlineWrapperWithMargin = ({ children }) => {
         return <div style={{ margin: '1rem' }}>{children}</div>

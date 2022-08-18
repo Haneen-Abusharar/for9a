@@ -13,7 +13,7 @@ const ArticleItem = ({ item, showDesc }) => {
     const [active, setActive] = useState(true);
     const unixTime = item.published_at;
     const date = new Date(unixTime * 1000);
-    
+
     const InlineWrapperWithMargin = ({ children }) => {
         return <span style={{ margin: '1rem' }}>{children}</span>
     }
@@ -88,38 +88,47 @@ const ArticleItem = ({ item, showDesc }) => {
         hight={500}
     />)
 
+
     return (
-        <div className={`${darkMode ? css.dark : ''} ${css.articleCard}`}>
+
+        <div className={`${darkMode ? css.dark : ''} ${css.articleCard} 
+        max-w-sm bg-white rounded-lg border border-gray-200 shadow-md  hover:bg-gray-100 transition ease-in-out`}>
+
             {item.images?.md &&
                 <Link
                     href={`${item.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
-                    <a> <Image className={css.move} src={item.images.md}
+                    <a> <Image className={`${css.move} rounded-t-lg`} src={item.images.md}
                         width="100px" height="50px"
-                        alt={item.title} loading='lazy' placeholder='blurDataURL' layout='responsive' /></a></Link>}
-            <div className={css.block}>
-                <div className={css.categories}>
-                    {item.categories.map((l, i) => (
-                        <div className={css.category} key={i}>
-                            <Link
-                                href={`${l.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}><a><h4>{l.title}</h4></a>
-                            </Link>
-                        </div>
-                    ))}
-                </div></div>
+                        alt={item.title} loading='lazy' placeholder='blurDataURL' layout='responsive' /></a>
+                </Link>}
+
+            <div className={`flex-1 m-5 ${css.categories}`}>
+                {item.categories.map((l, i) => (
+                    <div className={`${css.category}  truncate`} key={i}>
+                        <Link
+                            href={`${l.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
+                            <a><h4 className=' border-gray-200 bg-gray-100  rounded-xl truncate p-5 text-sm hover:bg-gray-200 transition ease-in-out'>{l.title}</h4></a>
+                        </Link>
+                    </div>
+                ))}
+            </div>
+
             <Link
                 href={`${item.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
                 <a>
-                    <h3>{item.title}</h3>
+                    <h3 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">{item.title}</h3>
                 </a>
             </Link>
             <Link
                 href={`${item.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
                 <a>
-                    {showDesc && <p>{item.short_description}</p>}
+                    {showDesc && <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{item.short_description}</p>}
                 </a>
             </Link>
             <div className={css.cardFooter}>
-                <div className={css.imageFooter}><Image src={`/h.jpg`} width={60} height={60} /></div>
+                <div className={css.imageFooter}>
+                    <Image src={`/h.jpg`} width={40} height={40} className="rounded-full" />
+                </div>
                 <div className={css.Author}>
                     <h5>الكاتب</h5>
                     <h6>{date.toLocaleDateString("en-US")}</h6>
@@ -129,8 +138,8 @@ const ArticleItem = ({ item, showDesc }) => {
 
                         active === true ?
                             <button className={css.heart} onClick={addFavorite}>
-                                <svg xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24" width={30} hight={30}>
+                                <svg xmlns="http://www.w3.org/2000/svg" height="20px" width="20px"
+                                    viewBox="0 0 24 24" >
                                     <path fill="gray" d="M12.1 18.55L12 18.65L11.89 18.55C7.14 14.24 4
                          11.39 4 8.5C4 6.5 5.5 5 7.5 5C9.04 5 10.54 6 11.07 7.36H12.93C13.46
                           6 14.96 5 16.5 5C18.5 5 20 6.5 20 8.5C20 11.39 16.86 14.24 12.1 
@@ -141,7 +150,7 @@ const ArticleItem = ({ item, showDesc }) => {
                             </button>
                             :
                             <button className={css.heart} onClick={deleteFavorite}>
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <svg height="20px" width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                     <path fill="#000000" d="M12,21.35L10.55,20.03C5.4,15.36
                              2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,
                              5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22
@@ -152,7 +161,7 @@ const ArticleItem = ({ item, showDesc }) => {
                         :
                         active === true ?
                             <button className={css.heart} onClick={deleteFavorite2}>
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <svg height="20px" width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                     <path fill="#000000" d="M12,21.35L10.55,20.03C5.4,15.36
                            2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,
                            5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22
@@ -161,8 +170,8 @@ const ArticleItem = ({ item, showDesc }) => {
                             </button>
                             :
                             <button className={css.heart} onClick={addFavorite2}>
-                                <svg xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24" width={30} hight={30}>
+                                <svg height="20px" width="20px" xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24">
                                     <path fill="gray" d="M12.1 18.55L12 18.65L11.89 18.55C7.14 14.24 4
                        11.39 4 8.5C4 6.5 5.5 5 7.5 5C9.04 5 10.54 6 11.07 7.36H12.93C13.46
                         6 14.96 5 16.5 5C18.5 5 20 6.5 20 8.5C20 11.39 16.86 14.24 12.1 
@@ -175,9 +184,10 @@ const ArticleItem = ({ item, showDesc }) => {
                     }
 
 
-                    <button id='btn' onClick={handleClick} className={css.shareButton}> <svg xmlns="http://www.w3.org/2000/svg"
-                        width={20} height={20} viewBox="1 0 24 24">
-                        <path fill="gray" d="M18,16.08C17.24,16.08 16.56,16.38 
+                    <button id='btn' onClick={handleClick} className={css.shareButton}>
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                           height="17px" width="18px"  viewBox="1 0 24 24">
+                            <path fill="gray" d="M18,16.08C17.24,16.08 16.56,16.38 
                    16.04,16.85L8.91,12.7C8.96,12.47 9,12.24 9,12C9,11.76 8.96,11.53 
                    8.91,11.3L15.96,7.19C16.5,7.69 17.21,8 18,8A3,3 0 0,0 21,5A3,3 0 
                    0,0 18,2A3,3 0 0,0 15,5C15,5.24 15.04,5.47 15.09,5.7L8.04,9.81C7.5,
@@ -185,7 +195,7 @@ const ArticleItem = ({ item, showDesc }) => {
                    14.19L15.16,18.34C15.11,18.55 15.08,18.77 15.08,19C15.08,20.61 16.39,
                    21.91 18,21.91C19.61,21.91 20.92,20.61 20.92,19A2.92,2.92 0 0,0 18,16.08Z" />
 
-                    </svg>
+                        </svg>
                     </button>
 
                     <p className="result"></p>

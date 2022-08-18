@@ -1,93 +1,93 @@
-.articleCard {
-    box-shadow: 0 1px 4px rgb(0 0 0 / 16%);
-    padding: 7px;
-    border-radius: 5px;
-    margin: 5px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    transition: all 0.2s ease-in-out;
+// .articleCard {
+//     box-shadow: 0 1px 4px rgb(0 0 0 / 16%);
+//     padding: 7px;
+//     border-radius: 5px;
+//     margin: 5px;
+//     height: 100%;
+//     display: flex;
+//     flex-direction: column;
+//     transition: all 0.2s ease-in-out;
 
-    &:hover {
-        box-shadow: 0 8px 16px 0 rgba(120, 118, 118, 0.2);
-
-
-    }
+//     &:hover {
+//         box-shadow: 0 8px 16px 0 rgba(120, 118, 118, 0.2);
 
 
-
-    .categories {
-        display: flex;
-        margin-top: 5px;
-        // overflow: hidden;
-
-        .category {
-
-            overflow: hidden;
-           // text-overflow: ellipsis;
-
-            a {
-                margin: 0;
+//     }
 
 
-            }
 
-            h4 {
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-                background-color: #f9f9f9;
-                font-size: .5rem;
-                border: 1px solid rgb(149, 149, 149);
-                border-radius: 15px;
-                padding: 5px;
-                margin: 0px 2px;
+//     .categories {
+//         display: flex;
+//         margin-top: 5px;
+//         // overflow: hidden;
 
-                &:hover {
-                    background: rgba(160, 153, 153, 0.5);
-                    cursor: pointer;
-                    transition: ease-in-out .3s;
-                }
-            }
-        }
-    }
+//         .category {
 
-    img {
-        border-radius: 5px;
-    }
+//             overflow: hidden;
+//            // text-overflow: ellipsis;
 
-    a {
-        text-decoration: none;
-        color: rgba(46, 41, 41, 0.945);
-        font-size: 10px;
+//             a {
+//                 margin: 0;
 
-    }
 
-    a {
-        h3 {
-            font-size: 1.17rem;
-            padding-right: 5px;
-            line-height: 30px;
-            letter-spacing: -0.5px;
-            display: block;
-            margin-block-start: 1em;
-            margin-block-end: 1em;
-            margin-inline-start: 0px;
-            margin-inline-end: 0px;
-            font-weight: 700;
-        }
-    }
+//             }
 
-    a {
-        p {
+//             h4 {
+//                 overflow: hidden;
+//                 text-overflow: ellipsis;
+//                 white-space: nowrap;
+//                 background-color: #f9f9f9;
+//                 font-size: .5rem;
+//                 border: 1px solid rgb(149, 149, 149);
+//                 border-radius: 15px;
+//                 padding: 5px;
+//                 margin: 0px 2px;
 
-            padding: 5px;
-            line-height: 30px;
-            font-size: 1.1rem;
-            margin: 1px;
-            // color: #474B4D;
-        }
-    }
+//                 &:hover {
+//                     background: rgba(160, 153, 153, 0.5);
+//                     cursor: pointer;
+//                     transition: ease-in-out .3s;
+//                 }
+//             }
+//         }
+//     }
+
+//     img {
+//         border-radius: 5px;
+//     }
+
+//     a {
+//         text-decoration: none;
+//         color: rgba(46, 41, 41, 0.945);
+//         font-size: 10px;
+
+//     }
+
+//     a {
+//         h3 {
+//             font-size: 1.17rem;
+//             padding-right: 5px;
+//             line-height: 30px;
+//             letter-spacing: -0.5px;
+//             display: block;
+//             margin-block-start: 1em;
+//             margin-block-end: 1em;
+//             margin-inline-start: 0px;
+//             margin-inline-end: 0px;
+//             font-weight: 700;
+//         }
+//     }
+
+//     a {
+//         p {
+
+//             padding: 5px;
+//             line-height: 30px;
+//             font-size: 1.1rem;
+//             margin: 1px;
+//             // color: #474B4D;
+//         }
+//     }
 
 
 
@@ -136,25 +136,24 @@
                 }
             }
 
-            svg {
-                width: 30px;
-                height: 30px;
-            }
+            
 
             .heart {
                 background-color: transparent;
                 border: 0;
                 cursor: pointer;
+                
             }
 
             .shareButton {
                 background-color: transparent;
                 border: 0;
                 cursor: pointer;
+               
             }
         }
     }
-}
+//}
 
 
 .dark {
@@ -207,23 +206,5 @@
             }
         }
 
-        .categories {
-            .category {
-                h4 {
-                    font-size: .7rem;
-                }
-            }
-        }
-
-        .cardFooter {
-
-            .button {
-                svg {
-                    width: 30px;
-                    height: 30px;
-                }
-            }
-
-        }
     }
 }

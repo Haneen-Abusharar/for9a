@@ -7,7 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import { ThemeContext } from '../../DarkModeContext';
 import css from './categoriesList.module.scss'
-import fetcher from '../../fetcher/fetcher';
+import fetcher from '../../utilities/fetcher';
 // const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
 const CatogriesList = ({ }) => {
