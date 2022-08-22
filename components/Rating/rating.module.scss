@@ -9,6 +9,11 @@
         width: 100%;
         height: 100px;
 
+        h4 {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
         .rating {
             display: flex;
             flex-direction: row-reverse;
@@ -17,47 +22,50 @@
 
             .emojis {
                 position: relative;
-                width: 45px;
-
+                width: 70px;
+              
                 .none {
+                   
                     opacity: 0;
                     position: absolute;
-                    width: 45px;
+                    width: 70px;
                     top: 0;
-                    left: 0
+                    left: 0;
+
                 }
-                .value{
+
+                .value {
+                  
                     position: absolute;
-                     top: 0px;
-                     left: 0;
-                     transition: .2s ease-in-out;
-                     z-index: 5;
-                    
+                    top: 0px;
+                    left: 0;
+                    transition: .2s ease-in-out;
+                    z-index: 5;
+                    width: 70px;
+
                 }
 
                 button {
-
+                   
                     background-color: transparent;
                     border: none;
                     outline: none;
                     cursor: pointer;
+                    filter: grayscale(.7);
 
                     .emo1 {
                         position: absolute;
-                        width: 45px;
+                       
+                        width: 70px;
                         top: 0;
                         left: 0;
                         transition: .2s ease-in-out;
+
+
                     }
-                    .value{
-                        position: absolute;
-                         top: 0px;
-                         left: 0;
-                      
-                         transition: .2s ease-in-out;
-                        
-                    }
-                   
+
+
+
                 }
 
             }

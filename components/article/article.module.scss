@@ -19,13 +19,7 @@
     display: none;
 }
 
-.mobileSharing {
-    .shareButton {
-        background-color: transparent;
-        border: 0;
-        cursor: pointer;
-    }
-}
+
 
 .top {
 
@@ -33,9 +27,10 @@
 
     h1 {
         line-height: 3rem;
-        font-size: 2rem;
-        margin-bottom: 25px;
+        font-size: 1.5rem;
+        margin: 10px 0;
         color: #eb751d;
+        font-weight: 600;
     }
 
     .ads {
@@ -56,114 +51,106 @@
 
     .breadcrumb {
         display: flex;
-        margin-bottom: 1rem;
+        margin: 1rem 5px;
 
         a {
             text-decoration: none;
-            color: #454F54;
+            color: #eb751d;
+
 
             &:hover {
                 color: #337ab7;
+                text-decoration: underline;
             }
         }
 
         h5 {
+            font-size: 1rem;
             margin-left: 10px;
             margin-bottom: 0px;
         }
     }
 
+    .Section {
+
+        display: flex;
+        align-items: center;
+        margin: auto;
+        padding: 0 15px;
+        
+
+        .author {
+            width: 60px;
+            height: 60px;
+            margin-top: -3rem;
+
+            .pic {
+                border-radius: 50%;
+            }
+        }
+
+        .namePublished {
+           
+            margin-top: 10px;
+            margin-right: 10px;
+            display: grid;
+            grid-template-columns: 50% 50%;
+            grid-template-rows: auto auto;
+            column-gap: 10px;
+            row-gap: 20px;
+            justify-content: space-evenly;
+            align-content: center;
+
+
+            h6 {
+                display: flex;
+                align-items: center;
+                margin-right: 2px;
+                font-size: 1rem;
+            }
+
+            .rate {
+                display: flex;
+                align-items: center;
+            }
+
+            .time {
+                display: flex;
+                align-items: center;
+            }
+
+            .mobileSharing {
+               margin-top: 8px;
+                .shareButton {
+                    background-color: transparent;
+                    border: 0;
+                    cursor: pointer;
+                   
+                }
+            }
+
+        }
+    }
+
     .carosel {
+        .related {
+            margin: 10px 0px;
+
+            h4 {
+                font-size: 1rem;
+                margin-right: 5px;
+                font-weight: 600;
+            }
+        }
+
         margin: auto;
         margin-bottom: 20px;
         padding: 0 15px
     }
 
-    .Section {
-        height: 90px;
-        border-top: 1px solid #e2e2e2;
-        border-bottom: 1px solid #e2e2e2;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        margin-bottom: 10px;
 
-        h6 {
-            font-size: 12px;
-        }
-
-        .publish {
-            h6 {
-                margin: 0;
-                display: flex;
-            }
-        }
-
-        .author {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            height: 50px;
-
-            h6 {
-                margin: 0;
-            }
-
-            .pic {
-                border-radius: 50%;
-            }
-
-            .authPub {
-                display: flex;
-                align-items: center;
-
-                h6 {
-                    margin: 0px;
-                    margin-right: 5px;
-                }
-
-            }
-        }
-
-        .time {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
-            h6 {
-                margin: 0;
-
-
-                .icon {
-                    margin-left: 5px;
-                    margin-bottom: -4px;
-                }
-
-                span {
-                    margin-left: 3px;
-                }
-            }
-
-            .img {
-                border-radius: 50%;
-                margin: 5px;
-            }
-
-        }
-
-        .rate {
-            h6 {
-                margin: 0;
-
-                span {
-                    margin-left: 4px;
-                }
-            }
-        }
-    }
 
     .all {
-
 
         .article {
 
@@ -181,7 +168,9 @@
                     border: 2px solid #f6a828;
                     border-radius: 1rem;
                     padding: 20px;
+
                 }
+
                 blockquote {
 
                     text-align: center;
@@ -208,21 +197,21 @@
 
                 }
 
-
-              
-                   
-                
-
-
                 h2 {
                     line-height: 3rem;
+                    font-size: 1.5rem;
                     color: #eb751d;
                 }
 
-
                 a {
-                    color: #337ab7;
                     text-decoration: none;
+                    color: #eb751d;
+
+
+                    &:hover {
+                        color: #337ab7;
+                        text-decoration: underline;
+                    }
                 }
 
                 img {
@@ -265,6 +254,47 @@
         align-items: center;
         justify-content: center;
 
+
+        .Section {
+
+            display: flex;
+            align-items: center;
+            margin-top: -1rem;
+            width: 70%;
+            padding: 0;
+
+            .author {
+                width: 80px;
+                height: 80px;
+                margin-top: 0rem;
+
+                .pic {
+                    border-radius: 50%;
+                }
+            }
+
+            .namePublished {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between !important;
+                align-items: flex-start;
+                width: 100%;
+                margin-right: 5px;
+
+
+
+            }
+
+            .mobileSharing {
+                display: none;
+            }
+        }
+
+
+        h1 {
+            margin: 25px 0;
+        }
+
         .image {
             width: 70%;
             margin-top: 10px;
@@ -275,6 +305,7 @@
             }
         }
 
+
         .all {
             width: 70%;
             display: flex;
@@ -284,7 +315,7 @@
 
                 display: flex;
                 flex-direction: column;
-                align-items: flex-start;
+                align-items: center;
                 position: sticky;
                 height: 100%;
                 top: 70px;
@@ -293,7 +324,7 @@
 
                 a {
                     padding-top: 5px;
-                    margin-right: 1.5rem;
+
                 }
 
                 .interactions {
@@ -311,14 +342,12 @@
                     background-color: transparent;
                     border: 0;
                     cursor: pointer;
-                    margin-right: 1.3rem;
+
                 }
 
                 .button {
                     display: flex;
 
-                    margin-right: .8rem;
-                    padding: 5px;
 
                     .filledheart {
                         svg {
@@ -356,7 +385,7 @@
             width: 70%;
 
             .related {
-                margin: 10px 0;
+                margin: 10px 0px;
 
                 h4 {
                     font-size: 1.5rem;

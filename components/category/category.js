@@ -42,7 +42,7 @@ const Category = ({ input }) => {
                     }}
                     >
                         <a>
-                            <h2>{catogery.title}</h2>
+                            <h2 className=''>{catogery.title}</h2>
                         </a>
                     </Link>
 

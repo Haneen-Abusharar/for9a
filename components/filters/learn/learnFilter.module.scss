@@ -4,7 +4,7 @@
     align-items: center;
    
     .list {
-        flex: 1 70%;
+        // flex: 1 70%;
         width: 100%;
         margin-right: 10px;
       
@@ -13,7 +13,7 @@
     .searchbox {
        // margin-top: 10px;
         margin-bottom: 25px;
-        flex: 1 30%;
+       // flex: 1 30%;
         width: 98%;
         
     }
@@ -26,9 +26,14 @@
     .learnFilter {
         display: flex;
         flex-direction: row-reverse;
-
+        .searchbox {
+            // margin-top: 10px;
+             flex: 1 30%;
+             
+         }
 
         .list {
+            flex: 1 70%;
             width: 60%;
         }
 

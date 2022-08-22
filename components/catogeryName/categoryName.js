@@ -67,8 +67,8 @@ const CategoryName = ({ catogeries, filter }) => {
         <>
             <div className={css.learnsearch}><LearnFilter /></div>
             <div className={`container ${css.name_description}`}>
-                <h1>{catogeries.title} </h1>
-                <p>{catogeries.description
+                <h1 className=''>{catogeries.title} </h1>
+                <p className='text-base'>{catogeries.description
                     .replace(/[<-\w*|"|=|;|:|&|/>]/g, "")}
                 </p>
             </div>

@@ -17,7 +17,7 @@ const Article = ({ item, filter }) => {
     const { darkMode } = useContext(ThemeContext);
     const elementRef = useRef(null);
     const date = new Date(item.published_at * 1000);
-   
+
     useEffect(() => {
         const articleHeight = elementRef.current.clientHeight - 1500;
         let progressBarHandler = () => {
@@ -122,6 +122,47 @@ const Article = ({ item, filter }) => {
                     width={90} height={50}
                     alt={item.title} placeholder='blurDataURL' layout='responsive' />}
             </div>
+            <div className={css.Section}>
+                <div className={css.author}>
+                    <Image className={`${css.pic} object-cover ` }
+                    src={"https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?cs=srgb&dl=pexels-italo-melo-2379004.jpg&fm=jpg"}
+                        width={"90px"} height={"90px"} />
+                </div>
+                <div className={css.namePublished}>
+                    <h6> أ.أيمن العتوم</h6>
+                    <h6>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={20} >
+                            <path fill="gray" d="M9,10H7V12H9V10M13,10H11V12H13V10M17,10H15V12H17V10M19,
+                                    3H18V1H16V3H8V1H6V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,
+                                    2 0 0,0 19,3M19,19H5V8H19V19Z" />
+                        </svg>
+                        {date.toLocaleDateString("en-US")}
+
+                    </h6>
+                   
+                    <div className={css.time}>
+                        <svg className={css.icon} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height={20} width={20}>
+                            <path fill="gray" d="M16,14H17.5V16.82L19.94,18.23L19.19,19.53L16,17.69V14M17,12A5,5 0 0,0 12,17A5
+                            ,5 0 0,0 17,22A5,5 0 0,0 22,17A5,5 0 0,0 17,12M17,10A7,7 0 0,1 24,17A7,7 0 0,1 17,24C14.21,24 11.8,22.36
+                             10.67,20H1V17C1,14.34 6.33,13 9,13C9.6,13 10.34,13.07 11.12,13.2C12.36,11.28 14.53,10 17,10M10,17
+                            C10,16.3 10.1,15.62 10.29,15C9.87,14.93 9.43,14.9 9,14.9C6.03,14.9 2.9,16.36 2.9,17V18.1H10.09C10.03,
+                            17.74 10,17.37 10,17M9,4A4,4 0 0,1 13,8A4,4 0 0,1 9,12A4,4 0 0,1 5,8A4,4 0 0,1 9,4M9,5.9A2.1,2.1 0 0,
+                            0 6.9,8A2.1,2.1 0 0,0 9,10.1A2.1,2.1 0 0,0 11.1,8A2.1,2.1 0 0,0 9,5.9Z" />
+                        </svg>
+                        <h6>
+                            {item.est_time} دقيقة
+                        </h6>
+                    </div>
+                    <div className={css.rate}>
+                        <span className="fa fa-star checked" />
+                        <h6>{item.rating.average_rating}
+                        </h6>
+                    </div>
+                   
+                </div>
+                
+
+            </div>
             <div className={css.all}>
                 <div className={css.sharing}>
                     <div className={css.interactions}>
@@ -148,7 +189,7 @@ const Article = ({ item, filter }) => {
                                 <button className={css.heart} onClick={addFavorite}>
                                     <svg xmlns="http://www.w3.org/2000/svg"
                                         viewBox="0 0 24 24" width={30} hight={30}>
-                                        <path fill="gray" d="M12.1 18.55L12 18.65L11.89 18.55C7.14 14.24 4
+                                        <path fill="#eb751d" d="M12.1 18.55L12 18.65L11.89 18.55C7.14 14.24 4
                                     11.39 4 8.5C4 6.5 5.5 5 7.5 5C9.04 5 10.54 6 11.07 7.36H12.93C13.46
                                     6 14.96 5 16.5 5C18.5 5 20 6.5 20 8.5C20 11.39 16.86 14.24 12.1 
                                     18.55M16.5 3C14.76 3 13.09 3.81 12 5.08C10.91 3.81 9.24 3 7.5 
@@ -159,7 +200,7 @@ const Article = ({ item, filter }) => {
                                 :
                                 <button className={css.heart} onClick={deleteFavorite}>
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                        <path fill="#000000" d="M12,21.35L10.55,20.03C5.4,15.36
+                                        <path fill="#eb751d" d="M12,21.35L10.55,20.03C5.4,15.36
                                     2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,
                                     5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22
                                     ,12.27 18.6,15.36 13.45,20.03L12,21.35Z" />
@@ -170,7 +211,7 @@ const Article = ({ item, filter }) => {
                             active === true ?
                                 <button className={css.heart} onClick={deleteFavorite2}>
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                        <path fill="#000000" d="M12,21.35L10.55,20.03C5.4,15.36
+                                        <path fill="#eb751d" d="M12,21.35L10.55,20.03C5.4,15.36
                                     2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,
                                     5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22
                                     ,12.27 18.6,15.36 13.45,20.03L12,21.35Z" />
@@ -180,7 +221,7 @@ const Article = ({ item, filter }) => {
                                 <button className={css.heart} onClick={addFavorite2}>
                                     <svg xmlns="http://www.w3.org/2000/svg"
                                         viewBox="0 0 24 24" width={30} hight={30}>
-                                        <path fill="gray" d="M12.1 18.55L12 18.65L11.89 18.55C7.14 14.24 4
+                                        <path fill="#eb751d" d="M12.1 18.55L12 18.65L11.89 18.55C7.14 14.24 4
                                         11.39 4 8.5C4 6.5 5.5 5 7.5 5C9.04 5 10.54 6 11.07 7.36H12.93C13.46
                                         6 14.96 5 16.5 5C18.5 5 20 6.5 20 8.5C20 11.39 16.86 14.24 12.1 
                                         18.55M16.5 3C14.76 3 13.09 3.81 12 5.08C10.91 3.81 9.24 3 7.5 
@@ -194,7 +235,10 @@ const Article = ({ item, filter }) => {
                 </div>
                 <div className={` container ${css.article}`}>
 
+
+
                     <h1>{item.title || <Skeleton />}</h1>
+
                     <div className={css.mobileSharing}>
                         <button id='btn' onClick={handleClick} className={css.shareButton}>
                             <svg xmlns="http://www.w3.org/2000/svg"
@@ -210,51 +254,7 @@ const Article = ({ item, filter }) => {
                             </svg>
                         </button>
                     </div>
-                    <div className={css.Section}>
-                        <div className={css.author}>
-                            <h6>الكاتب</h6>
-                            <div className={css.authPub}>
-                                <Image className={css.pic}
-                                    src={"https://images.unsplash.com/photo-1552080084-f86b99bd1d29?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"}
-                                    width={40} height={40} />
-                                <h6> أ.أيمن العتوم</h6>
-
-                            </div>
-                        </div>
-                        <div className={css.publish}>
-                            <h6>تاريخ النشر</h6>
-                            <h6>
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width={20} >
-                                    <path fill="gray" d="M9,10H7V12H9V10M13,10H11V12H13V10M17,10H15V12H17V10M19,
-                                    3H18V1H16V3H8V1H6V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,
-                                    2 0 0,0 19,3M19,19H5V8H19V19Z" />
-                                </svg>
-                                {date.toLocaleDateString("en-US")}
-
-                            </h6>
-                        </div>
-                        <div className={css.time}>
-                            <h6>مدة القراءة</h6>
-                            <h6><svg className={css.icon} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height={20} width={20}>
-                                <path fill="gray" d="M16,14H17.5V16.82L19.94,18.23L19.19,19.53L16,17.69V14M17,12A5,5 0 0,0 12,17A5
-                            ,5 0 0,0 17,22A5,5 0 0,0 22,17A5,5 0 0,0 17,12M17,10A7,7 0 0,1 24,17A7,7 0 0,1 17,24C14.21,24 11.8,22.36
-                             10.67,20H1V17C1,14.34 6.33,13 9,13C9.6,13 10.34,13.07 11.12,13.2C12.36,11.28 14.53,10 17,10M10,17
-                            C10,16.3 10.1,15.62 10.29,15C9.87,14.93 9.43,14.9 9,14.9C6.03,14.9 2.9,16.36 2.9,17V18.1H10.09C10.03,
-                            17.74 10,17.37 10,17M9,4A4,4 0 0,1 13,8A4,4 0 0,1 9,12A4,4 0 0,1 5,8A4,4 0 0,1 9,4M9,5.9A2.1,2.1 0 0,
-                            0 6.9,8A2.1,2.1 0 0,0 9,10.1A2.1,2.1 0 0,0 11.1,8A2.1,2.1 0 0,0 9,5.9Z" />
-                            </svg>
-
-                                {item.est_time} دقيقة
-                            </h6>
-                        </div>
-                        <div className={css.rate}>
-                            <h6>التقييم</h6>
-                            <h6><span className="fa fa-star checked" ></span>
-                                {item.rating.average_rating}
-                            </h6>
-                        </div>
-
-                    </div>
+                    
 
                     <div className={css.content} dangerouslySetInnerHTML={{ __html: item.body || <Skeleton count={100} /> }} />
 
@@ -272,9 +272,6 @@ const Article = ({ item, filter }) => {
                 }} />
             </div>
         </article>
-
-
-
         <Comments />
     </>
     )

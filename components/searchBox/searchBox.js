@@ -5,9 +5,6 @@ import axios from 'axios';
 import 'react-loading-skeleton/dist/skeleton.css'
 import { ThemeContext } from '../../DarkModeContext';
 import css from './searchBox.module.scss';
-import fetcher from '../../utilities/fetcher';
-
-
 
 const SearchBox = ({ }) => {
     const { darkMode } = useContext(ThemeContext);
@@ -49,7 +46,7 @@ const SearchBox = ({ }) => {
 
     return (<div className={`${darkMode ? css.dark : ''} ${css.searchAndrec} `}>
         <form onSubmit={submit} onChange={handleChange} className={` ${css.search}`} autoComplete="off" >
-            <input type="text" placeholder="ابحث.." name="term"
+            <input type="text" placeholder="ابحث.." name="term" className='p-1'
                 value={value || ''}
                 onChange={(e) => { handleChange(e), autoComplete(e) }}
                 autoComplete="off"

@@ -4,11 +4,11 @@ import useSWR from 'swr';
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper";
+import { Navigation, Pagination } from "swiper";
 import { ThemeContext } from '../../DarkModeContext';
 import css from './categoriesList.module.scss'
 import fetcher from '../../utilities/fetcher';
-// const fetcher = (...args) => fetch(...args).then((res) => res.json())
+
 
 const CatogriesList = ({ }) => {
     const { darkMode } = useContext(ThemeContext);
@@ -39,29 +39,26 @@ const CatogriesList = ({ }) => {
                     400: {
                         slidesPerView: 2.5,
                         spaceBetween: 0,
-                        slidesPerGroup: 3,
-                        navigation: false
+                        slidesPerGroup: 2,
+                        
                     },
                     768: {
                         slidesPerView: 4,
-
                         spaceBetween: 0,
-                        slidesPerGroup: 1,
-                        navigation: true
+                        slidesPerGroup: 2,
+                        
                     },
                     1024: {
-                        slidesPerView: 5,
+                        slidesPerView: 4,
                         spaceBetween: 0,
-                        slidesPerGroup: 1,
-                        navigation: true
+                        slidesPerGroup: 2,
+                        
                     },
                 }}
                 navigation={true}
                 loop={true}
                 loopFillGroupWithBlank={true}
-                slidesPerView={3}
-                pagination={{ clickable: true }}
-                modules={[Navigation]}
+                modules={[Navigation, Pagination]}
                 className={css.swiper}
             >
                 {

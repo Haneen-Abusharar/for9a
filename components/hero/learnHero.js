@@ -7,7 +7,7 @@ const LearnHero = () => {
     return (
         <div className={`${darkMode ? css.dark : ''} ${css.hero}`}>
             <div className='container'>
-                <h1>تعلم </h1>
+                <h1 className=''>تعلم </h1>
                 <input type="checkbox" className={css.state} id="post-1" />
                 <p className={css.readMore}> تحتوي بوابة تعلم على مجموعة مقالات تشكل حاجة أساسية لدى غالبية مستخدمي فرصة.
                  وإيجاد ما يساعدهم في فئات فرص مختلفة في جميع المجالات والمستويات التعليمية والجنسيات،

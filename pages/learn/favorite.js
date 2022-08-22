@@ -121,11 +121,11 @@ const Favorite = () => {
           <Link href={"/learn"}><a><h5> تعلم / </h5></a></Link>
           <Link
             href={`/learn/favorite`}>
-            <a><h5>مفضلة</h5></a>
+            <a><h5 className=''>مفضلة</h5></a>
           </Link>
         </div>
 
-        <h1>مفضلاتي</h1>
+        <h1 className='text-xl my-2'>مفضلاتي</h1>
         <div className={css.articles}>
           {data && data.savedLearn.data.
             map((item, i) => (

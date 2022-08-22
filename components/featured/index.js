@@ -35,7 +35,7 @@ const Featured = () => {
     />)
 
     return (
-        <div className={` md:grid grid-cols-2 gap-4 ${darkMode ? css.dark : ''} container ${css.featured}`}>
+        <div className={` md:grid grid-cols-2 gap-4 md:mb-7 ${darkMode ? css.dark : ''} container ${css.featured}`}>
             <div className={css.article}>
                 <ArticleItem item={data.result.items[0]} showDesc={true} />
             </div>

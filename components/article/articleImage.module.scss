@@ -91,68 +91,68 @@
 
 
 
-    .cardFooter {
+    // .cardFooter {
 
-        display: flex;
-        flex-wrap: nowrap;
-        align-items: center;
-        margin-top: auto;
+    //     display: flex;
+    //     flex-wrap: nowrap;
+    //     align-items: center;
+    //     margin-top: auto;
 
-        .imageFooter {
-            margin-right: 5px;
+    //     .imageFooter {
+    //         margin-right: 5px;
 
-            img {
-                border-radius: 50px;
-            }
-        }
+    //         img {
+    //             border-radius: 50px;
+    //         }
+    //     }
 
-        .Author {
-            flex: 70%;
-            margin-right: 10px;
-            font-size: 1rem;
+    //     .Author {
+    //         flex: 70%;
+    //         margin-right: 10px;
+    //         font-size: 1rem;
 
-            h5 {
-                white-space: nowrap;
-                display: inline;
+    //         h5 {
+    //             white-space: nowrap;
+    //             display: inline;
 
 
-            }
+    //         }
 
-            h6 {
-                white-space: nowrap;
-                margin: -1px;
+    //         h6 {
+    //             white-space: nowrap;
+    //             margin: -1px;
 
-            }
-        }
+    //         }
+    //     }
 
-        .button {
-            display: flex;
+    //     .button {
+    //         display: flex;
 
-            .filledheart {
-                svg {
-                    path {
-                        fill: #000
-                    }
-                }
-            }
+    //         .filledheart {
+    //             svg {
+    //                 path {
+    //                     fill: #000
+    //                 }
+    //             }
+    //         }
 
             
 
-            .heart {
-                background-color: transparent;
-                border: 0;
-                cursor: pointer;
+    //         .heart {
+    //             background-color: transparent;
+    //             border: 0;
+    //             cursor: pointer;
                 
-            }
+    //         }
 
-            .shareButton {
-                background-color: transparent;
-                border: 0;
-                cursor: pointer;
+    //         .shareButton {
+    //             background-color: transparent;
+    //             border: 0;
+    //             cursor: pointer;
                
-            }
-        }
-    }
+    //         }
+    //     }
+    // }
 //}
 
 
@@ -203,6 +203,7 @@
         a {
             h3 {
                 font-size: 1rem;
+              
             }
         }
 

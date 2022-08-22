@@ -36,10 +36,10 @@ body {
   color: $dark-text-color;
   background-color: $dark-background-color;
 
-  .container {
-  //  background-color: $dark-background-color;
+  // .container {
+  // //  background-color: $dark-background-color;
 
-  }
+  // }
 
   .swiper-button-prev,
   .swiper-button-next {
@@ -153,6 +153,7 @@ img {
   border: 2px solid #f6a828;
   border-radius: 1rem;
   padding: 20px;
+  margin: 10px 0;
   .ca-header {
     font-weight: bold;
     font-size: 1.7rem;

@@ -11,10 +11,11 @@
 
         a {
             text-decoration: none;
-            color: #454F54;
+            color: #eb751d;
 
             &:hover {
                 color: #337ab7;
+                text-decoration: underline;
             }
         }
 
@@ -29,10 +30,7 @@
             text-decoration: none;
         }
 
-        img {
-            padding-top: 10px;
-            border-radius: 5px 5px 0 0;
-        }
+       
     }
 }
 

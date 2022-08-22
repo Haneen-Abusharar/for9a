@@ -10,13 +10,14 @@ margin-bottom: 10px;
     
 
     h1 {
-        margin: 15px 5px;
+        margin: 0px 0px;
         color: #eb751d;
-        font-weight: 600;
+        font-weight: 700;
+        font-size: 24px;
     }
 
     p {
-        margin: 10px 5px;
+        margin: 15px 0px;
         text-align: justify;
     }
 }
@@ -28,17 +29,9 @@ margin-bottom: 10px;
         color: #eb751d;
     }
 
-    .articles {
+    // .articles {
 
-        a {
-            text-decoration: none;
-        }
-
-        img {
-            padding-top: 10px;
-            border-radius: 5px 5px 0 0;
-        }
-    }
+    // }
 }
 
 
