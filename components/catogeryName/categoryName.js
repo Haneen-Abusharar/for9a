@@ -33,6 +33,7 @@ const CategoryName = ({ catogeries, filter }) => {
             setLoading(false)
         }
         fetchData();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [page]);
 
     const lastItem = useCallback(async node => {
@@ -51,6 +52,7 @@ const CategoryName = ({ catogeries, filter }) => {
         if (node) {
             observer.current.observe(node)
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [loading, hasMore]);
 
 

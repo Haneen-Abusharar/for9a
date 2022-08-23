@@ -129,7 +129,7 @@ const Comments = ({ id }) => {
                         <div className={css.replys}>
 
                             <div className={css.pic}>
-                                <Image src={'/h.jpg'} height={50} width={50} />
+                                <Image src={'/h.jpg'} height={50} width={50}  alt="profile pic"/>
                             </div>
                             <div className={css.publish} >
                                 <form onChange={setBody}>

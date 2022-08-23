@@ -10,7 +10,7 @@ import CaroselArticles from '../CaroselArticles/CaroselArticles';
 import StarRating from '../Rating/rating';
 import Comments from '../comments/comments';
 
-const Article = ({ item, filter }) => {
+const Article = ({ item }) => {
 
     const [scroll, setScroll] = useState(0);
     const [active, setActive] = useState(true);
@@ -106,7 +106,7 @@ const Article = ({ item, filter }) => {
 
         <article className={`${darkMode ? css.dark : ''} ${css.top}`} ref={elementRef} >
             <div className={css.ads}>
-                <Image src="/ads.png" className={css.adpic} height="157" width="556px" />
+                <Image src="/ads.png" alt="ads" className={css.adpic} height="157" width="556px" />
             </div>
 
             <div className={css.image}>
@@ -119,7 +119,7 @@ const Article = ({ item, filter }) => {
                 <div className={css.author}>
                     <Image className={`${css.pic} object-cover `}
                         src={"https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?cs=srgb&dl=pexels-italo-melo-2379004.jpg&fm=jpg"}
-                        width={"90px"} height={"90px"} />
+                        width={"90px"} height={"90px"} alt="profile picture" />
                     <div className={css.authName}>
                         <h5> أ.أيمن العتوم</h5>
                         <h6>نشرت في
@@ -176,8 +176,8 @@ const Article = ({ item, filter }) => {
 
                         </svg>
                     </button>
-                    <Link href={""}><a><Image src="https://www.ida2at.com/wp-content/themes/ida2at/assets/images/icons/twitter.svg" width={30} height={30} /></a></Link>
-                    <Link href={""}><a><Image src="https://www.ida2at.com/wp-content/themes/ida2at/assets/images/icons/facebook.svg" width={30} height={30} /> </a></Link>
+                    <Link href={""}><a><Image src="https://www.ida2at.com/wp-content/themes/ida2at/assets/images/icons/twitter.svg" width={30} height={30}  alt="twitter" /></a></Link>
+                    <Link href={""}><a><Image src="https://www.ida2at.com/wp-content/themes/ida2at/assets/images/icons/facebook.svg" width={30} height={30} alt="facbook" /> </a></Link>
                     <div className={css.button}>
                         {item.is_pinned === 0 ?
                             active === true ?

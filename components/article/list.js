@@ -22,7 +22,7 @@ const List = ({ articles }) => {
             isPinned[item.id] = item.is_pinned
         })
         setActive(isPinned)
-
+// eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
 
@@ -62,30 +62,7 @@ const List = ({ articles }) => {
             console.error('There was an error!', error);
         })
     }
-    const addFavorite2 = () => {
-        // active[id] = false;
-        setActive({ id: false }, ...active)
-        axios.put(`${process.env.api}/learn/favorite/${item.id}`, null,
-            {
-                headers:
-                    { 'authentication': 'i0qvLgN2AfwTgajvdOcB7m1IHEoKu7ou' }
-            }
-        ).catch(error => {
-            console.error('There was an error!', error);
-        });
-    }
-    const deleteFavorite2 = () => {
-
-        setActive({ id: true }, ...active)
-        axios.delete(`${process.env.api}/learn/favorite/${item.id}`,
-            {
-                headers:
-                    { 'authentication': 'i0qvLgN2AfwTgajvdOcB7m1IHEoKu7ou' }
-            }
-        ).catch(error => {
-            console.error('There was an error!', error);
-        })
-    }
+   
     return (
         <>
             {articles.map((item, index) => (

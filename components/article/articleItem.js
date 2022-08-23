@@ -131,7 +131,7 @@ const ArticleItem = ({ item, showDesc }) => {
             </Link>
             <div className={`${css.cardFooter} flex flex-row items-center mt-auto mb-1` }>
                 <div className={`${css.imageFooter} mr-2 `}>
-                    <Image src={`/h.jpg`} width={40} height={40} className="rounded-full" />
+                    <Image src={`/h.jpg`} width={40} height={40} className="rounded-full" alt='auther picture' />
                 </div>
                 <div className={`${css.Author} flex-auto mr-2 text-sm `}>
                     <h5 className='whitespace-nowrap inline'>الكاتب</h5>

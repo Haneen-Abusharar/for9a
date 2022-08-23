@@ -15,10 +15,7 @@ const StarRating = ({ item, id }) => {
         }, {
             headers:
                 { 'authentication': 'i0qvLgN2AfwTgajvdOcB7m1IHEoKu7ou' }
-        }).then(res => {
-            console.log(r);
-        })
-            .catch(err => console.log(err))
+        }).catch(err => console.log(err))
     }
 
     return (
@@ -32,15 +29,15 @@ const StarRating = ({ item, id }) => {
                     <div key={i} className={css.emojis} >
                         {item.rating.user.value == e &&
                                 <div className={css.value} >
-                                    <Image className="rounded-full" src={`/emojis/${e + "_active"}.svg`} height={45} width={45} />
+                                    <Image className="rounded-full" src={`/emojis/${e + "_active"}.svg`} alt="emojie" height={45} width={45} />
                                 </div>
                         }
                         <div className={active !== i ? css.none : css.emo1} >
-                            <Image className="rounded-full" src={`/emojis/${e + "_active"}.svg`} height={45} width={45} />
+                            <Image className="rounded-full" src={`/emojis/${e + "_active"}.svg`} alt="emojie" height={45} width={45} />
                         </div>
                         <button className={active === i ? css.none : css.emo1}
                             onClick={() => { handleClick(e), setActive(i), item.rating.user.value = false }}>
-                            <Image className="rounded-full" src={`/emojis/${e}.svg`} height={45} width={45} />
+                            <Image className="rounded-full" src={`/emojis/${e}.svg`} alt="emojie" height={45} width={45} />
                         </button>
                     </div>
                     ))

@@ -58,7 +58,7 @@ const Favorite = () => {
       },
       updateQuery: (pv, { fetchMoreResult }) => {
         setHasMore(fetchMoreResult.savedLearn.paginatorInfo.hasMorePages);
-        setLoading(false)
+        setLoading(false);
         if (!fetchMoreResult) {
           return pv
         }
@@ -85,7 +85,7 @@ const Favorite = () => {
       }
     });
 
-  }, [pagee]);
+  }, [pagee, fetchMore]);
 
 
   const lastItem = useCallback(async node => {
@@ -132,7 +132,7 @@ const Favorite = () => {
               <FavoriteItem item={item} key={i} />
             ))}
         </div>
-        {/* {hasMore && <button onClick={loadMore}>load more</button>} */}
+       
       </div>
       <div ref={lastItem} />
     </>
