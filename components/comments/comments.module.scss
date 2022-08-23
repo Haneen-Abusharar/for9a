@@ -126,7 +126,7 @@
         .past {
             width: 100%;
             margin-top: 15px;
-
+            margin-right: 5px;
             .leftreply {
                 display: flex;
 
@@ -140,7 +140,7 @@
             }
 
             h5 {
-               // margin: 0px 10px;
+                // margin: 0px 10px;
                 white-space: nowrap;
                 font-size: 1rem;
             }
@@ -200,6 +200,7 @@
                         background-color: #878d92;
                         margin: 2px;
                         font-size: 14px;
+
                         &:hover {
                             transition: ease-in-out .2s;
                             background-color: rgb(161, 118, 37);

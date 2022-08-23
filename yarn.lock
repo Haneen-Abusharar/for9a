@@ -2692,15 +2692,15 @@ react-dom@^18.2.0:
     loose-envify "^1.1.0"
     scheduler "^0.23.0"
 
-react-emoji-rating@^1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/react-emoji-rating/-/react-emoji-rating-1.0.6.tgz#a2ddf6c9a9816af52a0dbede9f52913a750c7ca7"
-  integrity sha512-MFycg0xxhS/ra6J1BciJXTYwZRR4/uETZf5mJg7bp9set5SzH+t6FqEL1xmllzHixQ7Q7aiIX/TbrtjBekL16w==
-
 react-is@^16.13.1, react-is@^16.7.0:
   version "16.13.1"
   resolved "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
+
+react-lazyload@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/react-lazyload/-/react-lazyload-3.2.0.tgz#497bd06a6dbd7015e3376e1137a67dc47d2dd021"
+  integrity sha512-zJlrG8QyVZz4+xkYZH5v1w3YaP5wEFaYSUWC4CT9UXfK75IfRAIEdnyIUF+dXr3kX2MOtL1lUaZmaQZqrETwgw==
 
 react-loading-skeleton@^3.1.0:
   version "3.1.0"

@@ -37,24 +37,23 @@ const CaroselArticles = ({ filter }) => {
   return (
     
       <Swiper
-        slidesPerView={2}
-        slidesPerGroup={3}
-        pagination={{ clickable: true }}
         breakpoints={{
-          640: {
+          200: {
             slidesPerView: 2,
+            slidesPerGroup:2
           },
           800: {
             slidesPerView: 3,
+            slidesPerGroup:3,
+           
           },
-          1024: {
-            slidesPerView: 3,
-          },
+          
         }}
 
         loop={true}
         loopFillGroupWithBlank={true}
-        navigation={true}
+        pagination={ {clickable: true }}
+        //navigation={true}
         modules={[Pagination, Navigation]}
         className={css.swiper2}
       >
@@ -62,7 +61,7 @@ const CaroselArticles = ({ filter }) => {
           data?.result?.items
             .map((article, index) => (
               <div key={index}>
-              <SwiperSlide key={article.url} >
+              <SwiperSlide key={article.url+ index} >
                 <ArticleItem item={article} />
               </SwiperSlide>
               </div>

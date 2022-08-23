@@ -108,7 +108,7 @@ const ArticleItem = ({ item, showDesc }) => {
                         <Link
                             href={`${l.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
                             <a className='m-0'>
-                                <h4 className=' border border-gray-300 bg-gray-100  ml-2 rounded-xl truncate p-1 text-sm hover:bg-gray-200 transition ease-in-out'>
+                                <h4 className=' text-xs  border border-gray-300 bg-gray-100  ml-2 rounded-xl truncate p-1 md:text-sm hover:bg-gray-200 transition ease-in-out'>
                                     {l.title}
                                 </h4>
                             </a>
@@ -120,13 +120,13 @@ const ArticleItem = ({ item, showDesc }) => {
             <Link
                 href={`${item.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
                 <a>
-                    <h3 className="mx-2 mb-2 text-base font-bold tracking-tight text-gray-800  md:text-lg ">{item.title}</h3>
+                    <h3 className=" mx-2 mb-2 text-sm font-bold tracking-tight text-gray-800  md:text-lg ">{item.title}</h3>
                 </a>
             </Link>
             <Link
                 href={`${item.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
                 <a>
-                    {showDesc && <p className=" m-2 mb-3 font-normal text-base text-gray-700 dark:text-gray-400">{item.short_description}</p>}
+                    {showDesc && <p className="  m-2 mb-3 font-normal text-base text-gray-700 dark:text-gray-400">{item.short_description}</p>}
                 </a>
             </Link>
             <div className={`${css.cardFooter} flex flex-row items-center mt-auto mb-1` }>
@@ -134,8 +134,8 @@ const ArticleItem = ({ item, showDesc }) => {
                     <Image src={`/h.jpg`} width={40} height={40} className="rounded-full" alt='auther picture' />
                 </div>
                 <div className={`${css.Author} flex-auto mr-2 text-sm `}>
-                    <h5 className='whitespace-nowrap inline'>الكاتب</h5>
-                    <h6 className='whitespace-nowrap m--1'>{date.toLocaleDateString("en-US")}</h6>
+                    <h5 className=' whitespace-nowrap inline'>الكاتب</h5>
+                    <h6 className='text-xs whitespace-nowrap m--1'>{date.toLocaleDateString("en-US")}</h6>
                 </div>
                 <div className={`${css.button} flex flex-row ml-2`}>
                     {item.is_pinned === 0 ?

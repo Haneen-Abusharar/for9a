@@ -105,7 +105,7 @@ const Favorite = () => {
     if (node) {
       observer.current.observe(node)
     }
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loading2, hasMore]);
 
   if (loading) return <>loading</>

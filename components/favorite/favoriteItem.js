@@ -105,7 +105,7 @@ const FavoriteItem = ({ item }) => {
             </Link>
 
             <div className={`${css.cardFooter} flex flex-row items-center mt-auto mb-1`}>
-                <div className={`${css.imageFooter} mr-2 `}><Image src={`/h.jpg`} width={60} height={60} className="rounded-full"/></div>
+                <div className={`${css.imageFooter} mr-2 `}><Image src={`/h.jpg`} width={60} height={60} className="rounded-full" alt="pic"/></div>
                 <div className={`${css.Author} flex-auto mr-2 text-sm `}>
                     <h5 className='whitespace-nowrap inline'>الكاتب</h5>
                     <h6 className='whitespace-nowrap m--1'>{date.toLocaleDateString("en-US")}</h6>
