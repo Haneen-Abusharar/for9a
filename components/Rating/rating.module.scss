@@ -1,15 +1,15 @@
 .starRating {
     margin: auto;
-    padding: 0 15px;
     text-align: center;
 
     .width {
         margin-top: 50px;
         margin-bottom: 50px;
         width: 100%;
-        height: 100px;
-
-        h4 {
+        background-color: #f2f0ed;
+        border-radius: 5px;
+        padding: 10px;
+         h4 {
             font-size: 20px;
             margin-bottom: 20px;
         }
@@ -23,9 +23,9 @@
             .emojis {
                 position: relative;
                 width: 70px;
-              
+
                 .none {
-                   
+
                     opacity: 0;
                     position: absolute;
                     width: 70px;
@@ -35,7 +35,7 @@
                 }
 
                 .value {
-                  
+
                     position: absolute;
                     top: 0px;
                     left: 0;
@@ -46,7 +46,7 @@
                 }
 
                 button {
-                   
+
                     background-color: transparent;
                     border: none;
                     outline: none;
@@ -55,7 +55,7 @@
 
                     .emo1 {
                         position: absolute;
-                       
+
                         width: 70px;
                         top: 0;
                         left: 0;

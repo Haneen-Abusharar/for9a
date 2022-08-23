@@ -17,7 +17,8 @@ module.exports = {
 		includePaths: [path.join(__dirname, 'styles')]
 	},
   images: {
-    domains: ['d3vt78ic2w6yaz.cloudfront.net', 'www.for9a.com', "images.unsplash.com", "www.ida2at.com", "www.pexels.com", "images.pexels.com"],
+    domains: ['d3vt78ic2w6yaz.cloudfront.net', 'www.for9a.com', "images.unsplash.com",
+     "www.ida2at.com", "www.pexels.com", "images.pexels.com", "staticfor9a.s3-eu-west-1.amazonaws.com"],
   },
   env: {
     api: process.env.api,

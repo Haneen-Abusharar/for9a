@@ -28,9 +28,9 @@
     h1 {
         line-height: 3rem;
         font-size: 1.5rem;
-        margin: 10px 0;
+        margin: 0;
         color: #eb751d;
-        font-weight: 600;
+        font-weight: 700;
     }
 
     .ads {
@@ -49,85 +49,75 @@
 
     }
 
-    .breadcrumb {
-        display: flex;
-        margin: 1rem 5px;
-
-        a {
-            text-decoration: none;
-            color: #eb751d;
-
-
-            &:hover {
-                color: #337ab7;
-                text-decoration: underline;
-            }
-        }
-
-        h5 {
-            font-size: 1rem;
-            margin-left: 10px;
-            margin-bottom: 0px;
-        }
-    }
-
     .Section {
-
         display: flex;
         align-items: center;
         margin: auto;
         padding: 0 15px;
-        
+        margin-bottom: 1.5rem;
 
         .author {
             width: 60px;
             height: 60px;
-            margin-top: -3rem;
+            flex: 50%;
+            margin-top: -1rem;
+            display: flex;
+            align-items: center;
 
             .pic {
                 border-radius: 50%;
+
+            }
+
+            .authName {
+                flex: 30%;
+                margin-top: 20px;
+                margin-right: 4px;
+                margin-right: .7rem;
+
+                h5 {
+                    font-size: 1rem;
+                }
+
+                h6 {
+                    margin-top: 1px;
+                    font-size: .7rem;
+                    color: #595959;
+                }
             }
         }
 
         .namePublished {
-           
-            margin-top: 10px;
-            margin-right: 10px;
-            display: grid;
-            grid-template-columns: 50% 50%;
-            grid-template-rows: auto auto;
-            column-gap: 10px;
-            row-gap: 20px;
-            justify-content: space-evenly;
-            align-content: center;
 
-
-            h6 {
-                display: flex;
-                align-items: center;
-                margin-right: 2px;
-                font-size: 1rem;
-            }
-
+            display: flex;
+            flex-direction: column;
+            margin-top: 3px;
             .rate {
+                color: #666666;
                 display: flex;
                 align-items: center;
+                font-size: .7rem;
+
+
+                h6 {
+                    margin-right: 1px;
+                }
+
             }
 
             .time {
+
+                color: #666666;
                 display: flex;
                 align-items: center;
-            }
+                font-size: .7rem;
+                margin-bottom: 3px;
 
-            .mobileSharing {
-               margin-top: 8px;
-                .shareButton {
-                    background-color: transparent;
-                    border: 0;
-                    cursor: pointer;
-                   
+                h6 {
+                    margin-right: 1px;
                 }
             }
+
 
         }
     }
@@ -156,6 +146,62 @@
 
             font-size: 1rem;
             line-height: 2rem;
+
+            .breadcrumb {
+                display: flex;
+                margin-bottom: -.6rem;
+
+                a {
+                    text-decoration: none;
+                    color: #5C5C5C;
+
+
+                    &:hover {
+                        color: #337ab7;
+                        text-decoration: underline;
+                    }
+                }
+
+                h5 {
+                    font-size: .8rem;
+                    margin-left: 10px;
+                    margin-bottom: 0px;
+                }
+            }
+
+            .mobileSharing {
+                display: flex;
+                align-items: center;
+                font-size: .8rem;
+                margin: 1rem 0;
+
+                .share {
+                    background-color: #F1F1F1;
+                    white-space: nowrap;
+                    display: flex;
+                    border-radius: 15px;
+                    padding: 0 15px;
+
+                    .shareButton {
+                        margin-left: 5px;
+                    }
+                }
+
+                .mobileHeart {
+                    margin-right: 1.5rem;
+                    background-color: #F1F1F1;
+                    display: flex;
+                    border-radius: 15px;
+                    padding: 0 15px;
+
+                    .heart {
+                        background-color: transparent;
+                        border: 0;
+                        cursor: pointer;
+                        margin-left: 5px;
+                    }
+                }
+            }
 
             .content {
 
@@ -259,40 +305,27 @@
 
             display: flex;
             align-items: center;
-            margin-top: -1rem;
+
             width: 70%;
             padding: 0;
 
             .author {
-                width: 80px;
-                height: 80px;
-                margin-top: 0rem;
+                margin-top: -1rem;
 
-                .pic {
-                    border-radius: 50%;
-                }
             }
 
             .namePublished {
-                display: flex;
                 flex-direction: row;
-                justify-content: space-between !important;
                 align-items: flex-start;
+                justify-content: flex-end;
                 width: 100%;
-                margin-right: 5px;
 
-
-
+                .rate {
+                    margin-right: 1rem;
+                }
             }
 
-            .mobileSharing {
-                display: none;
-            }
-        }
 
-
-        h1 {
-            margin: 25px 0;
         }
 
         .image {
@@ -310,6 +343,12 @@
             width: 70%;
             display: flex;
             position: relative;
+
+            .article {
+                .mobileSharing {
+                    display: none;
+                }
+            }
 
             .sharing {
 
@@ -332,6 +371,7 @@
                     border: gray 1px solid;
                     padding: 5px;
                     border-radius: 5px;
+                    font-size: 1rem;
 
                     h5 {
                         margin: 0;
@@ -348,21 +388,6 @@
                 .button {
                     display: flex;
 
-
-                    .filledheart {
-                        svg {
-                            path {
-                                fill: #000
-                            }
-
-                        }
-                    }
-
-                    svg {
-                        width: 30px;
-                        height: 30px;
-                    }
-
                     .heart {
                         background-color: transparent;
                         border: 0;
@@ -374,12 +399,8 @@
             }
         }
 
-        .article {
 
-            .mobileSharing {
-                display: none;
-            }
-        }
+
 
         .carosel {
             width: 70%;

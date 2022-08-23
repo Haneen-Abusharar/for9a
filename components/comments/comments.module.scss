@@ -9,6 +9,7 @@
     p {
         color: #000;
         font-weight: 400;
+
     }
 
     .commentsTop {
@@ -18,14 +19,20 @@
         align-items: center;
         border-bottom: 1px solid #e9ebee;
 
+        h4 {
+            font-size: 1rem;
+        }
+
         .filter {
 
             h4 {
                 display: inline;
                 margin: 10px;
+                font-size: 1rem;
             }
 
             select {
+                font-size: 1rem;
                 background-color: #f5f6f7;
                 border-color: #ccd0d5;
                 color: #4b4f56;
@@ -66,10 +73,11 @@
                 border: 1px solid #d3d6db;
                 border-radius: 5px 5px 0 0;
                 min-height: 40px;
-                font-size: 17px;
+                font-size: 14px;
                 padding: 12px 8px;
                 width: 100%;
                 outline: none;
+
             }
 
             .publish {
@@ -88,14 +96,15 @@
                     color: #fff;
                     background-color: #878d92;
                     margin: 2px;
+                    font-size: 14px;
 
                     &:hover {
                         background: #64686a;
 
                         cursor: pointer;
                         transition: ease-in-out .2s;
-                        background-color: rgb(48, 48, 112);
-                      
+                        background-color: rgb(161, 118, 37);
+
                     }
                 }
             }
@@ -131,8 +140,9 @@
             }
 
             h5 {
-                margin: 0px 10px;
+               // margin: 0px 10px;
                 white-space: nowrap;
+                font-size: 1rem;
             }
 
             h6 {
@@ -150,6 +160,7 @@
         .replys {
             display: flex;
             align-items: center;
+            margin-top: 5px;
 
             .pic {
                 margin-left: 10px;
@@ -165,10 +176,11 @@
                     border: 1px solid #d3d6db;
                     border-radius: 5px 5px 0 0;
                     height: 40px;
-                    font-size: 12px;
+                    font-size: 14px;
                     padding: 12px 8px;
                     width: 100%;
                     outline: none;
+
                 }
 
                 .replyPublish {
@@ -187,10 +199,10 @@
                         color: #fff;
                         background-color: #878d92;
                         margin: 2px;
-
+                        font-size: 14px;
                         &:hover {
                             transition: ease-in-out .2s;
-                            background-color: rgb(48, 48, 112);
+                            background-color: rgb(161, 118, 37);
                             cursor: pointer;
                         }
                     }

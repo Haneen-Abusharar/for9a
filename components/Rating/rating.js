@@ -10,7 +10,7 @@ const StarRating = ({ item, id }) => {
     const [active, setActive] = useState();
 
     const handleClick = async (r) => {
-        await axios.post(`https://api.for9a.com/learn/add-rating`, {
+        await axios.post(`${process.env.api}/learn/add-rating`, {
             rate: r, id
         }, {
             headers:

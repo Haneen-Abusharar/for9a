@@ -12,10 +12,7 @@ const CaroselArticles = ({ filter }) => {
  
 
   const { data, loading, error } =
-    useSWR(`https://api.for9a.com/learn/all?type=${filter.type}`,
-      fetcher);
-
-
+    useSWR(`https://api.for9a.com/learn/all?type=${filter.type}`,fetcher);
 
   const InlineWrapperWithMargin = ({ children }) => {
     return <span style={{ margin: '1rem' }}>{children}</span>
@@ -38,7 +35,7 @@ const CaroselArticles = ({ filter }) => {
 
 
   return (
-    <>
+    
       <Swiper
         slidesPerView={2}
         slidesPerGroup={3}
@@ -64,13 +61,15 @@ const CaroselArticles = ({ filter }) => {
         {
           data?.result?.items
             .map((article, index) => (
+              <div key={index}>
               <SwiperSlide key={article.url} >
                 <ArticleItem item={article} />
               </SwiperSlide>
+              </div>
             ))
         }
       </Swiper>
-    </>
+  
   )
 
 }
