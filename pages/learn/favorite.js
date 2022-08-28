@@ -8,7 +8,7 @@ import css from "./favorite.module.scss"
 const Favorite = () => {
   const observer = useRef();
   const [loading2, setLoading] = useState(false);
-  const [hasMore, setHasMore] = useState(true);
+  const [hasMore, setHasMore] = useState(false);
   const [pagee, setPage] = useState(1);
 
   const query =

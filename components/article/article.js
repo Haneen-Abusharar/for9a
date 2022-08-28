@@ -17,8 +17,59 @@ const Article = ({ item }) => {
     const [scroll, setScroll] = useState(0);
     const [active, setActive] = useState(true);
     const { darkMode } = useContext(ThemeContext);
+    const [isPlaying, setIsPlaying] = useState(false);
     const elementRef = useRef(null);
-    const date = new Date(item.published_at * 1000);
+    const audioRef = useRef(null);
+    const date = new Date(item.published_at).toLocaleDateString('ar-EG', { month: "long" });
+    // const audio = useRef(new Audio());
+    //const audioElement = new Audio()
+
+    useEffect(() => {
+        const audio = new Audio();
+        audioRef = audio;
+        audio.addEventListener('playing', () => {
+            audio.play()
+        });
+        audio.addEventListener('canplay', () => {
+            audio.play()
+        });
+        audio.addEventListener('ended', (e) => {
+            audio.src = '';
+            const elements = document.getElementsByClassName("isplay")
+            Array.from(elements).map(element => {
+                element.classList.remove("isplay")
+            })
+        });
+        return () => {
+            audio.removeEventListener('ended', () => setIsPlaying(false));
+        };
+    }, [])
+
+
+    function playAudio(e) {
+        e.preventDefault();
+        const audioUrl = this.getAttribute("href");
+      
+        if (audioRef.src != audioUrl){
+            this.classList.add("isplay")
+            audioRef.src = audioUrl;
+        }  
+        else if (audioRef.currentTime > 0 && audioRef.paused && !audioRef.ended)
+        {
+            this.classList.add("isplay")
+             audioRef.play();
+        }
+        else{
+            this.classList.remove("isplay")
+            audioRef.pause();
+        }
+        
+    }
+
+    useEffect(() => {
+        const elements = document.getElementsByClassName("player")
+        Array.from(elements).map(element => element.addEventListener("click", playAudio, false))
+    }, [])
 
     useEffect(() => {
         const articleHeight = elementRef.current.clientHeight - 1500;
@@ -31,7 +82,6 @@ const Article = ({ item }) => {
         window.addEventListener("scroll", progressBarHandler);
         return () => window.removeEventListener("scroll", progressBarHandler);
     });
-
 
     const handleClick = () => {
         if (navigator.share) {
@@ -124,15 +174,11 @@ const Article = ({ item }) => {
                             width={"90px"} height={"90px"} alt="profile picture" />
                         <div className={css.authName}>
                             <h5> أ.أيمن العتوم</h5>
-                            <h6>نشرت في
-                                {date.toLocaleDateString("en-US")}
-
+                            <h6> نشرت في {date}
                             </h6>
                         </div>
                     </div>
                     <div className={css.namePublished}>
-
-
                         <div className={css.time}>
                             <svg className={css.icon} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="14px" width="14px">
                                 <path fill="#666666" d="M16,14H17.5V16.82L19.94,18.23L19.19,19.53L16,17.69V14M17,12A5,5 0 0,0 12,17A5
@@ -155,10 +201,7 @@ const Article = ({ item }) => {
                             <h6>{item.rating.average_rating}
                             </h6>
                         </div>
-
                     </div>
-
-
                 </div>
                 <div className={css.all}>
                     <div className={css.sharing}>
@@ -178,14 +221,18 @@ const Article = ({ item }) => {
 
                             </svg>
                         </button>
-                        <Link href={""}><a><Image src="https://www.ida2at.com/wp-content/themes/ida2at/assets/images/icons/twitter.svg" width={30} height={30} alt="twitter" /></a></Link>
-                        <Link href={""}><a><Image src="https://www.ida2at.com/wp-content/themes/ida2at/assets/images/icons/facebook.svg" width={30} height={30} alt="facbook" /> </a></Link>
+                        <Link href={"https://www.twitter.com"}>
+                            <a><Image src="https://www.ida2at.com/wp-content/themes/ida2at/assets/images/icons/twitter.svg"
+                                width={30} height={30} alt="twitter" /></a></Link>
+                        <Link href={"https://www.facebook.com"}>
+                            <a><Image src="https://www.ida2at.com/wp-content/themes/ida2at/assets/images/icons/facebook.svg"
+                                width={30} height={30} alt="facbook" /> </a></Link>
                         <div className={css.button}>
                             {item.is_pinned === 0 ?
                                 active === true ?
                                     <button className={css.heart} onClick={addFavorite}>
                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                            viewBox="0 0 24 24" width={30} hight={30}>
+                                            viewBox="0 0 24 24" width={30} height={30}>
                                             <path fill="#eb751d" d="M12.1 18.55L12 18.65L11.89 18.55C7.14 14.24 4
                                     11.39 4 8.5C4 6.5 5.5 5 7.5 5C9.04 5 10.54 6 11.07 7.36H12.93C13.46
                                     6 14.96 5 16.5 5C18.5 5 20 6.5 20 8.5C20 11.39 16.86 14.24 12.1 
@@ -196,7 +243,8 @@ const Article = ({ item }) => {
                                     </button>
                                     :
                                     <button className={css.heart} onClick={deleteFavorite}>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                            width={30} height={30}>
                                             <path fill="#eb751d" d="M12,21.35L10.55,20.03C5.4,15.36
                                     2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,
                                     5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22
@@ -207,7 +255,8 @@ const Article = ({ item }) => {
                                 :
                                 active === true ?
                                     <button className={css.heart} onClick={deleteFavorite2}>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                            width={30} height={30}>
                                             <path fill="#eb751d" d="M12,21.35L10.55,20.03C5.4,15.36
                                     2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,
                                     5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22
@@ -217,7 +266,7 @@ const Article = ({ item }) => {
                                     :
                                     <button className={css.heart} onClick={addFavorite2}>
                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                            viewBox="0 0 24 24" width={30} hight={30}>
+                                            viewBox="0 0 24 24" width={30} height={30}>
                                             <path fill="#eb751d" d="M12.1 18.55L12 18.65L11.89 18.55C7.14 14.24 4
                                         11.39 4 8.5C4 6.5 5.5 5 7.5 5C9.04 5 10.54 6 11.07 7.36H12.93C13.46
                                         6 14.96 5 16.5 5C18.5 5 20 6.5 20 8.5C20 11.39 16.86 14.24 12.1 
@@ -225,7 +274,6 @@ const Article = ({ item }) => {
                                         3C4.42 3 2 5.41 2 8.5C2 12.27 5.4 15.36 10.55 20.03L12 21.35L13.45
                                             20.03C18.6 15.36 22 12.27 22 8.5C22 5.41 19.58 3 16.5 3Z" />
                                         </svg>
-
                                     </button>
                             }
                         </div>
@@ -236,7 +284,8 @@ const Article = ({ item }) => {
                             <Link href={"/learn"}><a><h5> تعلم / </h5></a></Link>
                             <Link
                                 href={`${item.category.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
-                                <a href={`${item.category.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}><h5>{item.category.title}</h5></a>
+                                <a href={`${item.category.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
+                                    <h5>{item.category.title}</h5></a>
                             </Link>
 
                         </div>
@@ -245,7 +294,6 @@ const Article = ({ item }) => {
 
                         <div className={css.mobileSharing}>
                             <div className={css.share}>
-
                                 <button id='btn' onClick={handleClick} className={css.shareButton}>
                                     <svg xmlns="http://www.w3.org/2000/svg"
                                         width="14px" height="14px" viewBox="1 0 24 24">
