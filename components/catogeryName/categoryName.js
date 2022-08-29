@@ -20,7 +20,7 @@ const CategoryName = ({ catogeries, filter }) => {
     useEffect(() => {
         setLoading(true);
         async function fetchData() {
-            const result = await axios.get(`https://api.for9a.com/learn/all?type=${filter.type}&page=${page}&count=12`, {
+            const result = await axios.get(`${process.env.api}/learn/all?type=${filter.type}&page=${page}&count=12`, {
                 headers: {
                      'authentication': 'i0qvLgN2AfwTgajvdOcB7m1IHEoKu7ou' 
                 }

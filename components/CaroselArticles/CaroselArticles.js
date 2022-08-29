@@ -12,7 +12,7 @@ const CaroselArticles = ({ filter }) => {
  
 
   const { data, loading, error } =
-    useSWR(`https://api.for9a.com/learn/all?type=${filter.type}`,fetcher);
+    useSWR(`${process.env.api}/learn/all?type=${filter.type}`,fetcher);
 
   const InlineWrapperWithMargin = ({ children }) => {
     return <span style={{ margin: '1rem' }}>{children}</span>

@@ -125,7 +125,7 @@ const Favorite = () => {
           </Link>
         </div>
 
-        <h1 className='text-xl my-2'>مفضلاتي</h1>
+        <h1 className='text-xl mb-4'>مفضلاتي</h1>
         <div className={css.articles}>
           {data && data.savedLearn.data.
             map((item, i) => (

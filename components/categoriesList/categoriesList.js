@@ -12,7 +12,7 @@ import fetcher from '../../utilities/fetcher';
 
 const CatogriesList = ({ }) => {
     const { darkMode } = useContext(ThemeContext);
-    const { data, loading, error } = useSWR("https://api.for9a.com/blog/category", fetcher);
+    const { data, loading, error } = useSWR(`${process.env.api}/blog/category`, fetcher);
 
     const InlineWrapperWithMargin = ({ children }) => {
         return <span style={{ margin: '1rem' }}>{children}</span>

@@ -37,7 +37,7 @@ const Category = ({ input }) => {
             {data.result.map((catogery, index) => (
                 <div className={`${darkMode ? css.dark : ''} container ${css.catogery}`} key={`category-${index}`}>
                     <Link href={{
-                        pathname: '/learn/category/[catogeryName]/',
+                        pathname: '/learn/category/[catogeryName]',
                         query: { catogeryName: catogery.slug },
                     }}
                     >

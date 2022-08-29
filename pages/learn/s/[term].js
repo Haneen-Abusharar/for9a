@@ -12,8 +12,7 @@ import fetcher from "../../../utilities/fetcher";
 const SearchPage = () => {
 
     const { query } = useRouter();
-    const { data, loading, error } = useSWR(`https://api.for9a.com/learn/all?term=${query.term}`, fetcher);
-    // { console.log(query.term) }
+    const { data, loading, error } = useSWR(`${process.env.api}/learn/all?term=${query.term}`, fetcher);
     if (error) return <div>failed to load</div>
     if (loading) return (<Skeleton width={400} />)
     if (!data) return (<Skeleton width={400} />)
@@ -29,7 +28,8 @@ const SearchPage = () => {
 
             <div className={`container ${css.load}`} >
             
-                <h2>نتائج البحث عن : {query.term} </h2>
+                <h2 className="mb-3
+                ">نتائج البحث عن : {query.term} </h2>
                 <div className={css.articles}>
 
                     {

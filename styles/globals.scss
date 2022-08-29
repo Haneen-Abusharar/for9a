@@ -163,7 +163,7 @@ img {
     height: 10px;
     border-style: double;
     align-items: center;
-    border-width: 0px 0px 0px 14px;
+    border-width: 0px 0px 0px 15px;
 
   }
 }
@@ -193,21 +193,7 @@ img {
     align-items: center;
   }
 
-  // .glyphicon {
-  //   position: relative;
-  //   top: 1px;
-  //   display: inline-block;
-  //   font-family: 'Glyphicons Halflings';
-  //   font-style: normal;
-  //   font-weight: 400;
-  //   line-height: 1;
-  //   -webkit-font-smoothing: antialiased;
-  //   -moz-osx-font-smoothing: grayscale;
-  // }
-
-  // .glyphicon-play:before {
-  //   content: "\e072";
-  // }
+  
 
   .btn {
     display: inline-block;
@@ -236,23 +222,10 @@ img {
     }
   }
 
-  a.btn.btn-secondary.player {
-    margin: 0;
-    display: flex;
-    width: 30px;
-    justify-content: flex-end;
-    height: 30px;
-    align-items: center;
-    border-radius: 6px;
-    background-color: silver;
-    color: white !important;
-    padding: 8px;
-  }
 
   a.btn.btn-secondary.player {
     margin: 0;
     display: flex;
-    width: 30px;
     justify-content: flex-end;
     height: 30px;
     align-items: center;

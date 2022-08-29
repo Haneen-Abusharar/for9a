@@ -10,19 +10,54 @@ import css from './article.module.scss';
 import CaroselArticles from '../CaroselArticles/CaroselArticles';
 import StarRating from '../Rating/rating';
 import Comments from '../comments/comments';
-
+import { useSpeechSynthesis } from 'react-speech-kit';
 
 const Article = ({ item }) => {
 
     const [scroll, setScroll] = useState(0);
     const [active, setActive] = useState(true);
     const { darkMode } = useContext(ThemeContext);
-    const [isPlaying, setIsPlaying] = useState(false);
     const elementRef = useRef(null);
     const audioRef = useRef(null);
     const date = new Date(item.published_at).toLocaleDateString('ar-EG', { month: "long" });
-    // const audio = useRef(new Audio());
-    //const audioElement = new Audio()
+
+    const { speak, voices } = useSpeechSynthesis();
+    // console.log(voices)
+    function text() {
+        console.log(<div className="content" dangerouslySetInnerHTML={{ __html: item.body }} />)
+        return (
+            <div className="content" dangerouslySetInnerHTML={{ __html: item.body }} />
+        );
+    }
+
+    const speechHandler = () => {
+       
+        const body = new SpeechSynthesisUtterance()
+        body.text = "hello world jjj"
+        // body.text = item.body
+        // body.lang = 'ar-SA';
+        body.lang = 'en-US';
+        body.rate = 1;
+        body.pitch = 1.5
+        body.volume = 1
+        body.rate = 1
+        // body.voice = voices.filter(function (voice) { return voice.name == 'Microsoft David'; })[0]
+        body.voice = window.speechSynthesis.getVoices().filter(function (voice) {
+            return voice.lang === 'en-US';
+        })[0];
+        body.addEventListener('pause', function (event) {
+            console.log('Paused after ' + event.elapsedTime + 'ms.');
+        })
+        window.speechSynthesis.speak(body)
+
+        // const voices = (window.speechSynthesis.getVoices())
+        // console.log(voices)
+        console.log(body)
+        // speechSynthesis.getVoices().forEach(voice => {
+        //     console.log(voice.name, voice.lang)
+        //   })
+
+    }
 
     useEffect(() => {
         const audio = new Audio();
@@ -49,21 +84,20 @@ const Article = ({ item }) => {
     function playAudio(e) {
         e.preventDefault();
         const audioUrl = this.getAttribute("href");
-      
-        if (audioRef.src != audioUrl){
+
+        if (audioRef.src != audioUrl) {
             this.classList.add("isplay")
             audioRef.src = audioUrl;
-        }  
-        else if (audioRef.currentTime > 0 && audioRef.paused && !audioRef.ended)
-        {
-            this.classList.add("isplay")
-             audioRef.play();
         }
-        else{
+        else if (audioRef.currentTime > 0 && audioRef.paused && !audioRef.ended) {
+            this.classList.add("isplay")
+            audioRef.play();
+        }
+        else {
             this.classList.remove("isplay")
             audioRef.pause();
         }
-        
+
     }
 
     useEffect(() => {
@@ -148,6 +182,7 @@ const Article = ({ item }) => {
 
     return (
         <>
+
             <div className={css.progressBarContainer}>
                 <div className={css.progressBar} style={{
                     transform: `scale(${scroll}, 1)`
@@ -161,12 +196,17 @@ const Article = ({ item }) => {
                     <Image src="/ads.png" alt="ads" className={css.adpic} height="157" width="556px" />
                 </div>
 
-                <div className={css.image}>
+                <div className={`${css.image} `}>
 
                     {item.images?.md && <Image className={css.move} src={item.images.md}
                         width={90} height={50}
                         alt={item.title} placeholder='blurDataURL' layout='responsive' />}
                 </div>
+
+                <button onClick={speechHandler}>SPEAK</button>
+
+                <button onClick={() => speak({ text: text() })}>Speak</button>
+
                 <div className={css.Section}>
                     <div className={css.author}>
                         <Image className={`${css.pic} object-cover `}

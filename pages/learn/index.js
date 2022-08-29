@@ -1,7 +1,5 @@
-
 import Head from "next/head";
-import React, { useEffect, useState, createContext } from "react";
-import useSWR from 'swr';
+import React, { useState, createContext } from "react";
 import Category from "../../components/category/category";
 import LearnHero from "../../components/hero/learnHero";
 import LearnFilter from "../../components/filters/learn/learnFilter";
