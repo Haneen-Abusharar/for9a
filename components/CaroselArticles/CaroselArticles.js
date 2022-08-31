@@ -4,71 +4,58 @@ import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper";
+import ArticleCardLoad from '../skeleton/articleCard';
 import fetcher from '../../utilities/fetcher';
 import ArticleItem from './../article/articleItem'
 import css from "../category/category.module.scss";
 
 const CaroselArticles = ({ filter }) => {
- 
+
 
   const { data, loading, error } =
-    useSWR(`${process.env.api}/learn/all?type=${filter.type}`,fetcher);
+    useSWR(`${process.env.api}/learn/all?type=${filter.type}`, fetcher);
 
-  const InlineWrapperWithMargin = ({ children }) => {
-    return <span style={{ margin: '1rem' }}>{children}</span>
-  }
-  if (error) return <div>failed to load</div>
-  if (loading) return (<Skeleton
-    count={5}
-    wrapper={InlineWrapperWithMargin}
-    inline
-    width="200px"
-    hight="200px"
-  />)
-  if (!data) return (<Skeleton
-    count={5}
-    wrapper={InlineWrapperWithMargin}
-    inline
-    width={100}
-    hight={300}
-  />)
+
+  if (!data || loading || error) 
+  return (
+    <div className='flex '><ArticleCardLoad /><ArticleCardLoad /><ArticleCardLoad /></div>)
 
 
   return (
-    
-      <Swiper
-        breakpoints={{
-          200: {
-            slidesPerView: 2,
-            slidesPerGroup:2
-          },
-          800: {
-            slidesPerView: 3,
-            slidesPerGroup:3,
-           
-          },
-          
-        }}
 
-        loop={true}
-        loopFillGroupWithBlank={true}
-        pagination={ {clickable: true }}
-        //navigation={true}
-        modules={[Pagination, Navigation]}
-        className={css.swiper2}
-      >
-        {
-          data?.result?.items
-            .map((article, index) => (
-              <div key={index}>
-              <SwiperSlide key={article.url+ index} >
+    <Swiper
+      breakpoints={{
+        200: {
+          slidesPerView: 2,
+          slidesPerGroup: 2
+        },
+        800: {
+          slidesPerView: 3,
+          slidesPerGroup: 3,
+
+        },
+
+      }}
+
+      loop={true}
+      loopFillGroupWithBlank={true}
+      pagination={{ clickable: true }}
+      //navigation={true}
+      modules={[Pagination, Navigation]}
+      className={css.swiper2}
+    >
+      {
+        data?.result?.items
+          .map((article, index) => (
+            <div key={index}>
+              <SwiperSlide key={article.url + index} >
                 <ArticleItem item={article} />
               </SwiperSlide>
-              </div>
-            ))
-        }
-      </Swiper>
-  
+            </div>
+          ))
+      }
+    </Swiper>
+
   )
 
 }

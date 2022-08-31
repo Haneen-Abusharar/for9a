@@ -126,19 +126,19 @@ const Article = ({ item }) => {
 
     return (
         <>
-            <div className={`${css.progressBarContainer} fixed h-1 w-full z-100 top-0`}>
-                <div className={`${css.progressBar} h-1.5 scale-0 origin-top-right bg-gradient-to-r from-orange-500 to-white`}
+            <div className={`progressBarContainer fixed h-1 w-full z-100 top-0`}>
+                <div className={`progressBar h-1 origin-top-right bg-gradient-to-r to-white from-orange-500 `}
                     style={{ transform: `scale(${scroll}, 1)` }} />
             </div>
 
             <article className={`${darkMode ? css.dark : ''} ${css.top} mt-12 md:mt-12 md:flex md:flex-col md:items-center md:justify-center`} ref={elementRef} >
-                <div className={`${css.ads} bg-slate-200  w-full text-center `}>
-                    <Image src="/ads.png" alt="ads" className={`${css.adpic} !mt-1.5 `} height="157" width="556px" />
+                <div className={`ads bg-slate-200  w-full text-center `}>
+                    <Image src="/ads.png" alt="ads" className={`adpic !mt-1.5 `} height="157" width="556px" />
                     
                    
                 </div>
 
-                <div className={`${css.image} md:w-3/4 mt-3 `}>
+                <div className={`image md:w-3/4 mt-3 `}>
 
                     {item.images?.md && 
                          <Image src={`${item.images.folder}/${item.images.name}`}
@@ -149,9 +149,9 @@ const Article = ({ item }) => {
                 </div>
 
 
-                <div className={`${css.Section} flex items-center justify-between m-auto py-0 px-4 mb-6 md:w-2/4 md:p-0`}>
-                    <div className={`${css.author} md:w-full -mt-4 flex items-center  md:-mt-5`}>
-                        <Image className={`${css.pic} object-cover rounded-full`}
+                <div className={`Section flex items-center justify-between m-auto py-0 px-4 mb-6 md:w-2/4 md:p-0`}>
+                    <div className={`author md:w-full -mt-4 flex items-center  md:-mt-5`}>
+                        <Image className={`pic object-cover rounded-full`}
                             src={"https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?cs=srgb&dl=pexels-italo-melo-2379004.jpg&fm=jpg"}
                             width={"90px"} height={"90px"} alt="profile picture" />
                         <div className={`${css.authName} mt-5 mr-3  w-32 whitespace-nowrap`}>
@@ -160,9 +160,9 @@ const Article = ({ item }) => {
                             </h6>
                         </div>
                     </div>
-                    <div className={`${css.namePublished} flex flex-col mt-3 text-gray-500 md:flex-row md:items-start md:justify-end md:w-full md:-mt-3`}>
-                        <div className={`${css.time} flex items-center text-xs mb-1`}>
-                            <svg className={css.icon} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="14px" width="14px">
+                    <div className={`namePublished flex flex-col mt-3 text-gray-500 md:flex-row md:items-start md:justify-end md:w-full md:-mt-3`}>
+                        <div className={`time flex items-center text-xs mb-1`}>
+                            <svg className={'icon'} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="14px" width="14px">
                                 <path fill="#929090" d="M16,14H17.5V16.82L19.94,18.23L19.19,19.53L16,17.69V14M17,12A5,5 0 0,0 12,17A5
                             ,5 0 0,0 17,22A5,5 0 0,0 22,17A5,5 0 0,0 17,12M17,10A7,7 0 0,1 24,17A7,7 0 0,1 17,24C14.21,24 11.8,22.36
                              10.67,20H1V17C1,14.34 6.33,13 9,13C9.6,13 10.34,13.07 11.12,13.2C12.36,11.28 14.53,10 17,10M10,17
@@ -174,7 +174,7 @@ const Article = ({ item }) => {
                                 {item.est_time} دقيقة
                             </h6>
                         </div>
-                        <div className={`${css.rate} text-gray-500 flex items-center text-xs mb-1 md:mr-4`}>
+                        <div className={`rate text-gray-500 flex items-center text-xs mb-1 md:mr-4`}>
                             <svg width="13px" height="14px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"  >
                                 <path fill="#666666" d="M15.668 8.626l8.332 1.159-6.065 5.874 1.48 8.341-7.416-3.997-7.416 3.997 1.481-8.341-6.064-5.874 
                             8.331-1.159 3.668-7.626 3.669 7.626zm-6.67.925l-6.818.948 4.963 4.807-1.212 6.825 6.068-3.271 6.069
@@ -185,12 +185,12 @@ const Article = ({ item }) => {
                         </div>
                     </div>
                 </div>
-                <div className={`${css.all}  md:w-3/4 md:flex md:relative`}>
-                    <div className={`${css.sharing}  hidden md:flex flex-col items-center sticky h-full top-16 mt-3 mb-12`}>
-                        <div className={`${css.interactions} my-2 mx-0 border-gray-500 border-2 p-1 text-base rounded`}>
+                <div className={`all  md:w-3/4 md:flex md:relative`}>
+                    <div className={`sharing hidden md:flex flex-col items-center sticky h-full top-16 mt-3 mb-12`}>
+                        <div className={`interactions my-2 mx-0 border-gray-500 border-2 p-1 text-base rounded`}>
                             <h5 className='m-0'>{item.rating.count} تفاعل </h5>
                         </div>
-                        <button id='btn' onClick={handleClick} className={`${css.shareButton} bg-transparent border-0 cursor-pointer`}>
+                        <button id='btn' onClick={handleClick} className={`shareButton bg-transparent border-0 cursor-pointer`}>
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 width={25} hight={20} viewBox="1 0 24 24">
                                 <path fill="gray" d="M18,16.08C17.24,16.08 16.56,16.38 
@@ -211,10 +211,10 @@ const Article = ({ item }) => {
                             <a  className='pt-1'>
                                 <Image src="https://www.ida2at.com/wp-content/themes/ida2at/assets/images/icons/facebook.svg"
                                 width={30} height={30} alt="facbook" /> </a></Link>
-                        <div className={`${css.button} flex`}>
+                        <div className={`button flex`}>
                             {item.is_pinned === 0 ?
                                 active === true ?
-                                    <button className={css.heart} onClick={addFavorite}>
+                                    <button className={'heart'} onClick={addFavorite}>
                                         <svg xmlns="http://www.w3.org/2000/svg"
                                             viewBox="0 0 24 24" width={30} height={30}>
                                             <path fill="#eb751d" d="M12.1 18.55L12 18.65L11.89 18.55C7.14 14.24 4
@@ -226,7 +226,7 @@ const Article = ({ item }) => {
                                         </svg>
                                     </button>
                                     :
-                                    <button className={css.heart} onClick={deleteFavorite}>
+                                    <button className={'heart'} onClick={deleteFavorite}>
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                                             width={30} height={30}>
                                             <path fill="#eb751d" d="M12,21.35L10.55,20.03C5.4,15.36
@@ -238,7 +238,7 @@ const Article = ({ item }) => {
 
                                 :
                                 active === true ?
-                                    <button className={css.heart} onClick={()=>{setActive(false); deleteFavorite() }}>
+                                    <button className={'heart'} onClick={()=>{setActive(false); deleteFavorite() }}>
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                                             width={30} height={30}>
                                             <path fill="#eb751d" d="M12,21.35L10.55,20.03C5.4,15.36
@@ -248,7 +248,7 @@ const Article = ({ item }) => {
                                         </svg>
                                     </button>
                                     :
-                                    <button className={css.heart} onClick={()=>{setActive(true);addFavorite()}}>
+                                    <button className={'heart'} onClick={()=>{setActive(true);addFavorite()}}>
                                         <svg xmlns="http://www.w3.org/2000/svg"
                                             viewBox="0 0 24 24" width={30} height={30}>
                                             <path fill="#eb751d" d="M12.1 18.55L12 18.65L11.89 18.55C7.14 14.24 4
@@ -262,25 +262,25 @@ const Article = ({ item }) => {
                             }
                         </div>
                     </div>
-                    <div className={` container ${css.article} text-base leading-8`}>
+                    <div className={` container article text-base leading-8`}>
 
-                        <div className={`${css.breadcrumb} flex -mb-2.5`}>
-                            <Link href={"/learn"}><a className=' text-gray-700 no-underline hover:text-blue-700'>
+                        <div className={`breadcrumb flex -mb-2.5`}>
+                            <Link href={"/learn"}><a className=' text-gray-500 no-underline hover:text-blue-700'>
                                 <h5 className='text-sm ml-2.5 mb-0 '> تعلم / </h5></a></Link>
                             <Link
                                 href={`${item.category.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
-                                <a className='text-sm ml-2.5 mb-0 no-underline hover:text-blue-700 '
+                                <a className='text-sm ml-2.5 mb-0 no-underline text-gray-500 hover:text-blue-700 '
                                     href={`${item.category.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
                                     <h5>{item.category.title}</h5></a>
                             </Link>
 
                         </div>
 
-                        <h1 className='text-2xl leading-8 mt-2 text-orange-500 font-bold md:mt-3 md:text-3xl md:leading-9'>{item.title || <Skeleton />}</h1>
+                        <h1 className='text-2xl leading-8 my-2 text-orange-500 font-bold md:mt-3 md:text-3xl md:leading-9'>{item.title || <Skeleton />}</h1>
 
-                        <div className={`${css.mobileSharing} md:hidden flex items-center text-sm mx-0 my-4`}>
-                            <div className={`${css.share} bg-slate-100 whitespace-nowrap flex rounded-2xl py-1 px-4`}>
-                                <button id='btn' onClick={handleClick} className={`${css.shareButton} ml-1`}>
+                        <div className={`mobileSharing md:hidden flex items-center text-sm mx-0 my-4`}>
+                            <div className={` share  whitespace-nowrap flex rounded-2xl py-1 px-4 ${darkMode ? 'bg-zinc-600 ' : 'bg-slate-100'}`}>
+                                <button id='btn' onClick={handleClick} className={`shareButton ml-1`}>
                                     <svg xmlns="http://www.w3.org/2000/svg"
                                         width="14px" height="14px" viewBox="1 0 24 24">
                                         <path fill="gray" d="M18,16.08C17.24,16.08 16.56,16.38 
@@ -295,11 +295,11 @@ const Article = ({ item }) => {
                                 </button>
                                 <h4>شاركها مع أصدقائك</h4>
                             </div>
-                            <div className={`${css.mobileHeart} mr-6 bg-slate-100 flex rounded-2xl py-1 px-4`}>
+                            <div className={`mobileHeart mr-6  flex rounded-2xl py-1 px-4 ${darkMode ? 'bg-zinc-600 ' : 'bg-slate-100'}`}>
 
                                 {item.is_pinned === 0 ?
                                     active === true ?
-                                        <button className={css.heart} onClick={addFavorite}>
+                                        <button className={'heart'} onClick={addFavorite}>
                                             <svg xmlns="http://www.w3.org/2000/svg"
                                                 viewBox="0 0 24 24" width="14px" height="14px">
                                                 <path fill="#eb751d" d="M12.1 18.55L12 18.65L11.89 18.55C7.14 14.24 4
@@ -311,7 +311,7 @@ const Article = ({ item }) => {
                                             </svg>
                                         </button>
                                         :
-                                        <button className={css.heart} onClick={deleteFavorite}>
+                                        <button className={'heart'} onClick={deleteFavorite}>
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                                                 width="14px" height="14px">
                                                 <path fill="#eb751d" d="M12,21.35L10.55,20.03C5.4,15.36
@@ -323,7 +323,7 @@ const Article = ({ item }) => {
 
                                     :
                                     active === true ?
-                                        <button className={css.heart} onClick={()=>{setActive(false); deleteFavorite()} }>
+                                        <button className={'heart'} onClick={()=>{setActive(false); deleteFavorite()} }>
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                                                 width="14px" height="14px">
                                                 <path fill="#eb751d" d="M12,21.35L10.55,20.03C5.4,15.36
@@ -333,7 +333,7 @@ const Article = ({ item }) => {
                                             </svg>
                                         </button>
                                         :
-                                        <button className={css.heart} onClick={()=>{setActive(true);addFavorite()}}>
+                                        <button className={'heart'} onClick={()=>{setActive(true);addFavorite()}}>
                                             <svg xmlns="http://www.w3.org/2000/svg"
                                                 viewBox="0 0 24 24" width="14px" height="14px">
                                                 <path fill="#eb751d" d="M12.1 18.55L12 18.65L11.89 18.55C7.14 14.24 4

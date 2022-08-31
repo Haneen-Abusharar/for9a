@@ -117,7 +117,7 @@ const Favorite = () => {
         <title>مفضلات</title>
       </Head>
       <div className={`container ${css.load}`}  >
-        <div className={css.breadcrumb}>
+        <div className={`${css.breadcrumb} `}>
           <Link href={"/learn"}><a><h5> تعلم / </h5></a></Link>
           <Link
             href={`/learn/favorite`}>

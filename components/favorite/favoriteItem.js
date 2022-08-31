@@ -69,8 +69,9 @@ const FavoriteItem = ({ item }) => {
     />)
 
     return (
-        <div className={`${darkMode ? css.dark : ''} ${css.articleCard}
-        flex flex-col max-w-sm h-full mx-1 mb-5 bg-white rounded-lg border border-gray-200 shadow-md  md:mb-0 hover:bg-gray-100 hover:transition ease-in-out`}>
+        <div className={`articleCard
+        flex flex-col max-w-sm h-full mx-1 mb-5 bg-white rounded-lg border border-gray-200 shadow-md 
+         md:mb-0 hover:bg-gray-100 hover:transition ease-in-out ${darkMode ?'bg-zinc-700 hover:bg-zinc-600  border-none ': ''}`}>
             {item.image?.medium &&
                 <Link
                     href={`${item.url
@@ -78,7 +79,7 @@ const FavoriteItem = ({ item }) => {
                         }
                     `}>
                     <a>
-                        <Image className={`${css.move} rounded-t-lg`} src={item.image.medium}
+                        <Image className={`move rounded-t-lg ${darkMode ?' hover:opacity-50 ease-in-out  ': ''}`} src={item.image.medium}
                             width="100px" height="50px"
                             alt={item.name} loading='lazy' placeholder='blurDataURL' layout='responsive' />
                     </a>
@@ -90,7 +91,8 @@ const FavoriteItem = ({ item }) => {
                         <Link
                             href={`category${item.categories.map((e) => (e.slug))}`}>
                             <a className='m-0'>
-                                <h4 className=' border border-gray-300 bg-gray-100  ml-2 rounded-xl truncate p-1 text-sm hover:bg-gray-200 transition ease-in-out'>
+                                <h4 className={` border border-gray-300 bg-gray-100  ml-2 rounded-xl truncate p-1 text-sm 
+                                hover:bg-gray-200 transition ease-in-out ${darkMode ?' text-white bg-zinc-600  hover:bg-zinc-500 ': 'border-gray-300'}`}>
                                     {l.titleLocale}</h4>
                             </a>
                         </Link>
@@ -100,7 +102,8 @@ const FavoriteItem = ({ item }) => {
             <Link
                 href={`${item.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
                 <a>
-                    <h3 className="mx-2 mb-2 text-base font-bold tracking-tight text-gray-800  md:text-lg ">{item.name}</h3>
+                    <h3 className={`mx-2 mb-2 text-base font-bold tracking-tight  md:text-lg 
+                      ${darkMode ?'text-white': 'text-gray-800'}`}>{item.name}</h3>
                 </a>
             </Link>
 

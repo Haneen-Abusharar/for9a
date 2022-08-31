@@ -16,10 +16,11 @@ module.exports = {
 		screens: {
 			'md': '800px',
 
-		}
+		},
+		
 	},
 	variants: {},
 	plugins: [
-
+		require('@tailwindcss/line-clamp'),
 	]
 }

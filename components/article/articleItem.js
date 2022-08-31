@@ -6,6 +6,7 @@ import { ThemeContext } from '../../DarkModeContext';
 import 'react-loading-skeleton/dist/skeleton.css'
 import css from './articleImage.module.scss'
 import Link from 'next/link'
+import ArticleCardLoad from '../skeleton/articleCard';
 
 
 const ArticleItem = ({ item, showDesc }) => {
@@ -14,23 +15,9 @@ const ArticleItem = ({ item, showDesc }) => {
     const unixTime = item.published_at;
     const date = new Date(unixTime * 1000);
     const loader = ({ src, width, quality }) => {
-        return `https://images.for9a.com/thumb/fit-300-200-100-webp/${src}`;
+        const height = Math.ceil(width / 2);
+        return `https://images.for9a.com/thumb/fit-${width}-${height}-${quality}-webp/${src}`;
     }
-
-    // const InlineWrapperWithMargin = ({ children }) => {
-    //     return<div
-    //     style={{
-    //         border: '1px solid #ccc',
-    //         display: 'block',
-    //         lineHeight: 2,
-    //         padding: '1rem',
-    //         marginBottom: '0.5rem',
-    //         width: 100,
-    //     }}
-    // >
-    //     {children}
-    // </div>
-    // }
    
     const handleClick = () => {
         if (navigator.share) {
@@ -71,18 +58,14 @@ const ArticleItem = ({ item, showDesc }) => {
         })
     }
 
-    if (!item) return (<Skeleton
-        wrapper={InlineWrapperWithMargin}
-        inline
-        width={200}
-        hight={500}
-    />)
+    // if (!item) return (<ArticleCardLoad />)
 
 
     return (
 
-        <div className={`${darkMode ? css.dark : ''} ${css.articleCard} 
-       flex flex-col max-w-sm h-full mx-1 mb-5 bg-white rounded-lg border border-gray-200 shadow-md  md:mb-0 hover:bg-gray-100 hover:transition ease-in-out`}>
+        <div className={` articleCard 
+       flex flex-col max-w-sm h-full mx-1 mb-5 bg-white rounded-lg border border-gray-200 shadow-md 
+        md:mb-0 hover:bg-gray-100 hover:transition ease-in-out ${darkMode ?'bg-zinc-700 hover:bg-zinc-600  border-none ': ''}`}>
 
             {item.images?.md &&
                 <Link
@@ -91,19 +74,22 @@ const ArticleItem = ({ item, showDesc }) => {
 
                         <Image src={`${item.images.folder}/${item.images.name}`}
                             loader={loader}
-                            className={`${css.move} rounded-t-lg object-cover`} 
+                            quality={80}
+                            className={`move rounded-t-lg object-cover ${darkMode ?' hover:opacity-50 ease-in-out  ': ''} `} 
                             width="200px" height="130px"
                             alt={item.title} loading='lazy' placeholder='blurDataURL' layout='responsive'  />
                     </a>
                 </Link>}
 
-            <div className={`flex flex-row m-2 ${css.categories}`}>
+            <div className={`categories flex flex-row m-2 `}>
                 {item.categories.map((l, i) => (
                     <div className={`${css.category}  truncate`} key={i}>
                         <Link
                             href={`${l.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
-                            <a className='m-0'>
-                                <h4 className=' text-xs  border border-gray-300 bg-gray-100  ml-2 rounded-xl truncate p-1 md:text-sm hover:bg-gray-200 transition ease-in-out'>
+                            <a className={`m-0 !no-underline ${darkMode ?' !text-white ': '!text-zinc-600' }`}>
+                                <h4 className={` text-xs  border  bg-gray-100
+                                  ml-2 rounded-xl truncate p-1 md:text-sm hover:bg-gray-200
+                                   transition ease-in-out ${darkMode ?' !text-white bg-zinc-600  hover:bg-zinc-500 ': 'border-gray-300'}`}>
                                     {l.title}
                                 </h4>
                             </a>
@@ -114,29 +100,30 @@ const ArticleItem = ({ item, showDesc }) => {
 
             <Link
                 href={`${item.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
-                <a>
-                    <h3 className=" mx-2 mb-2 text-sm font-bold tracking-tight text-gray-800  md:text-lg ">{item.title}</h3>
+                <a className='no-underline'>
+                    <h3 className={` mx-2 mb-2 text-sm font-bold tracking-tight  md:text-lg
+                     ${darkMode ?'text-white': 'text-gray-800'}`}>{item.title}</h3>
                 </a>
             </Link>
             <Link
                 href={`${item.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
                 <a>
-                    {showDesc && <p className="  m-2 mb-3 font-normal text-base text-gray-700 dark:text-gray-400">{item.short_description}</p>}
+                    {showDesc && <p className=" line-clamp-3 m-2 mb-3 font-normal text-base text-gray-700 dark:text-gray-400">{item.short_description}</p>}
                 </a>
             </Link>
-            <div className={`${css.cardFooter} flex flex-row items-center mt-auto mb-1`}>
-                <div className={`${css.imageFooter} mr-2 `}>
+            <div className={`cardFooter flex flex-row items-center mt-auto mb-1`}>
+                <div className={`imageFooter mr-2 `}>
                     <Image src={`/h.jpg`} width={40} height={40} className="rounded-full" alt='auther picture' />
                 </div>
-                <div className={`${css.Author} flex-auto mr-2 text-sm `}>
+                <div className={`Author flex-auto mr-2 text-sm `}>
                     <h5 className=' whitespace-nowrap inline'>الكاتب</h5>
                     <h6 className='text-xs whitespace-nowrap m--1'>{date.toLocaleDateString("en-US")}</h6>
                 </div>
-                <div className={`${css.button} flex flex-row ml-2`}>
+                <div className={`button flex flex-row ml-2`}>
                     {item.is_pinned === 0 ?
 
                         active === true ?
-                            <button className={`${css.heart}`} onClick={addFavorite}>
+                            <button className={`heart`} onClick={addFavorite}>
                                 <svg xmlns="http://www.w3.org/2000/svg" height="20px" width="20px"
                                     viewBox="0 0 24 24" >
                                     <path fill="#eb751d" d="M12.1 18.55L12 18.65L11.89 18.55C7.14 14.24 4
@@ -148,7 +135,7 @@ const ArticleItem = ({ item, showDesc }) => {
                                 </svg>
                             </button>
                             :
-                            <button className={`${css.heart}`} onClick={deleteFavorite}>
+                            <button className={`heart`} onClick={deleteFavorite}>
                                 <svg height="20px" width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                     <path fill="#eb751d" d="M12,21.35L10.55,20.03C5.4,15.36
                              2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,
@@ -159,7 +146,7 @@ const ArticleItem = ({ item, showDesc }) => {
 
                         :
                         active === true ?
-                            <button className={`${css.heart}`} onClick={()=>{setActive(false); deleteFavorite() }}>
+                            <button className={`heart`} onClick={()=>{setActive(false); deleteFavorite() }}>
                                 <svg height="20px" width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                     <path fill="#eb751d" d="M12,21.35L10.55,20.03C5.4,15.36
                            2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,
@@ -168,7 +155,7 @@ const ArticleItem = ({ item, showDesc }) => {
                                 </svg>
                             </button>
                             :
-                            <button className={`${css.heart}`} onClick={()=>{setActive(true);addFavorite()}}>
+                            <button className={`heart`} onClick={()=>{setActive(true);addFavorite()}}>
                                 <svg height="20px" width="20px" xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 24 24">
                                     <path fill="#eb751d" d="M12.1 18.55L12 18.65L11.89 18.55C7.14 14.24 4

@@ -7,30 +7,15 @@ import { ThemeContext } from '../../DarkModeContext';
 import CaroselArticles from '../CaroselArticles/CaroselArticles';
 import css from './category.module.scss';
 import fetcher from '../../utilities/fetcher';
+import ArticleCardLoad from '../skeleton/articleCard';
 
 const Category = ({ input }) => {
     const { darkMode } = useContext(ThemeContext);
     const { data, loading, error } = useSWR(`${process.env.api}/blog/category`, fetcher);
 
-    const InlineWrapperWithMargin = ({ children }) => {
-        return <div style={{ margin: '1rem' }}>{children}</div>
-    }
-   
-    if (error) return <div>failed to load</div>
-    if (loading) return (<Skeleton
-
-        wrapper={InlineWrapperWithMargin}
-        inline
-        width={200}
-        hight={200}
-    />)
-    if (!data) return (<Skeleton
-
-        wrapper={InlineWrapperWithMargin}
-        inline
-        width={200}
-        hight={200}
-    />)
+    
+    if (error || loading || !data) return (<ArticleCardLoad/>)
+    
 
     return (
         <>

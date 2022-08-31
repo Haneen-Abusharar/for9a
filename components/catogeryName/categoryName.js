@@ -3,8 +3,9 @@ import axios from 'axios';
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import ArticleItem from '../article/articleItem';
-import css from "./categoryName.module.scss";
+import MyLoader from '../skeleton/skeleton';
 import LearnFilter from '../filters/learn/learnFilter';
+import css from "./categoryName.module.scss";
 const CategoryName = ({ catogeries, filter }) => {
 
     const observer = useRef();
@@ -57,13 +58,7 @@ const CategoryName = ({ catogeries, filter }) => {
 
 
 
-    if (!data) return (<Skeleton
-        count={5}
-        wrapper={InlineWrapperWithMargin}
-        inline
-        width={500}
-        hight={400}
-    />)
+    if (!data) return ( <Skeleton/>)
 
     return (
         <>
@@ -76,6 +71,7 @@ const CategoryName = ({ catogeries, filter }) => {
             </div>
             <div className={`container ${css.load}`}   >
                 <div className={css.articles}>
+                    
                     {data && data.map((item, index) => {
                         return<ArticleItem item={item} showDesc={true} key={index} />
                     })}

@@ -48,9 +48,17 @@ const Comments = ({ id }) => {
         return event.toLocaleTimeString("en-US")
     }
 
-    if (error) return <div>failed to load</div>
-    if (loading) return <div>loading</div>
-    if (!data) return <Skeleton count={5} width="50%"  />
+    const InlineWrapperWithMargin = ({ children }) => {
+        return <span style={{ margin: '5rem', marginRight:'10rem' }}>{children}</span>
+      }
+     
+      if (!data || loading || error) return (<Skeleton
+        count={5}
+        wrapper={InlineWrapperWithMargin}
+        inline
+        width={600}
+        height={50}
+      />)
 
     return (
         <div className={`${darkMode ? css.dark : ''} ${css.comments}`} >

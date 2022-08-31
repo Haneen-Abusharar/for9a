@@ -22,7 +22,7 @@ const List = ({ articles }) => {
             isPinned[item.id] = item.is_pinned
         })
         setActive(isPinned)
-// eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
 
@@ -62,13 +62,14 @@ const List = ({ articles }) => {
             console.error('There was an error!', error);
         })
     }
-   
+
     return (
         <>
             {articles.map((item, index) => (
-                <div className={`${darkMode ? css.dark : ''} ${css.list} 
+                <div className={` list 
             flex flex-row ml-1 mr-1 mb-5 mt-5  bg-white rounded-lg 
-            border shadow-md md:mb-5 md:mt-0 md:flex-row   hover:bg-gray-100 hover:transition ease-in-out `} key={index}>
+            border shadow-md md:mb-5 md:mt-0 md:flex-row hover:bg-gray-100 hover:transition ease-in-out
+             ${darkMode ? 'border-zinc-700 bg-zinc-700 hover:bg-zinc-600' : ''} `} key={index}>
 
                     <div className={`flex-none w-2/5 `}>
                         {
@@ -77,21 +78,21 @@ const List = ({ articles }) => {
                                 <a className=' '  >
                                     <Image src={`${item.images.folder}/${item.images.name}`}
                                         loader={loader}
-                                        className="object-cover rounded-r-lg "
+                                        className={`${darkMode ? 'hover:opacity-50 ease-in-out  ' : ''} object-cover rounded-r-lg `}
                                         width="200px" height="200px"
-                                        alt={item.title} loading='lazy' placeholder='blurDataURL'  layout='responsive'/></a>
+                                        alt={item.title} loading='lazy' placeholder='blurDataURL' layout='responsive' /></a>
                             </Link>
                         }
                     </div>
-                    <div className={`flex-none w-3/5 flex flex-col `}>
+                    <div className={`flex-none w-3/5 flex flex-col ${darkMode ? 'bg-zinc-700 hover:bg-zinc-600 ' : ''} `}>
                         <Link
                             href={`${item.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
-                            <a> <h3 className=' p-3  text-base  font-bold tracking-tight text-gray-800 '>{item.title}</h3></a></Link>
+                            <a> <h3 className={` p-3  text-base  font-bold tracking-tight  ${darkMode ?'text-white':'text-gray-800'}`}>{item.title}</h3></a></Link>
 
-                        <div className={`${css.button} font-normal flex flex-row-reverse ml-2 mt-auto  pb-4`}>
+                        <div className={`button font-normal flex flex-row-reverse ml-2 mt-auto  pb-4`}>
                             <button id='btn' onClick={() =>
                                 handleClick(item.title, item.url.replace("https://www.for9a.com/", `${process.env.domain}/`))}
-                                className={css.shareButton}>
+                                className={'shareButton'}>
                                 <svg xmlns="http://www.w3.org/2000/svg"
                                     width="18px" height="17px" viewBox="1 0 24 24">
                                     <path fill="gray" d="M18,16.08C17.24,16.08 16.56,16.38 
@@ -106,7 +107,7 @@ const List = ({ articles }) => {
                             </button>
                             {
                                 active[item.id] == 1 ?
-                                    <button className={css.heart} onClick={() => { deleteFavorite(item.id) }}>
+                                    <button className={'heart'} onClick={() => { deleteFavorite(item.id) }}>
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                                             width="20px" height="20px">
                                             <path fill="#eb751d" d="M12,21.35L10.55,20.03C5.4,15.36
@@ -116,7 +117,7 @@ const List = ({ articles }) => {
                                         </svg>
                                     </button>
                                     :
-                                    <button className={css.heart} onClick={() => { addFavorite(item.id) }}>
+                                    <button className={'heart'} onClick={() => { addFavorite(item.id) }}>
                                         <svg xmlns="http://www.w3.org/2000/svg"
                                             viewBox="0 0 24 24" width="20px" height="20px">
                                             <path fill="#eb751d" d="M12.1 18.55L12 18.65L11.89 18.55C7.14 14.24 4
