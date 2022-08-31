@@ -70,20 +70,20 @@ const List = ({ articles }) => {
             flex flex-row ml-1 mr-1 mb-5 mt-5  bg-white rounded-lg 
             border shadow-md md:mb-5 md:mt-0 md:flex-row   hover:bg-gray-100 hover:transition ease-in-out `} key={index}>
 
-                    <div className={`flex-auto w-32 object-fit`}>
+                    <div className={`flex-none w-2/5 `}>
                         {
                             item.images?.md && <Link
                                 href={`${item.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
                                 <a className=' '  >
                                     <Image src={`${item.images.folder}/${item.images.name}`}
                                         loader={loader}
-                                        className="object-cover w-full h-full rounded-r-lg   "
+                                        className="object-cover rounded-r-lg "
                                         width="200px" height="200px"
-                                        alt={item.title} loading='lazy' placeholder='blurDataURL' /></a>
+                                        alt={item.title} loading='lazy' placeholder='blurDataURL'  layout='responsive'/></a>
                             </Link>
                         }
                     </div>
-                    <div className={`flex-auto w-64 flex flex-col `}>
+                    <div className={`flex-none w-3/5 flex flex-col `}>
                         <Link
                             href={`${item.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
                             <a> <h3 className=' p-3  text-base  font-bold tracking-tight text-gray-800 '>{item.title}</h3></a></Link>

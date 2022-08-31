@@ -13,11 +13,25 @@ const ArticleItem = ({ item, showDesc }) => {
     const [active, setActive] = useState(true);
     const unixTime = item.published_at;
     const date = new Date(unixTime * 1000);
-
-    const InlineWrapperWithMargin = ({ children }) => {
-        return <span style={{ margin: '1rem' }}>{children}</span>
+    const loader = ({ src, width, quality }) => {
+        return `https://images.for9a.com/thumb/fit-300-200-100-webp/${src}`;
     }
 
+    // const InlineWrapperWithMargin = ({ children }) => {
+    //     return<div
+    //     style={{
+    //         border: '1px solid #ccc',
+    //         display: 'block',
+    //         lineHeight: 2,
+    //         padding: '1rem',
+    //         marginBottom: '0.5rem',
+    //         width: 100,
+    //     }}
+    // >
+    //     {children}
+    // </div>
+    // }
+   
     const handleClick = () => {
         if (navigator.share) {
             navigator
@@ -56,32 +70,8 @@ const ArticleItem = ({ item, showDesc }) => {
             console.error('There was an error!', error);
         })
     }
-    const addFavorite2 = () => {
-        setActive(true);
-        axios.put(`${process.env.api}/learn/favorite/${item.id}`, null,
-            {
-                headers:
-                    { 'authentication': 'i0qvLgN2AfwTgajvdOcB7m1IHEoKu7ou' }
-            }
-        ).catch(error => {
-            console.error('There was an error!', error);
-        });
-    }
-    const deleteFavorite2 = () => {
-        setActive(false);
-        axios.delete(`${process.env.api}/learn/favorite/${item.id}`,
-            {
-                headers:
-                    { 'authentication': 'i0qvLgN2AfwTgajvdOcB7m1IHEoKu7ou' }
-            }
-        ).catch(error => {
-            console.error('There was an error!', error);
-        })
-    }
-
 
     if (!item) return (<Skeleton
-        count={5}
         wrapper={InlineWrapperWithMargin}
         inline
         width={200}
@@ -97,9 +87,14 @@ const ArticleItem = ({ item, showDesc }) => {
             {item.images?.md &&
                 <Link
                     href={`${item.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
-                    <a> <Image className={`${css.move} rounded-t-lg`} src={item.images.md}
-                        width="100px" height="50px"
-                        alt={item.title} loading='lazy' placeholder='blurDataURL' layout='responsive' /></a>
+                    <a> 
+
+                        <Image src={`${item.images.folder}/${item.images.name}`}
+                            loader={loader}
+                            className={`${css.move} rounded-t-lg object-cover`} 
+                            width="200px" height="130px"
+                            alt={item.title} loading='lazy' placeholder='blurDataURL' layout='responsive'  />
+                    </a>
                 </Link>}
 
             <div className={`flex flex-row m-2 ${css.categories}`}>
@@ -129,7 +124,7 @@ const ArticleItem = ({ item, showDesc }) => {
                     {showDesc && <p className="  m-2 mb-3 font-normal text-base text-gray-700 dark:text-gray-400">{item.short_description}</p>}
                 </a>
             </Link>
-            <div className={`${css.cardFooter} flex flex-row items-center mt-auto mb-1` }>
+            <div className={`${css.cardFooter} flex flex-row items-center mt-auto mb-1`}>
                 <div className={`${css.imageFooter} mr-2 `}>
                     <Image src={`/h.jpg`} width={40} height={40} className="rounded-full" alt='auther picture' />
                 </div>
@@ -153,7 +148,7 @@ const ArticleItem = ({ item, showDesc }) => {
                                 </svg>
                             </button>
                             :
-                            <button className={`${css.heart}`}  onClick={deleteFavorite}>
+                            <button className={`${css.heart}`} onClick={deleteFavorite}>
                                 <svg height="20px" width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                     <path fill="#eb751d" d="M12,21.35L10.55,20.03C5.4,15.36
                              2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,
@@ -164,7 +159,7 @@ const ArticleItem = ({ item, showDesc }) => {
 
                         :
                         active === true ?
-                            <button className={`${css.heart}`}  onClick={deleteFavorite2}>
+                            <button className={`${css.heart}`} onClick={()=>{setActive(false); deleteFavorite() }}>
                                 <svg height="20px" width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                     <path fill="#eb751d" d="M12,21.35L10.55,20.03C5.4,15.36
                            2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,
@@ -173,7 +168,7 @@ const ArticleItem = ({ item, showDesc }) => {
                                 </svg>
                             </button>
                             :
-                            <button className={`${css.heart}`}  onClick={addFavorite2}>
+                            <button className={`${css.heart}`} onClick={()=>{setActive(true);addFavorite()}}>
                                 <svg height="20px" width="20px" xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 24 24">
                                     <path fill="#eb751d" d="M12.1 18.55L12 18.65L11.89 18.55C7.14 14.24 4

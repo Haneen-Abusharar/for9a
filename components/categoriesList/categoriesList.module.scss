@@ -26,7 +26,7 @@
       background-color: #f9f9f9;
       text-decoration: none;
       color: #454F54;
-      font-size: 1rem;
+      font-size: .9rem;
       border: 1px solid rgb(149, 149, 149);
       padding: 5px;
       border-radius: 6px;
@@ -53,17 +53,6 @@
     .link {
       background-color: rgb(149, 149, 149);
       color: #f9f9f9;
-    }
-  }
-}
-
-@media screen and (max-width: 450px) {
-  .div {
-    .swiper {
-
-      a {
-        font-size: 15px;
-      }
     }
   }
 }

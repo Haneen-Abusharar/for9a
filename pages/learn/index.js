@@ -23,7 +23,6 @@ const Learn = ({ }) => {
             <ThemeContext.Provider value={{ theme, toggleTheme }}>
 
                 <LearnHero  />
-
                 <LearnFilter />
                 <Featured />
                 <Category />

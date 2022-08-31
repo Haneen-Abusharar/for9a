@@ -16,23 +16,66 @@ const Featured = () => {
     const { data, loading, error } = useSWR(`${process.env.api}/learn/all`, fetcher);
 
     const InlineWrapperWithMargin = ({ children }) => {
-        return <span style={{ margin: '1rem' }}>{children}</span>
+        return <div style={{ display: 'flex', }}>
+            <div
+                style={{
+
+                    lineHeight: 1,
+                    padding: '2rem',
+                    marginBottom: '0.5rem',
+                    width: 200,
+                    height: 500
+                }}
+            ></div>
+            <div
+                style={{
+
+                    display: 'flex',
+                    flexDirection: 'column',
+                    lineHeight: 1,
+                    padding: '2rem',
+                    marginBottom: '0.5rem',
+
+                }}
+            >
+                <div style={{
+                    lineHeight: 1,
+                    padding: '2rem',
+                    marginBottom: '0.5rem',
+                    width: 200,
+                    height: 100
+                }}>
+                </div>
+                <div style={{
+                    lineHeight: 1,
+                    padding: '2rem',
+                    marginBottom: '0.5rem',
+                    width: 200,
+                    height: 100
+                }}>
+                </div>
+                <div style={{
+                    lineHeight: 1,
+                    padding: '2rem',
+                    marginBottom: '0.5rem',
+                    width: 200,
+                    height: 100
+                }}>
+                </div>
+                
+             
+            </div>
+        </div>
     }
-    if (error) return <div>failed to load</div>
-    if (loading) return (<Skeleton
 
+    if (!data || loading || error) return (<Skeleton
+        // count={4}
         wrapper={InlineWrapperWithMargin}
-        inline
-        width={200}
-        hight={200}
+    
+     width={600}
+    
     />)
-    if (!data) return (<Skeleton
 
-        wrapper={InlineWrapperWithMargin}
-        inline
-        width={200}
-        hight={400}
-    />)
 
     return (
         <div className={` md:grid grid-cols-2 gap-4 md:mb-7 ${darkMode ? css.dark : ''} container ${css.featured}`}>

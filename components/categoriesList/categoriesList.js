@@ -15,22 +15,28 @@ const CatogriesList = ({ }) => {
     const { data, loading, error } = useSWR(`${process.env.api}/blog/category`, fetcher);
 
     const InlineWrapperWithMargin = ({ children }) => {
-        return <span style={{ margin: '1rem' }}>{children}</span>
+        return<div
+        style={{
+            
+            display: 'inline',
+            lineHeight: 1,
+            padding: '2rem',
+            marginBottom: '0.5rem',
+            width: 50,
+            height:50
+        }}
+    >
+        {children}
+    </div>
     }
-    if (error) return <div>failed to load</div>
-    if (loading) return (<Skeleton
-        count={5}
+    
+    if (!data ||loading || error) return (<Skeleton
+        count={4}
         wrapper={InlineWrapperWithMargin}
         inline
-        width={200}
+        width= {60}
     />)
-    if (!data) return (<Skeleton
-        count={5}
-        wrapper={InlineWrapperWithMargin}
-        inline
-        width={200}
-    />
-    )
+  
 
     return (
         <div className={`${darkMode ? css.dark : ''} ${css.div}`}>
@@ -40,19 +46,19 @@ const CatogriesList = ({ }) => {
                         slidesPerView: 2.5,
                         spaceBetween: 0,
                         slidesPerGroup: 2,
-                        
+
                     },
                     768: {
                         slidesPerView: 4,
                         spaceBetween: 0,
                         slidesPerGroup: 2,
-                        
+
                     },
                     1024: {
                         slidesPerView: 4,
                         spaceBetween: 0,
                         slidesPerGroup: 2,
-                        
+
                     },
                 }}
                 navigation={true}
@@ -76,6 +82,8 @@ const CatogriesList = ({ }) => {
                     ))
                 }
             </Swiper >
+
+          
         </div >
     )
 }
