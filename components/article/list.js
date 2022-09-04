@@ -2,7 +2,6 @@ import React, { useContext, useState, useEffect } from 'react'
 import Image from 'next/image';
 import Link from 'next/link'
 import axios from 'axios';
-import css from './list.module.scss'
 import { ThemeContext } from '../../DarkModeContext';
 
 
@@ -92,7 +91,7 @@ const List = ({ articles }) => {
                         <div className={`button font-normal flex flex-row-reverse ml-2 mt-auto  pb-4`}>
                             <button id='btn' onClick={() =>
                                 handleClick(item.title, item.url.replace("https://www.for9a.com/", `${process.env.domain}/`))}
-                                className={'shareButton'}>
+                                className={'shareButton mr-1 '}>
                                 <svg xmlns="http://www.w3.org/2000/svg"
                                     width="18px" height="17px" viewBox="1 0 24 24">
                                     <path fill="gray" d="M18,16.08C17.24,16.08 16.56,16.38 

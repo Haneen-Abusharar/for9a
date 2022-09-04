@@ -5,7 +5,7 @@ const nextConfig = {
 }
 
 module.exports = {
-  trailingSlash: true,
+  // trailingSlash: true,
 	webpackDevMiddleware: config => {
 		config.watchOptions = {
 			poll: 1000,

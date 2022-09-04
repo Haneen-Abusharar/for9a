@@ -58,13 +58,11 @@ const ArticleItem = ({ item, showDesc }) => {
         })
     }
 
-    // if (!item) return (<ArticleCardLoad />)
-
-
+    
     return (
 
         <div className={` articleCard 
-       flex flex-col max-w-sm h-full mx-1 mb-5 bg-white rounded-lg border border-gray-200 shadow-md 
+       flex flex-col max-w-sm h-full ml-1 mb-5 bg-white rounded-lg border border-gray-200 shadow-md 
         md:mb-0 hover:bg-gray-100 hover:transition ease-in-out ${darkMode ?'bg-zinc-700 hover:bg-zinc-600  border-none ': ''}`}>
 
             {item.images?.md &&
@@ -170,7 +168,7 @@ const ArticleItem = ({ item, showDesc }) => {
                     }
 
 
-                    <button id='btn' onClick={handleClick} className={`${css.shareButton}`}>
+                    <button id='btn' onClick={handleClick} className={`${css.shareButton} mr-1`}>
                         <svg xmlns="http://www.w3.org/2000/svg"
                             height="17px" width="18px" viewBox="1 0 24 24">
                             <path fill="gray" d="M18,16.08C17.24,16.08 16.56,16.38 

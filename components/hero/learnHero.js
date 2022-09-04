@@ -10,7 +10,6 @@ const LearnHero = () => {
         <div className={`${darkMode ? css.dark : ''} ${css.hero}`}>
             <div className='container'>
                 <h1 className=''>تعلم </h1>
-                {/* <input type="checkbox" className={css.state} id="post-1" /> */}
                 <p className={css.readMore}> تحتوي بوابة تعلم على مجموعة مقالات تشكل حاجة أساسية لدى غالبية مستخدمي فرصة.
                     وإيجاد ما يساعدهم في فئات فرص مختلفة في جميع المجالات والمستويات التعليمية والجنسيات،
                     إذ يحرص فريق العمل على جعل موقع فرصة منصة متكاملة توفر
@@ -22,7 +21,6 @@ const LearnHero = () => {
                     {!show && <button onClick={() => setShow(true)}>...اقرأ المزيد</button>}
                     {show && <button onClick={() => setShow(false)}>...اخفاء</button>}
                 </p>
-                {/* <label htmlFor="post-1" className={css.trigger}/> */}
 
             </div>
         </div>

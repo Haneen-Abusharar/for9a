@@ -14,7 +14,8 @@ const Category = ({ input }) => {
     const { data, loading, error } = useSWR(`${process.env.api}/blog/category`, fetcher);
 
     
-    if (error || loading || !data) return (<ArticleCardLoad/>)
+     if (error || loading || !data) 
+    return (<div className='container'> <Skeleton width={50}/></div>)
     
 
     return (

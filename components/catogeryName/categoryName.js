@@ -3,9 +3,10 @@ import axios from 'axios';
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import ArticleItem from '../article/articleItem';
-import MyLoader from '../skeleton/skeleton';
 import LearnFilter from '../filters/learn/learnFilter';
 import css from "./categoryName.module.scss";
+import ArticleCardLoad from '../skeleton/articleCard';
+
 const CategoryName = ({ catogeries, filter }) => {
 
     const observer = useRef();
@@ -14,16 +15,14 @@ const CategoryName = ({ catogeries, filter }) => {
     const [page, setPage] = useState(1);
     const [data, setData] = useState(null);
 
-    const InlineWrapperWithMargin = ({ children }) => {
-        return <div style={{ margin: '50px', marginTop: "70px" }}>{children}</div>
-    }
+
 
     useEffect(() => {
         setLoading(true);
         async function fetchData() {
             const result = await axios.get(`${process.env.api}/learn/all?type=${filter.type}&page=${page}&count=12`, {
                 headers: {
-                     'authentication': 'i0qvLgN2AfwTgajvdOcB7m1IHEoKu7ou' 
+                    'authentication': 'i0qvLgN2AfwTgajvdOcB7m1IHEoKu7ou'
                 }
             })
             if (!data)
@@ -56,9 +55,18 @@ const CategoryName = ({ catogeries, filter }) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [loading, hasMore]);
 
+    if (!data)
+    return (<div className='container mt-36'>
 
-
-    if (!data) return ( <Skeleton/>)
+        <Skeleton width={200} />
+        <Skeleton count={3} />
+        <div className='  md:grid md:grid-cols-3 gap-1 mt-5 '>
+            <ArticleCardLoad /> <ArticleCardLoad />  <ArticleCardLoad />
+            <ArticleCardLoad />  <ArticleCardLoad />  <ArticleCardLoad />
+            <ArticleCardLoad />  <ArticleCardLoad />  <ArticleCardLoad />
+        </div>
+    </div>
+    )
 
     return (
         <>
@@ -71,9 +79,9 @@ const CategoryName = ({ catogeries, filter }) => {
             </div>
             <div className={`container ${css.load}`}   >
                 <div className={css.articles}>
-                    
+
                     {data && data.map((item, index) => {
-                        return<ArticleItem item={item} showDesc={true} key={index} />
+                        return <ArticleItem item={item} showDesc={true} key={index} />
                     })}
                 </div>
                 <div ref={lastItem} />

@@ -9,6 +9,7 @@ import fetcher from '../../utilities/fetcher';
 import ArticleItem from './../article/articleItem'
 import css from "../category/category.module.scss";
 
+
 const CaroselArticles = ({ filter }) => {
 
 
@@ -17,8 +18,13 @@ const CaroselArticles = ({ filter }) => {
 
 
   if (!data || loading || error) 
+  //
   return (
-    <div className='flex '><ArticleCardLoad /><ArticleCardLoad /><ArticleCardLoad /></div>)
+    <div className=' grid grid-cols-3  gap-1 '>
+      <div className=''><ArticleCardLoad /></div>
+      <div className=''><ArticleCardLoad /></div>
+      <div className=' '><ArticleCardLoad /></div>
+    </div>)
 
 
   return (

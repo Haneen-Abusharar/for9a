@@ -16,9 +16,16 @@ const Featured = () => {
     const { darkMode } = useContext(ThemeContext);
     const { data, loading, error } = useSWR(`${process.env.api}/learn/all`, fetcher);
 
-      if (!data || loading || error)
-        return (<div style={{display:"flex", alignItems:"center", justifyContent:"center" }}><div className='-ml-36'><ArticleCardLoad /></div><ListLoading/></div>)
-
+       if (!data || loading || error)
+    return (
+        <div className=
+            // 'md:grid grid-cols-2 gap-4 md:mb-7  container'
+            'container flex flex-col md:flex-row '
+        >
+            <div className='w-full mb-2 ml-2 h-full'><ArticleCardLoad /></div >
+            <div className='w-full  '><ListLoading /></div>
+        </div>
+    )
 
     return (
         <div className={` md:grid grid-cols-2 gap-4 md:mb-7 container ${css.featured}`}>
