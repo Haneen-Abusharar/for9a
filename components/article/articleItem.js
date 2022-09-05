@@ -3,9 +3,7 @@ import Image from 'next/image'
 import axios from 'axios';
 import { ThemeContext } from '../../DarkModeContext';
 import Link from 'next/link'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
-// <FontAwesomeIcon icon={faCoffee} />
+
 
 const ArticleItem = ({ item, showDesc }) => {
     const { darkMode } = useContext(ThemeContext);
