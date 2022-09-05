@@ -56,7 +56,7 @@ const CatogriesList = ({ }) => {
         <div className={`${darkMode ? css.dark : ''} ${css.div}`}>
             <Swiper
                 breakpoints={{
-                    400: {
+                    200: {
                         slidesPerView: 2.5,
                         spaceBetween: 0,
                         slidesPerGroup: 2,

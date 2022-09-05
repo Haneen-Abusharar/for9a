@@ -92,7 +92,7 @@ const List = ({ articles }) => {
                             <button id='btn' onClick={() =>
                                 handleClick(item.title, item.url.replace("https://www.for9a.com/", `${process.env.domain}/`))}
                                 className={'shareButton mr-1 '}>
-                                <svg xmlns="http://www.w3.org/2000/svg"
+                                <svg xmlns="http://www.w3.org/2000/svg" className=' h-7 w-7 md:h-5 md:w-5'
                                     width="18px" height="17px" viewBox="1 0 24 24">
                                     <path fill="gray" d="M18,16.08C17.24,16.08 16.56,16.38 
                                 16.04,16.85L8.91,12.7C8.96,12.47 9,12.24 9,12C9,11.76 8.96,11.53 
@@ -107,8 +107,8 @@ const List = ({ articles }) => {
                             {
                                 active[item.id] == 1 ?
                                     <button className={'heart'} onClick={() => { deleteFavorite(item.id) }}>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                            width="20px" height="20px">
+                                        <svg xmlns="http://www.w3.org/2000/svg" className='h-8 w-8 md:h-6 md:w-6'
+                                         viewBox="0 0 24 24"width="20px" height="20px">
                                             <path fill="#eb751d" d="M12,21.35L10.55,20.03C5.4,15.36
                                 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,
                                 5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22
@@ -117,7 +117,7 @@ const List = ({ articles }) => {
                                     </button>
                                     :
                                     <button className={'heart'} onClick={() => { addFavorite(item.id) }}>
-                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                        <svg xmlns="http://www.w3.org/2000/svg" className='h-8 w-8 md:h-6 md:w-6'
                                             viewBox="0 0 24 24" width="20px" height="20px">
                                             <path fill="#eb751d" d="M12.1 18.55L12 18.65L11.89 18.55C7.14 14.24 4
                                     11.39 4 8.5C4 6.5 5.5 5 7.5 5C9.04 5 10.54 6 11.07 7.36H12.93C13.46
@@ -127,8 +127,6 @@ const List = ({ articles }) => {
                                     20.03C18.6 15.36 22 12.27 22 8.5C22 5.41 19.58 3 16.5 3Z" />
                                         </svg>
                                     </button>
-
-
 
                             }
 

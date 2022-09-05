@@ -6,6 +6,7 @@ import useSWR from 'swr';
 import fetcher from '../../utilities/fetcher';
 import css from './comments.module.scss'
 import Skeleton from 'react-loading-skeleton';
+import CommentLoad from '../skeleton/commentLoad';
 
 const Comments = ({ id }) => {
     const { darkMode } = useContext(ThemeContext);
@@ -48,17 +49,16 @@ const Comments = ({ id }) => {
         return event.toLocaleTimeString("en-US")
     }
 
-    const InlineWrapperWithMargin = ({ children }) => {
-        return <span style={{ margin: '5rem', marginRight:'10rem' }}>{children}</span>
-      }
-     
-      if (!data || loading || error) return (<Skeleton
-        count={5}
-        wrapper={InlineWrapperWithMargin}
-        inline
-        width={600}
-        height={50}
-      />)
+
+
+    if (!data || loading || error) 
+    return (
+        <div className='container flex flex-col'>
+            <CommentLoad />
+            <CommentLoad />
+            <CommentLoad />
+        </div>
+    )
 
     return (
         <div className={`${darkMode ? css.dark : ''} ${css.comments}`} >
@@ -79,7 +79,7 @@ const Comments = ({ id }) => {
             </div>
             <div className={css.mainComments}>
                 <div className={css.pic}>
-                    <Image src="/h.jpg" height={50} width={50} alt="profilepic" />
+                    <Image src="/h.jpg" height="50px" width="50px" alt="profilepic" />
                 </div>
                 <div className={css.input}>
                     <form onChange={setBody}>
@@ -106,7 +106,7 @@ const Comments = ({ id }) => {
                 <div className={css.pastComments} key={i}>
 
                     <div className={css.pic}>
-                        <Image src={'/h.jpg'} height={50} width={50} alt="profilepic" className='object-cover rounded-full' />
+                        <Image src={'/h.jpg'} height="50px" width="50px" alt="profilepic" className='object-cover rounded-full' />
                     </div>
 
                     <div className={css.past}>
@@ -121,7 +121,8 @@ const Comments = ({ id }) => {
                 <div className={css.pastComments} key={i}>
 
                     <div className={css.pic}>
-                        <Image src={item.user.images.md} height={50} width={50} alt="profilepic" className='object-cover rounded-full' />
+                        {item.user.images?.md &&
+                            <Image src={item.user.images.md} height="50px" width="50px" alt="profilepic" className='object-cover rounded-full' />}
                     </div>
 
                     <div className={css.past}>
@@ -133,7 +134,7 @@ const Comments = ({ id }) => {
                             <div className={css.past} key={x}>
                                 <div className={css.leftreply}>
                                     <div className={css.pic}>
-                                        <Image src={reply.user.images.md} height={45} width={45} alt="profilepic" className='object-cover' />
+                                        <Image src={reply.user.images.md} height="50px" width="50px" alt="profilepic" className='object-cover' />
 
                                     </div>
                                     <div className={css.left}>
@@ -150,7 +151,7 @@ const Comments = ({ id }) => {
                         <div className={css.replys}>
 
                             <div className={css.pic}>
-                                <Image src={'/h.jpg'} height={50} width={50} alt="profile pic" />
+                                <Image src={'/h.jpg'} height="50px" width="50px" alt="profile pic" />
                             </div>
                             <div className={css.publish} >
                                 <form onChange={setBody}>

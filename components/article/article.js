@@ -20,7 +20,8 @@ const Article = ({ item }) => {
     const audioRef = useRef(null);
     const date = new Date(item.published_at).toLocaleDateString('ar-EG', { month: "long" });
     const loader = ({ src, width, quality }) => {
-        return `https://images.for9a.com/thumb/fit-${width}-${width}-100-webp/${src}`;
+        const height= Math.ceil(width / 2);
+        return `https://images.for9a.com/thumb/fit-${width}-${height}-${quality}-webp/${src}`;
     }
    
 
@@ -140,11 +141,11 @@ const Article = ({ item }) => {
 
                 <div className={`image md:w-3/4 mt-3 `}>
 
-                    {item.images?.md && 
+                    {item.images?.folder && 
                          <Image src={`${item.images.folder}/${item.images.name}`}
                             loader={loader}
-                            className={`${css.move} rounded-none md:rounded-md object-cover`} 
-                            width="500px" height="250px"
+                            className={`${css.move} rounded-none md:rounded-md object-cover `} 
+                            width="500px" height="250px" quality={100}
                             alt={item.title} loading='lazy' placeholder='blurDataURL' layout='responsive'  />}
                 </div>
 
@@ -206,11 +207,11 @@ const Article = ({ item }) => {
                         <Link href={"https://www.twitter.com"}>
                             <a className='pt-1'>
                                 <Image src="https://www.ida2at.com/wp-content/themes/ida2at/assets/images/icons/twitter.svg"
-                                width={30} height={30} alt="twitter" /></a></Link>
+                                width="30px" height="30px" alt="twitter" /></a></Link>
                         <Link href={"https://www.facebook.com"}>
                             <a  className='pt-1'>
                                 <Image src="https://www.ida2at.com/wp-content/themes/ida2at/assets/images/icons/facebook.svg"
-                                width={30} height={30} alt="facbook" /> </a></Link>
+                                  width="30px" height="30px" alt="facbook" /> </a></Link>
                         <div className={`button flex`}>
                             {item.is_pinned === 0 ?
                                 active === true ?
@@ -228,7 +229,7 @@ const Article = ({ item }) => {
                                     :
                                     <button className={'heart'} onClick={deleteFavorite}>
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                            width={30} height={30}>
+                                              width="30px" height="30px" >
                                             <path fill="#eb751d" d="M12,21.35L10.55,20.03C5.4,15.36
                                     2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,
                                     5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22
@@ -240,7 +241,7 @@ const Article = ({ item }) => {
                                 active === true ?
                                     <button className={'heart'} onClick={()=>{setActive(false); deleteFavorite() }}>
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                            width={30} height={30}>
+                                              width="30px" height="30px" >
                                             <path fill="#eb751d" d="M12,21.35L10.55,20.03C5.4,15.36
                                     2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,
                                     5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22
@@ -250,7 +251,7 @@ const Article = ({ item }) => {
                                     :
                                     <button className={'heart'} onClick={()=>{setActive(true);addFavorite()}}>
                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                            viewBox="0 0 24 24" width={30} height={30}>
+                                            viewBox="0 0 24 24" width="30px" height="30px" >
                                             <path fill="#eb751d" d="M12.1 18.55L12 18.65L11.89 18.55C7.14 14.24 4
                                         11.39 4 8.5C4 6.5 5.5 5 7.5 5C9.04 5 10.54 6 11.07 7.36H12.93C13.46
                                         6 14.96 5 16.5 5C18.5 5 20 6.5 20 8.5C20 11.39 16.86 14.24 12.1 

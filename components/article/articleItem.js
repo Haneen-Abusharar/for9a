@@ -1,12 +1,9 @@
 import React, { useContext, useState } from 'react'
 import Image from 'next/image'
 import axios from 'axios';
-import Skeleton from 'react-loading-skeleton'
 import { ThemeContext } from '../../DarkModeContext';
-import 'react-loading-skeleton/dist/skeleton.css'
-import css from './articleImage.module.scss'
 import Link from 'next/link'
-import ArticleCardLoad from '../skeleton/articleCard';
+
 
 
 const ArticleItem = ({ item, showDesc }) => {
@@ -18,7 +15,7 @@ const ArticleItem = ({ item, showDesc }) => {
         const height = Math.ceil(width / 2);
         return `https://images.for9a.com/thumb/fit-${width}-${height}-${quality}-webp/${src}`;
     }
-   
+
     const handleClick = () => {
         if (navigator.share) {
             navigator
@@ -58,36 +55,36 @@ const ArticleItem = ({ item, showDesc }) => {
         })
     }
 
-    
+
     return (
 
         <div className={` articleCard 
-       flex flex-col max-w-sm h-full ml-1 mb-5 bg-white rounded-lg border border-gray-200 shadow-md 
-        md:mb-0 hover:bg-gray-100 hover:transition ease-in-out ${darkMode ?'bg-zinc-700 hover:bg-zinc-600  border-none ': ''}`}>
+       flex flex-col  h-full ml-1 mb-5 bg-white rounded-lg border border-gray-200 shadow-md 
+        md:mb-0 hover:bg-gray-100 hover:transition ease-in-out ${darkMode ? 'bg-zinc-700 hover:bg-zinc-600  border-none ' : ''}`}>
 
             {item.images?.md &&
                 <Link
                     href={`${item.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
-                    <a> 
+                    <a>
 
                         <Image src={`${item.images.folder}/${item.images.name}`}
                             loader={loader}
                             quality={80}
-                            className={`move rounded-t-lg object-cover ${darkMode ?' hover:opacity-50 ease-in-out  ': ''} `} 
+                            className={`move rounded-t-lg object-cover ${darkMode ? ' hover:opacity-50 ease-in-out  ' : ''} `}
                             width="200px" height="130px"
-                            alt={item.title} loading='lazy' placeholder='blurDataURL' layout='responsive'  />
+                            alt={item.title} loading='lazy' placeholder='blurDataURL' layout='responsive' />
                     </a>
                 </Link>}
 
             <div className={`categories flex flex-row m-2 `}>
                 {item.categories.map((l, i) => (
-                    <div className={`${css.category}  truncate`} key={i}>
+                    <div className={`category truncate`} key={i}>
                         <Link
                             href={`${l.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
-                            <a className={`m-0 !no-underline ${darkMode ?' !text-white ': '!text-zinc-600' }`}>
+                            <a className={`m-0 !no-underline ${darkMode ? ' !text-white ' : '!text-zinc-600'}`}>
                                 <h4 className={` text-xs  border  bg-gray-100
                                   ml-2 rounded-xl truncate p-1 md:text-sm hover:bg-gray-200
-                                   transition ease-in-out ${darkMode ?' !text-white bg-zinc-600  hover:bg-zinc-500 ': 'border-gray-300'}`}>
+                                   transition ease-in-out ${darkMode ? ' !text-white bg-zinc-600  hover:bg-zinc-500 ' : 'border-gray-300'}`}>
                                     {l.title}
                                 </h4>
                             </a>
@@ -100,7 +97,7 @@ const ArticleItem = ({ item, showDesc }) => {
                 href={`${item.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
                 <a className='no-underline'>
                     <h3 className={` mx-2 mb-2 text-sm font-bold tracking-tight  md:text-lg
-                     ${darkMode ?'text-white': 'text-gray-800'}`}>{item.title}</h3>
+                     ${darkMode ? 'text-white' : 'text-gray-800'}`}>{item.title}</h3>
                 </a>
             </Link>
             <Link
@@ -111,7 +108,7 @@ const ArticleItem = ({ item, showDesc }) => {
             </Link>
             <div className={`cardFooter flex flex-row items-center mt-auto mb-1`}>
                 <div className={`imageFooter mr-2 `}>
-                    <Image src={`/h.jpg`} width={40} height={40} className="rounded-full" alt='auther picture' />
+                    <Image src={`/h.jpg`} width={"40px"} height={"40px"} className="rounded-full" alt='auther picture' />
                 </div>
                 <div className={`Author flex-auto mr-2 text-sm `}>
                     <h5 className=' whitespace-nowrap inline'>الكاتب</h5>
@@ -122,8 +119,8 @@ const ArticleItem = ({ item, showDesc }) => {
 
                         active === true ?
                             <button className={`heart`} onClick={addFavorite}>
-                                <svg xmlns="http://www.w3.org/2000/svg" height="20px" width="20px"
-                                    viewBox="0 0 24 24" >
+                                <svg xmlns="http://www.w3.org/2000/svg" className='h-8 w-8 md:h-6 md:w-6'
+                                    height="25px" width="25px" viewBox="0 0 24 24" >
                                     <path fill="#eb751d" d="M12.1 18.55L12 18.65L11.89 18.55C7.14 14.24 4
                          11.39 4 8.5C4 6.5 5.5 5 7.5 5C9.04 5 10.54 6 11.07 7.36H12.93C13.46
                           6 14.96 5 16.5 5C18.5 5 20 6.5 20 8.5C20 11.39 16.86 14.24 12.1 
@@ -134,7 +131,8 @@ const ArticleItem = ({ item, showDesc }) => {
                             </button>
                             :
                             <button className={`heart`} onClick={deleteFavorite}>
-                                <svg height="20px" width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <svg height="25px" width="25px" className='h-8 w-8 md:h-6 md:w-6'
+                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                     <path fill="#eb751d" d="M12,21.35L10.55,20.03C5.4,15.36
                              2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,
                              5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22
@@ -144,8 +142,9 @@ const ArticleItem = ({ item, showDesc }) => {
 
                         :
                         active === true ?
-                            <button className={`heart`} onClick={()=>{setActive(false); deleteFavorite() }}>
-                                <svg height="20px" width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <button className={`heart`} onClick={() => { setActive(false); deleteFavorite() }}>
+                                <svg height="25px" width="25px" className='h-8 w-8 md:h-6 md:w-6'
+                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                     <path fill="#eb751d" d="M12,21.35L10.55,20.03C5.4,15.36
                            2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,
                            5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22
@@ -153,9 +152,9 @@ const ArticleItem = ({ item, showDesc }) => {
                                 </svg>
                             </button>
                             :
-                            <button className={`heart`} onClick={()=>{setActive(true);addFavorite()}}>
-                                <svg height="20px" width="20px" xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24">
+                            <button className={`heart`} onClick={() => { setActive(true); addFavorite() }}>
+                                <svg height="25px" width="25px" className='h-8 w-8 md:h-6 md:w-6'
+                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                     <path fill="#eb751d" d="M12.1 18.55L12 18.65L11.89 18.55C7.14 14.24 4
                        11.39 4 8.5C4 6.5 5.5 5 7.5 5C9.04 5 10.54 6 11.07 7.36H12.93C13.46
                         6 14.96 5 16.5 5C18.5 5 20 6.5 20 8.5C20 11.39 16.86 14.24 12.1 
@@ -168,9 +167,9 @@ const ArticleItem = ({ item, showDesc }) => {
                     }
 
 
-                    <button id='btn' onClick={handleClick} className={`${css.shareButton} mr-1`}>
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                            height="17px" width="18px" viewBox="1 0 24 24">
+                    <button id='btn' onClick={handleClick} className={`shareButton mr-2 ml-1 `}>
+                        <svg xmlns="http://www.w3.org/2000/svg" className=' h-7 w-7 md:h-5 md:w-5'
+                            height="20px" width="20px" viewBox="1 0 24 24">
                             <path fill="gray" d="M18,16.08C17.24,16.08 16.56,16.38 
                    16.04,16.85L8.91,12.7C8.96,12.47 9,12.24 9,12C9,11.76 8.96,11.53 
                    8.91,11.3L15.96,7.19C16.5,7.69 17.21,8 18,8A3,3 0 0,0 21,5A3,3 0 
