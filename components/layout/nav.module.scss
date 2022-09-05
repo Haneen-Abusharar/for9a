@@ -23,16 +23,14 @@
             cursor: pointer;
             text-align: center;
             vertical-align: middle;
-            width: 80%;
-
             z-index: 102;
         }
 
         .menu {
-            //overflow: visible;
             cursor: pointer;
             z-index: 102;
-            width: 100px;
+            width: 80px;
+            padding-bottom: 5px;
 
             h4 {
                 font-size: 1rem;
@@ -42,8 +40,6 @@
             .dropdown {
                 position: absolute;
                 display: none;
-                // right: 0px;
-                //  bottom: 0;
                 border-radius: 5px;
                 cursor: pointer;
                 padding: 10px;
@@ -74,13 +70,11 @@
         }
 
         .nightmode {
-
-            top: -10px;
             z-index: 102;
             width: 80px;
             overflow: visible;
             padding: 20px;
-
+            padding-top: 15px;
         }
     }
 
@@ -90,10 +84,6 @@
 @media screen and (min-width: 800px) {
     .navbar {
         .navContent {
-            .logo {
-                width: 100%;
-            }
-
             .menu {
                 .dropdown {
                     min-width: 200px;

@@ -86,10 +86,10 @@ const List = ({ articles }) => {
                     <div className={`flex-none w-3/5 flex flex-col ${darkMode ? 'bg-zinc-700 hover:bg-zinc-600 ' : ''} `}>
                         <Link
                             href={`${item.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
-                            <a> <h3 className={` p-3  text-base  font-bold tracking-tight  ${darkMode ?'text-white':'text-gray-800'}`}>{item.title}</h3></a></Link>
+                            <a> <h3 className={` p-3  text-base  font-bold tracking-tight  ${darkMode ? 'text-white' : 'text-gray-800'}`}>{item.title}</h3></a></Link>
 
                         <div className={`button font-normal flex flex-row-reverse ml-2 mt-auto  pb-4`}>
-                            <button id='btn' onClick={() =>
+                            <button aria-label="نشر" onClick={() =>
                                 handleClick(item.title, item.url.replace("https://www.for9a.com/", `${process.env.domain}/`))}
                                 className={'shareButton mr-1 '}>
                                 <svg xmlns="http://www.w3.org/2000/svg" className=' h-7 w-7 md:h-5 md:w-5'
@@ -106,9 +106,9 @@ const List = ({ articles }) => {
                             </button>
                             {
                                 active[item.id] == 1 ?
-                                    <button className={'heart'} onClick={() => { deleteFavorite(item.id) }}>
+                                    <button className={'heart'} onClick={() => { deleteFavorite(item.id) }} aria-label="محي من المفضلة">
                                         <svg xmlns="http://www.w3.org/2000/svg" className='h-8 w-8 md:h-6 md:w-6'
-                                         viewBox="0 0 24 24"width="20px" height="20px">
+                                            viewBox="0 0 24 24" width="20px" height="20px">
                                             <path fill="#eb751d" d="M12,21.35L10.55,20.03C5.4,15.36
                                 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,
                                 5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22
@@ -116,7 +116,7 @@ const List = ({ articles }) => {
                                         </svg>
                                     </button>
                                     :
-                                    <button className={'heart'} onClick={() => { addFavorite(item.id) }}>
+                                    <button className={'heart'} onClick={() => { addFavorite(item.id) }} aria-label="اضافة للمفضلة">
                                         <svg xmlns="http://www.w3.org/2000/svg" className='h-8 w-8 md:h-6 md:w-6'
                                             viewBox="0 0 24 24" width="20px" height="20px">
                                             <path fill="#eb751d" d="M12.1 18.55L12 18.65L11.89 18.55C7.14 14.24 4

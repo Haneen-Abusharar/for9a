@@ -6,13 +6,17 @@ import axios from 'axios';
 
 
 const ArticleP = ({ articles }) => {
-
     return (
         <>
             <Head>
                 <title>{articles[0].title}</title>
-                <meta name="description"
-                    content={articles[0].short_description} />
+                <meta name="description"content={articles[0].short_description} />
+                <meta property="og:title" content={articles[0].title} />
+                <meta property="og:url" content={articles[0].url} />
+                <meta property="og:locale" content="ar_SA" />
+                <meta property="og:type" content="article" />
+                <meta property="og:image" content={articles[0].images.sm} />
+                <meta property="og:description" content={articles[0].short_description}/>
             </Head>
             <Article item={articles[0]} filter={{
                 type: articles[0].category.id

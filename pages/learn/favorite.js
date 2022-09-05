@@ -3,8 +3,11 @@ import Head from "next/head";
 import Link from 'next/link'
 import { gql } from '@apollo/client';
 import { useQuery } from '@apollo/client'
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 import FavoriteItem from '../../components/favorite/favoriteItem';
 import css from "./favorite.module.scss"
+import ArticleCardLoad from '../../components/skeleton/articleCard';
 const Favorite = () => {
   const observer = useRef();
   const [loading2, setLoading] = useState(false);
@@ -108,13 +111,29 @@ const Favorite = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loading2, hasMore]);
 
-  if (loading) return <>loading</>
-  if (error || !data) return <>error</>
 
+  if (loading || error || !data)
+    return (<>
+      <div className='container mt-16'>
+        <Skeleton  width={80} />
+       <div className='mt-1 mb-4'> <Skeleton  width={80} /></div>
+      </div>
+      <div className=' container md:grid md:grid-cols-3 gap-1 mt-5 '>
+        <ArticleCardLoad /> <ArticleCardLoad />  <ArticleCardLoad />
+        <ArticleCardLoad />  <ArticleCardLoad />  <ArticleCardLoad />
+        <ArticleCardLoad />  <ArticleCardLoad />  <ArticleCardLoad />
+      </div>
+    </>
+    )
   return (
     <>
       <Head>
         <title>مفضلات</title>
+        <meta name="description"content="مفضلات" />
+                <meta property="og:title" content="مفضلات" />
+                <meta property="og:locale" content="ar_SA" />
+                <meta property="og:type" content="website" />
+                <meta property="og:description" content="مفضلات"/>
       </Head>
       <div className={`container ${css.load}`}  >
         <div className={`${css.breadcrumb} `}>
@@ -132,7 +151,7 @@ const Favorite = () => {
               <FavoriteItem item={item} key={i} />
             ))}
         </div>
-       
+
       </div>
       <div ref={lastItem} />
     </>

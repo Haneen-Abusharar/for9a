@@ -56,17 +56,17 @@ const CategoryName = ({ catogeries, filter }) => {
     }, [loading, hasMore]);
 
     if (!data)
-    return (<div className='container mt-36'>
+        return (<div className='container mt-36'>
 
-        <Skeleton width={200} />
-        <Skeleton count={3} />
-        <div className='  md:grid md:grid-cols-3 gap-1 mt-5 '>
-            <ArticleCardLoad /> <ArticleCardLoad />  <ArticleCardLoad />
-            <ArticleCardLoad />  <ArticleCardLoad />  <ArticleCardLoad />
-            <ArticleCardLoad />  <ArticleCardLoad />  <ArticleCardLoad />
+            <Skeleton width={200} />
+            <Skeleton count={3} />
+            <div className='  md:grid md:grid-cols-3 gap-1 mt-5 '>
+                <ArticleCardLoad /> <ArticleCardLoad />  <ArticleCardLoad />
+                <ArticleCardLoad />  <ArticleCardLoad />  <ArticleCardLoad />
+                <ArticleCardLoad />  <ArticleCardLoad />  <ArticleCardLoad />
+            </div>
         </div>
-    </div>
-    )
+        )
 
     return (
         <>

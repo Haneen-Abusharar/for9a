@@ -12,14 +12,14 @@
 				"Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 			display: inline-block;
 			font-size: 1rem;
-			border: 2px solid #72787a;
+			border: 2px solid #8a9294;
 			border-radius: 5px;
 			width: 100%;
 			background-image: url("https://img.icons8.com/windows/32/000000/search--v1.png");
 			background-size: 20px 20px;
 			background-repeat: no-repeat;
 			background-position: 10px;
-
+			outline:  #eb751d;
 			&:hover {
 				border: 2px solid #eb751d;
 			}

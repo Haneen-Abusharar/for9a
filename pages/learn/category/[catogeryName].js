@@ -7,10 +7,13 @@ const CategoryPage = ({ catogeries }) => {
         <>
             <Head>
                 <title>{catogeries.title}</title>
-                <meta name="description"
-                    content={catogeries.description
-                        .replace(/[<-\w*|"|=|;|:|&|/>]/g, "")
-                    } />
+                <meta property="og:title" content={catogeries.title} />
+                <meta name="description" content={catogeries.description.replace(/[<-\w*|"|=|;|:|&|/>]/g, "")} />
+                <meta property="og:url" content={catogeries.url} />
+                <meta property="og:locale" content="ar_SA" />
+                <meta property="og:type" content="website" />
+                <meta property="og:description" content={catogeries.description.replace(/[<-\w*|"|=|;|:|&|/>]/g, "")}/>
+                
 
             </Head>
             <CategoryName

@@ -3,8 +3,9 @@ import Image from 'next/image'
 import axios from 'axios';
 import { ThemeContext } from '../../DarkModeContext';
 import Link from 'next/link'
-
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+// <FontAwesomeIcon icon={faCoffee} />
 
 const ArticleItem = ({ item, showDesc }) => {
     const { darkMode } = useContext(ThemeContext);
@@ -75,16 +76,16 @@ const ArticleItem = ({ item, showDesc }) => {
                             alt={item.title} loading='lazy' placeholder='blurDataURL' layout='responsive' />
                     </a>
                 </Link>}
-
+               
             <div className={`categories flex flex-row m-2 `}>
                 {item.categories.map((l, i) => (
                     <div className={`category truncate`} key={i}>
                         <Link
                             href={`${l.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
                             <a className={`m-0 !no-underline ${darkMode ? ' !text-white ' : '!text-zinc-600'}`}>
-                                <h4 className={` text-xs  border  bg-gray-100
-                                  ml-2 rounded-xl truncate p-1 md:text-sm hover:bg-gray-200
-                                   transition ease-in-out ${darkMode ? ' !text-white bg-zinc-600  hover:bg-zinc-500 ' : 'border-gray-300'}`}>
+                                <h4 className={` text-xs  border  
+                                  ml-2 rounded-xl truncate p-1 md:text-sm transition ease-in-out 
+                                  ${darkMode ? ' !text-white bg-zinc-600  hover:bg-zinc-500 ' : 'bg-gray-100 border-gray-300 hover:bg-gray-200'}`}>
                                     {l.title}
                                 </h4>
                             </a>
@@ -103,7 +104,7 @@ const ArticleItem = ({ item, showDesc }) => {
             <Link
                 href={`${item.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
                 <a>
-                    {showDesc && <p className=" line-clamp-3 m-2 mb-3 font-normal text-base text-gray-700 dark:text-gray-400">{item.short_description}</p>}
+                    {showDesc && <p className=" line-clamp-3 m-2 mb-3 font-normal text-base text-gray-500 ">{item.short_description}</p>}
                 </a>
             </Link>
             <div className={`cardFooter flex flex-row items-center mt-auto mb-1`}>
@@ -118,7 +119,7 @@ const ArticleItem = ({ item, showDesc }) => {
                     {item.is_pinned === 0 ?
 
                         active === true ?
-                            <button className={`heart`} onClick={addFavorite}>
+                            <button className={`heart`} onClick={addFavorite} aria-label="اضافة للمفضلة">
                                 <svg xmlns="http://www.w3.org/2000/svg" className='h-8 w-8 md:h-6 md:w-6'
                                     height="25px" width="25px" viewBox="0 0 24 24" >
                                     <path fill="#eb751d" d="M12.1 18.55L12 18.65L11.89 18.55C7.14 14.24 4
@@ -130,7 +131,7 @@ const ArticleItem = ({ item, showDesc }) => {
                                 </svg>
                             </button>
                             :
-                            <button className={`heart`} onClick={deleteFavorite}>
+                            <button className={`heart`} onClick={deleteFavorite} aria-label="محي من المفضلة">
                                 <svg height="25px" width="25px" className='h-8 w-8 md:h-6 md:w-6'
                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                     <path fill="#eb751d" d="M12,21.35L10.55,20.03C5.4,15.36
@@ -142,7 +143,8 @@ const ArticleItem = ({ item, showDesc }) => {
 
                         :
                         active === true ?
-                            <button className={`heart`} onClick={() => { setActive(false); deleteFavorite() }}>
+                            <button className={`heart`} onClick={() => { setActive(false); deleteFavorite() }}
+                                aria-label="محي من المفضلة">
                                 <svg height="25px" width="25px" className='h-8 w-8 md:h-6 md:w-6'
                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                     <path fill="#eb751d" d="M12,21.35L10.55,20.03C5.4,15.36
@@ -152,7 +154,8 @@ const ArticleItem = ({ item, showDesc }) => {
                                 </svg>
                             </button>
                             :
-                            <button className={`heart`} onClick={() => { setActive(true); addFavorite() }}>
+                            <button className={`heart`} onClick={() => { setActive(true); addFavorite() }}
+                                aria-label="اضافة للمفضلة">
                                 <svg height="25px" width="25px" className='h-8 w-8 md:h-6 md:w-6'
                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                     <path fill="#eb751d" d="M12.1 18.55L12 18.65L11.89 18.55C7.14 14.24 4
@@ -167,7 +170,7 @@ const ArticleItem = ({ item, showDesc }) => {
                     }
 
 
-                    <button id='btn' onClick={handleClick} className={`shareButton mr-2 ml-1 `}>
+                    <button  onClick={handleClick} className={`shareButton mr-2 ml-1 `} aria-label="نشر">
                         <svg xmlns="http://www.w3.org/2000/svg" className=' h-7 w-7 md:h-5 md:w-5'
                             height="20px" width="20px" viewBox="1 0 24 24">
                             <path fill="gray" d="M18,16.08C17.24,16.08 16.56,16.38 

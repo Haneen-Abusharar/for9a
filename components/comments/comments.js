@@ -51,14 +51,14 @@ const Comments = ({ id }) => {
 
 
 
-    if (!data || loading || error) 
-    return (
-        <div className='container flex flex-col'>
-            <CommentLoad />
-            <CommentLoad />
-            <CommentLoad />
-        </div>
-    )
+    if (!data || loading || error)
+        return (
+            <div className='container flex flex-col'>
+                <CommentLoad />
+                <CommentLoad />
+                <CommentLoad />
+            </div>
+        )
 
     return (
         <div className={`${darkMode ? css.dark : ''} ${css.comments}`} >
@@ -166,9 +166,8 @@ const Comments = ({ id }) => {
                                         placeholder='أضف رد' />
                                 </form>
                                 {showButtons[i + 2] == 1 && <div className={css.replyPublish} >
-
-                                    <button onClick={() => { hide(i + 2) }} type='button'>اخفاء</button>
-                                    <button type='submit' onClick={() => handleClick(value, item.id)} >نشر</button>
+                                    <button onClick={() => { hide(i + 2) }} type='button' aria-label="اخفاء">اخفاء</button>
+                                    <button type='submit' onClick={() => handleClick(value, item.id)} aria-label="نشر" >نشر</button>
                                 </div>
                                 }
 

@@ -20,12 +20,12 @@ const Article = ({ item }) => {
     const audioRef = useRef(null);
     const date = new Date(item.published_at).toLocaleDateString('ar-EG', { month: "long" });
     const loader = ({ src, width, quality }) => {
-        const height= Math.ceil(width / 2);
+        const height = Math.ceil(width / 2);
         return `https://images.for9a.com/thumb/fit-${width}-${height}-${quality}-webp/${src}`;
     }
-   
 
-   
+
+
     useEffect(() => {
         const audio = new Audio();
         audioRef = audio;
@@ -121,7 +121,7 @@ const Article = ({ item }) => {
             console.error('There was an error!', error);
         })
     }
-  
+
 
 
 
@@ -135,18 +135,18 @@ const Article = ({ item }) => {
             <article className={`${darkMode ? css.dark : ''} ${css.top} mt-12 md:mt-12 md:flex md:flex-col md:items-center md:justify-center`} ref={elementRef} >
                 <div className={`ads bg-slate-200  w-full text-center `}>
                     <Image src="/ads.png" alt="ads" className={`adpic !mt-1.5 `} height="157" width="556px" />
-                    
-                   
+
+
                 </div>
 
-                <div className={`image md:w-3/4 mt-3 `}>
+                <div className={`image md:w-3/4 md:mt-3 `}>
 
-                    {item.images?.folder && 
-                         <Image src={`${item.images.folder}/${item.images.name}`}
+                    {item.images?.folder &&
+                        <Image src={`${item.images.folder}/${item.images.name}`}
                             loader={loader}
-                            className={`${css.move} rounded-none md:rounded-md object-cover `} 
-                            width="500px" height="250px" quality={100}
-                            alt={item.title} loading='lazy' placeholder='blurDataURL' layout='responsive'  />}
+                            className={`${css.move} rounded-none md:rounded-md object-cover `}
+                            width="500px" height="250px" quality={100} priority="true"
+                            alt={item.title} placeholder='blurDataURL' layout='responsive' />}
                 </div>
 
 
@@ -191,7 +191,7 @@ const Article = ({ item }) => {
                         <div className={`interactions my-2 mx-0 border-gray-500 border-2 p-1 text-base rounded`}>
                             <h5 className='m-0'>{item.rating.count} تفاعل </h5>
                         </div>
-                        <button id='btn' onClick={handleClick} className={`shareButton bg-transparent border-0 cursor-pointer`}>
+                        <button  onClick={handleClick} className={`shareButton bg-transparent border-0 cursor-pointer`}>
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 width={25} hight={20} viewBox="1 0 24 24">
                                 <path fill="gray" d="M18,16.08C17.24,16.08 16.56,16.38 
@@ -207,15 +207,15 @@ const Article = ({ item }) => {
                         <Link href={"https://www.twitter.com"}>
                             <a className='pt-1'>
                                 <Image src="https://www.ida2at.com/wp-content/themes/ida2at/assets/images/icons/twitter.svg"
-                                width="30px" height="30px" alt="twitter" /></a></Link>
+                                    width="30px" height="30px" alt="twitter" /></a></Link>
                         <Link href={"https://www.facebook.com"}>
-                            <a  className='pt-1'>
+                            <a className='pt-1'>
                                 <Image src="https://www.ida2at.com/wp-content/themes/ida2at/assets/images/icons/facebook.svg"
-                                  width="30px" height="30px" alt="facbook" /> </a></Link>
+                                    width="30px" height="30px" alt="facbook" /> </a></Link>
                         <div className={`button flex`}>
                             {item.is_pinned === 0 ?
                                 active === true ?
-                                    <button className={'heart'} onClick={addFavorite}>
+                                    <button className={'heart'} onClick={addFavorite} aria-label="اضافة للمفضلة">
                                         <svg xmlns="http://www.w3.org/2000/svg"
                                             viewBox="0 0 24 24" width={30} height={30}>
                                             <path fill="#eb751d" d="M12.1 18.55L12 18.65L11.89 18.55C7.14 14.24 4
@@ -227,9 +227,9 @@ const Article = ({ item }) => {
                                         </svg>
                                     </button>
                                     :
-                                    <button className={'heart'} onClick={deleteFavorite}>
+                                    <button className={'heart'} onClick={deleteFavorite} aria-label="محي من المفضلة">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                              width="30px" height="30px" >
+                                            width="30px" height="30px" >
                                             <path fill="#eb751d" d="M12,21.35L10.55,20.03C5.4,15.36
                                     2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,
                                     5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22
@@ -239,9 +239,10 @@ const Article = ({ item }) => {
 
                                 :
                                 active === true ?
-                                    <button className={'heart'} onClick={()=>{setActive(false); deleteFavorite() }}>
+                                    <button className={'heart'} onClick={() => { setActive(false); deleteFavorite() }}
+                                        aria-label="محي من المفضلة">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                              width="30px" height="30px" >
+                                            width="30px" height="30px" >
                                             <path fill="#eb751d" d="M12,21.35L10.55,20.03C5.4,15.36
                                     2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,
                                     5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22
@@ -249,7 +250,8 @@ const Article = ({ item }) => {
                                         </svg>
                                     </button>
                                     :
-                                    <button className={'heart'} onClick={()=>{setActive(true);addFavorite()}}>
+                                    <button className={'heart'} onClick={() => { setActive(true); addFavorite() }}
+                                        aria-label="اضافة للمفضلة">
                                         <svg xmlns="http://www.w3.org/2000/svg"
                                             viewBox="0 0 24 24" width="30px" height="30px" >
                                             <path fill="#eb751d" d="M12.1 18.55L12 18.65L11.89 18.55C7.14 14.24 4
@@ -281,7 +283,7 @@ const Article = ({ item }) => {
 
                         <div className={`mobileSharing md:hidden flex items-center text-sm mx-0 my-4`}>
                             <div className={` share  whitespace-nowrap flex rounded-2xl py-1 px-4 ${darkMode ? 'bg-zinc-600 ' : 'bg-slate-100'}`}>
-                                <button id='btn' onClick={handleClick} className={`shareButton ml-1`}>
+                                <button onClick={handleClick} className={`shareButton ml-1`} aria-label="مشاركة">
                                     <svg xmlns="http://www.w3.org/2000/svg"
                                         width="14px" height="14px" viewBox="1 0 24 24">
                                         <path fill="gray" d="M18,16.08C17.24,16.08 16.56,16.38 
@@ -300,7 +302,7 @@ const Article = ({ item }) => {
 
                                 {item.is_pinned === 0 ?
                                     active === true ?
-                                        <button className={'heart'} onClick={addFavorite}>
+                                        <button className={'heart'} onClick={addFavorite} aria-label="اضافة للمفضلة">
                                             <svg xmlns="http://www.w3.org/2000/svg"
                                                 viewBox="0 0 24 24" width="14px" height="14px">
                                                 <path fill="#eb751d" d="M12.1 18.55L12 18.65L11.89 18.55C7.14 14.24 4
@@ -312,7 +314,7 @@ const Article = ({ item }) => {
                                             </svg>
                                         </button>
                                         :
-                                        <button className={'heart'} onClick={deleteFavorite}>
+                                        <button className={'heart'} onClick={deleteFavorite} aria-label="محي من المفضلة">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                                                 width="14px" height="14px">
                                                 <path fill="#eb751d" d="M12,21.35L10.55,20.03C5.4,15.36
@@ -324,7 +326,8 @@ const Article = ({ item }) => {
 
                                     :
                                     active === true ?
-                                        <button className={'heart'} onClick={()=>{setActive(false); deleteFavorite()} }>
+                                        <button className={'heart'} onClick={() => { setActive(false); deleteFavorite() }}
+                                            aria-label="محي من المفضلة">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                                                 width="14px" height="14px">
                                                 <path fill="#eb751d" d="M12,21.35L10.55,20.03C5.4,15.36
@@ -334,7 +337,8 @@ const Article = ({ item }) => {
                                             </svg>
                                         </button>
                                         :
-                                        <button className={'heart'} onClick={()=>{setActive(true);addFavorite()}}>
+                                        <button className={'heart'} onClick={() => { setActive(true); addFavorite() }}
+                                            aria-label="اضافة للمفضلة">
                                             <svg xmlns="http://www.w3.org/2000/svg"
                                                 viewBox="0 0 24 24" width="14px" height="14px">
                                                 <path fill="#eb751d" d="M12.1 18.55L12 18.65L11.89 18.55C7.14 14.24 4

@@ -16,13 +16,18 @@ const Learn = ({ }) => {
     return (
         <>
             <Head>
-                <title>Learn</title>
-                <meta name="description"
-                    content="تحتوي بوابة تعلم على " />
+                <title>تعلم</title>
+                <meta name="description" content="تحتوي بوابة تعلم على مجموعة مقالات تشكل حاجة أساسية لدى غالبية مستخدمي فرصة. وإيجاد ما يساعدهم في فئات فرص مختلفة
+                 في جميع المجالات والمستويات التعليمية والجنسيات،" />
+                <meta property="og:title" content="تعلم" />
+                <meta property="og:locale" content="ar_SA" />
+                <meta property="og:type" content="website" />
+                <meta property="og:description" content="تحتوي بوابة تعلم على مجموعة مقالات تشكل حاجة أساسية لدى غالبية مستخدمي فرصة. وإيجاد ما يساعدهم في فئات فرص مختلفة في جميع
+                 المجالات والمستويات التعليمية والجنسيات،"/>
             </Head>
             <ThemeContext.Provider value={{ theme, toggleTheme }}>
 
-                <LearnHero  />
+                <LearnHero />
                 <LearnFilter />
                 <Featured />
                 <Category />

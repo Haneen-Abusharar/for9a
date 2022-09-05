@@ -71,7 +71,7 @@ const FavoriteItem = ({ item }) => {
     return (
         <div className={`articleCard
         flex flex-col max-w-sm h-full mx-1 mb-5 bg-white rounded-lg border border-gray-200 shadow-md 
-         md:mb-0 hover:bg-gray-100 hover:transition ease-in-out ${darkMode ?'bg-zinc-700 hover:bg-zinc-600  border-none ': ''}`}>
+         md:mb-0 hover:bg-gray-100 hover:transition ease-in-out ${darkMode ? 'bg-zinc-700 hover:bg-zinc-600  border-none ' : ''}`}>
             {item.image?.medium &&
                 <Link
                     href={`${item.url
@@ -79,7 +79,7 @@ const FavoriteItem = ({ item }) => {
                         }
                     `}>
                     <a>
-                        <Image className={`move rounded-t-lg ${darkMode ?' hover:opacity-50 ease-in-out  ': ''}`} src={item.image.medium}
+                        <Image className={`move rounded-t-lg ${darkMode ? ' hover:opacity-50 ease-in-out  ' : ''}`} src={item.image.medium}
                             width="100px" height="50px"
                             alt={item.name} loading='lazy' placeholder='blurDataURL' layout='responsive' />
                     </a>
@@ -92,7 +92,7 @@ const FavoriteItem = ({ item }) => {
                             href={`category${item.categories.map((e) => (e.slug))}`}>
                             <a className='m-0'>
                                 <h4 className={` border border-gray-300 bg-gray-100  ml-2 rounded-xl truncate p-1 text-sm 
-                                hover:bg-gray-200 transition ease-in-out ${darkMode ?' text-white bg-zinc-600  hover:bg-zinc-500 ': 'border-gray-300'}`}>
+                                hover:bg-gray-200 transition ease-in-out ${darkMode ? ' text-white bg-zinc-600  hover:bg-zinc-500 ' : 'border-gray-300'}`}>
                                     {l.titleLocale}</h4>
                             </a>
                         </Link>
@@ -103,21 +103,21 @@ const FavoriteItem = ({ item }) => {
                 href={`${item.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
                 <a>
                     <h3 className={`mx-2 mb-2 text-base font-bold tracking-tight  md:text-lg 
-                      ${darkMode ?'text-white': 'text-gray-800'}`}>{item.name}</h3>
+                      ${darkMode ? 'text-white' : 'text-gray-800'}`}>{item.name}</h3>
                 </a>
             </Link>
 
             <div className={`${css.cardFooter} flex flex-row items-center mt-auto mb-1`}>
-                <div className={`${css.imageFooter} mr-2 `}><Image src={`/h.jpg`} width={60} height={60} className="rounded-full" alt="pic"/></div>
+                <div className={`${css.imageFooter} mr-2 `}><Image src={`/h.jpg`} width={"40px"} height={"40px"} className="rounded-full" alt="pic" /></div>
                 <div className={`${css.Author} flex-auto mr-2 text-sm `}>
                     <h5 className='whitespace-nowrap inline'>الكاتب</h5>
                     <h6 className='whitespace-nowrap m--1'>{date.toLocaleDateString("en-US")}</h6>
                 </div>
                 <div className={`${css.button} flex flex-row ml-2`}>
                     {active === true ?
-                        <button className={css.heart} onClick={deleteFavorite}>
+                        <button className={css.heart} onClick={deleteFavorite} aria-label="محي من المفضلة">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                width="20px" height="20px">
+                                height="25px" width="25px" className='h-8 w-8 md:h-6 md:w-6'>
                                 <path fill="#eb751d" d="M12,21.35L10.55,20.03C5.4,15.36
                              2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,
                              5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22
@@ -125,9 +125,9 @@ const FavoriteItem = ({ item }) => {
                             </svg>
                         </button>
                         :
-                        <button className={css.heart} onClick={addFavorite}>
+                        <button className={css.heart} onClick={addFavorite} aria-label="اضافة للمفضلة">
                             <svg xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24" width="20px" height="20px">
+                                viewBox="0 0 24 24" height="25px" width="25px" className='h-8 w-8 md:h-6 md:w-6'>
                                 <path fill="#eb751d" d="M12.1 18.55L12 18.65L11.89 18.55C7.14 14.24 4
                          11.39 4 8.5C4 6.5 5.5 5 7.5 5C9.04 5 10.54 6 11.07 7.36H12.93C13.46
                           6 14.96 5 16.5 5C18.5 5 20 6.5 20 8.5C20 11.39 16.86 14.24 12.1 
@@ -139,8 +139,8 @@ const FavoriteItem = ({ item }) => {
                         </button>
 
                     }
-                    <button id='btn' onClick={handleClick} className={css.shareButton}>
-                        <svg xmlns="http://www.w3.org/2000/svg"
+                    <button onClick={handleClick} className={`${css.shareButton} mr-2 ml-1 `} aria-label="نشر">
+                        <svg xmlns="http://www.w3.org/2000/svg" className=' h-7 w-7 md:h-5 md:w-5'
                             width="18px" height="17px" viewBox="1 0 24 24">
                             <path fill="gray" d="M18,16.08C17.24,16.08 16.56,16.38 
                    16.04,16.85L8.91,12.7C8.96,12.47 9,12.24 9,12C9,11.76 8.96,11.53 
