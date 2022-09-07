@@ -1,22 +1,17 @@
-import React , {useContext} from'react'
+import React, { useContext } from 'react'
 import Link from 'next/link'
-import useSWR from 'swr';
-import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
+import { useQuery } from 'react-query'
 import { ThemeContext } from '../../DarkModeContext';
 import CaroselArticles from '../CaroselArticles/CaroselArticles';
 import css from './category.module.scss';
-import fetcher from '../../utilities/fetcher';
-import ArticleCardLoad from '../skeleton/articleCard';
 
 const Category = ({ input }) => {
     const { darkMode } = useContext(ThemeContext);
-    const { data, loading, error } = useSWR(`${process.env.api}/blog/category`, fetcher);
+    const { isLoading, error, data } = useQuery('learn-category-home', () =>
+        fetch(`${process.env.api}/blog/category`).then(res => res.json()))
+    if (error || isLoading || !data)
+        return (<div className='container'></div>)
 
-    
-     if (error || loading || !data) 
-    return (<div className='container'> <Skeleton width={50}/></div>)
-    
 
     return (
         <>

@@ -1,18 +1,21 @@
 import React, { useContext } from 'react';
 import Link from 'next/link';
-import useSWR from 'swr';
+import { useQuery } from 'react-query'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper";
 import { ThemeContext } from '../../DarkModeContext';
 import css from './categoriesList.module.scss'
-import fetcher from '../../utilities/fetcher';
+
 
 
 const CatogriesList = ({ }) => {
     const { darkMode } = useContext(ThemeContext);
-    const { data, loading, error } = useSWR(`${process.env.api}/blog/category`, fetcher);
+    const { isLoading, error, data } = useQuery('learn-category-home', () =>
+        fetch(`${process.env.api}/blog/category`).then(res => res.json()))
+    if (error || isLoading || !data)
+        return (<div className='container'></div>)
 
     const InlineWrapperWithMargin = ({ children }) => {
         return <div
@@ -20,7 +23,7 @@ const CatogriesList = ({ }) => {
                 display: 'inline',
                 lineHeight: 2,
                 padding: '.5rem',
-               
+
 
             }}
         >
@@ -28,27 +31,27 @@ const CatogriesList = ({ }) => {
         </div>
     }
 
-    if (!data || loading || error)
+    if (!data || isLoading || error)
         return (<>
-        <div className='mb-14 mt-6 hidden md:block'>
-            <Skeleton
-                count={4}
-                wrapper={InlineWrapperWithMargin}
-                inline
-                height={30}
-                width={100}
-            />
+            <div className='mb-14 mt-6 hidden md:block'>
+                <Skeleton
+                    count={4}
+                    wrapper={InlineWrapperWithMargin}
+                    inline
+                    height={30}
+                    width={100}
+                />
             </div>
             <div className=' md:hidden mb-10 mt-6 '>
-            <Skeleton
-                count={3}
-                wrapper={InlineWrapperWithMargin}
-                inline
-                height={25}
-                width={110}
-            />
+                <Skeleton
+                    count={3}
+                    wrapper={InlineWrapperWithMargin}
+                    inline
+                    height={25}
+                    width={110}
+                />
             </div>
-            </>
+        </>
         )
 
 

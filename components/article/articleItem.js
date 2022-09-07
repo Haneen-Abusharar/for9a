@@ -102,7 +102,7 @@ const ArticleItem = ({ item, showDesc }) => {
             <Link
                 href={`${item.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
                 <a>
-                    {showDesc && <p className=" line-clamp-3 m-2 mb-3 font-normal text-base text-gray-500 ">{item.short_description}</p>}
+                    {showDesc && <p className={`line-clamp-3 m-2 mb-3 font-normal text-base  ${darkMode ?"text-gray-400": "text-gray-500" }`}>{item.short_description}</p>}
                 </a>
             </Link>
             <div className={`cardFooter flex flex-row items-center mt-auto mb-1`}>

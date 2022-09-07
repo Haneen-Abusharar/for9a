@@ -193,7 +193,7 @@ const Article = ({ item }) => {
                         </div>
                         <button  onClick={handleClick} className={`shareButton bg-transparent border-0 cursor-pointer`}>
                             <svg xmlns="http://www.w3.org/2000/svg"
-                                width={25} hight={20} viewBox="1 0 24 24">
+                                width={25} height={20} viewBox="1 0 24 24">
                                 <path fill="gray" d="M18,16.08C17.24,16.08 16.56,16.38 
                                 16.04,16.85L8.91,12.7C8.96,12.47 9,12.24 9,12C9,11.76 8.96,11.53 
                                 8.91,11.3L15.96,7.19C16.5,7.69 17.21,8 18,8A3,3 0 0,0 21,5A3,3 0 

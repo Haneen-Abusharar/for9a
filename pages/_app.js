@@ -1,7 +1,8 @@
 
 import Head from "next/head";
 import { ApolloProvider } from '@apollo/client';
-import { useApollo } from "../utilities/client";
+import { useApollo } from "../utilities/client"
+import { QueryClient, QueryClientProvider } from 'react-query'
 import Layout from '../components/layout/main';
 import { ThemeProvider } from "../DarkModeContext";
 import '../styles/globals.scss'
@@ -13,7 +14,7 @@ import 'swiper/scss/pagination';
 const MyApp = ({ Component, pageProps }) => {
 
   const apolloClient = useApollo(pageProps.initialApolloState);
-
+  const queryClient = new QueryClient()
   return (
     <ApolloProvider client={apolloClient}>
       <Head>
@@ -24,9 +25,11 @@ const MyApp = ({ Component, pageProps }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <ThemeProvider>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <QueryClientProvider client={queryClient}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </QueryClientProvider>
       </ThemeProvider>
     </ApolloProvider>
   )

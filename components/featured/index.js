@@ -1,5 +1,7 @@
 import React, { useContext } from 'react'
 import useSWR from 'swr';
+import axios from 'axios';
+import { useQuery } from 'react-query';
 import { ThemeContext } from '../../DarkModeContext';
 import ArticleItem from '../article/articleItem';
 import List from '../article/list';
@@ -8,18 +10,24 @@ import ArticleCardLoad from '../skeleton/articleCard';
 import ListLoading from '../skeleton/listLoading';
 
 
+
 const Featured = () => {
 
     const { darkMode } = useContext(ThemeContext);
-    const { data, loading, error } = useSWR(`${process.env.api}/learn/all`, fetcher);
-
-       if (!data || loading || error)
-    return (
-        <div className='container flex flex-col md:flex-row '>
-            <div className='w-full mb-2 ml-2 h-full'><ArticleCardLoad /></div >
-            <div className='w-full  '><ListLoading /></div>
-        </div>
-    )
+    const { isLoading, error, data } = useQuery('repoData', () =>
+        axios.get(`${process.env.api}/learn/all?&page=1&count=10`, {
+            headers: {
+                'authentication': 'i0qvLgN2AfwTgajvdOcB7m1IHEoKu7ou'
+            }
+        }).then(res => res.data))
+  
+    if (!data || isLoading || error)
+        return (
+            <div className='container flex flex-col md:flex-row '>
+                <div className='w-full mb-2 ml-2 h-full'><ArticleCardLoad /></div >
+                <div className='w-full  '><ListLoading /></div>
+            </div>
+        )
 
     return (
         <div className={`featured flex flex-col md:grid grid-cols-2 gap-4 md:mb-7 container `}>

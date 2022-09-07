@@ -1,21 +1,23 @@
 import React from 'react';
-import useSWR from 'swr';
+import { useQuery } from 'react-query'
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper";
 import ArticleCardLoad from '../skeleton/articleCard';
-import fetcher from '../../utilities/fetcher';
 import ArticleItem from './../article/articleItem'
 import css from "../category/category.module.scss";
+import axios from 'axios';
 
 
 const CaroselArticles = ({ filter }) => {
 
+  const { isLoading, error, data } = useQuery(['learn-category-home', filter.type], () =>
+    axios.get(`${process.env.api}/learn/all?type=${filter.type}`, {
+      headers: {
+        'authentication': 'i0qvLgN2AfwTgajvdOcB7m1IHEoKu7ou'
+      }
+    }).then(res => res.data))
 
-  const { data, loading, error } =
-    useSWR(`${process.env.api}/learn/all?type=${filter.type}`, fetcher);
-
-
-  if (!data || loading || error)
+  if (!data || isLoading || error)
     return (<>
       <div className=' hidden md:grid grid-cols-3  gap-1 '>
         <ArticleCardLoad />
