@@ -14,10 +14,12 @@ module.exports = {
 			'100': 100
 		},
 		screens: {
+			'xs': '200px',
+			'sm': '450px',
 			'md': '800px',
-
+			'lg': '1024px',
 		},
-		
+
 	},
 	variants: {},
 	plugins: [

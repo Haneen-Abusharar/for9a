@@ -1,11 +1,9 @@
 import React, { useContext } from 'react'
-import useSWR from 'swr';
 import axios from 'axios';
 import { useQuery } from 'react-query';
 import { ThemeContext } from '../../DarkModeContext';
 import ArticleItem from '../article/articleItem';
 import List from '../article/list';
-import fetcher from '../../utilities/fetcher';
 import ArticleCardLoad from '../skeleton/articleCard';
 import ListLoading from '../skeleton/listLoading';
 
@@ -30,8 +28,8 @@ const Featured = () => {
         )
 
     return (
-        <div className={`featured flex flex-col md:grid grid-cols-2 gap-4 md:mb-7 container `}>
-            <div className={'article'}>
+        <div className={`featured  flex flex-col md:grid grid-cols-2 gap-5 md:mb-7 container `}>
+            <div className={'article '}>
                 <ArticleItem item={data.result.items[0]} showDesc={true} />
             </div>
             <div className={`list ${darkMode ? 'bg-zinc-800' : ''}`}>

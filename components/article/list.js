@@ -8,7 +8,7 @@ import { ThemeContext } from '../../DarkModeContext';
 const List = ({ articles }) => {
     const { darkMode } = useContext(ThemeContext);
     const [active, setActive] = useState(true);
-
+  
 
     const loader = ({ src, width, quality }) => {
         return `https://images.for9a.com/thumb/fit-${width}-${width}-100-webp/${src}`;
@@ -65,8 +65,7 @@ const List = ({ articles }) => {
     return (
         <>
             {articles.map((item, index) => (
-                <div className={` list 
-            flex flex-row ml-1 mr-1 mb-5 mt-5  bg-white rounded-lg 
+                <div className={` list  flex flex-row ml-1 mr-1 mb-5 mt-5  bg-white rounded-lg 
             border shadow-md md:mb-5 md:mt-0 md:flex-row hover:bg-gray-100 hover:transition ease-in-out
              ${darkMode ? 'border-zinc-700 bg-zinc-700 hover:bg-zinc-600' : ''} `} key={index}>
 
@@ -78,8 +77,8 @@ const List = ({ articles }) => {
                                     <Image src={`${item.images.folder}/${item.images.name}`}
                                         loader={loader}
                                         className={`${darkMode ? 'hover:opacity-50 ease-in-out  ' : ''} object-cover rounded-r-lg `}
-                                        width="200px" height="200px"
-                                        alt={item.title} loading='lazy' placeholder='blurDataURL' layout='responsive' /></a>
+                                        width="25px" height="20px"
+                                        alt={item.title} loading='lazy' placeholder='blurDataURL' layout='responsive'  /></a>
                             </Link>
                         }
                     </div>

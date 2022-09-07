@@ -2,7 +2,7 @@ import React from 'react';
 import Head from "next/head";
 import Article from "../../components/article/article";
 import axios from 'axios';
-
+import { useQuery } from 'react-query'
 
 
 const ArticleP = ({ articles }) => {
@@ -46,9 +46,9 @@ export const getServerSideProps = async (ctx) => {
             'authentication': 'i0qvLgN2AfwTgajvdOcB7m1IHEoKu7ou'
         }
     })
-
+  
     if (articles.data.result.items.length == 0) return { notFound: true }
-
+   
     return { props: { articles: articles.data.result.items } }
 }
 

@@ -3,8 +3,6 @@ import Image from 'next/image'
 import { useQuery } from 'react-query'
 import { ThemeContext } from '../../DarkModeContext';
 import axios from 'axios';
-import useSWR from 'swr';
-import fetcher from '../../utilities/fetcher';
 import css from './comments.module.scss'
 import CommentLoad from '../skeleton/commentLoad';
 
@@ -12,7 +10,6 @@ const Comments = ({ id }) => {
     const { darkMode } = useContext(ThemeContext);
     const [showButtons, setShowButtons] = useState([]);
 
-    // const { data, loading, error } = useSWR(`${process.env.api}/learn/comments?page=1&count=5&id=${id}`, fetcher);
 
     const { isLoading, error, data } = useQuery(['id', id],()=>
         axios.get(`${process.env.api}/learn/comments?page=1&count=5&id=${id}`, {
@@ -20,7 +17,7 @@ const Comments = ({ id }) => {
                 'authentication': 'i0qvLgN2AfwTgajvdOcB7m1IHEoKu7ou'
             }
         }).then(res => res.data))
-    console.log(data)
+
 
     const [value, setValue] = useState()
     const [newComment, setNewComment] = useState([]);

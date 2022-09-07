@@ -66,6 +66,12 @@ img {
   max-width: 100%;
 }
 
+button {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 *,
 *::before,
 *::after {
@@ -75,32 +81,34 @@ img {
 
 .swiper-button-prev,
 .swiper-button-next {
-
-  width: 20px !important;
-  height: 20px !important;
+  display: none;
+  width: 0px !important;
+  height: 0px !important;
   background: white;
-  border: 1px solid gray;
-  border-radius: 50%;
-  top: 40px !important;
+  //border: 1px solid gray;
+  //border-radius: 50%;
+  //top: 40px !important;
+  //padding: 3px;
 
-  padding: 3px;
 
-  //font-weight: 2!important;
   &:after {
-    color: #383735;
-    font-size: 15px !important;
+   // color: #383735;
+    font-size: 0px !important;
+
   }
 }
 
-.swiper-button-prev {
-  right: -50px !important;
+// .swiper-button-prev {
+//   right: -50px !important;
 
-}
 
-.swiper-button-next {
-  left: -50px !important;
+// }
 
-}
+// .swiper-button-next {
+//   left: -50px !important;
+
+
+// }
 
 .swiper-pagination-bullet-active {
   background-color: #eb751d !important;
@@ -108,6 +116,7 @@ img {
 
 .swiper-slide {
   height: auto !important;
+
 }
 
 .swiper-wrapper {
@@ -129,10 +138,36 @@ img {
 
 }
 
-.container {
-  width: 100%;
-  margin: auto;
-  padding: 0 15px;
+@media screen and (min-width:800px) {
+
+  .swiper-button-prev,
+  .swiper-button-next {
+
+    width: 20px !important;
+    height: 20px !important;
+    background: white;
+    border: 1px solid gray;
+    border-radius: 50%;
+    top: 40px !important;
+    padding: 3px;
+
+
+    &:after {
+      color: #383735;
+      font-size: 15px !important;
+    }
+  }
+
+  .swiper-button-prev {
+    right: -50px !important;
+
+  }
+
+  .swiper-button-next {
+    left: -50px !important;
+
+  }
+
 }
 
 .audio {
@@ -143,13 +178,15 @@ img {
   align-items: stretch;
   // overflow: hidden;
 
-  a{
+  a {
     text-decoration: none;
     color: transparent;
-    &:hover{
+
+    &:hover {
       text-decoration: none;
     }
   }
+
   .audio-2 {
     direction: rtl;
   }
@@ -196,7 +233,8 @@ img {
     padding: 8px;
     text-decoration: none;
     color: transparent;
-    &:hover{
+
+    &:hover {
       text-decoration: none;
     }
   }
@@ -213,10 +251,10 @@ img {
     border-color: transparent transparent transparent #202020;
     transition: .3s ease-in-out;
     will-change: border-width;
-   
+
   }
-  
- 
+
+
 }
 
 .isplay {
@@ -271,11 +309,17 @@ img {
   }
 }
 
+.container {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: auto;
+  padding: 0 15px;
+}
+
 @media screen and (min-width:800px) {
   .container {
     width: 80%;
-    margin: auto;
-    padding: 0 15px;
+    max-width: 80% !important;
   }
 
   .class-to-action {

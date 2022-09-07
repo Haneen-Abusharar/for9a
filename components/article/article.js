@@ -101,7 +101,6 @@ const Article = ({ item }) => {
         }
     };
     const addFavorite = () => {
-        setActive(false);
         axios.put(`${process.env.api}/learn/favorite/${item.id}`, null,
             {
                 headers:
@@ -111,7 +110,7 @@ const Article = ({ item }) => {
         { console.log(item.is_pinned) }
     }
     const deleteFavorite = () => {
-        setActive(true);
+
         axios.delete(`${process.env.api}/learn/favorite/${item.id}`,
             {
                 headers:
@@ -123,8 +122,6 @@ const Article = ({ item }) => {
     }
 
 
-
-
     return (
         <>
             <div className={`progressBarContainer fixed h-1 w-full z-100 top-0`}>
@@ -132,7 +129,7 @@ const Article = ({ item }) => {
                     style={{ transform: `scale(${scroll}, 1)` }} />
             </div>
 
-            <article className={`${darkMode ? css.dark : ''} ${css.top} mt-12 md:mt-12 md:flex md:flex-col md:items-center md:justify-center`} ref={elementRef} >
+            <article className={`${darkMode ? css.dark : ''} ${css.top} mt-12  md:mt-12 md:flex md:flex-col md:items-center md:justify-center`} ref={elementRef} >
                 <div className={`ads bg-slate-200  w-full text-center `}>
                     <Image src="/ads.png" alt="ads" className={`adpic !mt-1.5 `} height="157" width="556px" />
 
@@ -144,7 +141,7 @@ const Article = ({ item }) => {
                     {item.images?.folder &&
                         <Image src={`${item.images.folder}/${item.images.name}`}
                             loader={loader}
-                            className={`${css.move} rounded-none md:rounded-md object-cover `}
+                            className={`${css.move} rounded-none  md:rounded-md object-cover `}
                             width="500px" height="250px" quality={100} priority="true"
                             alt={item.title} placeholder='blurDataURL' layout='responsive' />}
                 </div>
@@ -191,7 +188,7 @@ const Article = ({ item }) => {
                         <div className={`interactions my-2 mx-0 border-gray-500 border-2 p-1 text-base rounded`}>
                             <h5 className='m-0'>{item.rating.count} تفاعل </h5>
                         </div>
-                        <button  onClick={handleClick} className={`shareButton bg-transparent border-0 cursor-pointer`}>
+                        <button onClick={handleClick} className={`shareButton bg-transparent border-0 cursor-pointer`}>
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 width={25} height={20} viewBox="1 0 24 24">
                                 <path fill="gray" d="M18,16.08C17.24,16.08 16.56,16.38 
@@ -215,7 +212,7 @@ const Article = ({ item }) => {
                         <div className={`button flex`}>
                             {item.is_pinned === 0 ?
                                 active === true ?
-                                    <button className={'heart'} onClick={addFavorite} aria-label="اضافة للمفضلة">
+                                    <button className={'heart'} onClick={() => { setActive(false); addFavorite() }} aria-label="اضافة للمفضلة">
                                         <svg xmlns="http://www.w3.org/2000/svg"
                                             viewBox="0 0 24 24" width={30} height={30}>
                                             <path fill="#eb751d" d="M12.1 18.55L12 18.65L11.89 18.55C7.14 14.24 4
@@ -227,7 +224,7 @@ const Article = ({ item }) => {
                                         </svg>
                                     </button>
                                     :
-                                    <button className={'heart'} onClick={deleteFavorite} aria-label="محي من المفضلة">
+                                    <button className={'heart'} onClick={() => { setActive(true); deleteFavorite() }} aria-label="محي من المفضلة">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                                             width="30px" height="30px" >
                                             <path fill="#eb751d" d="M12,21.35L10.55,20.03C5.4,15.36
@@ -302,7 +299,7 @@ const Article = ({ item }) => {
 
                                 {item.is_pinned === 0 ?
                                     active === true ?
-                                        <button className={'heart'} onClick={addFavorite} aria-label="اضافة للمفضلة">
+                                        <button className={'heart'} onClick={() => { setActive(false); addFavorite() }} aria-label="اضافة للمفضلة">
                                             <svg xmlns="http://www.w3.org/2000/svg"
                                                 viewBox="0 0 24 24" width="14px" height="14px">
                                                 <path fill="#eb751d" d="M12.1 18.55L12 18.65L11.89 18.55C7.14 14.24 4
@@ -314,7 +311,7 @@ const Article = ({ item }) => {
                                             </svg>
                                         </button>
                                         :
-                                        <button className={'heart'} onClick={deleteFavorite} aria-label="محي من المفضلة">
+                                        <button className={'heart'} onClick={() => { setActive(true); deleteFavorite() }} aria-label="محي من المفضلة">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                                                 width="14px" height="14px">
                                                 <path fill="#eb751d" d="M12,21.35L10.55,20.03C5.4,15.36

@@ -34,7 +34,6 @@ const ArticleItem = ({ item, showDesc }) => {
         }
     };
     const addFavorite = () => {
-        setActive(false);
         axios.put(`${process.env.api}/learn/favorite/${item.id}`, null,
             {
                 headers:
@@ -43,7 +42,6 @@ const ArticleItem = ({ item, showDesc }) => {
         );
     }
     const deleteFavorite = () => {
-        setActive(true);
         axios.delete(`${process.env.api}/learn/favorite/${item.id}`,
             {
                 headers:
@@ -57,8 +55,7 @@ const ArticleItem = ({ item, showDesc }) => {
 
     return (
 
-        <div className={` articleCard 
-       flex flex-col  h-full ml-1 mb-5 bg-white rounded-lg border border-gray-200 shadow-md 
+        <div className={` articleCard flex flex-col  h-full ml-2 mb-5 bg-white rounded-lg border border-gray-200 shadow-md 
         md:mb-0 hover:bg-gray-100 hover:transition ease-in-out ${darkMode ? 'bg-zinc-700 hover:bg-zinc-600  border-none ' : ''}`}>
 
             {item.images?.md &&
@@ -95,7 +92,7 @@ const ArticleItem = ({ item, showDesc }) => {
             <Link
                 href={`${item.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
                 <a className='no-underline'>
-                    <h3 className={` mx-2 mb-2 text-sm font-bold tracking-tight  md:text-lg
+                    <h3 className={` mx-2 mb-2 text-base font-bold tracking-tight  md:text-lg
                      ${darkMode ? 'text-white' : 'text-gray-800'}`}>{item.title}</h3>
                 </a>
             </Link>
@@ -115,9 +112,8 @@ const ArticleItem = ({ item, showDesc }) => {
                 </div>
                 <div className={`button flex flex-row ml-2`}>
                     {item.is_pinned === 0 ?
-
                         active === true ?
-                            <button className={`heart`} onClick={addFavorite} aria-label="اضافة للمفضلة">
+                            <button className={`heart`} onClick={()=>{setActive(false); addFavorite()}} aria-label="اضافة للمفضلة">
                                 <svg xmlns="http://www.w3.org/2000/svg" className='h-8 w-8 md:h-6 md:w-6'
                                     height="25px" width="25px" viewBox="0 0 24 24" >
                                     <path fill="#eb751d" d="M12.1 18.55L12 18.65L11.89 18.55C7.14 14.24 4
@@ -129,7 +125,7 @@ const ArticleItem = ({ item, showDesc }) => {
                                 </svg>
                             </button>
                             :
-                            <button className={`heart`} onClick={deleteFavorite} aria-label="محي من المفضلة">
+                            <button className={`heart`} onClick={()=>{ setActive(true); deleteFavorite()}} aria-label="محي من المفضلة">
                                 <svg height="25px" width="25px" className='h-8 w-8 md:h-6 md:w-6'
                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                     <path fill="#eb751d" d="M12,21.35L10.55,20.03C5.4,15.36
@@ -141,7 +137,8 @@ const ArticleItem = ({ item, showDesc }) => {
 
                         :
                         active === true ?
-                            <button className={`heart`} onClick={() => { setActive(false); deleteFavorite() }}
+                        
+                            <button className={`heart`} onClick={() => { setActive(false); deleteFavorite(); }}
                                 aria-label="محي من المفضلة">
                                 <svg height="25px" width="25px" className='h-8 w-8 md:h-6 md:w-6'
                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -152,7 +149,7 @@ const ArticleItem = ({ item, showDesc }) => {
                                 </svg>
                             </button>
                             :
-                            <button className={`heart`} onClick={() => { setActive(true); addFavorite() }}
+                            <button className={`heart `} onClick={() => { setActive(true); addFavorite() }}
                                 aria-label="اضافة للمفضلة">
                                 <svg height="25px" width="25px" className='h-8 w-8 md:h-6 md:w-6'
                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
