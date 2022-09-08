@@ -1,13 +1,13 @@
 import React, { useContext } from 'react'
 import Link from 'next/link'
-import { useQuery } from 'react-query'
+import { useQuery } from '@tanstack/react-query'
 import { ThemeContext } from '../../DarkModeContext';
 import CaroselArticles from '../CaroselArticles/CaroselArticles';
 import css from './category.module.scss';
 
 const Category = ({ input }) => {
     const { darkMode } = useContext(ThemeContext);
-    const { isLoading, error, data } = useQuery('learn-category-home', () =>
+    const { isLoading, error, data } = useQuery(['learn-category-home'], () =>
         fetch(`${process.env.api}/blog/category`).then(res => res.json()))
     if (error || isLoading || !data)
         return (<div className='container'></div>)

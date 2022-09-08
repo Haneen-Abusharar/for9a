@@ -1,8 +1,7 @@
-
 import Head from "next/head";
 import { ApolloProvider } from '@apollo/client';
 import { useApollo } from "../utilities/client"
-import { QueryClient, QueryClientProvider } from 'react-query'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import Layout from '../components/layout/main';
 import { ThemeProvider } from "../DarkModeContext";
 import '../styles/globals.scss'

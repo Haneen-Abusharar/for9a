@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import Link from 'next/link';
-import { useQuery } from 'react-query'
+import { useQuery } from '@tanstack/react-query'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -12,7 +12,7 @@ import css from './categoriesList.module.scss'
 
 const CatogriesList = ({ }) => {
     const { darkMode } = useContext(ThemeContext);
-    const { isLoading, error, data } = useQuery('learn-category-home', () =>
+    const { isLoading, error, data } = useQuery(['learn-category-home'], () =>
         fetch(`${process.env.api}/blog/category`).then(res => res.json()))
     if (error || isLoading || !data)
         return (<div className='container'></div>)

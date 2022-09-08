@@ -55,7 +55,7 @@ const ArticleItem = ({ item, showDesc }) => {
 
     return (
 
-        <div className={` articleCard flex flex-col  h-full ml-2 mb-5 bg-white rounded-lg border border-gray-200 shadow-md 
+        <div className={` articleCard flex flex-col  h-full mb-5 bg-white rounded-lg border border-gray-200 shadow-md 
         md:mb-0 hover:bg-gray-100 hover:transition ease-in-out ${darkMode ? 'bg-zinc-700 hover:bg-zinc-600  border-none ' : ''}`}>
 
             {item.images?.md &&
@@ -77,9 +77,9 @@ const ArticleItem = ({ item, showDesc }) => {
                     <div className={`category truncate`} key={i}>
                         <Link
                             href={`${l.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
-                            <a className={`m-0 !no-underline ${darkMode ? ' !text-white ' : '!text-zinc-600'}`}>
+                            <a className={`m-0 !no-underline ${darkMode ? ' !text-white ' : '!text-zinc-600'} `}>
                                 <h4 className={` text-xs  border  
-                                  ml-2 rounded-xl truncate p-1 md:text-sm transition ease-in-out 
+                                  ml-3 rounded-xl truncate p-1 md:text-sm transition ease-in-out 
                                   ${darkMode ? ' !text-white bg-zinc-600  hover:bg-zinc-500 ' : 'bg-gray-100 border-gray-300 hover:bg-gray-200'}`}>
                                     {l.title}
                                 </h4>

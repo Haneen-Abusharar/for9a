@@ -1,17 +1,15 @@
-import React, { useRef, useState } from 'react';
-import { useQuery } from 'react-query'
+import React, { useState } from 'react';
+import { useQuery } from '@tanstack/react-query'
 import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Pagination, Navigation } from "swiper";
+import { Pagination, Navigation } from "swiper";
 import ArticleCardLoad from '../skeleton/articleCard';
 import ArticleItem from './../article/articleItem'
 import css from "../category/category.module.scss";
 import axios from 'axios';
-SwiperCore.use([Navigation]);
 
 const CaroselArticles = ({ filter }) => {
   const [swipe, setSwipe] = useState();
-  const navigationPrevRef = useRef(null)
-  const navigationNextRef = useRef(null)
+
   const { isLoading, error, data } = useQuery(['learn-category-home', filter.type], () =>
     axios.get(`${process.env.api}/learn/all?type=${filter.type}`, {
       headers: {
@@ -46,70 +44,54 @@ const CaroselArticles = ({ filter }) => {
 
   return (
     <>
-      <button className='bg-black' onClick={() => swipe?.slidePrev()}>
-        prev
-      </button>
-      <button onClick={() => swipe?.slideNext()}>
-        next
-      </button>
+      <div className="xs:hidden sm:hidden  md:flex justify-between -mb-24">
+        <button type="button" onClick={() => swipe?.slidePrev()}
+          className="-mr-14 mt-14  text-orange-500 border border-orange-500 hover:bg-orange-500 hover:text-white
+           focus:ring-4 focus:outline-none focus:ring-orange-300 
+           font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center">
+
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="w-5 h-5" viewBox="0 0 15 15">
+            <path fillRule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 
+            .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
+          </svg>
+        </button>
+        <button onClick={() => swipe?.slideNext()}
+          className="-ml-14 mt-14  text-orange-500 border border-orange-500 hover:bg-orange-500
+       hover:text-white focus:ring-4 focus:outline-none focus:ring-orange-300  rounded-full 
+          p-2.5 text-center inline-flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="w-5 h-5" viewBox="0 0 15 15">
+            <path fillRule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 
+            .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+          </svg>
+        </button>
+      </div>
       <Swiper
         onBeforeInit={(swipper) => setSwipe(swipper)}
         breakpoints={{
           200: {
-            slidesPerView: 1,
+            slidesPerView: 1.5,
             slidesPerGroup: 1,
-            spaceBetween: 10
           },
           450: {
-            slidesPerView: 2,
+            slidesPerView: 2.25,
             slidesPerGroup: 2,
-            spaceBetween: 10
           },
           800: {
             slidesPerView: 3,
             slidesPerGroup: 3,
-            spaceBetween: 10,
           },
           1024: {
             slidesPerView: 4,
             slidesPerGroup: 4,
-            spaceBetween: 10,
-            loop: false,
-            pagination: {
-              dynamicBullets: true,
-              dynamicMainBullets: 8,
-              clickable: true,
-            }
           },
         }}
-
+        spaceBetween={10}
         loop={true}
         loopFillGroupWithBlank={true}
-
-        //  navigation={true}
         modules={[Pagination, Navigation]}
         className={css.swiper2}
 
-      // onInit={(swiper) => {
 
-      //   swiper.params.navigation.prevEl = navigationPrevRef.current;
-      //   swiper.params.navigation.nextEl = navigationNextRef.current;
-      //   swiper.navigation.init();
-      //   swiper.navigation.update();
-      // }}
-      // onSwiper={(swiper) => {
-      //   // Delay execution for the refs to be defined
-      //   setTimeout(() => {
-      //     // Override prevEl & nextEl now that refs are defined
-      //     swiper.params.navigation.prevEl = navigationPrevRef.current
-      //     swiper.params.navigation.nextEl = navigationNextRef.current
-
-      //     // Re-init navigation
-      //     swiper.navigation.destroy()
-      //     swiper.navigation.init()
-      //     swiper.navigation.update()
-      //   })
-      // }}
       >
         {
           data?.result?.items
@@ -118,8 +100,6 @@ const CaroselArticles = ({ filter }) => {
                 <SwiperSlide key={article.url + index} >
                   <ArticleItem item={article} />
                 </SwiperSlide>
-                {/* <div ref={navigationPrevRef}  className="bg-red">PRRV</div>
-        <div ref={navigationNextRef}>NEXT</div> */}
               </div>
             ))
         }

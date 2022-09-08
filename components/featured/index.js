@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import axios from 'axios';
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 import { ThemeContext } from '../../DarkModeContext';
 import ArticleItem from '../article/articleItem';
 import List from '../article/list';
@@ -12,7 +12,7 @@ import ListLoading from '../skeleton/listLoading';
 const Featured = () => {
 
     const { darkMode } = useContext(ThemeContext);
-    const { isLoading, error, data } = useQuery('repoData', () =>
+    const { isLoading, error, data } = useQuery(['repoData'], () =>
         axios.get(`${process.env.api}/learn/all?&page=1&count=10`, {
             headers: {
                 'authentication': 'i0qvLgN2AfwTgajvdOcB7m1IHEoKu7ou'
@@ -32,7 +32,7 @@ const Featured = () => {
             <div className={'article '}>
                 <ArticleItem item={data.result.items[0]} showDesc={true} />
             </div>
-            <div className={`list ${darkMode ? 'bg-zinc-800' : ''}`}>
+            <div className={`list  ${darkMode ? 'bg-zinc-800' : ''}`}>
                 <List articles={data.result.items.slice(0, 3)} />
             </div>
 
