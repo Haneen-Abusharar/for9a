@@ -129,9 +129,9 @@ const Article = ({ item }) => {
                     style={{ transform: `scale(${scroll}, 1)` }} />
             </div>
 
-            <article className={`${darkMode ? css.dark : ''} ${css.top} mt-12  md:mt-12 md:flex md:flex-col md:items-center md:justify-center`} ref={elementRef} >
-                <div className={`ads bg-slate-200  w-full text-center `}>
-                    <Image src="/ads.png" alt="ads" className={`adpic !mt-1.5 `} height="157" width="556px" />
+            <article className={`${darkMode ? css.dark : ''} ${css.top} mt-12 md:mt-12 md:flex md:flex-col md:items-center md:justify-center`} ref={elementRef} >
+                <div className={`ads bg-slate-200 w-full text-center`}>
+                    <Image src="/ads.PNG" alt="ads" className={`adpic !mt-1.5 w-full h-auto `} height="157" width="556" />
 
 
                 </div>
@@ -147,12 +147,12 @@ const Article = ({ item }) => {
                 </div>
 
 
-                <div className={`Section  m-auto py-0 pr-8 mb-6 md:w-3/4  `}>
+                <div className={`Section  m-auto py-0 md:pr-8 mb-6 md:w-3/4  `}>
                     <div className=' container flex items-center justify-between'>
                         <div className={`author md:w-full -mt-4 flex items-center  md:-mt-5`}>
-                            <Image className={`pic object-cover rounded-full`}
+                            <Image className={`pic object-cover rounded-full w-full h-auto`}
                                 src={"https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?cs=srgb&dl=pexels-italo-melo-2379004.jpg&fm=jpg"}
-                                width={"90px"} height={"90px"} alt="profile picture" />
+                                width={90} height={90} alt="profile picture" />
                             <div className={`${css.authName} mt-5 mr-3  w-32 whitespace-nowrap`}>
                                 <h5 className='text-base'> أ.أيمن العتوم</h5>
                                 <h6 className='mt-0.5 text-xs text-gray-500 '> نشرت في {date}
