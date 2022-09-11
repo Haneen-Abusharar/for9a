@@ -26,7 +26,7 @@ const Nav = () => {
                     </div>
                     <div className={css.logo}>
                         <Link href={`${process.env.domain}/learn`}>
-                            <a><Image src={'https://www.for9a.com/images/logo.svg'} width={"100px"} height={"50px"} alt='logo' className='object-cover'/></a>
+                            <a><Image src={'https://www.for9a.com/images/logo.svg'} width={80} height={50} alt='logo' /></a>
                         </Link>
 
                     </div>

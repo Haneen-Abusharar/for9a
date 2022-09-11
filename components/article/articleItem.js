@@ -100,12 +100,12 @@ const ArticleItem = ({ item, showDesc }) => {
                 </a>
             </Link>
             <div className={`cardFooter flex flex-row items-center mt-auto mb-1`}>
-                <div className={`imageFooter mr-2 `}>
-                    <Image src={`/h.jpg`} width={"40px"} height={"40px"} className="rounded-full" alt='auther picture' />
-                </div>
+                <span className={`imageFooter mr-2 `}>
+                    <Image src={`/h.jpg`} width={"40px"} height={"40px"} className="  rounded-full" alt='auther picture' />
+                </span>
                 <div className={`Author flex-auto mr-2 text-sm `}>
-                    <h5 className=' whitespace-nowrap inline'>الكاتب</h5>
-                    <h6 className='text-xs whitespace-nowrap m--1'>{date.toLocaleDateString("en-US")}</h6>
+                    <span className=' whitespace-nowrap '>الكاتب</span>
+                    <span className='block text-xs whitespace-nowrap m--1'>{date.toLocaleDateString("en-US")}</span>
                 </div>
                 <div className={`button flex flex-row ml-2`}>
                     {item.is_pinned === 0 ?
