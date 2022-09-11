@@ -147,44 +147,46 @@ const Article = ({ item }) => {
                 </div>
 
 
-                <div className={`Section flex items-center justify-between m-auto py-0 px-4 mb-6 md:w-2/4 md:p-0`}>
-                    <div className={`author md:w-full -mt-4 flex items-center  md:-mt-5`}>
-                        <Image className={`pic object-cover rounded-full`}
-                            src={"https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?cs=srgb&dl=pexels-italo-melo-2379004.jpg&fm=jpg"}
-                            width={"90px"} height={"90px"} alt="profile picture" />
-                        <div className={`${css.authName} mt-5 mr-3  w-32 whitespace-nowrap`}>
-                            <h5 className='text-base'> أ.أيمن العتوم</h5>
-                            <h6 className='mt-0.5 text-xs text-gray-500 '> نشرت في {date}
-                            </h6>
+                <div className={`Section  m-auto py-0 pr-8 mb-6 md:w-3/4  `}>
+                    <div className=' container flex items-center justify-between'>
+                        <div className={`author md:w-full -mt-4 flex items-center  md:-mt-5`}>
+                            <Image className={`pic object-cover rounded-full`}
+                                src={"https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?cs=srgb&dl=pexels-italo-melo-2379004.jpg&fm=jpg"}
+                                width={"90px"} height={"90px"} alt="profile picture" />
+                            <div className={`${css.authName} mt-5 mr-3  w-32 whitespace-nowrap`}>
+                                <h5 className='text-base'> أ.أيمن العتوم</h5>
+                                <h6 className='mt-0.5 text-xs text-gray-500 '> نشرت في {date}
+                                </h6>
+                            </div>
                         </div>
-                    </div>
-                    <div className={`namePublished flex flex-col mt-3 text-gray-500 md:flex-row md:items-start md:justify-end md:w-full md:-mt-3`}>
-                        <div className={`time flex items-center text-xs mb-1`}>
-                            <svg className={'icon'} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="14px" width="14px">
-                                <path fill="#929090" d="M16,14H17.5V16.82L19.94,18.23L19.19,19.53L16,17.69V14M17,12A5,5 0 0,0 12,17A5
+                        <div className={`namePublished flex flex-col mt-3 text-gray-500 md:flex-row md:items-start md:justify-end md:w-full md:-mt-3`}>
+                            <div className={`time flex items-center text-xs mb-1`}>
+                                <svg className={'icon'} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="14px" width="14px">
+                                    <path fill="#929090" d="M16,14H17.5V16.82L19.94,18.23L19.19,19.53L16,17.69V14M17,12A5,5 0 0,0 12,17A5
                             ,5 0 0,0 17,22A5,5 0 0,0 22,17A5,5 0 0,0 17,12M17,10A7,7 0 0,1 24,17A7,7 0 0,1 17,24C14.21,24 11.8,22.36
                              10.67,20H1V17C1,14.34 6.33,13 9,13C9.6,13 10.34,13.07 11.12,13.2C12.36,11.28 14.53,10 17,10M10,17
                             C10,16.3 10.1,15.62 10.29,15C9.87,14.93 9.43,14.9 9,14.9C6.03,14.9 2.9,16.36 2.9,17V18.1H10.09C10.03,
                             17.74 10,17.37 10,17M9,4A4,4 0 0,1 13,8A4,4 0 0,1 9,12A4,4 0 0,1 5,8A4,4 0 0,1 9,4M9,5.9A2.1,2.1 0 0,
                             0 6.9,8A2.1,2.1 0 0,0 9,10.1A2.1,2.1 0 0,0 11.1,8A2.1,2.1 0 0,0 9,5.9Z" />
-                            </svg>
-                            <h6 className='mr-1'>
-                                {item.est_time} دقيقة
-                            </h6>
-                        </div>
-                        <div className={`rate text-gray-500 flex items-center text-xs mb-1 md:mr-4`}>
-                            <svg width="13px" height="14px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"  >
-                                <path fill="#666666" d="M15.668 8.626l8.332 1.159-6.065 5.874 1.48 8.341-7.416-3.997-7.416 3.997 1.481-8.341-6.064-5.874 
+                                </svg>
+                                <h6 className='mr-1'>
+                                    {item.est_time} دقيقة
+                                </h6>
+                            </div>
+                            <div className={`rate text-gray-500 flex items-center text-xs mb-1 md:mr-4`}>
+                                <svg width="13px" height="14px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"  >
+                                    <path fill="#666666" d="M15.668 8.626l8.332 1.159-6.065 5.874 1.48 8.341-7.416-3.997-7.416 3.997 1.481-8.341-6.064-5.874 
                             8.331-1.159 3.668-7.626 3.669 7.626zm-6.67.925l-6.818.948 4.963 4.807-1.212 6.825 6.068-3.271 6.069
                              3.271-1.212-6.826 4.964-4.806-6.819-.948-3.002-6.241-3.001 6.241z"/>
-                            </svg>
-                            <h6 className='mr-1'>{item.rating.average_rating}
-                            </h6>
+                                </svg>
+                                <h6 className='mr-1'>{item.rating.average_rating}
+                                </h6>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div className={`all  md:w-3/4 md:flex md:relative`}>
-                    <div className={`sharing hidden md:flex flex-col items-center sticky h-full top-16 mt-3 mb-12`}>
+                <div className={`all md:w-3/4 md:flex md:relative`}>
+                    <div className={`sharing hidden md:flex flex-col items-center sticky h-full top-16 mt-4 mb-12`}>
                         <div className={`interactions my-2 mx-0 border-gray-500 border-2 p-1 text-base rounded`}>
                             <h5 className='m-0'>{item.rating.count} تفاعل </h5>
                         </div>
@@ -276,7 +278,7 @@ const Article = ({ item }) => {
 
                         </div>
 
-                        <h1 className='text-2xl leading-8 my-2 text-orange-500 font-bold md:mt-3 md:text-3xl md:leading-9'>{item.title || <Skeleton />}</h1>
+                        <h1 className='text-2xl leading-8 my-4 text-orange-500 font-bold md:mt-3 md:text-3xl md:leading-9'>{item.title || <Skeleton />}</h1>
 
                         <div className={`mobileSharing md:hidden flex items-center text-sm mx-0 my-4`}>
                             <div className={` share  whitespace-nowrap flex rounded-2xl py-1 px-4 ${darkMode ? 'bg-zinc-600 ' : 'bg-slate-100'}`}>

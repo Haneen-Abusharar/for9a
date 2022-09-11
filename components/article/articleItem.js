@@ -77,12 +77,9 @@ const ArticleItem = ({ item, showDesc }) => {
                     <div className={`category truncate`} key={i}>
                         <Link
                             href={`${l.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
-                            <a className={`m-0 !no-underline ${darkMode ? ' !text-white ' : '!text-zinc-600'} `}>
-                                <h4 className={` text-xs  border  
-                                  ml-3 rounded-xl truncate p-1 md:text-sm transition ease-in-out 
-                                  ${darkMode ? ' !text-white bg-zinc-600  hover:bg-zinc-500 ' : 'bg-gray-100 border-gray-300 hover:bg-gray-200'}`}>
-                                    {l.title}
-                                </h4>
+                            <a className={`m-0 block !no-underline text-xs border ml-3 rounded-xl truncate p-1 md:text-sm transition ease-in-out 
+                                  ${darkMode ? ' !text-white bg-zinc-600 hover:bg-zinc-500':'!text-zinc-600 bg-gray-100 border-gray-300 hover:bg-gray-200'}`}>
+                               {l.title}
                             </a>
                         </Link>
                     </div>

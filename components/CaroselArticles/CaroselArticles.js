@@ -44,10 +44,10 @@ const CaroselArticles = ({ filter }) => {
 
   return (
     <>
-      <div className="xs:hidden sm:hidden  md:flex justify-between -mb-24">
+      <div className="xs:hidden sm:hidden  md:flex justify-between -mb-52">
         <button type="button" onClick={() => swipe?.slidePrev()}
-          className="-mr-14 mt-14  text-orange-500 border border-orange-500 hover:bg-orange-500 hover:text-white
-           focus:ring-4 focus:outline-none focus:ring-orange-300 
+          className="-mr-14 mt-44 text-orange-500 border border-orange-500 hover:bg-orange-500 hover:text-white
+           ring-4 outline-none ring-orange-300 
            font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center">
 
           <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="w-5 h-5" viewBox="0 0 15 15">
@@ -56,8 +56,8 @@ const CaroselArticles = ({ filter }) => {
           </svg>
         </button>
         <button onClick={() => swipe?.slideNext()}
-          className="-ml-14 mt-14  text-orange-500 border border-orange-500 hover:bg-orange-500
-       hover:text-white focus:ring-4 focus:outline-none focus:ring-orange-300  rounded-full 
+          className="-ml-14 mt-44 text-orange-500 border border-orange-500 hover:bg-orange-500
+       hover:text-white ring-4 outline-none ring-orange-300  rounded-full 
           p-2.5 text-center inline-flex items-center">
           <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="w-5 h-5" viewBox="0 0 15 15">
             <path fillRule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 

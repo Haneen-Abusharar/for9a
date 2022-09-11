@@ -65,46 +65,34 @@ const List = ({ articles }) => {
     return (
         <>
             {articles.map((item, index) => (
-                <div className={` list  flex flex-row ml-1 mr-1 mb-5 mt-5  bg-white rounded-lg 
-            border shadow-md md:mb-5  md:mt-0 md:flex-row hover:bg-gray-100 hover:transition ease-in-out
+                <div className={`list flex flex-row ml-1 mr-1 mb-5 mt-5 lg:w-full bg-white rounded-lg 
+            border shadow-md md:mb-5 md:mt-0 md:flex-row hover:bg-gray-100 hover:transition ease-in-out
              ${darkMode ? 'border-zinc-700 bg-zinc-700 hover:bg-zinc-600' : ''} `} key={index}>
 
-                    <div className={`flex-none w-2/5 `}>
+                    <div className={`flex-none xs:w-2/5 sm:w-1/5 md:w-2/5 lg:w-1/5`}>
                         {
                             item.images?.md && <Link
                                 href={`${item.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
-                                <a className=' '  >
-                                    <Image src={`${item.images.folder}/${item.images.name}`}
+                                <a>
+                                    <Image
+                                        src={`${item.images.folder}/${item.images.name}`}
                                         loader={loader}
-                                        className={`${darkMode ? 'hover:opacity-50 ease-in-out  ' : ''} object-cover rounded-r-lg `}
-                                        width="25px" height="25px"
-                                        alt={item.title} loading='lazy' placeholder='blurDataURL' layout='responsive' /></a>
+                                        className={`${darkMode ? 'hover:opacity-50 ease-in-out' : ''} object-cover rounded-r-lg`}
+                                        width={10}
+                                        height={10}
+                                        alt={item.title} loading='lazy' placeholder='blurDataURL' layout='responsive' />
+                                </a>
                             </Link>
                         }
                     </div>
-                    <div className={`flex-none w-3/5 flex flex-col  ${darkMode ? 'bg-zinc-700 hover:bg-zinc-600 ' : ''} `}>
+                    <div className={`flex-none flex flex-col w-3/5 lg:w-4/5 lg:container ${darkMode ? 'bg-zinc-700 hover:bg-zinc-600 ' : ''} `}>
                         <Link
                             href={`${item.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
-                            <a> <h3 className={` p-3  text-base  font-bold tracking-tight  ${darkMode ? 'text-white' : 'text-gray-800'}`}>{item.title}</h3>
+                            <a> <h3 className={`xs:line-clamp-2 lg:line-clamp-none text-ellipsis px-3 pt-3 text-base font-bold ${darkMode ? 'text-white' : 'text-gray-800'}`}>{item.title}</h3>
                             </a></Link>
-                            {/* <p className={`xs:hidden lg:line-clamp-4  mx-2 mb-3 font-normal text-base ${darkMode ?"text-gray-400": "text-gray-500" }`}>{item.short_description}</p> */}
+                       
+                        <div className={`button font-normal flex justify-end mx-2 mt-auto pb-4`}>
 
-                        <div className={`button font-normal flex flex-row-reverse ml-2 mt-auto  pb-4`}>
-                            <button aria-label="نشر" onClick={() =>
-                                handleClick(item.title, item.url.replace("https://www.for9a.com/", `${process.env.domain}/`))}
-                                className={'shareButton mr-1 '}>
-                                <svg xmlns="http://www.w3.org/2000/svg" className=' h-7 w-7 md:h-5 md:w-5'
-                                    width="18px" height="17px" viewBox="1 0 24 24">
-                                    <path fill="gray" d="M18,16.08C17.24,16.08 16.56,16.38 
-                                16.04,16.85L8.91,12.7C8.96,12.47 9,12.24 9,12C9,11.76 8.96,11.53 
-                                8.91,11.3L15.96,7.19C16.5,7.69 17.21,8 18,8A3,3 0 0,0 21,5A3,3 0 
-                                0,0 18,2A3,3 0 0,0 15,5C15,5.24 15.04,5.47 15.09,5.7L8.04,9.81C7.5,
-                                9.31 6.79,9 6,9A3,3 0 0,0 3,12A3,3 0 0,0 6,15C6.79,15 7.5,14.69 8.04,
-                                14.19L15.16,18.34C15.11,18.55 15.08,18.77 15.08,19C15.08,20.61 16.39,
-                                21.91 18,21.91C19.61,21.91 20.92,20.61 20.92,19A2.92,2.92 0 0,0 18,16.08Z" />
-
-                                </svg>
-                            </button>
                             {
                                 active[item.id] == 1 ?
                                     <button className={'heart'} onClick={() => { deleteFavorite(item.id) }} aria-label="محي من المفضلة">
@@ -130,6 +118,21 @@ const List = ({ articles }) => {
                                     </button>
 
                             }
+                            <button aria-label="نشر" onClick={() =>
+                                handleClick(item.title, item.url.replace("https://www.for9a.com/", `${process.env.domain}/`))}
+                                className={'shareButton mr-1 '}>
+                                <svg xmlns="http://www.w3.org/2000/svg" className=' h-7 w-7 md:h-5 md:w-5'
+                                    width="18px" height="17px" viewBox="1 0 24 24">
+                                    <path fill="gray" d="M18,16.08C17.24,16.08 16.56,16.38 
+                                16.04,16.85L8.91,12.7C8.96,12.47 9,12.24 9,12C9,11.76 8.96,11.53 
+                                8.91,11.3L15.96,7.19C16.5,7.69 17.21,8 18,8A3,3 0 0,0 21,5A3,3 0 
+                                0,0 18,2A3,3 0 0,0 15,5C15,5.24 15.04,5.47 15.09,5.7L8.04,9.81C7.5,
+                                9.31 6.79,9 6,9A3,3 0 0,0 3,12A3,3 0 0,0 6,15C6.79,15 7.5,14.69 8.04,
+                                14.19L15.16,18.34C15.11,18.55 15.08,18.77 15.08,19C15.08,20.61 16.39,
+                                21.91 18,21.91C19.61,21.91 20.92,20.61 20.92,19A2.92,2.92 0 0,0 18,16.08Z" />
+
+                                </svg>
+                            </button>
 
                             <p className="result"></p>
                         </div>

@@ -28,12 +28,12 @@ const Featured = () => {
         )
 
     return (
-        <div className={`featured  flex flex-col md:grid grid-cols-2 gap-5 md:mb-7 container `}>
+        <div className={`featured  flex flex-col md:grid grid-cols-2 gap-5 md:mb-7 container`}>
             <div className={'article '}>
                 <ArticleItem item={data.result.items[0]} showDesc={true} />
             </div>
-            <div className={`list  ${darkMode ? 'bg-zinc-800' : ''}`}>
-                <List articles={data.result.items.slice(0, 3)} />
+            <div className={`list ${darkMode ? 'bg-zinc-800' : ''}`}>
+                <List articles={data.result.items.slice(0, 4)} />
             </div>
 
         </div>
