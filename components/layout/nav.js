@@ -10,7 +10,7 @@ const Nav = () => {
     const { darkMode } = useContext(ThemeContext);
     return (
         <header>
-            <div className={`${darkMode ? css.dark : ''}  ${css.navbar} `} >
+            <div className={`${darkMode ? css.dark : ''} ${css.navbar}`} >
                 <div className={`${css.navContent} container`}>
                     <div className={css.menu}>
                         <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24">
@@ -26,7 +26,7 @@ const Nav = () => {
                     </div>
                     <div className={css.logo}>
                         <Link href={`${process.env.domain}/learn`}>
-                            <a><Image src={'https://www.for9a.com/images/logo.svg'} width={"80px"} height={"50px"} alt='logo' /></a>
+                            <a><Image src={'https://www.for9a.com/images/logo.svg'} width={"100px"} height={"50px"} alt='logo' className='object-cover'/></a>
                         </Link>
 
                     </div>
