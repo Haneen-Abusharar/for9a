@@ -5,12 +5,14 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <link rel="prefetch" href="https://fonts.googleapis.com" as="font" />
-          <link rel="prefetch" href="https://fonts.gstatic.com" crossOrigin="true" as="font" />
-          <link  href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;800;900&display=swap"  rel="stylesheet"/>
-          {/* <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
-          <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;800;900&display=swap" rel="stylesheet" /> */}
+
+          <link rel="preload" href='/cairo/Cairo-ExtraLight.ttf' as="font" crossorigin="true" />
+          <link rel="preload" href='/cairo/Cairo-Light.ttf' as="font" crossorigin="true" />
+          <link rel="preload" href='/cairo/Cairo-Regular.ttf' as="font" crossorigin="true" />
+          <link rel="preload" href='/cairo/Cairo-medium.ttf' as="font" crossorigin="true" />
+          <link rel="preload" href='/cairo/Cairo-SemiBold.ttf' as="font" crossorigin="true" />
+          <link rel="preload" href='/cairo/Cairo-Bold.ttf' as="font" crossorigin="true"/>
+          <link rel="preload" href='/cairo/Cairo-ExtraBold.ttf' as="font" crossorigin="true" />
         </Head>
         <body>
           <Main />

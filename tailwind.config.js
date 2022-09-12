@@ -19,7 +19,7 @@ module.exports = {
 			'md': '800px',
 			'lg': '1024px',
 		},
-
+		
 	},
 	variants: {},
 	plugins: [

@@ -8,12 +8,63 @@ $dark-text-color: white;
 $text-color: #454F54;
 $tarnsition-delay: 1s;
 
+@font-face {
+  font-family: Cairo;
+  src: url('/cairo/Cairo-ExtraLight.ttf');
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: Cairo;
+  src: url('/cairo/Cairo-Light.ttf');
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: Cairo;
+  src: url('/cairo/Cairo-Regular.ttf');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: Cairo;
+  src: url('/cairo/Cairo-medium.ttf');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: Cairo;
+  src: url('/cairo/Cairo-SemiBold.ttf');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: Cairo;
+  src: url('/cairo/Cairo-Bold.ttf');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: Cairo;
+  src: url('/cairo/Cairo-ExtraBold.ttf');
+  font-weight: 800;
+}
+@font-face {
+  font-family: Cairo;
+  src: url('/cairo/Cairo-Black.ttf');
+  font-weight: 900;
+}
+
+html {
+  font-size: 100%;
+  box-sizing: border-box;
+}
+
 html,
 body {
   margin: 0;
   color: #222;
-  font-family: Cairo, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: Cairo;
   margin: 0;
   padding: 0;
   font-size: 18px;
@@ -32,14 +83,10 @@ body {
 }
 
 
+
 .dark {
   color: $dark-text-color;
   background-color: $dark-background-color;
-
-  // .container {
-  // //  background-color: $dark-background-color;
-
-  // }
 
   .swiper-button-prev,
   .swiper-button-next {
@@ -56,10 +103,6 @@ body {
 
 }
 
-html {
-  font-size: 100%;
-  box-sizing: border-box;
-}
 
 iframe,
 img {
@@ -85,30 +128,12 @@ button {
   width: 0px !important;
   height: 0px !important;
   background: white;
-  //border: 1px solid gray;
-  //border-radius: 50%;
-  //top: 40px !important;
-  //padding: 3px;
-
 
   &:after {
-   // color: #383735;
     font-size: 0px !important;
-
   }
 }
 
-// .swiper-button-prev {
-//   right: -50px !important;
-
-
-// }
-
-// .swiper-button-next {
-//   left: -50px !important;
-
-
-// }
 
 .swiper-pagination-bullet-active {
   background-color: #eb751d !important;
