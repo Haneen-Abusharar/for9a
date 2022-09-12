@@ -23,9 +23,6 @@ const Article = ({ item }) => {
         const height = Math.ceil(width / 2);
         return `https://images.for9a.com/thumb/fit-${width}-${height}-${quality}-webp/${src}`;
     }
-
-
-
     useEffect(() => {
         const audio = new Audio();
         audioRef = audio;
@@ -47,7 +44,6 @@ const Article = ({ item }) => {
         };
     }, [])
 
-
     function playAudio(e) {
         e.preventDefault();
         const audioUrl = this.getAttribute("href");
@@ -64,7 +60,6 @@ const Article = ({ item }) => {
             this.classList.remove("isplay")
             audioRef.pause();
         }
-
     }
 
     useEffect(() => {
@@ -128,14 +123,12 @@ const Article = ({ item }) => {
                 <div className={`progressBar h-1 origin-top-right bg-gradient-to-r to-white from-orange-500 `}
                     style={{ transform: `scale(${scroll}, 1)` }} />
             </div>
-
             <article className={`${darkMode ? css.dark : ''} ${css.top} mt-12 md:mt-12 md:flex md:flex-col md:items-center md:justify-center`} ref={elementRef} >
                 <div className={`ads bg-slate-200 w-full text-center`}>
                     <Image src="/ads.PNG" alt="ads" className={`adpic !mt-1.5 w-full h-auto `} height="157" width="556" />
 
 
                 </div>
-
                 <div className={`image md:w-3/4 md:mt-3 `}>
 
                     {item.images?.folder &&
@@ -145,8 +138,6 @@ const Article = ({ item }) => {
                             width="500px" height="250px" quality={100} priority="true"
                             alt={item.title} placeholder='blurDataURL' layout='responsive' />}
                 </div>
-
-
                 <div className={`Section  m-auto py-0 md:pr-8 mb-6 md:w-3/4  `}>
                     <div className=' container flex items-center justify-between'>
                         <div className={`author md:w-full -mt-4 flex items-center  md:-mt-5`}>
@@ -217,7 +208,7 @@ const Article = ({ item }) => {
                                     <button className={'heart'} onClick={() => { setActive(false); addFavorite() }} aria-label="اضافة للمفضلة">
                                         <svg xmlns="http://www.w3.org/2000/svg"
                                             viewBox="0 0 24 24" width={30} height={30}>
-                                            <path fill="#eb751d" d="M12.1 18.55L12 18.65L11.89 18.55C7.14 14.24 4
+                                            <path fill="#e7731d " d="M12.1 18.55L12 18.65L11.89 18.55C7.14 14.24 4
                                     11.39 4 8.5C4 6.5 5.5 5 7.5 5C9.04 5 10.54 6 11.07 7.36H12.93C13.46
                                     6 14.96 5 16.5 5C18.5 5 20 6.5 20 8.5C20 11.39 16.86 14.24 12.1 
                                     18.55M16.5 3C14.76 3 13.09 3.81 12 5.08C10.91 3.81 9.24 3 7.5 
@@ -229,7 +220,7 @@ const Article = ({ item }) => {
                                     <button className={'heart'} onClick={() => { setActive(true); deleteFavorite() }} aria-label="محي من المفضلة">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                                             width="30px" height="30px" >
-                                            <path fill="#eb751d" d="M12,21.35L10.55,20.03C5.4,15.36
+                                            <path fill="#e7731d " d="M12,21.35L10.55,20.03C5.4,15.36
                                     2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,
                                     5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22
                                     ,12.27 18.6,15.36 13.45,20.03L12,21.35Z" />
@@ -242,7 +233,7 @@ const Article = ({ item }) => {
                                         aria-label="محي من المفضلة">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                                             width="30px" height="30px" >
-                                            <path fill="#eb751d" d="M12,21.35L10.55,20.03C5.4,15.36
+                                            <path fill="#e7731d " d="M12,21.35L10.55,20.03C5.4,15.36
                                     2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,
                                     5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22
                                     ,12.27 18.6,15.36 13.45,20.03L12,21.35Z" />
@@ -253,7 +244,7 @@ const Article = ({ item }) => {
                                         aria-label="اضافة للمفضلة">
                                         <svg xmlns="http://www.w3.org/2000/svg"
                                             viewBox="0 0 24 24" width="30px" height="30px" >
-                                            <path fill="#eb751d" d="M12.1 18.55L12 18.65L11.89 18.55C7.14 14.24 4
+                                            <path fill="#e7731d " d="M12.1 18.55L12 18.65L11.89 18.55C7.14 14.24 4
                                         11.39 4 8.5C4 6.5 5.5 5 7.5 5C9.04 5 10.54 6 11.07 7.36H12.93C13.46
                                         6 14.96 5 16.5 5C18.5 5 20 6.5 20 8.5C20 11.39 16.86 14.24 12.1 
                                         18.55M16.5 3C14.76 3 13.09 3.81 12 5.08C10.91 3.81 9.24 3 7.5 
@@ -265,7 +256,6 @@ const Article = ({ item }) => {
                         </div>
                     </div>
                     <div className={` container article text-base leading-8`}>
-
                         <div className={`breadcrumb flex -mb-2.5`}>
                             <Link href={"/learn"}><a className=' text-gray-500 no-underline hover:text-blue-700'>
                                 <h5 className='text-sm ml-2.5 mb-0 '> تعلم / </h5></a></Link>
@@ -275,11 +265,8 @@ const Article = ({ item }) => {
                                     href={`${item.category.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
                                     <h5>{item.category.title}</h5></a>
                             </Link>
-
                         </div>
-
                         <h1 className='text-2xl leading-8 my-4 text-orange-500 font-bold md:mt-3 md:text-3xl md:leading-9'>{item.title || <Skeleton />}</h1>
-
                         <div className={`mobileSharing md:hidden flex items-center text-sm mx-0 my-4`}>
                             <div className={` share  whitespace-nowrap flex rounded-2xl py-1 px-4 ${darkMode ? 'bg-zinc-600 ' : 'bg-slate-100'}`}>
                                 <button onClick={handleClick} className={`shareButton ml-1`} aria-label="مشاركة">
@@ -298,13 +285,12 @@ const Article = ({ item }) => {
                                 <h4>شاركها مع أصدقائك</h4>
                             </div>
                             <div className={`mobileHeart mr-6  flex rounded-2xl py-1 px-4 ${darkMode ? 'bg-zinc-600 ' : 'bg-slate-100'}`}>
-
                                 {item.is_pinned === 0 ?
                                     active === true ?
                                         <button className={'heart'} onClick={() => { setActive(false); addFavorite() }} aria-label="اضافة للمفضلة">
                                             <svg xmlns="http://www.w3.org/2000/svg"
                                                 viewBox="0 0 24 24" width="14px" height="14px">
-                                                <path fill="#eb751d" d="M12.1 18.55L12 18.65L11.89 18.55C7.14 14.24 4
+                                                <path fill="#e7731d" d="M12.1 18.55L12 18.65L11.89 18.55C7.14 14.24 4
                                     11.39 4 8.5C4 6.5 5.5 5 7.5 5C9.04 5 10.54 6 11.07 7.36H12.93C13.46
                                     6 14.96 5 16.5 5C18.5 5 20 6.5 20 8.5C20 11.39 16.86 14.24 12.1 
                                     18.55M16.5 3C14.76 3 13.09 3.81 12 5.08C10.91 3.81 9.24 3 7.5 
@@ -316,20 +302,19 @@ const Article = ({ item }) => {
                                         <button className={'heart'} onClick={() => { setActive(true); deleteFavorite() }} aria-label="محي من المفضلة">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                                                 width="14px" height="14px">
-                                                <path fill="#eb751d" d="M12,21.35L10.55,20.03C5.4,15.36
+                                                <path fill="#e7731d" d="M12,21.35L10.55,20.03C5.4,15.36
                                     2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,
                                     5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22
                                     ,12.27 18.6,15.36 13.45,20.03L12,21.35Z" />
                                             </svg>
                                         </button>
-
                                     :
                                     active === true ?
                                         <button className={'heart'} onClick={() => { setActive(false); deleteFavorite() }}
                                             aria-label="محي من المفضلة">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                                                 width="14px" height="14px">
-                                                <path fill="#eb751d" d="M12,21.35L10.55,20.03C5.4,15.36
+                                                <path fill="#e7731d" d="M12,21.35L10.55,20.03C5.4,15.36
                                     2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,
                                     5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22
                                     ,12.27 18.6,15.36 13.45,20.03L12,21.35Z" />
@@ -340,7 +325,7 @@ const Article = ({ item }) => {
                                             aria-label="اضافة للمفضلة">
                                             <svg xmlns="http://www.w3.org/2000/svg"
                                                 viewBox="0 0 24 24" width="14px" height="14px">
-                                                <path fill="#eb751d" d="M12.1 18.55L12 18.65L11.89 18.55C7.14 14.24 4
+                                                <path fill="#e7731d" d="M12.1 18.55L12 18.65L11.89 18.55C7.14 14.24 4
                                         11.39 4 8.5C4 6.5 5.5 5 7.5 5C9.04 5 10.54 6 11.07 7.36H12.93C13.46
                                         6 14.96 5 16.5 5C18.5 5 20 6.5 20 8.5C20 11.39 16.86 14.24 12.1 
                                         18.55M16.5 3C14.76 3 13.09 3.81 12 5.08C10.91 3.81 9.24 3 7.5 
@@ -353,13 +338,8 @@ const Article = ({ item }) => {
                                 <h4 className='mr-1'> حفظ للمفضلة</h4>
                             </div>
                         </div>
-
-
                         <div className={css.content} dangerouslySetInnerHTML={{ __html: item.body || <Skeleton count={100} /> }} />
-
                         <StarRating item={item} id={item.id} />
-
-
                     </div>
                 </div>
                 <div className={`${css.carosel} m-auto mb-5 py-0 px-4 md:w-3/4`}>
@@ -376,7 +356,6 @@ const Article = ({ item }) => {
             <LazyLoad height={300} >
                 <Comments id={item.id} />
             </LazyLoad>
-
         </>
     )
 }
