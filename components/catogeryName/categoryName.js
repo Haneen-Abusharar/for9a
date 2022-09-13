@@ -7,12 +7,12 @@ import LearnFilter from '../filters/learn/learnFilter';
 import css from "./categoryName.module.scss";
 import ArticleCardLoad from '../skeleton/articleCard';
 
-const CategoryName = ({ catogeries, filter }) => {
+const CategoryName = ({ catogeries, filter, articles }) => {
 
     const observer = useRef();
     const [loading, setLoading] = useState(true);
     const [hasMore, setHasMore] = useState(false);
-    const [page, setPage] = useState(1);
+    const [page, setPage] = useState(2);
     const [data, setData] = useState(null);
 
 
@@ -26,6 +26,7 @@ const CategoryName = ({ catogeries, filter }) => {
                 }
             })
             if (!data)
+            
                 setData(result.data.result.items)
             else
                 setData(current => [...current, ...result.data.result.items]);
@@ -93,3 +94,19 @@ const CategoryName = ({ catogeries, filter }) => {
 }
 
 export default CategoryName;
+
+export const getServerSideProps = async () => {
+    var uri = `${process.env.api}/learn/all?type=${filter.type}&page=1&count=12`;
+    var res = encodeURI(uri);
+    const articles = await axios.get(res, {
+        headers: {
+            'authentication': 'i0qvLgN2AfwTgajvdOcB7m1IHEoKu7ou'
+        }
+    })
+    console.log("hh")
+    if (articles.data.result.items.length == 0) return { notFound: true }
+
+    return {
+        props: { articles: articles.data.result.items } // will be passed to the page component as props
+    }
+}

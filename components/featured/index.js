@@ -22,13 +22,13 @@ const Featured = () => {
     if (!data || isLoading || error)
         return (
             <div className='container flex flex-col md:flex-row '>
-                <div className='w-full mb-2 ml-2 h-full'><ArticleCardLoad /></div >
-                <div className='w-full  '><ListLoading /></div>
+                <div className='w-full mb-5 ml-5 h-full'><ArticleCardLoad /></div >
+                <div className='w-full mt-5'><ListLoading /></div>
             </div>
         )
 
     return (
-        <div className={`featured  flex flex-col md:grid grid-cols-2 gap-5 md:mb-7 container`}>
+        <div className={`featured  flex flex-col md:grid grid-cols-2 md:gap-5 md:mb-7 container`}>
             <div className={'article '}>
                 <ArticleItem item={data.result.items[0]} showDesc={true} />
             </div>

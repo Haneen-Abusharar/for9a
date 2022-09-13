@@ -42,7 +42,7 @@ const CatogriesList = ({ }) => {
                     width={100}
                 />
             </div>
-            <div className=' md:hidden mb-10 mt-6 '>
+            <div className=' md:hidden mb-16 mt-6 '>
                 <Skeleton
                     count={3}
                     wrapper={InlineWrapperWithMargin}

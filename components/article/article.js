@@ -20,9 +20,11 @@ const Article = ({ item }) => {
     const audioRef = useRef(null);
     const date = new Date(item.published_at).toLocaleDateString('ar-EG', { month: "long" });
     const loader = ({ src, width, quality }) => {
+
         const height = Math.ceil(width / 2);
         return `https://images.for9a.com/thumb/fit-${width}-${height}-${quality}-webp/${src}`;
     }
+
     useEffect(() => {
         const audio = new Audio();
         audioRef = audio;
@@ -125,7 +127,7 @@ const Article = ({ item }) => {
             </div>
             <article className={`${darkMode ? css.dark : ''} ${css.top} mt-12 md:mt-12 md:flex md:flex-col md:items-center md:justify-center`} ref={elementRef} >
                 <div className={`ads bg-slate-200 w-full text-center`}>
-                    <Image src="/ads.PNG" alt="ads" className={`adpic !mt-1.5 w-full h-auto `} height="157" width="556" />
+                    <Image src="/ads.PNG" alt="ads" className={`adpic !mt-1.5`} height="157" width="556" />
 
 
                 </div>
@@ -134,15 +136,21 @@ const Article = ({ item }) => {
                     {item.images?.folder &&
                         <Image src={`${item.images.folder}/${item.images.name}`}
                             loader={loader}
-                            className={`${css.move} rounded-none  md:rounded-md object-cover `}
-                            width="500px" height="250px" quality={100} priority="true"
-                            alt={item.title} placeholder='blurDataURL' layout='responsive' />}
+                            className={`rounded-none md:rounded-md object-cover `}
+                            width={375}
+                            height={188}
+                            quality={90}
+                            priority={true}
+                            alt={item.title} 
+                           
+                            layout='responsive'
+                             />}
                 </div>
                 <div className={`Section  m-auto py-0 md:pr-8 mb-6 md:w-3/4  `}>
                     <div className=' container flex items-center justify-between'>
                         <div className={`author md:w-full -mt-4 flex items-center  md:-mt-5`}>
-                            <Image className={`pic object-cover rounded-full w-full h-auto`}
-                                src={"https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?cs=srgb&dl=pexels-italo-melo-2379004.jpg&fm=jpg"}
+                            <Image className={`pic object-cover rounded-full`}
+                                src={"https://images.for9a.com/thumb/fit-90-90-100-webp/user/268-nadine-burzler-fsxq3xu72bs-unsplash.jpg"}
                                 width={90} height={90} alt="profile picture" />
                             <div className={`${css.authName} mt-5 mr-3  w-32 whitespace-nowrap`}>
                                 <h5 className='text-base'> أ.أيمن العتوم</h5>
@@ -257,16 +265,16 @@ const Article = ({ item }) => {
                     </div>
                     <div className={` container article text-base leading-8`}>
                         <div className={`breadcrumb flex -mb-2.5`}>
-                            <Link href={"/learn"}><a className=' text-gray-500 no-underline hover:text-blue-700'>
+                            <Link href={"/learn"}><a className=' text-gray-500 no-underline hover:text-sky-700'>
                                 <h5 className='text-sm ml-2.5 mb-0 '> تعلم / </h5></a></Link>
                             <Link
                                 href={`${item.category.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
-                                <a className='text-sm ml-2.5 mb-0 no-underline text-gray-500 hover:text-blue-700 '
+                                <a className='text-sm ml-2.5 mb-0 no-underline text-gray-500 hover:text-sky-700'
                                     href={`${item.category.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
                                     <h5>{item.category.title}</h5></a>
                             </Link>
                         </div>
-                        <h1 className='text-2xl leading-8 my-4 text-orange-500 font-bold md:mt-3 md:text-3xl md:leading-9'>{item.title || <Skeleton />}</h1>
+                        <h1 className='text-2xl leading-8 my-4 text-orange-600 font-bold md:mt-3 md:text-3xl md:leading-9'>{item.title || <Skeleton height={10} count={2}/>}</h1>
                         <div className={`mobileSharing md:hidden flex items-center text-sm mx-0 my-4`}>
                             <div className={` share  whitespace-nowrap flex rounded-2xl py-1 px-4 ${darkMode ? 'bg-zinc-600 ' : 'bg-slate-100'}`}>
                                 <button onClick={handleClick} className={`shareButton ml-1`} aria-label="مشاركة">
@@ -282,10 +290,10 @@ const Article = ({ item }) => {
 
                                     </svg>
                                 </button>
-                                <h4>شاركها مع أصدقائك</h4>
+                                <h4 className='white-space: nowrap;'>شاركها مع أصدقائك</h4>
                             </div>
-                            <div className={`mobileHeart mr-6  flex rounded-2xl py-1 px-4 ${darkMode ? 'bg-zinc-600 ' : 'bg-slate-100'}`}>
-                                {item.is_pinned === 0 ?
+                            <div className={`mobileHeart mr-4 flex rounded-2xl py-1 px-4 ${darkMode ? 'bg-zinc-600 ' : 'bg-slate-100'}`}>
+                                {item.is_pinned === 0 ? 
                                     active === true ?
                                         <button className={'heart'} onClick={() => { setActive(false); addFavorite() }} aria-label="اضافة للمفضلة">
                                             <svg xmlns="http://www.w3.org/2000/svg"
@@ -335,7 +343,7 @@ const Article = ({ item }) => {
 
                                         </button>
                                 }
-                                <h4 className='mr-1'> حفظ للمفضلة</h4>
+                                <h4 className='mr-1 white-space: nowrap;'> حفظ للمفضلة</h4>
                             </div>
                         </div>
                         <div className={css.content} dangerouslySetInnerHTML={{ __html: item.body || <Skeleton count={100} /> }} />

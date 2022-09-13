@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from "react";
 
 const Home = () => {
- 
-  return <>
-  <div style={{marginTop:'20px'}}>
-  <h1>Hi</h1>
-  </div>
 
-  
+  const res = {
+    statusCode: '404'
+  }
+  const { statusCode: code } = res;
+  console.log(code);
+  return <>
+    <div className='mt-20 mr-20 ' >
+      <h1>Hi</h1>
+    </div>
+
+
   </>
 
 

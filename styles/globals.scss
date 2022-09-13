@@ -27,12 +27,11 @@ $tarnsition-delay: 1s;
 
 @font-face {
   font-family: Cairo;
-  src: url('/cairo/Cairo-medium.ttf');
+  src: url('/cairo/Cairo-Medium.ttf');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
-
 
 
 @font-face {
@@ -288,7 +287,7 @@ button {
   text-align: center;
   align-items: center;
   width: 100%;
-  border: 2px solid #f6a828;
+  border: 2px solid #da8f17;
   border-radius: 1rem;
   padding: 20px;
   margin: 10px 0;
@@ -304,7 +303,7 @@ button {
 
   .goto {
     background: #f1630d;
-    background: linear-gradient(270deg, #f1630d 0, #fc8c1d .01%, #fbab18 100%);
+    background: linear-gradient(270deg, #f1630d 0, #fc8c1d .01%, #f6a52c 100%);
     color: #fff !important;
     transition: all .3s ease;
     min-width: 150px;

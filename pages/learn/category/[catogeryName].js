@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Head from "next/head";
 import CategoryName from "../../../components/catogeryName/categoryName";
 
@@ -12,8 +12,8 @@ const CategoryPage = ({ catogeries }) => {
                 <meta property="og:url" content={catogeries.url} />
                 <meta property="og:locale" content="ar_SA" />
                 <meta property="og:type" content="website" />
-                <meta property="og:description" content={catogeries.description.replace(/[<-\w*|"|=|;|:|&|/>]/g, "")}/>
-                
+                <meta property="og:description" content={catogeries.description.replace(/[<-\w*|"|=|;|:|&|/>]/g, "")} />
+
 
             </Head>
             <CategoryName
@@ -37,7 +37,7 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps = async (context) => {
-  
+
     const res = await fetch(`https://api.for9a.com/blog/category`)
     const data = await res.json();
 
@@ -45,7 +45,6 @@ export const getStaticProps = async (context) => {
         if (item.slug == context.params.catogeryName)
             return item
     })
-
 
     return {
         props: {

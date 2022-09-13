@@ -10,29 +10,29 @@ const ListLoading = props => {
             foregroundColor="#ecebeb"
             {...props}
         >
-            <rect x="300" y="0" rx="4" ry="4" width="150" height="150" />
-            <rect x="100" y="20" rx="0" ry="0" width="150" height="11" />
-            <rect x="60" y="50" rx="0" ry="0" width="190" height="11" />
-            <rect x="60" y="80" rx="0" ry="0" width="190" height="11" />
-            <rect x="25" y="130" rx="0" ry="0" width="15" height="15" />
-            <rect x="5" y="130" rx="0" ry="0" width="15" height="15" />
-            <rect x="0" y="150" rx="0" ry="0" width="450" height="2" />
+            <rect x="350" y="0" rx="4" ry="4" width="100" height="100" />
+            <rect x="180" y="20" rx="0" ry="0" width="150" height="11" />
+            <rect x="25" y="60" rx="0" ry="0" width="15" height="15" />
+            <rect x="50" y="60" rx="0" ry="0" width="15" height="15" />
+            <rect x="0" y="100" rx="0" ry="0" width="450" height="2" />
 
-            <rect x="300" y="180" rx="4" ry="4" width="150" height="150" />
-            <rect x="100" y="200" rx="0" ry="0" width="150" height="11" />
-            <rect x="60" y="230" rx="0" ry="0" width="190" height="11" />
-            <rect x="60" y="260" rx="0" ry="0" width="190" height="11" />
-            <rect x="25" y="310" rx="0" ry="0" width="15" height="15" />
-            <rect x="5" y="310" rx="0" ry="0" width="15" height="15" />
-            <rect x="0" y="330" rx="0" ry="0" width="450" height="2" />
+            <rect x="350" y="120" rx="4" ry="4" width="100" height="100" />
+            <rect x="180" y="140" rx="0" ry="0" width="150" height="11" />
+            <rect x="25" y="180" rx="0" ry="0" width="15" height="15" />
+            <rect x="50" y="180" rx="0" ry="0" width="15" height="15" />
+            <rect x="0" y="220" rx="0" ry="0" width="450" height="2" />
 
-            <rect x="300" y="360" rx="4" ry="4" width="150" height="150" />
-            <rect x="100" y="380" rx="0" ry="0" width="150" height="11" />
-            <rect x="60" y="410" rx="0" ry="0" width="190" height="11" />
-            <rect x="60" y="440" rx="0" ry="0" width="190" height="11" />
-            <rect x="25" y="490" rx="0" ry="0" width="15" height="15" />
-            <rect x="5" y="490" rx="0" ry="0" width="15" height="15" />
-            <rect x="0" y="510" rx="0" ry="0" width="450" height="2" />
+            <rect x="350" y="240" rx="4" ry="4" width="100" height="100" />
+            <rect x="180" y="260" rx="0" ry="0" width="150" height="11" />
+            <rect x="25" y="300" rx="0" ry="0" width="15" height="15" />
+            <rect x="50" y="300" rx="0" ry="0" width="15" height="15" />
+            <rect x="0" y="340" rx="0" ry="0" width="450" height="2" />
+
+            <rect x="350" y="360" rx="4" ry="4" width="150" height="100" />
+            <rect x="180" y="380" rx="0" ry="0" width="150" height="11" />
+            <rect x="25" y="420" rx="0" ry="0" width="15" height="15" />
+            <rect x="50" y="420" rx="0" ry="0" width="15" height="15" />
+            <rect x="0" y="460" rx="0" ry="0" width="450" height="2" />
         </ContentLoader>
     )
 }

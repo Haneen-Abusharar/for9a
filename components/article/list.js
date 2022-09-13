@@ -8,12 +8,9 @@ import { ThemeContext } from '../../DarkModeContext';
 const List = ({ articles }) => {
     const { darkMode } = useContext(ThemeContext);
     const [active, setActive] = useState(true);
-
-
     const loader = ({ src, width, quality }) => {
         return `https://images.for9a.com/thumb/fit-${width}-${width}-100-webp/${src}`;
     }
-
 
     useEffect(() => {
         const isPinned = [];
@@ -65,10 +62,9 @@ const List = ({ articles }) => {
     return (
         <>
             {articles.map((item, index) => (
-                <div className={`list flex flex-row ml-1 mr-1 mb-5 mt-5 lg:w-full bg-white rounded-lg 
+                <div className={`list flex flex-row mb-5 mt-5 lg:w-full bg-white rounded-lg 
             border shadow-md md:mb-5 md:mt-0 md:flex-row hover:bg-gray-100 hover:transition ease-in-out
              ${darkMode ? 'border-zinc-700 bg-zinc-700 hover:bg-zinc-600' : ''} `} key={index}>
-
                     <div className={`flex-none xs:w-2/5 sm:w-1/5 md:w-2/5 lg:w-1/5`}>
                         {
                             item.images?.md && <Link
@@ -92,7 +88,6 @@ const List = ({ articles }) => {
                             </a></Link>
                        
                         <div className={`button font-normal flex justify-end mx-2 mt-auto pb-4`}>
-
                             {
                                 active[item.id] == 1 ?
                                     <button className={'heart'} onClick={() => { deleteFavorite(item.id) }} aria-label="محي من المفضلة">
@@ -138,10 +133,7 @@ const List = ({ articles }) => {
                         </div>
                     </div>
                 </div>
-
-
             )
-
             )}
         </>
     )

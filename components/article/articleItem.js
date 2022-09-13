@@ -52,7 +52,6 @@ const ArticleItem = ({ item, showDesc }) => {
         })
     }
 
-
     return (
 
         <div className={` articleCard flex flex-col  h-full mb-5 bg-white rounded-lg border border-gray-200 shadow-md 
@@ -67,8 +66,9 @@ const ArticleItem = ({ item, showDesc }) => {
                             loader={loader}
                             quality={80}
                             className={`move rounded-t-lg object-cover ${darkMode ? ' hover:opacity-50 ease-in-out  ' : ''} `}
-                            width="200px" height="130px"
-                            alt={item.title} loading='lazy' placeholder='blurDataURL' layout='responsive' />
+                            width={200} height={130}
+                            alt={item.title} loading='lazy'
+                            layout='responsive' />
                     </a>
                 </Link>}
 
