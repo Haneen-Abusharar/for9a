@@ -51,9 +51,7 @@ const Favorite = () => {
   });
 
   useEffect(() => {
-    console.log("log")
     setLoading(true);
-    console.log(pagee)
     fetchMore({
       variables: {
         first: 12,
@@ -92,11 +90,9 @@ const Favorite = () => {
 
 
   const lastItem = useCallback(async node => {
-    console.log("lastitem")
     if (loading2) return
     if (observer.current) observer.current.disconnect();
     observer.current = new IntersectionObserver(entries => {
-      console.log("observer");
       if (hasMore) {
         setPage(pagee++);
       }

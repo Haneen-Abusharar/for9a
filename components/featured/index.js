@@ -23,7 +23,7 @@ const Featured = () => {
         return (
             <div className='container flex flex-col md:flex-row '>
                 <div className='w-full mb-5 ml-5 h-full'><ArticleCardLoad /></div >
-                <div className='w-full mt-5'><ListLoading /></div>
+                <div className='w-full sm:mt-5 md:mt-0'><ListLoading /></div>
             </div>
         )
 

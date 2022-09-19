@@ -20,7 +20,6 @@ const Article = ({ item }) => {
     const audioRef = useRef(null);
     const date = new Date(item.published_at).toLocaleDateString('ar-EG', { month: "long" });
     const loader = ({ src, width, quality }) => {
-
         const height = Math.ceil(width / 2);
         return `https://images.for9a.com/thumb/fit-${width}-${height}-${quality}-webp/${src}`;
     }
@@ -123,16 +122,11 @@ const Article = ({ item }) => {
         <>
             <div className={`progressBarContainer fixed h-1 w-full z-100 top-0`}>
                 <div className={`progressBar h-1 origin-top-right bg-gradient-to-r to-white from-orange-500 `}
-                    style={{ transform: `scale(${scroll}, 1)` }} />
+                     style={{ transform: `scale(${scroll}, 1)` }}
+                     />
             </div>
-            <article className={`${darkMode ? css.dark : ''} ${css.top} mt-12 md:mt-12 md:flex md:flex-col md:items-center md:justify-center`} ref={elementRef} >
-                <div className={`ads bg-slate-200 w-full text-center`}>
-                    <Image src="/ads.PNG" alt="ads" className={`adpic !mt-1.5`} height="157" width="556" />
-
-
-                </div>
+            <article className={`${darkMode ? css.dark : ''} ${css.top}  md:mt-12 md:flex md:flex-col md:items-center md:justify-center`} ref={elementRef} >
                 <div className={`image md:w-3/4 md:mt-3 `}>
-
                     {item.images?.folder &&
                         <Image src={`${item.images.folder}/${item.images.name}`}
                             loader={loader}
@@ -141,10 +135,10 @@ const Article = ({ item }) => {
                             height={188}
                             quality={90}
                             priority={true}
-                            alt={item.title} 
-                           
+                            alt={item.title}
+                            sizes="(min-width: 250px) calc(calc(100vw - 72px) / 3),(min-width: 768px) calc(calc(100vw - 48px) / 2), 100vw"
                             layout='responsive'
-                             />}
+                        />}
                 </div>
                 <div className={`Section  m-auto py-0 md:pr-8 mb-6 md:w-3/4  `}>
                     <div className=' container flex items-center justify-between'>
@@ -199,7 +193,6 @@ const Article = ({ item }) => {
                                 9.31 6.79,9 6,9A3,3 0 0,0 3,12A3,3 0 0,0 6,15C6.79,15 7.5,14.69 8.04,
                                 14.19L15.16,18.34C15.11,18.55 15.08,18.77 15.08,19C15.08,20.61 16.39,
                                 21.91 18,21.91C19.61,21.91 20.92,20.61 20.92,19A2.92,2.92 0 0,0 18,16.08Z" />
-
                             </svg>
                         </button>
                         <Link href={"https://www.twitter.com"}>
@@ -274,7 +267,7 @@ const Article = ({ item }) => {
                                     <h5>{item.category.title}</h5></a>
                             </Link>
                         </div>
-                        <h1 className='text-2xl leading-8 my-4 text-orange-600 font-bold md:mt-3 md:text-3xl md:leading-9'>{item.title || <Skeleton height={10} count={2}/>}</h1>
+                        <h1 className='text-2xl leading-8 my-4 text-orange-600 font-bold md:mt-3 md:text-3xl md:leading-9'>{item.title || <Skeleton height={10} count={2} />}</h1>
                         <div className={`mobileSharing md:hidden flex items-center text-sm mx-0 my-4`}>
                             <div className={` share  whitespace-nowrap flex rounded-2xl py-1 px-4 ${darkMode ? 'bg-zinc-600 ' : 'bg-slate-100'}`}>
                                 <button onClick={handleClick} className={`shareButton ml-1`} aria-label="مشاركة">
@@ -293,7 +286,7 @@ const Article = ({ item }) => {
                                 <h4 className='white-space: nowrap;'>شاركها مع أصدقائك</h4>
                             </div>
                             <div className={`mobileHeart mr-4 flex rounded-2xl py-1 px-4 ${darkMode ? 'bg-zinc-600 ' : 'bg-slate-100'}`}>
-                                {item.is_pinned === 0 ? 
+                                {item.is_pinned === 0 ?
                                     active === true ?
                                         <button className={'heart'} onClick={() => { setActive(false); addFavorite() }} aria-label="اضافة للمفضلة">
                                             <svg xmlns="http://www.w3.org/2000/svg"

@@ -1,13 +1,11 @@
 .learnsearch {
     margin-top: 50px;
     padding-top: 20px;
-margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 .name_description {
-
     line-height: 2rem;
-    
 
     h1 {
         margin: 0px 0px;
@@ -28,15 +26,9 @@ margin-bottom: 10px;
     h1 {
         color: #eb751d;
     }
-
-    // .articles {
-
-    // }
 }
 
-
-
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 700px) {
 
     .load {
 
@@ -48,6 +40,8 @@ margin-bottom: 10px;
             row-gap: 20px;
             justify-content: space-evenly;
             align-content: center;
+            margin-right: 10px;
+            margin-left: 10px;
         }
     }
 }
@@ -60,8 +54,9 @@ margin-bottom: 10px;
             display: grid;
             grid-template-columns: 33.3% 33.3% 33.3%;
             grid-template-rows: auto auto auto;
-            column-gap: 5px;
-            row-gap: 15px;
+            column-gap: 10px;
+            row-gap: 10px;
+
         }
     }
 }

@@ -1,3 +1,4 @@
+import React, { useState, createContext } from "react";
 import Head from "next/head";
 import { ApolloProvider } from '@apollo/client';
 import { useApollo } from "../utilities/client"
@@ -8,28 +9,33 @@ import '../styles/globals.scss'
 import 'swiper/scss';
 import 'swiper/scss/navigation';
 import 'swiper/scss/pagination';
-
+export const ThemeContext = createContext(null);
 
 const MyApp = ({ Component, pageProps }) => {
-
   const apolloClient = useApollo(pageProps.initialApolloState);
   const queryClient = new QueryClient()
+  const [theme, setTheme] = useState("dark");
+  const toggleTheme = () => {
+    setTheme((curr) => (curr === "light" ? "dark" : "light"));
+  }
   return (
     <ApolloProvider client={apolloClient}>
       <Head>
-        <title>Learn</title>
-        <meta name="description"
-          content="تحتوي بوابة تعلم على " />
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="theme-color" content="#317EFB"/>
+        <meta property="og:site_name" content="FORSA" />
+        <meta property="og:locale" content="ar_SA" />
+        <meta property="og:url" content="https://www.for9a.com/learn" />
+        <meta property="og:type" content="website" />
       </Head>
       <ThemeProvider>
-        <QueryClientProvider client={queryClient}>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </QueryClientProvider>
+        <ThemeContext.Provider value={{ theme, toggleTheme }}>
+          <QueryClientProvider client={queryClient}>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </QueryClientProvider>
+        </ThemeContext.Provider>
       </ThemeProvider>
     </ApolloProvider>
   )

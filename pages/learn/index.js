@@ -1,39 +1,33 @@
+import React from "react";
 import Head from "next/head";
-import React, { useState, createContext } from "react";
 import Category from "../../components/category/category";
 import LearnHero from "../../components/hero/learnHero";
 import LearnFilter from "../../components/filters/learn/learnFilter";
 import Featured from "../../components/featured";
 
-export const ThemeContext = createContext(null);
-
 const Learn = ({ }) => {
-    const [theme, setTheme] = useState("dark");
-    const toggleTheme = () => {
-        setTheme((curr) => (curr === "light" ? "dark" : "light"));
-    }
-
+   
     return (
         <>
             <Head>
-                <title>تعلم</title>
-                <meta name="description" content="تحتوي بوابة تعلم على مجموعة مقالات تشكل حاجة أساسية لدى غالبية مستخدمي فرصة. وإيجاد ما يساعدهم في فئات فرص مختلفة
-                 في جميع المجالات والمستويات التعليمية والجنسيات،" />
-                <meta property="og:title" content="تعلم" />
-                <meta property="og:locale" content="ar_SA" />
-                <meta property="og:type" content="website" />
-                <meta property="og:description" content="تحتوي بوابة تعلم على مجموعة مقالات تشكل حاجة أساسية لدى غالبية مستخدمي فرصة. وإيجاد ما يساعدهم في فئات فرص مختلفة في جميع
-                 المجالات والمستويات التعليمية والجنسيات،"/>
+                <title>تعلم تطوير الذات وبناء القدرات</title>
+                <meta name="description" content="الموقع العربي الأول المختص في عرض المنح الدراسية وفرص التدريب والعمل
+                  والدراسة في الخارج يساعدك موقع فرصة على تحقيق شغفك وطموحك
+                  من خلال توفير الفرص التعليمية والتدريبية المتميزة والممولة
+                  والتي تتضمن الزمالات والتبادلات الثقافية وفرص التدريب العملي."/>
+                <meta content="jo" name="country_meta" id="country_meta" />
+                <meta content="ar" name="Lang" id="Lang" />
+                <meta property="og:title" content="اكتشف التحدي القادم! | فرصة" />
+                <meta property="og:description" content="الموقع العربي الأول المختص في عرض المنح الدراسية وفرص التدريب والعمل
+                 والدراسة في الخارج يساعدك موقع فرصة على تحقيق شغفك وطموحك 
+                من خلال توفير الفرص التعليمية والتدريبية المتميزة والممولة
+                 والتي تتضمن الزمالات والتبادلات الثقافية وفرص التدريب العملي."/>
+                <meta property="og:image" content="https://s3-eu-west-1.amazonaws.com/staticfor9a/ban3-06.jpg" />
             </Head>
-            <ThemeContext.Provider value={{ theme, toggleTheme }}>
-
                 <LearnHero />
                 <LearnFilter />
                 <Featured />
                 <Category />
-
-            </ThemeContext.Provider>
-
         </>
     )
 }

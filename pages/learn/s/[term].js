@@ -12,13 +12,13 @@ import c from './search.module.scss'
 const SearchPage = () => {
 
     const { query } = useRouter();
-    const { isLoading, error, data } = useQuery('repoData', () =>
+    const { isLoading, error, data } = useQuery(["query", query.term], () =>
         axios.get(`${process.env.api}/learn/all?term=${query.term}`, {
             headers: {
                 'authentication': 'i0qvLgN2AfwTgajvdOcB7m1IHEoKu7ou'
             }
         }).then(res => res.data))
-   
+        
     if (error || isLoading || !data) return (<Skeleton width={400} />)
 
     return (

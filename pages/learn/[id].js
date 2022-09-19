@@ -4,9 +4,8 @@ import axios from 'axios';
 import Article from "../../components/article/article";
 
 const ArticleP = ({ articles }) => {
-
     let preloadImages = [];
-    [390,414,615].map((width) => {
+    [390,414,500,615,768,800,900].map((width) => {
         const height = Math.ceil(width / 2)
         preloadImages.push(`https://images.for9a.com/thumb/fit-${width}-${height}-100-webp/${articles[0].images.folder}/${articles[0].images.name} ${width}w`)
     })
@@ -25,7 +24,6 @@ const ArticleP = ({ articles }) => {
                 <meta property="og:description" content={articles[0].short_description} />
                 <link rel="preload" href={`https://images.for9a.com/thumb/fit-415-205-320-webp/${articles[0].images.folder}/${articles[0].images.name}`}
                     as="image" imageSrcSet={preloadImages.toString()} />
-
             </Head>
             <Article item={articles[0]} filter={{
                 type: articles[0].category.id

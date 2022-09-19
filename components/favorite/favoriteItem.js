@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Skeleton from 'react-loading-skeleton'
 import { ThemeContext } from '../../DarkModeContext';
 import 'react-loading-skeleton/dist/skeleton.css'
-import css from './favoriteItem.module.scss'
+// import css from './favoriteItem.module.scss'
 import Link from 'next/link'
 import axios from 'axios';
 
@@ -85,11 +85,11 @@ const FavoriteItem = ({ item }) => {
                     </a>
                 </Link>}
 
-            <div className={`flex flex-row m-2 ${css.categories}`}>
+            <div className={`categories flex flex-row m-2`}>
                 {item.categories.map((l, i) => (
-                    <div className={`${css.category}  truncate`} key={i}>
+                    <div className={`category truncate`} key={i}>
                         <Link
-                            href={`category${item.categories.map((e) => (e.slug))}`}>
+                            href={`category/${item.categories.map((e) => (e.slug))}`}>
                             <a className='m-0'>
                                 <h4 className={` border border-gray-300 bg-gray-100  ml-2 rounded-xl truncate p-1 text-sm 
                                 hover:bg-gray-200 transition ease-in-out ${darkMode ? ' text-white bg-zinc-600  hover:bg-zinc-500 ' : 'border-gray-300'}`}>
@@ -107,15 +107,15 @@ const FavoriteItem = ({ item }) => {
                 </a>
             </Link>
 
-            <div className={`${css.cardFooter} flex flex-row items-center mt-auto mb-1`}>
-                <div className={`${css.imageFooter} mr-2 `}><Image src={`/h.jpg`} width={"40px"} height={"40px"} className="rounded-full" alt="pic" /></div>
-                <div className={`${css.Author} flex-auto mr-2 text-sm `}>
+            <div className={`cardFooter flex flex-row items-center mt-auto mb-1`}>
+                <div className={`imageFooter mr-2 `}><Image src={`/h.jpg`} width={"40px"} height={"40px"} className="rounded-full" alt="pic" /></div>
+                <div className={`Author flex-auto mr-2 text-sm `}>
                     <h5 className='whitespace-nowrap inline'>الكاتب</h5>
                     <h6 className='whitespace-nowrap m--1'>{date.toLocaleDateString("en-US")}</h6>
                 </div>
-                <div className={`${css.button} flex flex-row ml-2`}>
+                <div className={`button flex flex-row ml-2`}>
                     {active === true ?
-                        <button className={css.heart} onClick={deleteFavorite} aria-label="محي من المفضلة">
+                        <button className='heart' onClick={deleteFavorite} aria-label="محي من المفضلة">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                                 height="25px" width="25px" className='h-8 w-8 md:h-6 md:w-6'>
                                 <path fill="#eb751d" d="M12,21.35L10.55,20.03C5.4,15.36
@@ -125,7 +125,7 @@ const FavoriteItem = ({ item }) => {
                             </svg>
                         </button>
                         :
-                        <button className={css.heart} onClick={addFavorite} aria-label="اضافة للمفضلة">
+                        <button className='heart' onClick={addFavorite} aria-label="اضافة للمفضلة">
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 24 24" height="25px" width="25px" className='h-8 w-8 md:h-6 md:w-6'>
                                 <path fill="#eb751d" d="M12.1 18.55L12 18.65L11.89 18.55C7.14 14.24 4
@@ -139,7 +139,7 @@ const FavoriteItem = ({ item }) => {
                         </button>
 
                     }
-                    <button onClick={handleClick} className={`${css.shareButton} mr-2 ml-1 `} aria-label="نشر">
+                    <button onClick={handleClick} className={`shareButton mr-2 ml-1 `} aria-label="نشر">
                         <svg xmlns="http://www.w3.org/2000/svg" className=' h-7 w-7 md:h-5 md:w-5'
                             width="18px" height="17px" viewBox="1 0 24 24">
                             <path fill="gray" d="M18,16.08C17.24,16.08 16.56,16.38 

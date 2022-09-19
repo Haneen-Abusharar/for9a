@@ -141,11 +141,11 @@ button {
 
   &:hover {
     .swiper-button-prev {
-      right: 8px !important;
+      right: 0px !important;
     }
 
     .swiper-button-next {
-      left: 8px !important;
+      left: 0px !important;
     }
   }
 
@@ -161,7 +161,7 @@ button {
     background: white;
     border: 1px solid gray;
     border-radius: 50%;
-    top: 40px !important;
+    top: 30px !important;
     padding: 3px;
 
 

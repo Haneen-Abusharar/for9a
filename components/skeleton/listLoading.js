@@ -4,8 +4,9 @@ import ContentLoader from 'react-content-loader'
 const ListLoading = props => {
     return (
         <ContentLoader
+            uniqueKey="my-random-value"
             speed={1}
-            viewBox="0 0 450 520"
+            viewBox="0 0 450 540"
             backgroundColor="#f3f3f3"
             foregroundColor="#ecebeb"
             {...props}
@@ -36,7 +37,5 @@ const ListLoading = props => {
         </ContentLoader>
     )
 }
-
-
 
 export default ListLoading

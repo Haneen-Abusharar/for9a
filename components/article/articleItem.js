@@ -5,7 +5,8 @@ import { ThemeContext } from '../../DarkModeContext';
 import Link from 'next/link'
 
 
-const ArticleItem = ({ item, showDesc }) => {
+const ArticleItem = ({ item, showDesc, priority }) => {
+
     const { darkMode } = useContext(ThemeContext);
     const [active, setActive] = useState(true);
     const unixTime = item.published_at;
@@ -61,14 +62,27 @@ const ArticleItem = ({ item, showDesc }) => {
                 <Link
                     href={`${item.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
                     <a aria-label="صورة المقال">
-
-                        <Image src={`${item.images.folder}/${item.images.name}`}
-                            loader={loader}
-                            quality={80}
-                            className={`move rounded-t-lg object-cover ${darkMode ? ' hover:opacity-50 ease-in-out  ' : ''} `}
-                            width={200} height={130}
-                            alt={item.title} loading='lazy'
-                            layout='responsive' />
+                        {priority ?
+                            <Image src={`${item.images.folder}/${item.images.name}`}
+                                loader={loader}
+                                quality={80}
+                                className={`move rounded-t-lg object-cover ${darkMode ? ' hover:opacity-50 ease-in-out  ' : ''} `}
+                                width={200}
+                                height={130}
+                                // sizes={"(min-width: 250px) 500px, 50vw"}
+                                alt={item.title}
+                                priority={true}
+                                layout='responsive' />
+                            :
+                            <Image src={`${item.images.folder}/${item.images.name}`}
+                                loader={loader}
+                                quality={80}
+                                className={`move rounded-t-lg object-cover ${darkMode ? ' hover:opacity-50 ease-in-out  ' : ''} `}
+                                width={200}
+                                height={130}
+                                alt={item.title}
+                                loading='lazy'
+                                layout='responsive' />}
                     </a>
                 </Link>}
 
@@ -88,8 +102,8 @@ const ArticleItem = ({ item, showDesc }) => {
 
             <Link
                 href={`${item.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
-                <a aria-label={item.title} >
-                    <h3 className={`no-underline mx-2 mb-2 text-base font-bold tracking-tight  md:text-lg
+                <a aria-label={item.title} className="no-underline" >
+                    <h3 className={`mx-2 mb-2 text-base font-bold tracking-tight  md:text-lg
                      ${darkMode ? 'text-white' : 'text-gray-800'}`}>{item.title}</h3>
                 </a>
             </Link>
