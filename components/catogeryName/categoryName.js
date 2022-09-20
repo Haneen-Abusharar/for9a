@@ -57,7 +57,7 @@ const CategoryName = ({ catogeries, filter, articles, pages }) => {
 
     if (!data)
         return (
-            <div className='container md:mt-36 xs:mt-44'>
+            <div className='container md:mt-28 xs:mt-36'>
                 <Skeleton width={200} className="mb-5" />
                 <Skeleton count={4} />
                 <div className='  md:grid md:grid-cols-3 gap-1 mt-5 '>
@@ -81,7 +81,8 @@ const CategoryName = ({ catogeries, filter, articles, pages }) => {
             <div className={`container ${css.load}`}   >
                 <div className={css.articles}>
                     {data && data.map((item) => {
-                        return <ArticleItem item={item} showDesc={true} key={item.id} priority={true} />
+                        return <ArticleItem item={item} showDesc={true}
+                            key={item.id} priority={true} />
                     })}
                 </div>
                 <div ref={lastItem} />

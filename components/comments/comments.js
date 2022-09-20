@@ -11,7 +11,7 @@ const Comments = ({ id }) => {
     const { darkMode } = useContext(ThemeContext);
     const [showButtons, setShowButtons] = useState([]);
      const [value, setValue] = useState('');
-    const [values, setValues] = useState([])
+    // const [values, setValues] = useState([])
     const [newComment, setNewComment] = useState([]);
     const [newReply, setNewReply] = useState([]);
 
@@ -21,7 +21,6 @@ const Comments = ({ id }) => {
                 'authentication': 'i0qvLgN2AfwTgajvdOcB7m1IHEoKu7ou'
             }
         }).then(res => res.data))
-
 
     const setBody = async (e) => {
         e.preventDefault()
@@ -52,7 +51,7 @@ const Comments = ({ id }) => {
                     return value
                 })
 
-         setValues("")
+         setValue("")
     }
 
     const show = (i) => {
@@ -191,7 +190,7 @@ const Comments = ({ id }) => {
                                 </form>
                                 {showButtons[i + 2] == 1 && <div className={css.replyPublish} >
                                     <button onClick={() => { hide(i + 2) }} type='button' aria-label="اخفاء">اخفاء</button>
-                                    <button type='submit' onClick={() =>{ handleReply(values[i], item.id)}} aria-label="نشر" >نشر</button>
+                                    <button type='submit' onClick={() =>{ handleReply(value, item.id)}} aria-label="نشر" >نشر</button>
                                 </div>}
                             </div>
                         </div>

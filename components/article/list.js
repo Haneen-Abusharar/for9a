@@ -80,7 +80,7 @@ const List = ({ articles }) => {
                             </Link>
                         }
                     </div>
-                    <div className={`flex-none flex flex-col sm:w-4/5 md:w-3/5 lg:w-3/4 ${darkMode ? 'bg-zinc-700 hover:bg-zinc-600 ' : ''} `}>
+                    <div className={`flex-none flex flex-col xs:w-3/5 sm:w-4/5 md:w-3/5 lg:w-3/4 ${darkMode ? 'bg-zinc-700 hover:bg-zinc-600 ' : ''} `}>
                         <Link
                             href={`${item.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
                             <a> <h3 className={`xs:line-clamp-2 lg:line-clamp-none text-ellipsis px-3 pt-3 text-base font-bold ${darkMode ? 'text-white' : 'text-gray-800'}`}>{item.title}</h3>

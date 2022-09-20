@@ -21,10 +21,7 @@ const CatogriesList = ({ }) => {
         return <div
             style={{
                 display: 'inline',
-                lineHeight: 2,
-                padding: '.5rem',
-
-
+                padding: '.6rem',
             }}
         >
             {children}
@@ -33,16 +30,16 @@ const CatogriesList = ({ }) => {
 
     if (!data || isLoading || error)
         return (<>
-            <div className='mb-14 mt-6 hidden md:block'>
+            <div className='hidden md:block'>
                 <Skeleton
                     count={4}
                     wrapper={InlineWrapperWithMargin}
                     inline
-                    height={30}
+                    height={36}
                     width={100}
                 />
             </div>
-            <div className=' md:hidden mb-16 mt-6 '>
+            <div className=' md:hidden  '>
                 <Skeleton
                     count={3}
                     wrapper={InlineWrapperWithMargin}

@@ -122,8 +122,8 @@ const Article = ({ item }) => {
         <>
             <div className={`progressBarContainer fixed h-1 w-full z-100 top-0`}>
                 <div className={`progressBar h-1 origin-top-right bg-gradient-to-r to-white from-orange-500 `}
-                     style={{ transform: `scale(${scroll}, 1)` }}
-                     />
+                    style={{ transform: `scale(${scroll}, 1)` }}
+                />
             </div>
             <article className={`${darkMode ? css.dark : ''} ${css.top}  md:mt-12 md:flex md:flex-col md:items-center md:justify-center`} ref={elementRef} >
                 <div className={`image md:w-3/4 md:mt-3 `}>
@@ -136,7 +136,8 @@ const Article = ({ item }) => {
                             quality={90}
                             priority={true}
                             alt={item.title}
-                            sizes="(min-width: 250px) calc(calc(100vw - 72px) / 3),(min-width: 768px) calc(calc(100vw - 48px) / 2), 100vw"
+                            sizes="(min-width: 250px) calc(calc(100vw - 72px) / 3),
+                            (min-width: 768px) calc(calc(100vw - 48px) / 2), 100vw"
                             layout='responsive'
                         />}
                 </div>

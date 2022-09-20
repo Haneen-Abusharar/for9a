@@ -3,7 +3,7 @@ import React from 'react'
 import SpecialitiesHero from '../../components/hero/specialitiesHero'
 
 
-const Index = () => {
+const Specialties = () => {
     return (<>
         <Head>
             <title>دليل التخصصات الجامعية | تخصصات المستقبل | افضل التخصصات الجامعية</title>
@@ -27,4 +27,4 @@ const Index = () => {
     )
 }
 
-export default Index
+export default Specialties
