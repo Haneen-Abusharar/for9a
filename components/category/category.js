@@ -12,7 +12,7 @@ const Category = ({ input }) => {
     if (error || isLoading || !data)
         return (<div className='container'></div>)
 
-
+    console.log(input)
     return (
         <>
             {data.result.map((catogery, index) => (

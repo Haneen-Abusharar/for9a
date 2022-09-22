@@ -1,5 +1,4 @@
 .learnsearch {
-    // margin-top: 50px;
     padding-top: 20px;
     margin-bottom: 10px;
 }
@@ -31,7 +30,6 @@
 @media screen and (min-width: 700px) {
 
     .load {
-
         .articles {
             display: grid;
             grid-template-columns: 50% 50%;
@@ -49,7 +47,6 @@
 @media screen and (min-width: 1024px) {
 
     .load {
-
         .articles {
             display: grid;
             grid-template-columns: 33.3% 33.3% 33.3%;

@@ -37,7 +37,6 @@ const CaroselArticles = ({ filter }) => {
         <ArticleCardLoad />
         <ArticleCardLoad />
       </div>
-
     </>
     )
 
@@ -79,12 +78,12 @@ const CaroselArticles = ({ filter }) => {
             slidesPerView: 3,
             slidesPerGroup: 3,
           },
-          1024: {
+          1200: {
             slidesPerView: 4,
             slidesPerGroup: 4,
           },
         }}
-        spaceBetween={10}
+        spaceBetween={15}
         loop={true}
         loopFillGroupWithBlank={true}
         modules={[Pagination, Navigation]}

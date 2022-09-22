@@ -5,8 +5,8 @@ import { ThemeContext } from '../../DarkModeContext';
 import Link from 'next/link'
 
 
-const ArticleItem = ({ item, showDesc, priority }) => {
-
+const ArticleItem = ({ item, showDesc, priority = false, author = true }) => {
+    
     const { darkMode } = useContext(ThemeContext);
     const [active, setActive] = useState(true);
     const unixTime = item.published_at;
@@ -91,7 +91,7 @@ const ArticleItem = ({ item, showDesc, priority }) => {
                     <div className={`category truncate`} key={i}>
                         <Link
                             href={`${l.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
-                            <a aria-label={l.title} className={`m-0 block !no-underline text-xs border ml-3 rounded-xl truncate p-1 md:text-sm transition ease-in-out 
+                            <a aria-label={l.title} className={`m-0 block !no-underline text-xs border ml-3 rounded-xl truncate p-1  transition ease-in-out 
                                   ${darkMode ? ' !text-white bg-zinc-600 hover:bg-zinc-500' : '!text-zinc-600 bg-gray-100 border-gray-300 hover:bg-gray-200'}`}>
                                 {l.title}
                             </a>
@@ -103,7 +103,7 @@ const ArticleItem = ({ item, showDesc, priority }) => {
             <Link
                 href={`${item.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
                 <a aria-label={item.title} className="no-underline" >
-                    <h3 className={`mx-2 mb-2 text-base font-bold tracking-tight  md:text-lg
+                    <h3 className={`mx-2 mb-2 text-base font-bold tracking-tight 
                      ${darkMode ? 'text-white' : 'text-gray-800'}`}>{item.title}</h3>
                 </a>
             </Link>
@@ -113,15 +113,16 @@ const ArticleItem = ({ item, showDesc, priority }) => {
                     {showDesc && <p className={`line-clamp-3 m-2 mb-3 font-normal text-base  ${darkMode ? "text-gray-400" : "text-gray-500"}`}>{item.short_description}</p>}
                 </a>
             </Link>
-            <div className={`cardFooter flex flex-row items-center mt-auto mb-1`}>
-                <span className={`imageFooter mr-2 `}>
+            <div className={`cardFooter flex flex-row justify-end items-center mt-auto mb-1`}>
+                {author && author ? <span className={`imageFooter mr-2 `}>
                     <Image src={`/h.jpg`} width={"40px"} height={"40px"} className="w-full h-auto rounded-full" alt='auther picture' />
-                </span>
-                <div className={`Author flex-auto mr-2 text-sm `}>
+                </span> :
+                    null}
+                {author ? <div className={`Author flex-auto mr-2 text-sm `}>
                     <span className=' whitespace-nowrap '>الكاتب</span>
                     <span className='block text-xs whitespace-nowrap m--1'>{date.toLocaleDateString("en-US")}</span>
-                </div>
-                <div className={`button flex flex-row ml-2`}>
+                </div> : null}
+                <div className={`button flex flex-row ml-2 ${author ? "justify-end" : ""}`}>
                     {item.is_pinned === 0 ?
                         active === true ?
                             <button className={`heart`} onClick={() => { setActive(false); addFavorite() }} aria-label="اضافة للمفضلة">

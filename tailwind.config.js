@@ -11,7 +11,8 @@ module.exports = {
 	],
 	theme: {
 		zIndex: {
-			'100': 100
+			'100': 100,
+			'5': 5
 		},
 		screens: {
 			'xs': '200px',
@@ -19,7 +20,7 @@ module.exports = {
 			'md': '800px',
 			'lg': '1024px',
 		},
-		
+
 	},
 	variants: {},
 	plugins: [

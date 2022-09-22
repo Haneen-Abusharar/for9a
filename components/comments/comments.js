@@ -1,13 +1,16 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useRef, createRef } from 'react'
 import Image from 'next/image'
 import { useQuery } from '@tanstack/react-query'
 import { ThemeContext } from '../../DarkModeContext';
 import axios from 'axios';
 import css from './comments.module.scss'
 import CommentLoad from '../skeleton/commentLoad';
+import CommentReplyForm from './commentReplyForm';
 
 
 const Comments = ({ id }) => {
+    const commentRef = useRef();
+    // const replyRef = useRef([])
     const { darkMode } = useContext(ThemeContext);
     const [showButtons, setShowButtons] = useState([]);
      const [value, setValue] = useState('');
@@ -24,7 +27,7 @@ const Comments = ({ id }) => {
 
     const setBody = async (e) => {
         e.preventDefault()
-         setValue(e.target.value)
+        setValue(e.target.value)
         // setValues((value) =>
         //     value.map((val, ind) =>
         //         ind === i ? { ...val, value: e.target.value } : val
@@ -32,27 +35,28 @@ const Comments = ({ id }) => {
     }
 
     const handleClick = (value) => {
+
         setNewComment(current => [...current, { body: value, name: "haneen", image: '/h.jpg', created_at: Date.now() }])
         axios.post(`${process.env.api}/learn/post-comment`, { id, body: value },
             { headers: { 'authentication': 'i0qvLgN2AfwTgajvdOcB7m1IHEoKu7ou' } }).then(
                 () => {
                     return value
                 })
-
-         setValue("")
+        commentRef.current.value = ""
 
     }
-    const handleReply = (value, main_id) => {
-        console.log(value)
-        setNewReply(current => [...current, { body: value, name: "haneen", image: '/h.jpg', created_at: Date.now() }])
-        axios.post(`${process.env.api}/learn/post-comment`, { id, body: value, main_id },
-            { headers: { 'authentication': 'i0qvLgN2AfwTgajvdOcB7m1IHEoKu7ou' } }).then(
-                () => {
-                    return value
-                })
+    // const handleReply = (value, main_id) => {
 
-         setValue("")
-    }
+    //     setNewReply(current => [...current, { body: value, name: "haneen", image: '/h.jpg', created_at: Date.now() }])
+    //     axios.post(`${process.env.api}/learn/post-comment`, { id, body: value, main_id },
+    //         { headers: { 'authentication': 'i0qvLgN2AfwTgajvdOcB7m1IHEoKu7ou' } }).then(
+    //             () => {
+    //                 return value
+    //             })
+    //     console.log(replyRef)
+    //     replyRef.current[main_id].value = ""
+
+    // }
 
     const show = (i) => {
         let s = showButtons;
@@ -79,7 +83,7 @@ const Comments = ({ id }) => {
                 <CommentLoad />
             </div>
         )
-
+    // replyRef.current = data.result.items.map((_, i) => replyRef.current[i] ?? createRef())
     return (
         <div className={`${darkMode ? css.dark : ''} ${css.comments}`} >
             <div className={css.commentsTop}>
@@ -99,20 +103,22 @@ const Comments = ({ id }) => {
                     <Image src="/h.jpg" height="50px" width="50px" alt="profilepic" />
                 </div>
                 <div className={css.input}>
-                    <form onChange={setBody}>
-                        <input type="text"
-                            onChange={(e) => {
-                                show(0),
-                                    setBody(e)
-                            }}
+                    <form onSubmit={(e) => {
+                        e.preventDefault();
+                        handleClick(value)
+                    }}>
+                        <input
+                            ref={commentRef}
+                            type="text"
+                            onChange={(e) => { show(0), setBody(e) }}
                             name="comment"
-                            value={value}
                             placeholder='أضف تعليق' />
+
+                        {showButtons[0] == 1 && <div className={css.publish} >
+                            <button onClick={() => { hide(0) }} type='button'>اخفاء</button>
+                            <button type='submit'>نشر</button>
+                        </div>}
                     </form>
-                    {showButtons[0] == 1 && <div className={css.publish} >
-                        <button onClick={() => { hide(0) }} type='button'>اخفاء</button>
-                        <button type='submit' onClick={() => handleClick(value)} >نشر</button>
-                    </div>}
                 </div>
             </div>
             {newComment && newComment.map((item, i) => (
@@ -129,6 +135,7 @@ const Comments = ({ id }) => {
                     </div>
                 </div>
             ))}
+
 
             {data.result.items.map((item, i) => (
                 <div className={css.pastComments} key={i}>
@@ -177,21 +184,15 @@ const Comments = ({ id }) => {
                                 <Image src={'/h.jpg'} height="50px" width="50px" alt="profile pic" />
                             </div>
                             <div className={css.publish} >
-                                <form >
-                                    <input
-                                        type="text"
-                                        onChange={(e) => {
-                                            show(i + 2),
-                                                setBody(e,i)
-                                        }}
-                                        value={value}
-                                        name="reply"
-                                        placeholder='أضف رد' />
-                                </form>
-                                {showButtons[i + 2] == 1 && <div className={css.replyPublish} >
-                                    <button onClick={() => { hide(i + 2) }} type='button' aria-label="اخفاء">اخفاء</button>
-                                    <button type='submit' onClick={() =>{ handleReply(value, item.id)}} aria-label="نشر" >نشر</button>
-                                </div>}
+                                <CommentReplyForm
+                                    article_id={id}
+                                    comment_id={item.id}
+                                    setNewReply={setNewReply}
+                                    showButtons={showButtons}
+                                    setShowButtons={setShowButtons}
+                                    show={show}
+                                    hide={hide}
+                                    value={value} i={i} />
                             </div>
                         </div>
                     </div>

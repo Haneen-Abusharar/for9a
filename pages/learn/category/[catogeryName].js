@@ -56,11 +56,7 @@ export const getStaticProps = async (context) => {
         }
     })
 
-    const articlesData = await axios.get(`${process.env.api}/learn/all?type=${category.id}&page=1&count=12`, {
-        headers: {
-            'authentication': 'i0qvLgN2AfwTgajvdOcB7m1IHEoKu7ou'
-        }
-    })
+    const articlesData = await axios.get(`${process.env.api}/learn/all?type=${category.id}&page=1&count=12`)
     const ar = articlesData.data.result.items
     const pages = articlesData.data.result.total_pages;
     const widths = [390, 414, 640, 750, 828, 1200];

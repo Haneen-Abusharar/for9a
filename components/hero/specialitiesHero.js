@@ -9,7 +9,7 @@ const SpecialitiesHero = () => {
         <div className={`${darkMode ? css.dark : ''} ${css.hero}`}>
             <div className='container'>
                 <h1>دليل التخصصات الجامعية </h1>
-                <h2 className='text-center'> دليل التخصصات الجامعية وتخصصات المستقبل</h2>
+                <h2 className='text-center text-sm text-orange-500'> دليل التخصصات الجامعية وتخصصات المستقبل</h2>
             </div>
         </div>
     )

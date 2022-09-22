@@ -1,6 +1,9 @@
 import Head from 'next/head'
 import React from 'react'
+import SpecialitiesFilter from '../../components/filters/specialities/specialitiesFilter'
 import SpecialitiesHero from '../../components/hero/specialitiesHero'
+import Specialities from '../../components/specialities/specialities'
+import SpecialitiesCategoryList from '../../components/specialities/specialitiesCategoryList'
 
 
 const Specialties = () => {
@@ -22,7 +25,9 @@ const Specialties = () => {
             والممولة والتي تتضمن الزمالات والتبادلات الثقافية وفرص التدريب العملي." />
             <meta property="og:image" content="https://staticfor9a.s3-eu-west-1.amazonaws.com/OG+all+specialties.jpg" />
         </Head>
-       <SpecialitiesHero/>
+        <SpecialitiesHero />
+        <SpecialitiesFilter />
+        <SpecialitiesCategoryList />
     </>
     )
 }

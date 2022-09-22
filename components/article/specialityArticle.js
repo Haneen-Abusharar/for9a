@@ -4,72 +4,26 @@ import Image from 'next/image';
 import Link from 'next/link';
 import axios from 'axios';
 import Skeleton from 'react-loading-skeleton'
-import { ThemeContext } from '../../DarkModeContext';
+import { ThemeContext } from '../../DarkModeContext'
 import 'react-loading-skeleton/dist/skeleton.css';
-import css from './article.module.scss';
-import CaroselArticles from '../CaroselArticles/CaroselArticles';
 import StarRating from '../Rating/rating';
-import Comments from '../comments/comments';
+import css from './article.module.scss';
+import SpecialitiesCategoryList from '../specialities/specialitiesCategoryList';
+import CarouselSpecialities from '../specialities/specialities';
 
-const Article = ({ item }) => {
-
+const SpecialityArticle = (article) => {
+    const thisArticle = article.article;
     const [scroll, setScroll] = useState(0);
     const [active, setActive] = useState(true);
     const { darkMode } = useContext(ThemeContext);
     const elementRef = useRef(null);
-    const audioRef = useRef(null);
-    const date = new Date(item.published_at).toLocaleDateString('ar-EG', { month: "long" });
+    // const date = new Date(article.published_at).toLocaleDateString('ar-EG', { month: "long" });
     const loader = ({ src, width, quality }) => {
         const height = Math.ceil(width / 2);
         return `https://images.for9a.com/thumb/fit-${width}-${height}-${quality}-webp/${src}`;
     }
-
     useEffect(() => {
-        const audio = new Audio();
-        audioRef = audio;
-        audio.addEventListener('playing', () => {
-            audio.play()
-        });
-        audio.addEventListener('canplay', () => {
-            audio.play()
-        });
-        audio.addEventListener('ended', (e) => {
-            audio.src = '';
-            const elements = document.getElementsByClassName("isplay")
-            Array.from(elements).map(element => {
-                element.classList.remove("isplay")
-            })
-        });
-        return () => {
-            audio.removeEventListener('ended', () => setIsPlaying(false));
-        };
-    }, [])
-
-    function playAudio(e) {
-        e.preventDefault();
-        const audioUrl = this.getAttribute("href");
-
-        if (audioRef.src != audioUrl) {
-            this.classList.add("isplay")
-            audioRef.src = audioUrl;
-        }
-        else if (audioRef.currentTime > 0 && audioRef.paused && !audioRef.ended) {
-            this.classList.add("isplay")
-            audioRef.play();
-        }
-        else {
-            this.classList.remove("isplay")
-            audioRef.pause();
-        }
-    }
-
-    useEffect(() => {
-        const elements = document.getElementsByClassName("player")
-        Array.from(elements).map(element => element.addEventListener("click", playAudio, false))
-    }, [])
-
-    useEffect(() => {
-        const articleHeight = elementRef.current.clientHeight - 1500;
+        const articleHeight = elementRef.current.clientHeight - 1000;
         let progressBarHandler = () => {
 
             let currentScrollPosition = `${(document.documentElement.scrollTop / articleHeight) * 100}%`;
@@ -103,7 +57,7 @@ const Article = ({ item }) => {
                     { 'authentication': 'i0qvLgN2AfwTgajvdOcB7m1IHEoKu7ou' }
             }
         );
-        
+
     }
     const deleteFavorite = () => {
 
@@ -118,6 +72,7 @@ const Article = ({ item }) => {
     }
 
 
+
     return (
         <>
             <div className={`progressBarContainer fixed h-1 w-full z-100 top-0`}>
@@ -127,15 +82,15 @@ const Article = ({ item }) => {
             </div>
             <article className={`${darkMode ? css.dark : ''} ${css.top}  md:mt-12 md:flex md:flex-col md:items-center md:justify-center`} ref={elementRef} >
                 <div className={`image md:w-3/4 md:mt-3 `}>
-                    {item.images?.folder &&
-                        <Image src={`${item.images.folder}/${item.images.name}`}
+                    {thisArticle.images?.folder &&
+                        <Image src={`${thisArticle.images.folder}/${thisArticle.images.name}`}
                             loader={loader}
                             className={`rounded-none md:rounded-md object-cover `}
                             width={375}
                             height={188}
                             quality={90}
                             priority={true}
-                            alt={item.title}
+                            alt={thisArticle.title}
                             sizes="(min-width: 250px) calc(calc(100vw - 72px) / 3),
                             (min-width: 768px) calc(calc(100vw - 48px) / 2), 100vw"
                             layout='responsive'
@@ -149,8 +104,7 @@ const Article = ({ item }) => {
                                 width={90} height={90} alt="profile picture" />
                             <div className={`${css.authName} mt-5 mr-3  w-32 whitespace-nowrap`}>
                                 <h5 className='text-base'> أ.أيمن العتوم</h5>
-                                <h6 className='mt-0.5 text-xs text-gray-500 '> نشرت في {date}
-                                </h6>
+                                {/* <h6 className='mt-0.5 text-xs text-gray-500 '> نشرت في {date} </h6> */}
                             </div>
                         </div>
                         <div className={`namePublished flex flex-col mt-3 text-gray-500 md:flex-row md:items-start md:justify-end md:w-full md:-mt-3`}>
@@ -164,7 +118,7 @@ const Article = ({ item }) => {
                             0 6.9,8A2.1,2.1 0 0,0 9,10.1A2.1,2.1 0 0,0 11.1,8A2.1,2.1 0 0,0 9,5.9Z" />
                                 </svg>
                                 <h6 className='mr-1'>
-                                    {item.est_time} دقيقة
+                                    {thisArticle.est_time} دقيقة
                                 </h6>
                             </div>
                             <div className={`rate text-gray-500 flex items-center text-xs mb-1 md:mr-4`}>
@@ -173,8 +127,7 @@ const Article = ({ item }) => {
                             8.331-1.159 3.668-7.626 3.669 7.626zm-6.67.925l-6.818.948 4.963 4.807-1.212 6.825 6.068-3.271 6.069
                              3.271-1.212-6.826 4.964-4.806-6.819-.948-3.002-6.241-3.001 6.241z"/>
                                 </svg>
-                                <h6 className='mr-1'>{item.rating.average_rating}
-                                </h6>
+                                {/* <h6 className='mr-1'>{thisArticle.rating.average_rating} </h6> */}
                             </div>
                         </div>
                     </div>
@@ -182,7 +135,7 @@ const Article = ({ item }) => {
                 <div className={`all md:w-3/4 md:flex md:relative`}>
                     <div className={`sharing hidden md:flex flex-col items-center sticky h-full top-16 mt-4 mb-12`}>
                         <div className={`interactions my-2 mx-0 border-gray-500 border-2 p-1 text-base rounded`}>
-                            <h5 className='m-0'>{item.rating.count} تفاعل </h5>
+                            {/* <h5 className='m-0'>{thisArticle.rating.count} تفاعل </h5> */}
                         </div>
                         <button onClick={handleClick} className={`shareButton bg-transparent border-0 cursor-pointer`}>
                             <svg xmlns="http://www.w3.org/2000/svg"
@@ -205,7 +158,7 @@ const Article = ({ item }) => {
                                 <Image src="https://www.ida2at.com/wp-content/themes/ida2at/assets/images/icons/facebook.svg"
                                     width="30px" height="30px" alt="facbook" /> </a></Link>
                         <div className={`button flex`}>
-                            {item.is_pinned === 0 ?
+                            {thisArticle.is_pinned === 0 ?
                                 active === true ?
                                     <button className={'heart'} onClick={() => { setActive(false); addFavorite() }} aria-label="اضافة للمفضلة">
                                         <svg xmlns="http://www.w3.org/2000/svg"
@@ -259,16 +212,16 @@ const Article = ({ item }) => {
                     </div>
                     <div className={` container article text-base leading-8`}>
                         <div className={`breadcrumb flex -mb-2.5`}>
-                            <Link href={"/learn"}><a className=' text-gray-500 no-underline hover:text-sky-700'>
-                                <h5 className='text-sm ml-2.5 mb-0 '> تعلم / </h5></a></Link>
+                            <Link href={"/specialities"}><a className=' text-gray-500 no-underline hover:text-sky-700'>
+                                <h5 className='text-sm ml-2.5 mb-0 '> دليل التخصصات / </h5></a></Link>
                             <Link
-                                href={`${item.category.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
+                                href={`${thisArticle.categories.map((category) => category.url.replace("https://www.for9a.com/", `${process.env.domain}/`))}`}>
                                 <a className='text-sm ml-2.5 mb-0 no-underline text-gray-500 hover:text-sky-700'
-                                    href={`${item.category.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
-                                    <h5>{item.category.title}</h5></a>
+                                    href={`${thisArticle.categories.map((category) => category.url.replace("https://www.for9a.com/", `${process.env.domain}/`))}`}>
+                                    {thisArticle.categories.map((category, i) => <h5 key={i}>{category.title}</h5>)}</a>
                             </Link>
                         </div>
-                        <h1 className='text-2xl leading-8 my-4 text-orange-600 font-bold md:mt-3 md:text-3xl md:leading-9'>{item.title || <Skeleton height={10} count={2} />}</h1>
+                        <h1 className='text-2xl leading-8 my-4 text-orange-600 font-bold md:mt-3 md:text-3xl md:leading-9'>{thisArticle.title || <Skeleton height={10} count={2} />}</h1>
                         <div className={`mobileSharing md:hidden flex items-center text-sm mx-0 my-4`}>
                             <div className={` share  whitespace-nowrap flex rounded-2xl py-1 px-4 ${darkMode ? 'bg-zinc-600 ' : 'bg-slate-100'}`}>
                                 <button onClick={handleClick} className={`shareButton ml-1`} aria-label="مشاركة">
@@ -287,7 +240,7 @@ const Article = ({ item }) => {
                                 <h4 className='white-space: nowrap;'>شاركها مع أصدقائك</h4>
                             </div>
                             <div className={`mobileHeart mr-4 flex rounded-2xl py-1 px-4 ${darkMode ? 'bg-zinc-600 ' : 'bg-slate-100'}`}>
-                                {item.is_pinned === 0 ?
+                                {thisArticle.is_pinned === 0 ?
                                     active === true ?
                                         <button className={'heart'} onClick={() => { setActive(false); addFavorite() }} aria-label="اضافة للمفضلة">
                                             <svg xmlns="http://www.w3.org/2000/svg"
@@ -340,26 +293,23 @@ const Article = ({ item }) => {
                                 <h4 className='mr-1 white-space: nowrap;'> حفظ للمفضلة</h4>
                             </div>
                         </div>
-                        <div className={css.content} dangerouslySetInnerHTML={{ __html: item.body || <Skeleton count={100} /> }} />
-                        <StarRating item={item} id={item.id} />
+                        {thisArticle.sections.map((section, i) =>
+                            <div key={i}>
+                                <h2>{section.header}</h2>
+                                <div className={css.content} dangerouslySetInnerHTML={{ __html: section.body || <Skeleton count={100} /> }} />
+                            </div>
+                        )}
                     </div>
                 </div>
                 <div className={`${css.carosel} m-auto mb-5 py-0 px-4 md:w-3/4`}>
                     <div className={`${css.related} my-2.5 mx-0`}>
-                        <h4 className='text-base mr-1 md:text-lg'>مقالات مشابهة</h4>
+                        <h4 className='text-base mr-1 md:text-lg'>تخصصات قد تهمك</h4>
                     </div>
-                    <LazyLoad height={200} offset={100}>
-                        <CaroselArticles input={item} filter={{
-                            type: item.category.id
-                        }} />
-                    </LazyLoad>
+                    <CarouselSpecialities  filter={{ type: thisArticle.categories.map((category) => category.id) }}/>
                 </div>
             </article>
-            <LazyLoad height={300} >
-                <Comments id={item.id} />
-            </LazyLoad>
         </>
     )
 }
 
-export default Article;
+export default SpecialityArticle
