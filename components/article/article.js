@@ -136,8 +136,8 @@ const Article = ({ item }) => {
                             quality={90}
                             priority={true}
                             alt={item.title}
-                            sizes="(min-width: 250px) calc(calc(100vw - 72px) / 3),
-                            (min-width: 768px) calc(calc(100vw - 48px) / 2), 100vw"
+                            // sizes="(min-width: 250px) calc(calc(100vw - 72px) / 3),
+                            // (min-width: 768px) calc(calc(100vw - 48px) / 2), 100vw"
                             layout='responsive'
                         />}
                 </div>

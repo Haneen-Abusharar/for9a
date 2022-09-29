@@ -5,14 +5,13 @@ import { ThemeContext } from '../../DarkModeContext';
 import CaroselArticles from '../CaroselArticles/CaroselArticles';
 import css from './category.module.scss';
 
-const Category = ({ input }) => {
+const Category = () => {
     const { darkMode } = useContext(ThemeContext);
     const { isLoading, error, data } = useQuery(['learn-category-home'], () =>
         fetch(`${process.env.api}/blog/category`).then(res => res.json()))
     if (error || isLoading || !data)
         return (<div className='container'></div>)
 
-    console.log(input)
     return (
         <>
             {data.result.map((catogery, index) => (
@@ -26,11 +25,7 @@ const Category = ({ input }) => {
                             <h2 className=''>{catogery.title}</h2>
                         </a>
                     </Link>
-
-                    <CaroselArticles input={input} filter={{
-                        type: catogery.id
-                    }} />
-
+                    <CaroselArticles filter={{type: catogery.id}} />
                 </div>
             ))}
         </>

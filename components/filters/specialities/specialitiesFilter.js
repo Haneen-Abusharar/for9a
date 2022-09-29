@@ -12,8 +12,7 @@ const SpecialitiesFilter = () => {
         }
     })
     return (
-        <form>
-            <div className='container mt-6 flex justify-between'>
+        <form className='container mt-6 mb-16 flex justify-between'>
                 <select
                     className='border-2 outline-0 appearance-none text-base p-2 rounded-md'
                     id='specialityCategory'
@@ -74,7 +73,6 @@ const SpecialitiesFilter = () => {
                     onChange={filter.handleChange}
                     value={filter.values.search}
                 />
-            </div>
         </form>
     )
 }

@@ -19,19 +19,19 @@ const CarouselSpecialities = ({ filter }) => {
 
     if (!data || isLoading || error)
         return (<>
-            <div className=' xs:block sm:hidden md:hidden lg:hidden'>
+            <div className='mb-16 mt-5 xs:block sm:hidden md:hidden lg:hidden'>
                 <ArticleCardLoad />
             </div>
-            <div className=' xs:hidden sm:grid sm:grid-cols-2 gap-1 md:hidden lg:hidden '>
-                <ArticleCardLoad />
-                <ArticleCardLoad />
-            </div>
-            <div className=' xs:hidden sm:hidden lg:hidden md:grid grid-cols-3  gap-1 '>
-                <ArticleCardLoad />
+            <div className='mb-16 mt-5 xs:hidden sm:grid sm:grid-cols-2 gap-1 md:hidden lg:hidden '>
                 <ArticleCardLoad />
                 <ArticleCardLoad />
             </div>
-            <div className=' xs:hidden sm:hidden md:hidden lg:grid grid-cols-4  gap-1 '>
+            <div className='mb-16 mt-5 xs:hidden sm:hidden lg:hidden md:grid grid-cols-3 gap-3 '>
+                <ArticleCardLoad />
+                <ArticleCardLoad />
+                <ArticleCardLoad />
+            </div>
+            <div className='mb-16 mt-5 xs:hidden sm:hidden md:hidden lg:grid grid-cols-4 gap-3 '>
                 <ArticleCardLoad />
                 <ArticleCardLoad />
                 <ArticleCardLoad />
@@ -78,7 +78,7 @@ const CarouselSpecialities = ({ filter }) => {
                     slidesPerView: 3,
                     slidesPerGroup: 3,
                 },
-                1024: {
+                1200: {
                     slidesPerView: 4,
                     slidesPerGroup: 4,
                 },

@@ -5,9 +5,9 @@ import { gql } from '@apollo/client';
 import { useQuery } from '@apollo/client'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
-import FavoriteItem from '../../components/favorite/favoriteItem';
 import css from "./favorite.module.scss"
 import ArticleCardLoad from '../../components/skeleton/articleCard';
+import ArticleItem from '../../components/article/articleItem';
 const Favorite = () => {
   const observer = useRef();
   const [loading2, setLoading] = useState(false);
@@ -27,11 +27,10 @@ const Favorite = () => {
             id
             name
             url
-            rate
             image {
-              small
+              name
+              folder
               medium
-              large
             }
             categories {
               id
@@ -104,7 +103,6 @@ const Favorite = () => {
     if (node) {
       observer.current.observe(node)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loading2, hasMore]);
 
 
@@ -144,7 +142,7 @@ const Favorite = () => {
         <div className={css.articles}>
           {data && data.savedLearn.data.
             map((item, i) => (
-              <FavoriteItem item={item} key={i} />
+              <ArticleItem item={item} key={i} />
             ))}
         </div>
 

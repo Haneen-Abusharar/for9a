@@ -1,84 +1,217 @@
 .top {
-  
-            blockquote {
+    table {
+        margin-bottom: 10px;
+        margin-top: 10px;
+        width: fit-content;
 
-                text-align: center;
-                box-shadow: 0 1px 4px rgb(0 0 0 / 16%);
-                padding: 10px;
-                border-radius: 5px;
-                margin: 50px 0;
-
-
-                strong {
-                    color: #454F54;
-                    margin: 5px;
-                }
-
-            }
-
-            blockquote::before {
-
-                content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='35px' height='35px'%3E%3Cpath fill='%23eb751d' d='M11 18V10H9.12L11.12 6H5.38L3 10.76V18M9 16H5V11.24L6.62 8H7.88L5.88 12H9M21 18V10H19.12L21.12 6H15.38L13 10.76V18M19 16H15V11.24L16.62 8H17.88L15.88 12H19Z' /%3E%3C/svg%3E");
-                display: flex;
-                position: relative;
-                top: -25px;
-                height: 0rem;
-
-            }
-
-            h2 {
-                line-height: 2rem;
-                font-size: 1.25rem;
-                color: #e7731d ;
-            }
-
-            a {
-                text-decoration: none;
-                color: #e7731d;
-
-                &:hover {
-                    color: #337ab7;
-                    text-decoration: underline;
-                }
-            }
+        td {
+            width: 200px;
 
             img {
+                width: 150px;
+                height: auto;
+                margin-top: 0 !important;
+                margin-bottom: 0 !important;
+                margin-left: 0 !important;
+                margin-right: 5px;
+            }
 
-                margin-bottom: 20px;
-                margin-top: 20px;
-                border-radius: 5px;
+        }
+    }
+
+    p {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    u {
+        text-decoration: none;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    ol {
+        li {
+            column-count: 2;
+            margin-bottom: 10px;
+            margin-top: 10px;
+
+            img {
+                width: 150px !important;
+                height: auto;
+
+
             }
         }
+    }
 
+    ul {
+        margin-top: .3rem;
+        margin-bottom: 10px;
+        column-count: 1;
+        column-gap: 3%;
+        list-style-type: circle !important;
 
+        li {
+            margin-right: 2rem;
+            margin-top: .6rem;
+            min-height: 2rem;
+            padding: 5px;
+            position: relative;
+            background: white;
+            border-radius: 0 0.5rem 0.5rem 0.5rem;
+            box-shadow: 0.25rem 0.25rem 0.6rem rgba(0, 0, 0, 0.05), 0 0.5rem 1.125rem rgba(75, 0, 0, 0.05);
 
+            p {
+                a {
+                    border-radius: 0 0.5rem 0.5rem 0.5rem;
+                    color: #222;
+                    padding: 5px;
 
-.dark {
-    
-        blockquote {
-            background-color: #474B4D;
+                    &:hover {
+                        text-decoration: none;
+                        background-color: #eee1d6;
+                        transition: .1s ease-in-out;
+                    }
+                }
 
-            strong {
-                color: white
+            }
+            ul{
+                column-count: 1;
+                margin-bottom: 0;
+                column-gap: 0;
+                li{
+                margin-right: 2rem;
+                margin-top: .1rem;
+                min-height: 2rem;
+                padding: 0px;
+                position: relative;
+                background: none;
+                border-radius: none;
+                box-shadow:none;
+                }
             }
         }
-    
+    }
+
+    blockquote {
+
+        text-align: center;
+        box-shadow: 0 1px 4px rgb(0 0 0 / 16%);
+        padding: 10px;
+        border-radius: 5px;
+        margin: 50px 0;
+
+
+        strong {
+            color: #454F54;
+            margin: 5px;
+        }
+
+    }
+
+    blockquote::before {
+
+        content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='35px' height='35px'%3E%3Cpath fill='%23eb751d' d='M11 18V10H9.12L11.12 6H5.38L3 10.76V18M9 16H5V11.24L6.62 8H7.88L5.88 12H9M21 18V10H19.12L21.12 6H15.38L13 10.76V18M19 16H15V11.24L16.62 8H17.88L15.88 12H19Z' /%3E%3C/svg%3E");
+        display: flex;
+        position: relative;
+        top: -25px;
+        height: 0rem;
+
+    }
+    h1{
+        background: linear-gradient(90deg, #eb5202, #ff8a00);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    h3{
+        color: #eb751d;
+    }
+
+    h2 {
+        line-height: 2rem;
+        font-size: 1.25rem;
+        color: #e7731d;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        scroll-margin-top: 70px;
+    }
+
+    a {
+        text-decoration: none;
+        color: #e7731d;
+
+        &:hover {
+            color: #337ab7;
+            text-decoration: underline;
+        }
+    }
+
+    img {
+
+        margin-bottom: 20px;
+        margin-top: 20px;
+        border-radius: 5px;
+    }
 }
 
 
 
 
+.dark {
+
+    blockquote {
+        background-color: #474B4D;
+
+        strong {
+            color: white
+        }
+    }
+
+    ul {
+        li {
+            background-color: #454F54;
+        }
+    }
+
+}
+
+@media screen and (min-width: 450px) {
+    .top {
+        ul {
+            column-count: 2;
+        }
+    }
+}
 
 @media screen and (min-width: 800px) {
     .top {
+        ul {
+            column-count: 3;
+        }
+
+        table {
+            td {
+                width: 400px;
+
+                img {
+                    width: 200px !important;
+
+                }
+            }
+        }
+
         .all {
             .content {
+
                 blockquote::before {
                     content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='50px' height='50px'%3E%3Cpath fill='%23eb751d' d='M11 18V10H9.12L11.12 6H5.38L3 10.76V18M9 16H5V11.24L6.62 8H7.88L5.88 12H9M21 18V10H19.12L21.12 6H15.38L13 10.76V18M19 16H15V11.24L16.62 8H17.88L15.88 12H19Z' /%3E%3C/svg%3E");
                     top: -30px;
                 }
+
                 h2 {
-                    font-size:1.5rem;
+                    font-size: 1.5rem;
                     line-height: 3rem;
                 }
             }

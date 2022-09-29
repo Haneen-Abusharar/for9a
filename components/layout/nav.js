@@ -23,7 +23,6 @@ const Nav = () => {
                             <Link href={`${process.env.domain}/learn`}><a>الرئيسية</a></Link>
                             <Link href={`${process.env.domain}/learn/favorite`}><a>مفضلاتي</a></Link>
                             <Link href={`${process.env.domain}/specialities`}><a>التخصصات</a></Link>
-                            <Link href={`${process.env.domain}/specialities/category/l`}><a>تخصص</a></Link>
                         </div>
                     </div>
                     <div className={css.logo}>

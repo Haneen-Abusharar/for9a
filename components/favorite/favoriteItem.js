@@ -1,11 +1,11 @@
 import React, { useContext, useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
+import axios from 'axios';
 import Skeleton from 'react-loading-skeleton'
 import { ThemeContext } from '../../DarkModeContext';
 import 'react-loading-skeleton/dist/skeleton.css'
-// import css from './favoriteItem.module.scss'
-import Link from 'next/link'
-import axios from 'axios';
+
 
 
 const FavoriteItem = ({ item }) => {
@@ -14,6 +14,10 @@ const FavoriteItem = ({ item }) => {
     const [active, setActive] = useState(true);
     const unixTime = item.published_at;
     const date = new Date(unixTime * 1000);
+    const loader = ({ src, width, quality }) => {
+        const height = Math.ceil(width / 2);
+        return `https://images.for9a.com/thumb/fit-${width}-${height}-${quality}-webp/${src}`;
+    }
 
     const InlineWrapperWithMargin = ({ children }) => {
         return <span style={{ margin: '1rem' }}>{children}</span>
@@ -72,18 +76,23 @@ const FavoriteItem = ({ item }) => {
         <div className={`articleCard
         flex flex-col max-w-sm h-full mx-1 mb-5 bg-white rounded-lg border border-gray-200 shadow-md 
          md:mb-0 hover:bg-gray-100 hover:transition ease-in-out ${darkMode ? 'bg-zinc-700 hover:bg-zinc-600  border-none ' : ''}`}>
-            {item.image?.medium &&
+            {item.image?.name &&
                 <Link
-                    href={`${item.url
-                        ?.replace("https://www.for9a.com/", `${process.env.domain}/`)
-                        }
-                    `}>
+                    href={`${item.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
                     <a>
-                        <Image className={`move rounded-t-lg ${darkMode ? ' hover:opacity-50 ease-in-out  ' : ''}`} src={item.image.medium}
-                            width="100px" height="50px"
-                            alt={item.name} loading='lazy' placeholder='blurDataURL' layout='responsive' />
+                        <Image
+                            className={`move object-cover rounded-t-lg ${darkMode ? ' hover:opacity-50 ease-in-out  ' : ''}`}
+                            src={`${item.image?.folder}/${item.image.name}`}
+                            loader={loader}
+                            quality={80}
+                            width={200} height={130}
+                            alt={item.name}
+                            loading='lazy'
+                            placeholder='blurDataURL'
+                            layout='responsive' />
                     </a>
-                </Link>}
+                </Link>
+            }
 
             <div className={`categories flex flex-row m-2`}>
                 {item.categories.map((l, i) => (
@@ -152,7 +161,6 @@ const FavoriteItem = ({ item }) => {
 
                         </svg>
                     </button>
-
                     <p className="result"></p>
                 </div>
             </div>

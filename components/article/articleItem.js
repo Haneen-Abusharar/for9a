@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 
 const ArticleItem = ({ item, showDesc, priority = false, author = true }) => {
-    
+
     const { darkMode } = useContext(ThemeContext);
     const [active, setActive] = useState(true);
     const unixTime = item.published_at;
@@ -15,6 +15,11 @@ const ArticleItem = ({ item, showDesc, priority = false, author = true }) => {
         const height = Math.ceil(width / 2);
         return `https://images.for9a.com/thumb/fit-${width}-${height}-${quality}-webp/${src}`;
     }
+
+    // if()
+    // const data = {
+    //     image: item.image
+    // }
 
     const handleClick = () => {
         if (navigator.share) {
@@ -58,12 +63,12 @@ const ArticleItem = ({ item, showDesc, priority = false, author = true }) => {
         <div className={` articleCard flex flex-col  h-full mb-5 bg-white rounded-lg border border-gray-200 shadow-md 
         md:mb-0 hover:bg-gray-100 hover:transition ease-in-out ${darkMode ? 'bg-zinc-700 hover:bg-zinc-600  border-none ' : ''}`}>
 
-            {item.images?.md &&
+            {(item.images?.md || item.image?.name) &&
                 <Link
                     href={`${item.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
                     <a aria-label="صورة المقال">
                         {priority ?
-                            <Image src={`${item.images.folder}/${item.images.name}`}
+                            <Image src={`${item.images?.folder}/${item.images.name} `}
                                 loader={loader}
                                 quality={80}
                                 className={`move rounded-t-lg object-cover ${darkMode ? ' hover:opacity-50 ease-in-out  ' : ''} `}
@@ -74,10 +79,10 @@ const ArticleItem = ({ item, showDesc, priority = false, author = true }) => {
                                 priority={true}
                                 layout='responsive' />
                             :
-                            <Image src={`${item.images.folder}/${item.images.name}`}
+                            <Image src={item.images ? `${item.images.folder}/${item.images.name}` : `${item.image.folder}/${item.image.name}`}
                                 loader={loader}
                                 quality={80}
-                                className={`move rounded-t-lg object-cover ${darkMode ? ' hover:opacity-50 ease-in-out  ' : ''} `}
+                                className={`move rounded-t-lg object-cover ${darkMode ? 'hover:opacity-50 ease-in-out' : ''} `}
                                 width={200}
                                 height={130}
                                 alt={item.title}
@@ -87,35 +92,53 @@ const ArticleItem = ({ item, showDesc, priority = false, author = true }) => {
                 </Link>}
 
             <div className={`categories flex flex-row m-2 `}>
-                {item.categories.map((l, i) => (
-                    <div className={`category truncate`} key={i}>
-                        <Link
-                            href={`${l.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
-                            <a aria-label={l.title} className={`m-0 block !no-underline text-xs border ml-3 rounded-xl truncate p-1  transition ease-in-out 
-                                  ${darkMode ? ' !text-white bg-zinc-600 hover:bg-zinc-500' : '!text-zinc-600 bg-gray-100 border-gray-300 hover:bg-gray-200'}`}>
-                                {l.title}
-                            </a>
-                        </Link>
-                    </div>
-                ))}
+                {item.name ?
+                    item.categories.map((t, i) => (
+                        <div className={`category truncate`} key={i}>
+                            <Link
+                                href={`category/${t.slug}`}>
+                                <a className='m-0'>
+                                    <h4 className={`border border-gray-300 bg-gray-100  ml-2 rounded-xl truncate p-1 text-sm 
+                                  hover:bg-gray-200 transition ease-in-out
+                                   ${darkMode ? ' text-white bg-zinc-600  hover:bg-zinc-500 ' : 'border-gray-300'}`}>
+                                        {t.titleLocale}</h4>
+                                </a>
+                            </Link>
+                        </div>
+                    ))
+                    :
+                    item.categories.map((l, i) => (
+                        <div className={`category truncate`} key={i}>
+                            <Link
+                                href={`${l.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
+                                <a aria-label={l.title} className={`m-0 block !no-underline text-xs border ml-3 rounded-xl truncate p-1
+                                transition ease-in-out ${darkMode ? '!text-white bg-zinc-600 hover:bg-zinc-500' :
+                                        '!text-zinc-600 bg-gray-100 border-gray-300 hover:bg-gray-200'}`}>
+                                    {l.title}
+                                </a>
+                            </Link>
+                        </div>
+                    ))
+                }
             </div>
-
             <Link
                 href={`${item.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
                 <a aria-label={item.title} className="no-underline" >
                     <h3 className={`mx-2 mb-2 text-base font-bold tracking-tight 
-                     ${darkMode ? 'text-white' : 'text-gray-800'}`}>{item.title}</h3>
+                     ${darkMode ? 'text-white' : 'text-gray-800'}`}>{item.title || item.name}</h3>
                 </a>
             </Link>
             <Link
                 href={`${item.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
                 <a aria-label={item.short_description}>
-                    {showDesc && <p className={`line-clamp-3 m-2 mb-3 font-normal text-base  ${darkMode ? "text-gray-400" : "text-gray-500"}`}>{item.short_description}</p>}
+                    {showDesc && <p className={`line-clamp-3 m-2 mb-3 font-normal text-base
+                     ${darkMode ? "text-gray-400" : "text-gray-500"}`}>{item.short_description}</p>}
                 </a>
             </Link>
             <div className={`cardFooter flex flex-row justify-end items-center mt-auto mb-1`}>
                 {author && author ? <span className={`imageFooter mr-2 `}>
-                    <Image src={`/h.jpg`} width={"40px"} height={"40px"} className="w-full h-auto rounded-full" alt='auther picture' />
+                    <Image src={`/h.jpg`} width={"40px"} height={"40px"}
+                        className="w-full h-auto rounded-full" alt='auther picture' />
                 </span> :
                     null}
                 {author ? <div className={`Author flex-auto mr-2 text-sm `}>
@@ -123,9 +146,11 @@ const ArticleItem = ({ item, showDesc, priority = false, author = true }) => {
                     <span className='block text-xs whitespace-nowrap m--1'>{date.toLocaleDateString("en-US")}</span>
                 </div> : null}
                 <div className={`button flex flex-row ml-2 ${author ? "justify-end" : ""}`}>
+
                     {item.is_pinned === 0 ?
                         active === true ?
-                            <button className={`heart`} onClick={() => { setActive(false); addFavorite() }} aria-label="اضافة للمفضلة">
+                            <button className={`heart`} onClick={() => { setActive(false); addFavorite() }}
+                                aria-label="اضافة للمفضلة">
                                 <svg xmlns="http://www.w3.org/2000/svg" className='h-8 w-8 md:h-6 md:w-6'
                                     height="25px" width="25px" viewBox="0 0 24 24" >
                                     <path fill="#eb751d" d="M12.1 18.55L12 18.65L11.89 18.55C7.14 14.24 4
@@ -137,7 +162,8 @@ const ArticleItem = ({ item, showDesc, priority = false, author = true }) => {
                                 </svg>
                             </button>
                             :
-                            <button className={`heart`} onClick={() => { setActive(true); deleteFavorite() }} aria-label="محي من المفضلة">
+                            <button className={`heart`} onClick={() => { setActive(true); deleteFavorite() }}
+                                aria-label="محي من المفضلة">
                                 <svg height="25px" width="25px" className='h-8 w-8 md:h-6 md:w-6'
                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                                     <path fill="#eb751d" d="M12,21.35L10.55,20.03C5.4,15.36
@@ -175,7 +201,6 @@ const ArticleItem = ({ item, showDesc, priority = false, author = true }) => {
 
                             </button>
                     }
-
 
                     <button onClick={handleClick} className={`shareButton mr-2 ml-1 `} aria-label="نشر">
                         <svg xmlns="http://www.w3.org/2000/svg" className=' h-7 w-7 md:h-5 md:w-5'

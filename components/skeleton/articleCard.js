@@ -1,14 +1,14 @@
 import React from 'react'
 import ContentLoader from 'react-content-loader'
 
-const ArticleCardLoad = props => (
+const ArticleCardLoad = () => (
     <ContentLoader
-        uniqueKey="value"
+        //   uniqueKey=
         speed={1}
         viewBox="0 0 450 540"
         backgroundColor="#f3f3f3"
         foregroundColor="#ecebeb"
-        {...props} >
+       >
         <rect x="0" y="0" rx="4" ry="4" width="450" height="300" />
         <rect x="350" y="320" rx="4" ry="4" width="80" height="20" />
         <rect x="240" y="320" rx="4" ry="4" width="80" height='20' />

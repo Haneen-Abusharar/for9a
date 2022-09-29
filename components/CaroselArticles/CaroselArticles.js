@@ -9,9 +9,8 @@ import axios from 'axios';
 
 const CaroselArticles = ({ filter }) => {
   const [swipe, setSwipe] = useState();
-
-  const { isLoading, error, data } = useQuery(['learn-category-home', filter.type], () =>
-    axios.get(`${process.env.api}/learn/all?type=${filter.type}`, {
+  const { isLoading, error, data } = useQuery(['learn-category-home', filter], () =>
+    axios.get(`${process.env.api}/learn/all${filter?.type ? '?type=' + filter.type : '' }`, {
       headers: {
         'authentication': 'i0qvLgN2AfwTgajvdOcB7m1IHEoKu7ou'
       }
@@ -39,7 +38,6 @@ const CaroselArticles = ({ filter }) => {
       </div>
     </>
     )
-
 
   return (
     <>
@@ -88,8 +86,6 @@ const CaroselArticles = ({ filter }) => {
         loopFillGroupWithBlank={true}
         modules={[Pagination, Navigation]}
         className={css.swiper2}
-
-
       >
         {
           data?.result?.items
@@ -104,6 +100,5 @@ const CaroselArticles = ({ filter }) => {
       </Swiper >
     </>
   )
-
 }
 export default CaroselArticles;

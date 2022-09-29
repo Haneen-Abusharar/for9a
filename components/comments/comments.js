@@ -10,13 +10,10 @@ import CommentReplyForm from './commentReplyForm';
 
 const Comments = ({ id }) => {
     const commentRef = useRef();
-    // const replyRef = useRef([])
     const { darkMode } = useContext(ThemeContext);
     const [showButtons, setShowButtons] = useState([]);
-     const [value, setValue] = useState('');
-    // const [values, setValues] = useState([])
+    const [value, setValue] = useState('');
     const [newComment, setNewComment] = useState([]);
-    const [newReply, setNewReply] = useState([]);
 
     const { isLoading, error, data } = useQuery(['id', id], () =>
         axios.get(`${process.env.api}/learn/comments?page=1&count=5&id=${id}`, {
@@ -28,10 +25,6 @@ const Comments = ({ id }) => {
     const setBody = async (e) => {
         e.preventDefault()
         setValue(e.target.value)
-        // setValues((value) =>
-        //     value.map((val, ind) =>
-        //         ind === i ? { ...val, value: e.target.value } : val
-        //     ))
     }
 
     const handleClick = (value) => {
@@ -43,20 +36,7 @@ const Comments = ({ id }) => {
                     return value
                 })
         commentRef.current.value = ""
-
     }
-    // const handleReply = (value, main_id) => {
-
-    //     setNewReply(current => [...current, { body: value, name: "haneen", image: '/h.jpg', created_at: Date.now() }])
-    //     axios.post(`${process.env.api}/learn/post-comment`, { id, body: value, main_id },
-    //         { headers: { 'authentication': 'i0qvLgN2AfwTgajvdOcB7m1IHEoKu7ou' } }).then(
-    //             () => {
-    //                 return value
-    //             })
-    //     console.log(replyRef)
-    //     replyRef.current[main_id].value = ""
-
-    // }
 
     const show = (i) => {
         let s = showButtons;
@@ -83,7 +63,7 @@ const Comments = ({ id }) => {
                 <CommentLoad />
             </div>
         )
-    // replyRef.current = data.result.items.map((_, i) => replyRef.current[i] ?? createRef())
+
     return (
         <div className={`${darkMode ? css.dark : ''} ${css.comments}`} >
             <div className={css.commentsTop}>
@@ -136,7 +116,6 @@ const Comments = ({ id }) => {
                 </div>
             ))}
 
-
             {data.result.items.map((item, i) => (
                 <div className={css.pastComments} key={i}>
                     <div className={css.pic}>
@@ -161,40 +140,17 @@ const Comments = ({ id }) => {
                                         <p> {reply.body}</p>
                                     </div>
                                 </div>
-
                             </div>
                         ))}
-                        {newReply && newReply.map((rep, y) => (
-                            <div className={css.past} key={y}>
-                                <div className={css.leftreply}>
-                                    <div className={css.pic}>
-                                        <Image src={rep.image} height="50px" width="50px"
-                                            alt="profilepic" className='object-cover' />
-                                    </div>
-                                    <div className={css.left}>
-                                        <h5>{rep.name}</h5>
-                                        <h6>{convertTime(rep.created_at)}</h6>
-                                        <p> {rep.body}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                        <div className={css.replys}>
-                            <div className={css.pic}>
-                                <Image src={'/h.jpg'} height="50px" width="50px" alt="profile pic" />
-                            </div>
-                            <div className={css.publish} >
-                                <CommentReplyForm
-                                    article_id={id}
-                                    comment_id={item.id}
-                                    setNewReply={setNewReply}
-                                    showButtons={showButtons}
-                                    setShowButtons={setShowButtons}
-                                    show={show}
-                                    hide={hide}
-                                    value={value} i={i} />
-                            </div>
-                        </div>
+                        <CommentReplyForm
+                            article_id={id}
+                            comment_id={item.id}
+                            showButtons={showButtons}
+                            setShowButtons={setShowButtons}
+                            show={show}
+                            hide={hide}
+                            value={value}
+                            i={i} />
                     </div>
                 </div>
             ))}

@@ -80,7 +80,7 @@ const CategorySpeciality = ({filter, specialities,pages, category}) => {
                 <div className={css.articles}>
                     {data && data.map((item) => {
                         return <ArticleItem item={item} showDesc={true}
-                            key={item.id} priority={true} />
+                            key={item.id} priority={true} author={false} />
                     })}
                 </div>
                 <div ref={lastItem} />
