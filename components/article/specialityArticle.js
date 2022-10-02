@@ -99,7 +99,7 @@ const SpecialityArticle = (article) => {
                             />}
                     </div>
                     <div className={`all mt-3 md:w-3/4 md:flex md:relative`}>
-                        <div className={`sharing hidden md:flex flex-col items-center sticky h-full top-16 mt-4 mb-12`}>
+                        <div className={`sharing hidden md:flex flex-col items-center sticky h-full top-16 mt-8 mb-12 ml-4`}>
                             <button onClick={handleClick} className={`shareButton mt-4 bg-transparent border-0 cursor-pointer`}>
                                 <svg xmlns="http://www.w3.org/2000/svg"
                                     width={25} height={25} viewBox="1 0 24 24">
@@ -174,8 +174,8 @@ const SpecialityArticle = (article) => {
                                 }
                             </div>
                         </div>
-                        <div className={` container article text-base leading-8`}>
-                            <div className={`breadcrumb flex -mb-2.5`}>
+                        <div className={`container article text-base leading-8`}>
+                            <div className={`breadcrumb flex -mb-2.5 mt-4`}>
                                 <Link href={"/specialities"}><a className=' text-gray-500 no-underline hover:text-sky-600'>
                                     <h5 className='text-sm ml-2.5 mb-0 '> دليل التخصصات / </h5>
                                 </a></Link>
@@ -196,7 +196,7 @@ const SpecialityArticle = (article) => {
                             <h1 className='text-2xl leading-8 my-4 text-orange-600 font-bold md:mt-3 md:text-3xl md:leading-9'>
                                 {thisArticle.title || <Skeleton height={10} count={2} />}</h1>
                             <div className={`mobileSharing md:hidden flex items-center text-sm mx-0 my-4`}>
-                                <div className={` share  whitespace-nowrap flex rounded-2xl py-1 px-4 
+                                <div className={`share whitespace-nowrap flex rounded-2xl py-1 px-4 
                             ${darkMode ? 'bg-zinc-600 ' : 'bg-slate-100'}`}>
                                     <button onClick={handleClick} className={`shareButton ml-1`}
                                         aria-label="مشاركة">

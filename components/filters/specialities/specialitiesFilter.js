@@ -1,78 +1,101 @@
-import React from 'react'
-import { useFormik } from 'formik'
+import React, { useState, useRef } from 'react'
+import axios from 'axios';
+import { useQuery } from '@tanstack/react-query'
+import { useRouter } from 'next/router';
+import { useForm, Controller } from "react-hook-form";
+import Link from 'next/link';
 
 const SpecialitiesFilter = () => {
-    const filter = useFormik({
-        initialValues: {
-            specialityCategory: "",
-            skills: "",
-            cost: "",
-            need: "",
-            search: ""
-        }
-    })
+    const { push } = useRouter();
+    const { register, handleSubmit, control, setValue, formState: { errors } } = useForm();
+    const { isLoading, error, data } = useQuery(['repoData'], () =>
+        axios.get(`${process.env.api}/speciality/list`).then(res => res.data))
+
+    if (error || isLoading || !data) return (<div >no data</div>)
+
+    const onchange = (data) => {
+        console.log(data);
+        //
+        axios.get(`${process.env.api}/speciality?count=12&page=1&type=${data.specialityCategory}&skills=${data.skills}&cost=${data.cost}&market=${data.need}&term=${data.search}`)
+        // if (data.specialityCategory == "فئة التخصص")
+        //     return
+        // else
+        //     push(`/specialities/category/${data.specialityCategory}`);
+    }
+
     return (
-        <form className='container mt-6 mb-16 flex justify-between'>
-                <select
-                    className='border-2 outline-0 appearance-none text-base p-2 rounded-md'
-                    id='specialityCategory'
-                    name='specialityCategory'
-                    type="text"
-                    placeholder='فئة التخصص'
-                    onChange={filter.handleChange}
-                    value={filter.values.specialityCategory}
-                >
-                    <option value="" label="فئة التخصص" />
+        <form className='container mt-6 mb-16 flex justify-between'
+            onClick={handleSubmit(onchange)}>
+            {/* <Controller
+                name="specialityCategory"
+                control={control}
+                register={register}
+                render={() => (
+                    <select name="specialityCategory"
+                        className='border-2 outline-0 appearance-none text-base p-2 rounded-md'>
+                        {data.category.map((category) => (
+                            <option key={category.id}
+                                value={category.id}
+                                label={category.name} />
+                        ))}
+                    </select>
+                )}
 
-                </select>
-                <select
-                    className='border-2 outline-0 appearance-none text-base p-2 rounded-md'
-                    id='skills'
-                    name='skills'
-                    type="text"
-                    placeholder='المهارات'
-                    onChange={filter.handleChange}
-                    value={filter.values.skills}
-                >
-                    <option value="" label="المهارات" />
+            /> */}
+            <select
+                className='border-2 outline-0 appearance-none text-base p-2 rounded-md'
+                id='specialityCategory'
+                type="text"
+                placeholder='فئة التخصص'
+                {...register("specialityCategory")}
+            >
+                <option value='فئة التخصص' label='فئة التخصص' />
+                {data.category.map((category) =>
+                    <option value={category.id} label={category.name}
+                     key={category.id} />
+                )}
 
-                </select>
-                <select
-                    className='border-2 outline-0 appearance-none text-base p-2 rounded-md'
-                    id='cost'
-                    name='cost'
-                    type="text"
-                    placeholder='تكاليف الدراسة'
-                    onChange={filter.handleChange}
-                    value={filter.values.cost}
-                >
-                    <option value="" label="تكاليف الدراسة" />
+            </select>
+            {errors.func && <p style={{ color: 'red' }}> {errors.func.message}</p>}
+            <select
+                className='border-2 outline-0 appearance-none text-base p-2 rounded-md'
+                id='skills'
+                type="text"
+                placeholder='المهارات'
+                {...register("skills")}
+            >
+                <option value="" label="المهارات" />
 
-                </select>
-                <select
-                    className='border-2 outline-0 appearance-none text-base p-2 rounded-md'
-                    id='need'
-                    name='need'
-                    type="text"
-                    placeholder='حاجة السوق'
-                    onChange={filter.handleChange}
-                    value={filter.values.need}
-                >
-                    <option value="" label="حاجة السوق" />
+            </select>
+            <select
+                className='border-2 outline-0 appearance-none text-base p-2 rounded-md'
+                id='cost'
+                type="text"
+                placeholder='تكاليف الدراسة'
+                {...register("cost")}
+            >
+                <option value="" label="تكاليف الدراسة" />
 
-                </select>
-                <input
-                    className='border-2 outline-0 text-base p-2 pl-6
-                     rounded-md bg-[url("https://img.icons8.com/windows/32/000000/search--v1.png")]
-                      bg-no-repeat bg-left'
-                    id='search'
-                    name='search'
-                    type="text"
-                    autoComplete="off"
-                    placeholder='البحث بواسطة كلمة دالة'
-                    onChange={filter.handleChange}
-                    value={filter.values.search}
-                />
+            </select>
+            <select
+                className='border-2 outline-0 appearance-none text-base p-2 rounded-md'
+                id='need'
+                type="text"
+                placeholder='حاجة السوق'
+                {...register("need")}
+            >
+                <option value="" label="حاجة السوق" />
+
+            </select>
+            <input
+                className='border-2 outline-0 text-base p-2 pl-6 rounded-md bg-no-repeat
+                bg-[url("https://img.icons8.com/windows/32/000000/search--v1.png")] bg-left'
+                id='search'
+                type="text"
+                autoComplete="off"
+                placeholder='البحث بواسطة كلمة دالة'
+                {...register("search")}
+            />
         </form>
     )
 }

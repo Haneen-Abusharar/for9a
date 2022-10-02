@@ -7,8 +7,6 @@ import List from '../article/list';
 import ArticleCardLoad from '../skeleton/articleCard';
 import ListLoading from '../skeleton/listLoading';
 
-
-
 const Featured = () => {
 
     const { darkMode } = useContext(ThemeContext);
@@ -18,7 +16,7 @@ const Featured = () => {
                 'authentication': 'i0qvLgN2AfwTgajvdOcB7m1IHEoKu7ou'
             }
         }).then(res => res.data))
-  
+
     if (!data || isLoading || error)
         return (
             <div className='container flex flex-col md:flex-row '>
@@ -33,9 +31,8 @@ const Featured = () => {
                 <ArticleItem item={data.result.items[0]} showDesc={true} />
             </div>
             <div className={`list ${darkMode ? 'bg-zinc-800' : ''}`}>
-                <List articles={data.result.items.slice(0, 4)} />
+                <List articles={data.result.items.slice(1, 5)} />
             </div>
-
         </div>
     )
 }

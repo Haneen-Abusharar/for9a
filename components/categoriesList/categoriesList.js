@@ -7,16 +7,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper";
 import { ThemeContext } from '../../DarkModeContext';
 import css from './categoriesList.module.scss'
-
-
+import axios from 'axios';
 
 const CatogriesList = ({ }) => {
     const { darkMode } = useContext(ThemeContext);
     const { isLoading, error, data } = useQuery(['learn-category-home'], () =>
-        fetch(`${process.env.api}/blog/category`).then(res => res.json()))
-    if (error || isLoading || !data)
-        return (<div className='container'></div>)
-
+        axios.get(`${process.env.api}/blog/category`).then(res => res.data))
+   
     const InlineWrapperWithMargin = ({ children }) => {
         return <div
             style={{
@@ -39,7 +36,7 @@ const CatogriesList = ({ }) => {
                     width={100}
                 />
             </div>
-            <div className=' md:hidden  '>
+            <div className='md:hidden '>
                 <Skeleton
                     count={3}
                     wrapper={InlineWrapperWithMargin}
@@ -96,8 +93,6 @@ const CatogriesList = ({ }) => {
                     ))
                 }
             </Swiper >
-
-
         </div >
     )
 }

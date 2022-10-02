@@ -6,21 +6,26 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import { ThemeContext } from '../../DarkModeContext';
 import css from './searchBox.module.scss';
 
-const SearchBox = ({ }) => {
+const SearchBox = () => {
     const { darkMode } = useContext(ThemeContext);
     const { query } = useRouter();
     const [data, setData] = useState([])
     const [value, setValue] = useState(query.term)
     const { push } = useRouter();
 
-
     const handleChange = async (event) => {
         setValue(event.target.value);
 
     }
+
+    const submit = (e) => {
+        e.preventDefault();
+        push(`/learn/s/${e.target[0].value}`);
+    }
+
     const autoComplete = async (event) => {
-      
-        if (!event?.target?.value || event.target.value.length < 3 || event.target.value.trim() == ''){
+
+        if (!event?.target?.value || event.target.value.length < 3 || event.target.value.trim() == '') {
             setData();
             return;
         }
@@ -29,7 +34,7 @@ const SearchBox = ({ }) => {
             res => {
                 {
                     if (event.target.value.length === 0) {
-                        
+
                         setData();
                     }
                     else { setData(res.data.result.items) }
@@ -39,10 +44,6 @@ const SearchBox = ({ }) => {
             })
     }
 
-    const submit = (e) => {
-        e.preventDefault();
-        push(`/learn/s/${e.target[0].value}`);
-    }
 
     return (<div className={`${darkMode ? css.dark : ''} ${css.searchAndrec} `}>
         <form onSubmit={submit} onChange={handleChange} className={` ${css.search}`} autoComplete="off" >

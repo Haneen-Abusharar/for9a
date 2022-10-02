@@ -2,7 +2,6 @@ import Head from 'next/head'
 import React from 'react'
 import SpecialitiesFilter from '../../components/filters/specialities/specialitiesFilter'
 import SpecialitiesHero from '../../components/hero/specialitiesHero'
-import Specialities from '../../components/specialities/specialities'
 import SpecialitiesCategoryList from '../../components/specialities/specialitiesCategoryList'
 
 

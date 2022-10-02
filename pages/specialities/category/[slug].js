@@ -31,7 +31,7 @@ function SpecialtiesCategoryPage({ category, specialities, preLoadImages, pages 
         ).slice(0, 2)}
       </Head>
       <SpecialitiesHero />
-      <SpecialitiesFilter />
+      <SpecialitiesFilter  />
       <CategorySpeciality
         category={category}
         filter={{ type: category.id }}

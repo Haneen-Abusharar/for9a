@@ -1,12 +1,12 @@
 import Head from "next/head";
 import React, { Fragment } from "react";
-import { useRouter } from "next/router";
 import axios from "axios";
+import { useRouter } from "next/router";
 import { useQuery } from '@tanstack/react-query';
 import Skeleton from 'react-loading-skeleton'
 import ArticleItem from "../../../components/article/articleItem";
-import css from "../../../components/catogeryName/categoryName.module.scss"
 import LearnFilter from "../../../components/filters/learn/learnFilter";
+import css from "../../../components/catogeryName/categoryName.module.scss"
 import c from './search.module.scss'
 
 const SearchPage = () => {
