@@ -176,7 +176,7 @@ const SpecialityArticle = (article) => {
                         </div>
                         <div className={` container article text-base leading-8`}>
                             <div className={`breadcrumb flex -mb-2.5`}>
-                                <Link href={"/specialities"}><a className=' text-gray-500 no-underline hover:text-sky-700'>
+                                <Link href={"/specialities"}><a className=' text-gray-500 no-underline hover:text-sky-600'>
                                     <h5 className='text-sm ml-2.5 mb-0 '> دليل التخصصات / </h5>
                                 </a></Link>
                                 {thisArticle.categories.map((category, i) =>

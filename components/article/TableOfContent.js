@@ -4,7 +4,7 @@ const TableOfContent = ({ thisArticle }) => {
     const [headings, setHeadings] = useState([])
     const [activeId, setActiveId] = useState('')
     const router = useRouter()
-
+    const observer = useRef()
     useEffect(() => {
         const elements = Array.from(thisArticle.sections)
             .map((elem) => ({
@@ -13,44 +13,51 @@ const TableOfContent = ({ thisArticle }) => {
             }))
 
         setHeadings(elements)
-        
-    },[router.asPath])
 
-    function click(e) {
-        e.preventDefault();
-        this.classList.add("clicked")
 
-    }
-    useEffect(()=>{
-        const els = document.getElementById(headings.map((heading) => heading.id))
-        console.log(headings.map((heading) => heading.id))
-        headings.map((heading) => {document.getElementById(heading.id)
-            heading.addEventListener("click", click, false)
-        })
-       // els.map(element => element.addEventListener("click", click, false))
-    },[])
+    }, [router.asPath])
+
+    useEffect(() => {
+        const handleObsever = (entries) => {
+            entries.forEach((entry) => {
+                if (entry?.isIntersecting) {
+                    setActiveId(entry.target.id)
+                }
+            })
+        }
+
+        observer.current = new IntersectionObserver(handleObsever, {
+            root: null,
+            rootMargin: "0px 0px -90% 0px",
+
+        }
+        )
+
+        const elements = document.querySelectorAll("h2")
+        elements.forEach((elem) => observer.current.observe(elem))
+        return () => observer.current?.disconnect()
+
+    }, [])
 
     return (
-        <div className={`table-of-content hidden md:flex flex-col items-center sticky h-full top-16 left-0 mt-4 mb-12`}>
-            <ul className={`table-of-content columns-1 my-2 mx-0 p-1 text-base rounded`}>
+            <ul className={`table-of-content hidden md:flex flex-col items-center sticky h-full top-16 left-0 mt-4 mb-12 `}>
                 {headings.map((heading) =>
-                    <li key={heading.id}>
-                        <a className={(activeId === heading.id) ? "text-black" : ""}
-                            href={`#${heading.id}`}
+                    <li key={heading.id} className="shadow-none bg-none m-0 p-0 w-full min-h-0 rounded-none">
+                        <a href={`${heading.id}`}
+                            className={`${activeId === heading.id ? "text-cyan-600 border-sky-500" : "text-black"}
+                              hover:text-cyan-600 hover:no-underline  !m-0  w-full 
+                             text-xs border-r-2 pl-1 block `}
                             onClick={(e) => {
                                 e.preventDefault()
-                                const element =
-                                    //document.querySelector(`#${heading.id}`)
-                                    document.getElementById(heading.id);
+                                const element = document.getElementById(heading.id);
                                 element.scrollIntoView({
                                     behavior: "smooth",
                                     block: "start"
                                 })
-                            }}> {heading.header}</a>
+                            }}><span className='py-2 px-4 block'>{heading.header}</span></a>
                     </li>
                 )}
             </ul>
-        </div>
     )
 }
 

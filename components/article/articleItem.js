@@ -60,9 +60,8 @@ const ArticleItem = ({ item, showDesc, priority = false, author = true }) => {
 
     return (
 
-        <div className={` articleCard flex flex-col  h-full mb-5 bg-white rounded-lg border border-gray-200 shadow-md 
-        md:mb-0 hover:bg-gray-100 hover:transition ease-in-out ${darkMode ? 'bg-zinc-700 hover:bg-zinc-600  border-none ' : ''}`}>
-
+        <div className={`articleCard flex flex-col h-full mb-5 bg-white rounded-lg border border-gray-200 shadow-lg
+        md:mb-0 hover:bg-gray-100 hover:transition ease-in-out ${darkMode ? 'bg-zinc-700 hover:bg-zinc-600 border-none ' : ''}`}>
             {(item.images?.md || item.image?.name) &&
                 <Link
                     href={`${item.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
@@ -71,7 +70,8 @@ const ArticleItem = ({ item, showDesc, priority = false, author = true }) => {
                             <Image src={`${item.images?.folder}/${item.images.name} `}
                                 loader={loader}
                                 quality={80}
-                                className={`move rounded-t-lg object-cover ${darkMode ? ' hover:opacity-50 ease-in-out  ' : ''} `}
+                                className={`move rounded-t-lg rounded-b-none object-cover 
+                                ${darkMode ? ' hover:opacity-50 ease-in-out  ' : ''} `}
                                 width={200}
                                 height={130}
                                 // sizes={"(min-width: 250px) 500px, 50vw"}
@@ -82,7 +82,8 @@ const ArticleItem = ({ item, showDesc, priority = false, author = true }) => {
                             <Image src={item.images ? `${item.images.folder}/${item.images.name}` : `${item.image.folder}/${item.image.name}`}
                                 loader={loader}
                                 quality={80}
-                                className={`move rounded-t-lg object-cover ${darkMode ? 'hover:opacity-50 ease-in-out' : ''} `}
+                                className={`move rounded-t-lg rounded-b-none object-cover
+                                 ${darkMode ? 'hover:opacity-50 ease-in-out' : ''} `}
                                 width={200}
                                 height={130}
                                 alt={item.title}

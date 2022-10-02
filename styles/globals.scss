@@ -290,7 +290,7 @@ button {
   border: 2px solid #da8f17;
   border-radius: 1rem;
   padding: 20px;
-  margin: 10px 0;
+  margin: 20px 0 !important;
 
   .ca-header {
     font-weight: bold;
@@ -305,10 +305,9 @@ button {
     background: #f1630d;
     background: linear-gradient(270deg, #f1630d 0, #fc8c1d .01%, #f6a52c 100%);
     color: #fff !important;
-    transition: all .3s ease;
     min-width: 150px;
     cursor: pointer;
-    padding: .5rem .5rem;
+    padding: .5rem .8rem;
     border: 1px solid;
     border-radius: 3rem;
     font-weight: 700;
@@ -317,6 +316,15 @@ button {
     display: table;
     margin: 20px 10px;
     text-align: center;
+    text-decoration: none !important;
+    transition: box-shadow 1s ease;
+    font-size: 14px;
+
+    &:hover {
+     
+      box-shadow: -1px 2px 11px 2px #24242447;
+    }
+
 
   }
 }
@@ -341,7 +349,7 @@ button {
 
     .goto {
       min-width: 180px;
-      padding: 1rem 1rem;
+      padding: 1rem 1.3rem;
     }
   }
 }

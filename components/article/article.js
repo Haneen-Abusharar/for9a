@@ -103,7 +103,7 @@ const Article = ({ item }) => {
                     { 'authentication': 'i0qvLgN2AfwTgajvdOcB7m1IHEoKu7ou' }
             }
         );
-        
+
     }
     const deleteFavorite = () => {
 
@@ -268,9 +268,11 @@ const Article = ({ item }) => {
                                     <h5>{item.category.title}</h5></a>
                             </Link>
                         </div>
-                        <h1 className='text-2xl leading-8 my-4 text-orange-600 font-bold md:mt-3 md:text-3xl md:leading-9'>{item.title || <Skeleton height={10} count={2} />}</h1>
+                        <h1 className='text-2xl leading-8 my-4 text-orange-600 font-bold md:mt-3 md:text-3xl md:leading-9'>
+                            {item.title || <Skeleton height={10} count={2} />}</h1>
                         <div className={`mobileSharing md:hidden flex items-center text-sm mx-0 my-4`}>
-                            <div className={` share  whitespace-nowrap flex rounded-2xl py-1 px-4 ${darkMode ? 'bg-zinc-600 ' : 'bg-slate-100'}`}>
+                            <div className={` share  whitespace-nowrap flex rounded-2xl py-1 px-4 
+                            ${darkMode ? 'bg-zinc-600 ' : 'bg-slate-100'}`}>
                                 <button onClick={handleClick} className={`shareButton ml-1`} aria-label="مشاركة">
                                     <svg xmlns="http://www.w3.org/2000/svg"
                                         width="14px" height="14px" viewBox="1 0 24 24">
@@ -286,10 +288,12 @@ const Article = ({ item }) => {
                                 </button>
                                 <h4 className='white-space: nowrap;'>شاركها مع أصدقائك</h4>
                             </div>
-                            <div className={`mobileHeart mr-4 flex rounded-2xl py-1 px-4 ${darkMode ? 'bg-zinc-600 ' : 'bg-slate-100'}`}>
+                            <div className={`mobileHeart mr-4 flex rounded-2xl py-1 px-4 
+                            ${darkMode ? 'bg-zinc-600 ' : 'bg-slate-100'}`}>
                                 {item.is_pinned === 0 ?
                                     active === true ?
-                                        <button className={'heart'} onClick={() => { setActive(false); addFavorite() }} aria-label="اضافة للمفضلة">
+                                        <button className={'heart'} onClick={() => { setActive(false); addFavorite() }}
+                                            aria-label="اضافة للمفضلة">
                                             <svg xmlns="http://www.w3.org/2000/svg"
                                                 viewBox="0 0 24 24" width="14px" height="14px">
                                                 <path fill="#e7731d" d="M12.1 18.55L12 18.65L11.89 18.55C7.14 14.24 4
