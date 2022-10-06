@@ -321,13 +321,49 @@ button {
     font-size: 14px;
 
     &:hover {
-     
+
       box-shadow: -1px 2px 11px 2px #24242447;
     }
 
 
   }
 }
+
+.css-b62m3t-container {
+  .css-lkhphp-control:hover {
+    border-color: transparent;
+  }
+
+  .css-1s2u09g-control {
+    border: none;
+
+    .css-319lph-ValueContainer {
+      .css-6j8wv5-Input {
+        color: #202020;
+      }
+    }
+
+    .css-1hb7zxy-IndicatorsContainer {
+
+      .css-1okebmr-indicatorSeparator {
+        width: 0;
+      }
+
+      .css-tlfecz-indicatorContainer {
+        padding: 0;
+
+        .css-tj5bde-Svg {
+          width: 15px;
+          fill: black;
+          line-height: 0;
+          stroke: none;
+          stroke-width: 1;
+        }
+      }
+    }
+  }
+}
+
 
 .container {
   width: 100% !important;
