@@ -5,9 +5,10 @@ import { gql } from '@apollo/client';
 import { useQuery } from '@apollo/client'
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
-import css from "./favorite.module.scss"
 import ArticleCardLoad from '../../components/skeleton/articleCard';
 import ArticleItem from '../../components/article/articleItem';
+import css from "./favorite.module.scss"
+
 const Favorite = () => {
   const observer = useRef();
   const [loading2, setLoading] = useState(false);
@@ -109,8 +110,8 @@ const Favorite = () => {
   if (loading || error || !data)
     return (<>
       <div className='container mt-16'>
-        <Skeleton  width={80} />
-       <div className='mt-1 mb-4'> <Skeleton  width={80} /></div>
+        <Skeleton width={80} />
+        <div className='mt-1 mb-4'> <Skeleton width={80} /></div>
       </div>
       <div className=' container md:grid md:grid-cols-3 gap-1 mt-5 '>
         <ArticleCardLoad /> <ArticleCardLoad />  <ArticleCardLoad />
@@ -119,15 +120,16 @@ const Favorite = () => {
       </div>
     </>
     )
+
   return (
     <>
       <Head>
         <title>مفضلات</title>
-        <meta name="description"content="مفضلات" />
-                <meta property="og:title" content="مفضلات" />
-                <meta property="og:locale" content="ar_SA" />
-                <meta property="og:type" content="website" />
-                <meta property="og:description" content="مفضلات"/>
+        <meta name="description" content="مفضلات" />
+        <meta property="og:title" content="مفضلات" />
+        <meta property="og:locale" content="ar_SA" />
+        <meta property="og:type" content="website" />
+        <meta property="og:description" content="مفضلات" />
       </Head>
       <div className={`container ${css.load}`}  >
         <div className={`${css.breadcrumb} `}>
@@ -142,7 +144,8 @@ const Favorite = () => {
         <div className={css.articles}>
           {data && data.savedLearn.data.
             map((item, i) => (
-              <ArticleItem item={item} key={i} />
+              <ArticleItem item={item} key={i} 
+              author={false} priority={true} />
             ))}
         </div>
 

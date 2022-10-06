@@ -1,7 +1,9 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState, useRef, useContext } from 'react'
 import { useRouter } from 'next/router'
+import { ThemeContext } from '../../DarkModeContext';
 
 const TableOfContent = ({ thisArticle }) => {
+    const { darkMode } = useContext(ThemeContext);
     const [headings, setHeadings] = useState([])
     const [activeId, setActiveId] = useState('')
     const router = useRouter()
@@ -43,10 +45,11 @@ const TableOfContent = ({ thisArticle }) => {
     return (
         <ul className={`table-of-content hidden md:flex flex-col items-center sticky h-full top-16 left-0 mt-5 mb-12 mr-4 `}>
             {headings.map((heading) =>
-                <li key={heading.id} className="shadow-none bg-none m-0 p-0 w-full min-h-0 rounded-none">
+                <li key={heading.id} className="shadow-none bg-transparent m-0 p-0 w-full min-h-0 rounded-none">
                     <a href={`${heading.id}`}
-                        className={`${activeId === heading.id ? "text-cyan-600 border-sky-500" : "text-black"}
-                              hover:text-cyan-600 hover:no-underline  !m-0  w-full 
+                        className={`${activeId === heading.id ? "text-cyan-600 border-sky-500" : ""}
+                        ${darkMode ? "text-slate-300" : "text-black"}
+                              hover:text-cyan-600 hover:no-underline !m-0  w-full 
                              text-xs border-r-2 pl-1 block `}
                         onClick={(e) => {
                             e.preventDefault()

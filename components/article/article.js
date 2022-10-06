@@ -259,13 +259,13 @@ const Article = ({ item }) => {
                     </div>
                     <div className={` container article text-base leading-8`}>
                         <div className={`breadcrumb flex -mb-2.5`}>
-                            <Link href={"/learn"}><a className=' text-gray-500 no-underline hover:text-sky-700'>
-                                <h5 className='text-sm ml-2.5 mb-0 '> تعلم / </h5></a></Link>
+                            <Link href={"/learn"}><a className=' text-gray-500 no-underline text-sm ml-2.5 mb-0 hover:text-sky-700'>
+                              تعلم /</a></Link>
                             <Link
                                 href={`${item.category.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
                                 <a className='text-sm ml-2.5 mb-0 no-underline text-gray-500 hover:text-sky-700'
                                     href={`${item.category.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
-                                    <h5>{item.category.title}</h5></a>
+                                    {item.category.title}</a>
                             </Link>
                         </div>
                         <h1 className='text-2xl leading-8 my-4 text-orange-600 font-bold md:mt-3 md:text-3xl md:leading-9'>

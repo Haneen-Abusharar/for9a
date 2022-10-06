@@ -27,10 +27,10 @@ const Featured = () => {
 
     return (
         <div className={`featured  flex flex-col md:grid grid-cols-2 md:gap-5 md:mb-7 container`}>
-            <div className={'article '}>
+            <div className={'article md:h-4/6 lg:h-full'}>
                 <ArticleItem item={data.result.items[0]} showDesc={true} />
             </div>
-            <div className={`list ${darkMode ? 'bg-zinc-800' : ''}`}>
+            <div className={`list  md:h-4/6 ${darkMode ? 'bg-zinc-800' : ''}`}>
                 <List articles={data.result.items.slice(1, 5)} />
             </div>
         </div>

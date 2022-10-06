@@ -120,7 +120,7 @@ const Comments = ({ id }) => {
                 <div className={css.pastComments} key={i}>
                     <div className={css.pic}>
                         {item.user.images?.md &&
-                            <Image src={item.user.images.md} height="50px" width="50px"
+                            <Image src={item.user.images?.md} height="50px" width="50px"
                                 alt="profilepic" className='object-cover rounded-full' />}
                     </div>
                     <div className={css.past}>
@@ -131,7 +131,7 @@ const Comments = ({ id }) => {
                             <div className={css.past} key={x}>
                                 <div className={css.leftreply}>
                                     <div className={css.pic}>
-                                        <Image src={reply.user.images.md} height="50px" width="50px"
+                                        <Image src={reply.user.images?.md} height="50px" width="50px"
                                             alt="profilepic" className='object-cover' />
                                     </div>
                                     <div className={css.left}>

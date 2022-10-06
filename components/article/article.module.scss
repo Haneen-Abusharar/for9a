@@ -2,6 +2,7 @@
     table {
         margin-bottom: 10px;
         margin-top: 10px;
+        width: 100%;
 
         tr {
             display: flex;
@@ -13,7 +14,7 @@
         td {
 
             img {
-                width: 200px;
+                width: 200px !important;
                 height: auto;
                 margin-top: 0 !important;
                 margin-bottom: 0 !important;
@@ -46,15 +47,6 @@
         }
 
         li {
-            // display: flex;
-            // flex-direction: column;
-            // margin-bottom: 10px;
-            // margin-top: 10px;
-            // padding: 5px;
-            // position: relative;
-            // background: white;
-            // border-radius: 0 0.5rem 0.5rem 0.5rem;
-            // box-shadow: 0.25rem 0.25rem 0.6rem rgba(0, 0, 0, 0.05), 0 0.5rem 1.125rem rgba(75, 0, 0, 0.05);
 
             p {
                 padding-right: 5px;
@@ -76,7 +68,6 @@
         column-gap: 3%;
 
         li {
-            // margin-right: 2rem;
             margin-top: .6rem;
             min-height: 2rem;
             padding: 5px;
@@ -85,24 +76,30 @@
             border-radius: 0 0.5rem 0.5rem 0.5rem;
             box-shadow: 0.25rem 0.25rem 0.6rem rgba(0, 0, 0, 0.05), 0 0.5rem 1.125rem rgba(75, 0, 0, 0.05);
 
-            // width: fit-content;
             p {
                 padding-right: 5px;
 
                 a {
                     border-radius: 0 0.5rem 0.5rem 0.5rem;
                     color: #222;
-                    padding: 5px;
+                    // padding: 5px;
 
                     &:hover {
-                        text-decoration: underline;
+                        text-decoration: none;
                         color: #0891b2;
                         transition: .1s ease-in-out;
                     }
                 }
+                 a:before {
+                    content: '# ';
+                    width: 200px;
+                    height: 200px;
+                    color: #0891b2;
+                    font-size: 24px;
+                }
 
                 strong {
-                    display: block;
+                    display: inline-block;
                 }
 
             }
@@ -179,7 +176,6 @@
 
         &:hover {
             color: #0891b2;
-            text-decoration: underline;
         }
     }
 
@@ -215,6 +211,7 @@
     .top {
 
         table {
+            table-layout: fixed;
 
             tr {
                 flex-direction: row;
@@ -227,7 +224,7 @@
                 }
 
                 &:last-child {
-                    flex: 3;
+                    flex: 2;
                 }
             }
 

@@ -3,7 +3,7 @@ import ContentLoader from 'react-content-loader'
 
 const ArticleCardLoad = () => (
     <ContentLoader
-        //   uniqueKey=
+        // uniqueKey='2nou0as-aria'
         speed={1}
         viewBox="0 0 450 540"
         backgroundColor="#f3f3f3"

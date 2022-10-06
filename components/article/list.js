@@ -18,7 +18,6 @@ const List = ({ articles }) => {
             isPinned[item.id] = item.is_pinned
         })
         setActive(isPinned)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const handleClick = (title, url) => {
@@ -61,10 +60,12 @@ const List = ({ articles }) => {
     return (
         <>
             {articles.map((item, index) => (
-                <div className={`list flex flex-row mb-5 mt-5 lg:w-full bg-white rounded-lg 
-            border shadow-md md:mb-5 md:mt-0 md:flex-row hover:bg-gray-100 hover:transition ease-in-out
-             ${darkMode ? 'border-zinc-700 bg-zinc-700 hover:bg-zinc-600' : ''} `} key={index}>
-                    <div className={`flex-none xs:w-2/5 sm:w-1/5 md:w-2/5 lg:w-1/4`}>
+                <div className={`list flex flex-row mb-5 mt-5 lg:w-full rounded-lg 
+            border shadow-md md:mb-5 md:mt-0 md:flex-row  hover:transition ease-in-out
+             ${darkMode ? 'border-zinc-700 bg-zinc-700 hover:bg-zinc-600' :
+                        'bg-white hover:bg-gray-100'} `}
+                    key={index}>
+                    <div className={`flex-none xs:w-2/5 sm:w-1/5 md:w-2/5 md:h-1/5 lg:w-1/4`}>
                         {
                             item.images?.md && <Link
                                 href={`${item.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
@@ -85,7 +86,7 @@ const List = ({ articles }) => {
                             href={`${item.url?.replace("https://www.for9a.com/", `${process.env.domain}/`)}`}>
                             <a> <h3 className={`xs:line-clamp-2 lg:line-clamp-none text-ellipsis px-3 pt-3 text-base font-bold ${darkMode ? 'text-white' : 'text-gray-800'}`}>{item.title}</h3>
                             </a></Link>
-                       
+
                         <div className={`button font-normal flex justify-end  ml-3 mt-auto mb-1`}>
                             {
                                 active[item.id] == 1 ?

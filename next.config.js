@@ -18,7 +18,8 @@ module.exports = {
   },
   images: {
     domains: ['d3vt78ic2w6yaz.cloudfront.net', 'www.for9a.com', "images.unsplash.com",
-      "www.ida2at.com", "www.pexels.com", "images.pexels.com", "staticfor9a.s3-eu-west-1.amazonaws.com", "images.for9a.com"],
+      "www.ida2at.com", "www.pexels.com", "images.pexels.com", "staticfor9a.s3-eu-west-1.amazonaws.com",
+       "images.for9a.com" ,"lh3.googleusercontent.com"],
     imageSizes: [100,200,390,414,500,615,768,800,900],
   
   },
