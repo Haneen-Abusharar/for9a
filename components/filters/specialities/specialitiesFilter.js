@@ -63,7 +63,7 @@ const SpecialitiesFilter = () => {
                             </option>
                         )}
                     </select>
-                    <label className='-mb-8'>فئة التخصص</label>
+                    <label className='md:hidden -mb-8'>فئة التخصص</label>
                     <Controller
                         name={"skills"}
                         control={control}
@@ -90,7 +90,7 @@ const SpecialitiesFilter = () => {
                             )
                         }}
                     />
-                    <label className='-mb-8'>المهارات</label>
+                    <label className='md:hidden -mb-8'>المهارات</label>
                     <select
                         className='md:border-l border-2 md:border-none md:outline-0 text-base
                          p-1 my-2 md:mr-5 w-full rounded-md'
@@ -109,7 +109,7 @@ const SpecialitiesFilter = () => {
                             </option>
                         )}
                     </select>
-                    <label className='-mb-8'>تكاليف الدراسة</label>
+                    <label className='md:hidden -mb-8'>تكاليف الدراسة</label>
                     <select
                         className='border-2 md:border-none md:border-l md:outline-0 text-base 
                         p-1 my-2 md:mr-5 w-full rounded-md -webkit-appearance-none'
@@ -128,7 +128,7 @@ const SpecialitiesFilter = () => {
                             </option>
                         )}
                     </select>
-                    <label className='-mb-8'>حاجة السوق</label>
+                    <label className='md:hidden -mb-8'>حاجة السوق</label>
                     <input
                         className='border-2 md:border-none md:border-l md:outline-0 text-base
                         w-full md:mr-5 p-2 pl-6 my-2 rounded-md'
@@ -138,7 +138,7 @@ const SpecialitiesFilter = () => {
                         placeholder='البحث بواسطة كلمة'
                         {...register("term")}
                     />
-                    <label className='-mb-8'>ابحث</label>
+                    <label className='md:hidden -mb-8'>ابحث</label>
                 </div>
                 <button type='submit' className={` ${showModal ? "w-full" : "w-1/6"} h-10
                  mb-5 md:mr-5 md:mb-0 rounded-lg bg-orange-400 hover:bg-orange-300 

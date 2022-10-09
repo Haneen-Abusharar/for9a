@@ -7,7 +7,7 @@ const LearnHero = () => {
     const [show, setShow] = useState(false);
 
     return (
-        <div className={`${darkMode ? css.dark : ''} ${css.hero}`}>
+         <div className={`${darkMode ? css.dark : ''} ${css.hero}`}>
             <div className='container'>
                 <h1 className=''>تعلم </h1>
                 <p className={css.readMore}> تحتوي بوابة تعلم على مجموعة مقالات تشكل حاجة أساسية لدى غالبية مستخدمي فرصة.

@@ -9,6 +9,7 @@ import '../styles/globals.scss'
 import 'swiper/scss';
 import 'swiper/scss/navigation';
 import 'swiper/scss/pagination';
+
 export const ThemeContext = createContext(null);
 
 const MyApp = ({ Component, pageProps }) => {
